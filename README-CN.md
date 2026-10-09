@@ -90,3 +90,5 @@ bash tools/sync-upstream.sh
 
 原始项目由 [Yashab Alam](https://github.com/yashab-cyber) 及 OpenDroid 贡献者开发。
 本分支仅做中文本地化与工程化改造。
+
+<!-- build trigger -->
