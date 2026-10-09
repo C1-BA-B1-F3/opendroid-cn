@@ -30,3 +30,5 @@ python3 tools/merge_translations.py
 
 echo
 echo "完成。"
+
+# opendroid-cn localization pipeline
