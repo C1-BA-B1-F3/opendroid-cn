@@ -33,8 +33,21 @@ KEEP_ATTRS = ("id", "message", "errorLine1", "errorLine2")
 
 
 def entry_key(issue: ET.Element) -> tuple:
+    """按 (id, file, line, column) 唯一标识一条发现。
+
+    注意：不能只用 (id, file, message) —— 同一文件内同类问题消息完全相同，
+    会被错误折叠成一条，导致其余位置未被 baseline 覆盖。
+    file 统一为模块相对路径，便于与 baseline 中既有条目比对。
+    """
     loc = issue.find("location")
-    return (issue.get("id"), loc.get("file") if loc is not None else "", issue.get("message"))
+    if loc is None:
+        return (issue.get("id"), "", "", "")
+    f = loc.get("file", "")
+    marker = "/app/"
+    idx = f.find(marker)
+    if idx != -1:
+        f = f[idx + len(marker):]
+    return (issue.get("id"), f, loc.get("line", ""), loc.get("column", ""))
 
 
 def main() -> int:

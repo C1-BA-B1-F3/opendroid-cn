@@ -54,14 +54,38 @@
     <issue id="DefaultLocale" message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead" errorLine1="                    value = summary?.averageEngagementRate?.let { &quot;${String.format(&quot;%.1f&quot;, it)}%&quot; } ?: &quot;0.0%&quot;," errorLine2="                                                                     ~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location file="src/main/java/com/opendroid/ai/ui/screens/social/SocialAnalyticsTab.kt" line="105" column="70" />
     </issue>
+    <issue id="DefaultLocale" message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead" errorLine1="        count &gt;= 1_000_000 -&gt; String.format(&quot;%.1fM&quot;, count / 1_000_000.0)" errorLine2="                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/ui/screens/social/SocialAnalyticsTab.kt" line="302" column="31" />
+    </issue>
+    <issue id="DefaultLocale" message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead" errorLine1="        count &gt;= 1_000 -&gt; String.format(&quot;%.1fK&quot;, count / 1_000.0)" errorLine2="                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/ui/screens/social/SocialAnalyticsTab.kt" line="303" column="27" />
+    </issue>
     <issue id="DefaultLocale" message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead" errorLine1="                        observedData = &quot;Announcement posts averaged ${String.format(&quot;%.1f&quot;, avgAnnouncementEngage)}% engagement vs ${String.format(&quot;%.1f&quot;, avgOtherEngage)}% for general posts across ${posts.size} published posts.&quot;," errorLine2="                                                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location file="src/main/java/com/opendroid/ai/social/core/ai/SocialInsightsEngine.kt" line="38" column="71" />
+    </issue>
+    <issue id="DefaultLocale" message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead" errorLine1="                        observedData = &quot;Announcement posts averaged ${String.format(&quot;%.1f&quot;, avgAnnouncementEngage)}% engagement vs ${String.format(&quot;%.1f&quot;, avgOtherEngage)}% for general posts across ${posts.size} published posts.&quot;," errorLine2="                                                                                                                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/social/core/ai/SocialInsightsEngine.kt" line="38" column="134" />
     </issue>
     <issue id="DefaultLocale" message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead" errorLine1="                    value = summary?.averageEngagementRate?.let { &quot;${String.format(&quot;%.1f&quot;, it)}%&quot; } ?: &quot;0.0%&quot;," errorLine2="                                                                     ~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location file="src/main/java/com/opendroid/ai/ui/screens/social/SocialOverviewTab.kt" line="79" column="70" />
     </issue>
+    <issue id="DefaultLocale" message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead" errorLine1="                            AppText(&quot;${String.format(&quot;%.1f&quot;, post.engagementRate)}% engage&quot;, fontSize = 10.sp, color = theme.textSecondary)" errorLine2="                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/ui/screens/social/SocialOverviewTab.kt" line="301" column="40" />
+    </issue>
+    <issue id="DefaultLocale" message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead" errorLine1="        count &gt;= 1_000_000 -&gt; &quot;${String.format(&quot;%.1f&quot;, count / 1_000_000f)}M&quot;" errorLine2="                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/ui/screens/social/SocialOverviewTab.kt" line="369" column="34" />
+    </issue>
+    <issue id="DefaultLocale" message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead" errorLine1="        count &gt;= 1_000 -&gt; &quot;${String.format(&quot;%.1f&quot;, count / 1_000f)}K&quot;" errorLine2="                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/ui/screens/social/SocialOverviewTab.kt" line="370" column="30" />
+    </issue>
     <issue id="SdCardPath" message="Do not hardcode &quot;/sdcard/&quot;; use `Environment.getExternalStorageDirectory().getPath()` instead" errorLine1="                } else if (canonical.startsWith(&quot;/sdcard&quot;)) {" errorLine2="                                                 ~~~~~~~">
         <location file="src/main/java/com/opendroid/ai/core/storage/StorageWorkspaceProvider.kt" line="180" column="50" />
+    </issue>
+    <issue id="SdCardPath" message="Do not hardcode &quot;/sdcard/&quot;; use `Environment.getExternalStorageDirectory().getPath()` instead" errorLine1="                    canonical.removePrefix(&quot;/sdcard&quot;).trimStart('/')" errorLine2="                                            ~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/core/storage/StorageWorkspaceProvider.kt" line="181" column="45" />
+    </issue>
+    <issue id="SdCardPath" message="Do not hardcode &quot;/sdcard/&quot;; use `Environment.getExternalStorageDirectory().getPath()` instead" errorLine1="        val prefixes = listOf(&quot;/sdcard/&quot;, &quot;/storage/emulated/0/&quot;, &quot;sdcard/&quot;, &quot;./&quot;)" errorLine2="                               ~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/core/storage/StorageWorkspaceProvider.kt" line="516" column="32" />
     </issue>
     <issue id="NonObservableLocale" message="Reading locale in a non-observable way in a composable function" errorLine1="                        &quot;Synced &quot; + SimpleDateFormat(&quot;MMM d, HH:mm&quot;, Locale.getDefault()).format(Date(lastSync))" errorLine2="                                                                     ~~~~~~~~~~~~~~~~~~~">
         <location file="src/main/java/com/opendroid/ai/ui/screens/social/SocialAccountsTab.kt" line="270" column="70" />
@@ -94,7 +118,10 @@
         <location file="src/main/java/com/opendroid/ai/ui/components/SocialCharts.kt" line="30" column="5" />
     </issue>
     <issue id="ModifierParameter" message="Optional Modifier parameter should have a default value of `Modifier`" errorLine1="    modifier: Modifier = Modifier.fillMaxWidth().height(160.dp)," errorLine2="    ~~~~~~~~">
-        <location file="src/main/java/com/opendroid/ai/ui/components/SocialCharts.kt" line="30" column="5" />
+        <location file="src/main/java/com/opendroid/ai/ui/components/SocialCharts.kt" line="112" column="5" />
+    </issue>
+    <issue id="ModifierParameter" message="Optional Modifier parameter should have a default value of `Modifier`" errorLine1="    modifier: Modifier = Modifier.size(100.dp)" errorLine2="    ~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/ui/components/SocialCharts.kt" line="156" column="5" />
     </issue>
     <issue id="ObsoleteSdkInt" message="Unnecessary; `SDK_INT` is always &gt;= 26" errorLine1="            if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M) {" errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location file="src/main/java/com/opendroid/ai/ui/viewmodel/SettingsViewModel.kt" line="742" column="17" />
@@ -122,6 +149,9 @@
     </issue>
     <issue id="UseKtx" message="Use the KTX extension function `SharedPreferences.edit` instead?" errorLine1="        context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)" errorLine2="        ^">
         <location file="src/main/java/com/opendroid/ai/core/storage/StorageWorkspaceProvider.kt" line="50" column="9" />
+    </issue>
+    <issue id="UseKtx" message="Use the KTX extension function `SharedPreferences.edit` instead?" errorLine1="        context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)" errorLine2="        ^">
+        <location file="src/main/java/com/opendroid/ai/core/storage/StorageWorkspaceProvider.kt" line="60" column="9" />
     </issue>
     <issue id="UseKtx" message="Use the KTX extension function `String.toUri` instead?" errorLine1="            val uri = Uri.parse(uriStr)" errorLine2="                      ~~~~~~~~~~~~~~~~~">
         <location file="src/main/java/com/opendroid/ai/core/storage/StorageWorkspaceProvider.kt" line="73" column="23" />
