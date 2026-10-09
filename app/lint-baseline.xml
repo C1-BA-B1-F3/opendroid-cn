@@ -118,6 +118,9 @@
         <location file="src/main/java/com/opendroid/ai/ui/components/SocialCharts.kt" line="30" column="5" />
     </issue>
     <issue id="ModifierParameter" message="Optional Modifier parameter should have a default value of `Modifier`" errorLine1="    modifier: Modifier = Modifier.fillMaxWidth().height(160.dp)," errorLine2="    ~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/ui/components/SocialCharts.kt" line="30" column="5" />
+    </issue>
+    <issue id="ModifierParameter" message="Optional Modifier parameter should have a default value of `Modifier`" errorLine1="    modifier: Modifier = Modifier.fillMaxWidth().height(160.dp)," errorLine2="    ~~~~~~~~">
         <location file="src/main/java/com/opendroid/ai/ui/components/SocialCharts.kt" line="112" column="5" />
     </issue>
     <issue id="ModifierParameter" message="Optional Modifier parameter should have a default value of `Modifier`" errorLine1="    modifier: Modifier = Modifier.size(100.dp)" errorLine2="    ~~~~~~~~">

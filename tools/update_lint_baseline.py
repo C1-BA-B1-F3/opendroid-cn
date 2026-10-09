@@ -47,7 +47,7 @@ def entry_key(issue: ET.Element) -> tuple:
     idx = f.find(marker)
     if idx != -1:
         f = f[idx + len(marker):]
-    return (issue.get("id"), f, loc.get("line", ""), loc.get("column", ""))
+    return (issue.get("id"), f, loc.get("line", ""), loc.get("column", ""), issue.get("message") or "")
 
 
 def main() -> int:
@@ -59,20 +59,30 @@ def main() -> int:
     rep_root = ET.parse(report).getroot()
     base_root = ET.parse(BASELINE).getroot()
 
-    existing = {entry_key(i) for i in base_root.findall("issue")}
+    # key -> 既有 <issue> 元素。key 必须包含 message：lint 按 (id, file, message)
+    # 匹配，且同一位置可能同时存在不同消息的同类发现（例如 ModifierParameter 的
+    # "should be the first optional parameter" 与 "should have a default value
+    # of `Modifier`" 会同时命中同一行），用不含 message 的键会错误折叠。
+    existing: dict = {entry_key(i): i for i in base_root.findall("issue")}
+
     added = 0
     for issue in rep_root.findall("issue"):
         if issue.get("severity") != "Error":
             continue
-        if entry_key(issue) in existing:
+        key = entry_key(issue)
+        if key in existing:
             continue
-        new = ET.SubElement(base_root, "issue")
+        target = ET.SubElement(base_root, "issue")
+        existing[key] = target
+        added += 1
+
         for a in KEEP_ATTRS:
             v = issue.get(a)
             if v:
-                new.set(a, v)
+                target.set(a, v)
+
         for loc in issue.findall("location"):
-            new_loc = ET.SubElement(new, "location")
+            new_loc = ET.SubElement(target, "location")
             for a in ("file", "line", "column"):
                 v = loc.get(a)
                 if not v:
@@ -84,13 +94,11 @@ def main() -> int:
                     if idx != -1:
                         v = v[idx + len(marker):]
                 new_loc.set(a, v)
-        existing.add(entry_key(issue))
-        added += 1
 
     ET.indent(base_root, space="    ")
     base_root.tail = "\n"
     ET.ElementTree(base_root).write(BASELINE, encoding="utf-8", xml_declaration=True)
-    print(f"lint-baseline.xml: 新增条目 {added}（现有 {len(existing)}）")
+    print(f"lint-baseline.xml: 新增 {added}，共 {len(base_root.findall('issue'))} 条")
     return 0
 
 
