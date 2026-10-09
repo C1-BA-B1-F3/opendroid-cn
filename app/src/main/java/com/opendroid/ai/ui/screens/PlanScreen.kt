@@ -1,4 +1,11 @@
+// Modified by opendroid-cn (Chinese localization fork): UI strings routed through i18n.tr(). See NOTICE.
 package com.opendroid.ai.ui.screens
+
+
+
+import com.opendroid.ai.i18n.tr
+
+import com.opendroid.ai.i18n.AppText
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
@@ -51,8 +58,8 @@ fun PlanScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(
-                        text = "PLAN ENGINE",
+                    AppText(
+                        text = tr("PLAN ENGINE"),
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
                         color = TextPrimary,
@@ -88,8 +95,8 @@ fun PlanScreen(
                 }
 
                 item {
-                    Text(
-                        text = "PLAN SEQUENCE STAGE",
+                    AppText(
+                        text = tr("PLAN SEQUENCE STAGE"),
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Bold,
                         fontFamily = FontFamily.Monospace,
@@ -120,8 +127,8 @@ fun PlanScreen(
             // History Section: Past Autonomous Runs
             if (planHistory.isNotEmpty()) {
                 item {
-                    Text(
-                        text = "AUTONOMOUS EXECUTION HISTORY",
+                    AppText(
+                        text = tr("AUTONOMOUS EXECUTION HISTORY"),
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Bold,
                         fontFamily = FontFamily.Monospace,
@@ -178,7 +185,7 @@ fun PlanHeaderCard(
                             .background(statusColor)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
-                    Text(
+                    AppText(
                         text = plan.status.name,
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Bold,
@@ -187,8 +194,8 @@ fun PlanHeaderCard(
                     )
                 }
                 if (!isCurrentActive) {
-                    Text(
-                        text = "Viewing Past Run",
+                    AppText(
+                        text = tr("Viewing Past Run"),
                         fontSize = 10.sp,
                         color = AccentPurple,
                         fontWeight = FontWeight.Bold,
@@ -200,8 +207,8 @@ fun PlanHeaderCard(
                             .clickable { onClearSelection() }
                     )
                 } else {
-                    Text(
-                        text = "ACTIVE RUN",
+                    AppText(
+                        text = tr("ACTIVE RUN"),
                         fontSize = 10.sp,
                         color = AccentCyan,
                         fontWeight = FontWeight.Bold,
@@ -214,7 +221,7 @@ fun PlanHeaderCard(
                 }
             }
             Spacer(modifier = Modifier.height(12.dp))
-            Text(
+            AppText(
                 text = plan.goal,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold,
@@ -228,12 +235,12 @@ fun PlanHeaderCard(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Column {
-                    Text("Steps", fontSize = 10.sp, color = TextSecondary)
-                    Text("${plan.steps.size} scheduled", fontSize = 13.sp, fontWeight = FontWeight.Bold, color = TextPrimary)
+                    AppText(tr("Steps"), fontSize = 10.sp, color = TextSecondary)
+                    AppText("已排定 ${plan.steps.size} 个", fontSize = 13.sp, fontWeight = FontWeight.Bold, color = TextPrimary)
                 }
                 Column(horizontalAlignment = Alignment.End) {
-                    Text("Estimated duration", fontSize = 10.sp, color = TextSecondary)
-                    Text(plan.estimatedDuration, fontSize = 13.sp, fontWeight = FontWeight.Bold, color = TextPrimary)
+                    AppText(tr("Estimated duration"), fontSize = 10.sp, color = TextSecondary)
+                    AppText(plan.estimatedDuration, fontSize = 13.sp, fontWeight = FontWeight.Bold, color = TextPrimary)
                 }
             }
 
@@ -253,8 +260,8 @@ fun PlanHeaderCard(
                         modifier = Modifier.size(16.dp)
                     )
                     Spacer(modifier = Modifier.width(6.dp))
-                    Text(
-                        text = "STOP TASK",
+                    AppText(
+                        text = tr("STOP TASK"),
                         fontWeight = FontWeight.Bold,
                         fontFamily = FontFamily.Monospace,
                         fontSize = 12.sp,
@@ -282,20 +289,20 @@ fun EmptyPlanPlaceholder() {
         ) {
             Icon(
                 imageVector = Icons.Default.Info,
-                contentDescription = "No plan",
+                contentDescription = tr("No plan"),
                 tint = TextSecondary,
                 modifier = Modifier.size(36.dp)
             )
             Spacer(modifier = Modifier.height(12.dp))
-            Text(
-                text = "No active plans running",
+            AppText(
+                text = tr("No active plans running"),
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Bold,
                 color = TextPrimary
             )
             Spacer(modifier = Modifier.height(6.dp))
-            Text(
-                text = "Plans formulated by the autonomous system will display here in real-time.",
+            AppText(
+                text = tr("Plans formulated by the autonomous system will display here in real-time."),
                 fontSize = 11.sp,
                 color = TextSecondary,
                 textAlign = androidx.compose.ui.text.style.TextAlign.Center
@@ -325,7 +332,7 @@ fun PastPlanRow(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Column(modifier = Modifier.weight(1f)) {
-            Text(
+            AppText(
                 text = plan.goal,
                 fontSize = 13.sp,
                 color = TextPrimary,
@@ -334,14 +341,14 @@ fun PastPlanRow(
             )
             Spacer(modifier = Modifier.height(4.dp))
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(
+                AppText(
                     text = dateFormat.format(Date(plan.createdAt)),
                     fontSize = 10.sp,
                     color = TextSecondary
                 )
                 Spacer(modifier = Modifier.width(12.dp))
-                Text(
-                    text = "${plan.steps.size} steps",
+                AppText(
+                    text = "${plan.steps.size} 个步骤",
                     fontSize = 10.sp,
                     color = AccentCyan,
                     fontFamily = FontFamily.Monospace
@@ -372,7 +379,7 @@ fun PastPlanRow(
             ) {
                 Icon(
                     imageVector = Icons.Default.Delete,
-                    contentDescription = "Delete Plan",
+                    contentDescription = tr("Delete Plan"),
                     tint = TextSecondary.copy(alpha = 0.5f),
                     modifier = Modifier.size(16.dp)
                 )

@@ -1,3 +1,5 @@
+// Modified by opendroid-cn (Chinese localization fork): loads the Chinese UI translation table.
+// See NOTICE.
 package com.opendroid.ai
 
 import android.app.Application
@@ -8,6 +10,7 @@ import com.opendroid.ai.core.crash.OpenDroidCrashHandler
 import com.opendroid.ai.core.memory.MemoryManager
 import com.opendroid.ai.core.security.LegacyPreferenceMigration
 import com.opendroid.ai.data.crash.CrashLogRepository
+import com.opendroid.ai.i18n.I18n
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -34,6 +37,10 @@ class OpenDroidApp : Application() {
 
         // Installed first so that a crash in any later startup step is captured.
         installCrashHandler()
+
+        // opendroid-cn: load the Chinese UI translation table before any UI is composed.
+        // Safe: missing/empty table falls back to English.
+        I18n.init(this)
 
         // Retire the legacy preference files into the direct-Keystore stores. This opens the
         // Keystore and the legacy keyset, so it runs off the main thread; splash routing and

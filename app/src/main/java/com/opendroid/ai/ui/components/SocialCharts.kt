@@ -1,4 +1,11 @@
+// Modified by opendroid-cn (Chinese localization fork): UI strings routed through i18n.tr(). See NOTICE.
 package com.opendroid.ai.ui.components
+
+
+
+import com.opendroid.ai.i18n.tr
+
+import com.opendroid.ai.i18n.AppText
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
@@ -26,7 +33,7 @@ fun SimpleLineChart(
 ) {
     if (dataPoints.isEmpty()) {
         Box(modifier = modifier, contentAlignment = Alignment.Center) {
-            Text("No data points available", color = AppTheme.colors.textSecondary, fontSize = 12.sp)
+            AppText(tr("No data points available"), color = AppTheme.colors.textSecondary, fontSize = 12.sp)
         }
         return
     }
@@ -91,7 +98,7 @@ fun SimpleLineChart(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 labels.forEach { label ->
-                    Text(text = label, color = AppTheme.colors.textSecondary, fontSize = 10.sp)
+                    AppText(text = label, color = AppTheme.colors.textSecondary, fontSize = 10.sp)
                 }
             }
         }
@@ -136,7 +143,7 @@ fun SimpleBarChart(
             horizontalArrangement = Arrangement.SpaceAround
         ) {
             labels.take(values.size).forEach { label ->
-                Text(text = label, color = AppTheme.colors.textSecondary, fontSize = 10.sp)
+                AppText(text = label, color = AppTheme.colors.textSecondary, fontSize = 10.sp)
             }
         }
     }

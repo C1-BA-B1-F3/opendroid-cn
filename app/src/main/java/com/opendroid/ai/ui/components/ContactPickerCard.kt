@@ -1,4 +1,11 @@
+// Modified by opendroid-cn (Chinese localization fork): UI strings routed through i18n.tr(). See NOTICE.
 package com.opendroid.ai.ui.components
+
+
+
+import com.opendroid.ai.i18n.tr
+
+import com.opendroid.ai.i18n.AppText
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -52,8 +59,8 @@ fun ContactPickerCard(
                     modifier = Modifier.size(20.dp)
                 )
                 Spacer(modifier = Modifier.width(8.dp))
-                Text(
-                    text = "Which '$query' do you mean?",
+                AppText(
+                    text = "你指的是哪个“$query”？",
                     color = TextPrimary,
                     fontWeight = FontWeight.Bold,
                     fontSize = 14.sp
@@ -82,8 +89,8 @@ fun ContactPickerCard(
             Spacer(modifier = Modifier.height(8.dp))
 
             // Hint
-            Text(
-                text = "Tap to select, or type the number (1, 2, 3...)",
+            AppText(
+                text = tr("Tap to select, or type the number (1, 2, 3...)"),
                 color = TextSecondary,
                 fontSize = 11.sp
             )
@@ -117,7 +124,7 @@ fun ContactOptionRow(
                 ),
             contentAlignment = Alignment.Center
         ) {
-            Text(
+            AppText(
                 text = "$number",
                 color = AccentCyan,
                 fontSize = 12.sp,
@@ -128,13 +135,13 @@ fun ContactOptionRow(
         Spacer(modifier = Modifier.width(12.dp))
 
         Column(modifier = Modifier.weight(1f)) {
-            Text(
+            AppText(
                 text = name,
                 color = TextPrimary,
                 fontWeight = FontWeight.Medium,
                 fontSize = 15.sp
             )
-            Text(
+            AppText(
                 text = "$type • $phone",
                 color = TextSecondary,
                 fontSize = 12.sp

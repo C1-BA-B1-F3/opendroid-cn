@@ -1,4 +1,11 @@
+// Modified by opendroid-cn (Chinese localization fork): UI strings routed through i18n.tr(). See NOTICE.
 package com.opendroid.ai.ui.screens.social
+
+
+
+import com.opendroid.ai.i18n.tr
+
+import com.opendroid.ai.i18n.AppText
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -61,14 +68,14 @@ fun SocialAccountsTab(
                     }
                     Spacer(modifier = Modifier.width(12.dp))
                     Column(modifier = Modifier.weight(1f)) {
-                        Text(
-                            "Hardware-Encrypted Credentials",
+                        AppText(
+                            tr("Hardware-Encrypted Credentials"),
                             color = theme.textPrimary,
                             fontSize = 13.sp,
                             fontWeight = FontWeight.SemiBold
                         )
-                        Text(
-                            "All API tokens are stored in Android KeyStore (AES-256-GCM). Tokens are never logged or stored in plaintext.",
+                        AppText(
+                            tr("All API tokens are stored in Android KeyStore (AES-256-GCM). Tokens are never logged or stored in plaintext."),
                             color = theme.textSecondary,
                             fontSize = 11.sp,
                             lineHeight = 15.sp
@@ -80,8 +87,8 @@ fun SocialAccountsTab(
 
         // ── PLATFORM CARDS ───────────────────────────────────────────
         item {
-            Text(
-                "Connected Platforms",
+            AppText(
+                tr("Connected Platforms"),
                 color = theme.textPrimary,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold
@@ -118,11 +125,11 @@ fun SocialAccountsTab(
             onDismissRequest = { revokingAccount = null },
             containerColor = theme.cardBackground,
             title = {
-                Text("Revoke Access to ${account.platform.displayName}?", color = theme.textPrimary, fontWeight = FontWeight.Bold)
+                AppText("撤销对 ${account.platform.displayName} 的授权？", color = theme.textPrimary, fontWeight = FontWeight.Bold)
             },
             text = {
-                Text(
-                    "This will delete all hardware-encrypted cryptographic keys and credentials from Android KeyStore. Any active automated tasks for this platform will stop immediately.",
+                AppText(
+                    tr("This will delete all hardware-encrypted cryptographic keys and credentials from Android KeyStore. Any active automated tasks for this platform will stop immediately."),
                     color = theme.textSecondary,
                     fontSize = 13.sp
                 )
@@ -135,12 +142,12 @@ fun SocialAccountsTab(
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = theme.accentRed)
                 ) {
-                    Text("Revoke & Purge", color = Color.White, fontWeight = FontWeight.Bold)
+                    AppText(tr("Revoke & Purge"), color = Color.White, fontWeight = FontWeight.Bold)
                 }
             },
             dismissButton = {
                 TextButton(onClick = { revokingAccount = null }) {
-                    Text("Cancel", color = theme.textSecondary)
+                    AppText(tr("Cancel"), color = theme.textSecondary)
                 }
             }
         )
@@ -176,7 +183,7 @@ private fun AccountCard(
                         .background(if (isConnected) theme.accentCyan.copy(alpha = 0.15f) else theme.borderColor.copy(alpha = 0.3f)),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text(
+                    AppText(
                         platform.displayName.take(2).uppercase(),
                         color = if (isConnected) theme.accentCyan else theme.textSecondary,
                         fontWeight = FontWeight.ExtraBold,
@@ -188,7 +195,7 @@ private fun AccountCard(
 
                 Column(modifier = Modifier.weight(1f)) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        Text(
+                        AppText(
                             platform.displayName,
                             color = theme.textPrimary,
                             fontWeight = FontWeight.Bold,
@@ -199,14 +206,14 @@ private fun AccountCard(
                     }
 
                     if (isConnected && account != null) {
-                        Text(
+                        AppText(
                             if (account.username.isNotBlank()) "@${account.username}" else account.displayName,
                             color = theme.textSecondary,
                             fontSize = 12.sp
                         )
                     } else {
-                        Text(
-                            "Not connected",
+                        AppText(
+                            tr("Not connected"),
                             color = theme.textSecondary,
                             fontSize = 12.sp
                         )
@@ -220,7 +227,7 @@ private fun AccountCard(
                         shape = RoundedCornerShape(20.dp),
                         contentPadding = PaddingValues(horizontal = 14.dp, vertical = 6.dp)
                     ) {
-                        Text("Connect", color = Color.Black, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                        AppText(tr("Connect"), color = Color.Black, fontSize = 12.sp, fontWeight = FontWeight.Bold)
                     }
                 }
             }
@@ -236,7 +243,7 @@ private fun AccountCard(
                     horizontalArrangement = Arrangement.spacedBy(6.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text("Permissions:", color = theme.textSecondary, fontSize = 11.sp)
+                    AppText(tr("Permissions:"), color = theme.textSecondary, fontSize = 11.sp)
                     account.permissions.forEach { perm ->
                         Box(
                             modifier = Modifier
@@ -245,7 +252,7 @@ private fun AccountCard(
                                 .border(0.5.dp, theme.borderColor, RoundedCornerShape(6.dp))
                                 .padding(horizontal = 6.dp, vertical = 2.dp)
                         ) {
-                            Text(perm.title, color = theme.textSecondary, fontSize = 9.sp)
+                            AppText(perm.title, color = theme.textSecondary, fontSize = 9.sp)
                         }
                     }
                 }
@@ -262,23 +269,23 @@ private fun AccountCard(
                     val syncText = if (lastSync != null && lastSync > 0) {
                         "Synced " + SimpleDateFormat("MMM d, HH:mm", Locale.getDefault()).format(Date(lastSync))
                     } else {
-                        "Not synced yet"
+                        tr("Not synced yet")
                     }
-                    Text(syncText, color = theme.textSecondary, fontSize = 11.sp)
+                    AppText(syncText, color = theme.textSecondary, fontSize = 11.sp)
 
                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         TextButton(
                             onClick = onDisconnect,
                             contentPadding = PaddingValues(horizontal = 8.dp, vertical = 2.dp)
                         ) {
-                            Text("Disconnect", color = theme.textSecondary, fontSize = 11.sp)
+                            AppText(tr("Disconnect"), color = theme.textSecondary, fontSize = 11.sp)
                         }
 
                         TextButton(
                             onClick = onRevoke,
                             contentPadding = PaddingValues(horizontal = 8.dp, vertical = 2.dp)
                         ) {
-                            Text("Revoke", color = theme.accentRed, fontSize = 11.sp)
+                            AppText(tr("Revoke"), color = theme.accentRed, fontSize = 11.sp)
                         }
                     }
                 }
@@ -305,7 +312,7 @@ private fun StatusBadge(status: AccountStatus) {
             .background(bgColor)
             .padding(horizontal = 6.dp, vertical = 2.dp)
     ) {
-        Text(text, color = textColor, fontSize = 10.sp, fontWeight = FontWeight.SemiBold)
+        AppText(text, color = textColor, fontSize = 10.sp, fontWeight = FontWeight.SemiBold)
     }
 }
 
@@ -335,15 +342,15 @@ private fun ConnectAccountDialog(
         onDismissRequest = onDismiss,
         containerColor = theme.cardBackground,
         title = {
-            Text("Connect ${platform.displayName}", color = theme.textPrimary, fontWeight = FontWeight.Bold)
+            AppText("连接 ${platform.displayName}", color = theme.textPrimary, fontWeight = FontWeight.Bold)
         },
         text = {
             Column(
                 modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                Text(
-                    "Credentials will be encrypted with AES-256-GCM hardware keys.",
+                AppText(
+                    tr("Credentials will be encrypted with AES-256-GCM hardware keys."),
                     color = theme.textSecondary,
                     fontSize = 11.sp
                 )
@@ -360,8 +367,8 @@ private fun ConnectAccountDialog(
                     )
                     Spacer(modifier = Modifier.width(6.dp))
                     Column {
-                        Text("Use Sandbox Mock Mode", color = theme.textPrimary, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
-                        Text("Simulates live API without external accounts", color = theme.textSecondary, fontSize = 10.sp)
+                        AppText(tr("Use Sandbox Mock Mode"), color = theme.textPrimary, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
+                        AppText(tr("Simulates live API without external accounts"), color = theme.textSecondary, fontSize = 10.sp)
                     }
                 }
 
@@ -379,7 +386,7 @@ private fun ConnectAccountDialog(
                     OutlinedTextField(
                         value = tokenOrKey,
                         onValueChange = { tokenOrKey = it },
-                        label = { Text(label1, fontSize = 12.sp) },
+                        label = { AppText(label1, fontSize = 12.sp) },
                         modifier = Modifier.fillMaxWidth(),
                         singleLine = true,
                         colors = OutlinedTextFieldDefaults.colors(
@@ -395,7 +402,7 @@ private fun ConnectAccountDialog(
                         OutlinedTextField(
                             value = channelOrChatId,
                             onValueChange = { channelOrChatId = it },
-                            label = { Text(label2, fontSize = 12.sp) },
+                            label = { AppText(label2, fontSize = 12.sp) },
                             modifier = Modifier.fillMaxWidth(),
                             singleLine = true,
                             colors = OutlinedTextFieldDefaults.colors(
@@ -408,7 +415,7 @@ private fun ConnectAccountDialog(
                     }
                 }
 
-                Text("Granted Permissions:", color = theme.textPrimary, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+                AppText(tr("Granted Permissions:"), color = theme.textPrimary, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(6.dp)
@@ -420,7 +427,7 @@ private fun ConnectAccountDialog(
                             onClick = {
                                 if (isChecked) selectedPermissions.remove(perm) else selectedPermissions.add(perm)
                             },
-                            label = { Text(perm.title, fontSize = 10.sp) },
+                            label = { AppText(perm.title, fontSize = 10.sp) },
                             colors = FilterChipDefaults.filterChipColors(
                                 selectedContainerColor = theme.accentCyan.copy(alpha = 0.2f),
                                 selectedLabelColor = theme.accentCyan
@@ -453,12 +460,12 @@ private fun ConnectAccountDialog(
                 enabled = useSandboxMock || tokenOrKey.isNotBlank(),
                 colors = ButtonDefaults.buttonColors(containerColor = theme.accentCyan)
             ) {
-                Text("Authorize & Connect", color = Color.Black, fontWeight = FontWeight.Bold)
+                AppText(tr("Authorize & Connect"), color = Color.Black, fontWeight = FontWeight.Bold)
             }
         },
         dismissButton = {
             TextButton(onClick = onDismiss) {
-                Text("Cancel", color = theme.textSecondary)
+                AppText(tr("Cancel"), color = theme.textSecondary)
             }
         }
     )

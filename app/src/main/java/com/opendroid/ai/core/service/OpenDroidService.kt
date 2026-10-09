@@ -1,4 +1,8 @@
+// Modified by opendroid-cn (Chinese localization fork): UI strings routed through i18n.tr(). See NOTICE.
 package com.opendroid.ai.core.service
+
+
+import com.opendroid.ai.i18n.tr
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -247,7 +251,7 @@ class OpenDroidService : Service() {
     private fun createNotificationChannel() {
         val channel = NotificationChannel(
             CHANNEL_ID,
-            "OpenDroid Agent Service",
+            tr("OpenDroid Agent Service"),
             NotificationManager.IMPORTANCE_LOW
         ).apply {
             description = "Keeps OpenDroid background agent alive"
@@ -258,8 +262,8 @@ class OpenDroidService : Service() {
 
     private fun createNotification(): Notification {
         return NotificationCompat.Builder(this, CHANNEL_ID)
-            .setContentTitle("OpenDroid Active")
-            .setContentText("Listening for wake word 'OpenDroid'")
+            .setContentTitle(tr("OpenDroid Active"))
+            .setContentText(tr("Listening for wake word 'OpenDroid'"))
             .setSmallIcon(android.R.drawable.ic_btn_speak_now)
             .setOngoing(true)
             .setCategory(Notification.CATEGORY_SERVICE)

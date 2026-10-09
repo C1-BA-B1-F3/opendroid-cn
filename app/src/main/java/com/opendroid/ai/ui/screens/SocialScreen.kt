@@ -1,4 +1,11 @@
+// Modified by opendroid-cn (Chinese localization fork): UI strings routed through i18n.tr(). See NOTICE.
 package com.opendroid.ai.ui.screens
+
+
+
+import com.opendroid.ai.i18n.tr
+
+import com.opendroid.ai.i18n.AppText
 
 import androidx.compose.animation.*
 import androidx.compose.animation.core.tween
@@ -117,14 +124,14 @@ fun SocialScreen(
                         }
                         Spacer(modifier = Modifier.width(10.dp))
                         Column {
-                            Text(
-                                "Social Studio",
+                            AppText(
+                                tr("Social Studio"),
                                 color = theme.textPrimary,
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 16.sp
                             )
-                            Text(
-                                "${connectedAccounts.size} active channels • ${automationLevel.displayName}",
+                            AppText(
+                                "${connectedAccounts.size} 个活跃频道 • ${automationLevel.displayName}",
                                 color = theme.textSecondary,
                                 fontSize = 10.sp
                             )
@@ -149,7 +156,7 @@ fun SocialScreen(
                         ) {
                             Icon(
                                 Icons.Default.Refresh,
-                                contentDescription = "Sync",
+                                contentDescription = tr("Sync"),
                                 tint = theme.textPrimary,
                                 modifier = Modifier.size(16.dp)
                             )
@@ -189,7 +196,7 @@ fun SocialScreen(
                                     modifier = Modifier.size(14.dp)
                                 )
                                 Spacer(modifier = Modifier.width(5.dp))
-                                Text(
+                                AppText(
                                     tab.title,
                                     color = if (isSelected) Color.Black else theme.textPrimary,
                                     fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Medium,

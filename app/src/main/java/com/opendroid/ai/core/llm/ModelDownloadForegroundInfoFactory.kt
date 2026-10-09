@@ -1,4 +1,8 @@
+// Modified by opendroid-cn (Chinese localization fork): UI strings routed through i18n.tr(). See NOTICE.
 package com.opendroid.ai.core.llm
+
+
+import com.opendroid.ai.i18n.tr
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -31,8 +35,8 @@ internal object ModelDownloadForegroundInfoFactory {
         )
         val notification = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(android.R.drawable.stat_sys_download)
-            .setContentTitle("Model download in progress")
-            .setContentText("OpenDroid is downloading an on-device model.")
+            .setContentTitle(tr("Model download in progress"))
+            .setContentText(tr("OpenDroid is downloading an on-device model."))
             .setContentIntent(openAppIntent)
             .setCategory(NotificationCompat.CATEGORY_PROGRESS)
             .setOngoing(true)
@@ -60,7 +64,7 @@ internal object ModelDownloadForegroundInfoFactory {
     private fun createNotificationChannel(context: Context) {
         val channel = NotificationChannel(
             CHANNEL_ID,
-            "Model downloads",
+            tr("Model downloads"),
             NotificationManager.IMPORTANCE_LOW
         ).apply {
             description = "Shows progress while OpenDroid downloads an on-device model."

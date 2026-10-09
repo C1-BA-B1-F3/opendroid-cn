@@ -1,0 +1,3859 @@
+# OpenDroid 中文版 · 翻译工作表（带上下文）
+
+共 1242 条去重文案，来自 42 个文件。
+
+
+## ui/Navigation.kt  (9 条)
+
+- `Chat`
+  - OpenDroidNavigation · L282 · ui · x1
+  - `object Chat : Screen("chat", "Chat", Icons.Default.Chat)`
+- `Plan`
+  - OpenDroidNavigation · L283 · ui · x1
+  - `object Plan : Screen("plan", "Plan", Icons.Default.List)`
+- `Memory`
+  - OpenDroidNavigation · L284 · ui · x1
+  - `object Memory : Screen("memory", "Memory", Icons.Default.Star)`
+- `Social`
+  - OpenDroidNavigation · L285 · ui · x1
+  - `object Social : Screen("social", "Social", Icons.Default.Share)`
+- `Macros`
+  - OpenDroidNavigation · L286 · ui · x1
+  - `object Macros : Screen("macros", "Macros", Icons.Default.Build)`
+- `Logs`
+  - OpenDroidNavigation · L287 · ui · x1
+  - `object History : Screen("history", "Logs", Icons.Default.History)`
+- `Settings`
+  - OpenDroidNavigation · L288 · ui · x2
+  - `object Settings : Screen("settings", "Settings", Icons.Default.Settings)`
+- `tabIconScale`
+  - MainDashboard · L367 · ui · x1
+  - `label = "tabIconScale"`
+- `DashboardTabTransition`
+  - MainDashboard · L413 · ui · x1
+  - `label = "DashboardTabTransition"`
+
+## ui/viewmodel/ChatViewModel.kt  (6 条)
+
+- `current session`
+  - ? · L39 · ui · x1
+  - `// reactive "current session" pointer that switchToSession() flips.`
+- `resolve the session once, at
+    // task start`
+  - retryAfterChatError · L103 · ui · x1
+  - `// editAndResend's resend) - mirroring AgentLoop's own "resolve the session once, at`
+- `busy in this
+     * chat`
+  - retryAfterChatError · L112 · ui · x1
+  - `* switches away, the shared [agentState] alone can't distinguish "busy in this`
+- `busy in some other chat`
+  - retryAfterChatError · L113 · ui · x1
+  - `* chat" from "busy in some other chat" - this is what any UI representing the`
+- `still
+     * running`
+  - retryAfterChatError · L132 · ui · x1
+  - `* is NOT scoped to the currently viewed chat - it drives the chat-picker's "still`
+- `get me out of YOLO`
+  - approvePlan · L191 · ui · x1
+  - `*  an explicit "get me out of YOLO", which is always safe). */`
+
+## ui/viewmodel/HistoryViewModel.kt  (3 条)
+
+- `Macro name cannot be empty.`
+  - saveCompletedTaskAsMacro · L64 · ui · x1
+  - `onResult("Macro name cannot be empty.")`
+- `Only fully successful task history can be saved as a macro.`
+  - saveCompletedTaskAsMacro · L71 · ui · x1
+  - `onResult("Only fully successful task history can be saved as a macro.")`
+- `Couldn't save that macro right now.`
+  - saveCompletedTaskAsMacro · L89 · ui · x1
+  - `onResult("Couldn't save that macro right now.")`
+
+## ui/viewmodel/OnboardingViewModel.kt  (4 条)
+
+- `Onboarding profile load failed`
+  - ? · L51 · ui · x1
+  - `Log.e(TAG, "Onboarding profile load failed", throwable)`
+- `Onboarding profile save failed`
+  - saveProfile · L76 · ui · x1
+  - `Log.e(TAG, "Onboarding profile save failed", throwable)`
+- `Onboarding-completed flag write failed`
+  - completeOnboarding · L97 · ui · x1
+  - `.onFailure { throwable -> Log.e(TAG, "Onboarding-completed flag write failed", throwable) }`
+- `OnboardingViewModel`
+  - loadProfile · L123 · ui · x1
+  - `const val TAG = "OnboardingViewModel"`
+
+## ui/viewmodel/SettingsViewModel.kt  (33 条)
+
+- `Token Required`
+  - ? · L139 · tr · x11
+  - `_huggingFaceValidationStatus.value = tr("Token Required")`
+- `Never`
+  - removeHuggingFaceToken · L195 · tr · x5
+  - `_huggingFaceLastVerified.value = tr("Never")`
+- `Verifying...`
+  - validateHuggingFaceToken · L225 · tr · x4
+  - `_huggingFaceValidationStatus.value = tr("Verifying...")`
+- `Authorization`
+  - validateHuggingFaceToken · L229 · ui · x1
+  - `.header("Authorization", "Bearer $token")`
+- `Bearer $token`
+  - validateHuggingFaceToken · L229 · ui · x1
+  - `.header("Authorization", "Bearer $token")`
+- `Valid`
+  - validateHuggingFaceToken · L235 · tr · x4
+  - `_huggingFaceValidationStatus.value = tr("Valid")`
+- `h:mm a`
+  - validateHuggingFaceToken · L236 · ui · x2
+  - `val sdf = java.text.SimpleDateFormat("h:mm a", java.util.Locale.getDefault())`
+- `Today `
+  - validateHuggingFaceToken · L237 · ui · x1
+  - `val dateStr = "Today " + sdf.format(java.util.Date())`
+- `SettingsViewModel`
+  - validateHuggingFaceToken · L244 · tr · x15
+  - `tr("SettingsViewModel"),`
+- `Failed to persist Hugging Face verification timestamp`
+  - validateHuggingFaceToken · L245 · tr · x2
+  - `tr("Failed to persist Hugging Face verification timestamp")`
+- `Invalid`
+  - validateHuggingFaceToken · L249 · tr · x4
+  - `_huggingFaceValidationStatus.value = tr("Invalid")`
+- `Unable to verify`
+  - validateHuggingFaceToken · L251 · tr · x6
+  - `_huggingFaceValidationStatus.value = tr("Unable to verify")`
+- `Importing...`
+  - importLocalModel · L261 · tr · x6
+  - `_localImportStatus.value = tr("Importing...")`
+- `Success`
+  - importLocalModel · L266 · tr · x5
+  - `_localImportStatus.value = tr("Success")`
+- `Anthropic Claude`
+  - refreshModels · L299 · ui · x6
+  - `val isClaude = provider == "Anthropic Claude"`
+- `保存模型缓存失败：${e.message}`
+  - refreshModels · L328 · ui · x1
+  - `android.util.Log.e("SettingsViewModel", "保存模型缓存失败：${e.message}", e)`
+- `获取 $provider 的模型列表失败：${outcome.message}`
+  - refreshModels · L365 · ui · x1
+  - `android.util.Log.e("SettingsViewModel", "获取 $provider 的模型列表失败：${outcome.message}")`
+- `刷新模型列表失败：${e.message}`
+  - refreshModels · L372 · ui · x1
+  - `android.util.Log.e("SettingsViewModel", "刷新模型列表失败：${e.message}", e)`
+- `更新当前服务商失败：${e.message}`
+  - updateActiveProvider · L388 · ui · x1
+  - `android.util.Log.e("SettingsViewModel", "更新当前服务商失败：${e.message}", e)`
+- `更新当前模型失败：${e.message}`
+  - updateActiveModel · L414 · ui · x1
+  - `android.util.Log.e("SettingsViewModel", "更新当前模型失败：${e.message}", e)`
+- `更新 API 密钥失败：${e.message}`
+  - updateApiKey · L456 · ui · x1
+  - `android.util.Log.e("SettingsViewModel", "更新 API 密钥失败：${e.message}", e)`
+- `更新 ElevenLabs API 密钥失败：${e.message}`
+  - updateElevenLabsApiKey · L473 · ui · x1
+  - `android.util.Log.e("SettingsViewModel", "更新 ElevenLabs API 密钥失败：${e.message}", e)`
+- `更新 ElevenLabs 语音 ID 失败：${e.message}`
+  - updateElevenLabsVoiceId · L490 · ui · x1
+  - `android.util.Log.e("SettingsViewModel", "更新 ElevenLabs 语音 ID 失败：${e.message}", e)`
+- `更新 Ollama 地址失败：${e.message}`
+  - updateOllamaUrl · L507 · ui · x1
+  - `android.util.Log.e("SettingsViewModel", "更新 Ollama 地址失败：${e.message}", e)`
+- `更新 Copilot 地址失败：${e.message}`
+  - updateCopilotUrl · L524 · ui · x1
+  - `android.util.Log.e("SettingsViewModel", "更新 Copilot 地址失败：${e.message}", e)`
+- `更新自定义端点失败：${e.message}`
+  - updateCustomEndpoint · L546 · ui · x1
+  - `android.util.Log.e("SettingsViewModel", "更新自定义端点失败：${e.message}", e)`
+- `Testing X of Y`
+  - cancelConnectionTests · L587 · ui · x1
+  - `* progress banner ("Testing X of Y") and any provider row still stuck at Testing.`
+- `Ollama`
+  - runConnectionTest · L613 · ui · x5
+  - `"Ollama" -> snapshot.ollamaUrl`
+- `Copilot API`
+  - runConnectionTest · L614 · ui · x5
+  - `"Copilot API" -> snapshot.copilotUrl`
+- `You are a speed test server. Respond with 'pong'.`
+  - runConnectionTest · L625 · ui · x1
+  - `systemPrompt = "You are a speed test server. Respond with 'pong'.",`
+- `DEPRECATION`
+  - isCellularNetwork · L748 · ui · x2
+  - `@Suppress("DEPRECATION")`
+- `model.litertlm`
+  - cancelDownload · L795 · ui · x2
+  - `modelFilename = "model.litertlm"`
+- `Failed to clear persisted Hugging Face verification timestamp`
+  - clearHuggingFaceVerificationMetadata · L844 · tr · x2
+  - `tr("Failed to clear persisted Hugging Face verification timestamp")`
+
+## ui/viewmodel/SocialViewModel.kt  (29 条)
+
+- `已连接到 ${platform.displayName}！`
+  - connectAccount · L101 · ui · x1
+  - `_statusMessage.value = "已连接到 ${platform.displayName}！"`
+- `失败：${result.exceptionOrNull()?.message}`
+  - connectAccount · L104 · ui · x2
+  - `_statusMessage.value = "失败：${result.exceptionOrNull()?.message}"`
+- `已断开与 ${platform.displayName} 的连接`
+  - disconnectAccount · L112 · ui · x1
+  - `_statusMessage.value = "已断开与 ${platform.displayName} 的连接"`
+- `已撤销 ${platform.displayName} 的授权并删除令牌`
+  - revokeAccount · L119 · ui · x1
+  - `_statusMessage.value = "已撤销 ${platform.displayName} 的授权并删除令牌"`
+- `已为 ${platform.displayName} 生成帖子草稿！`
+  - generatePost · L140 · ui · x1
+  - `_statusMessage.value = "已为 ${platform.displayName} 生成帖子草稿！"`
+- `生成帖子出错：${e.message}`
+  - generatePost · L142 · ui · x1
+  - `_statusMessage.value = "生成帖子出错：${e.message}"`
+- `帖子已排期发布到 ${platform.displayName}！`
+  - createDraft · L165 · ui · x1
+  - `_statusMessage.value = "帖子已排期发布到 ${platform.displayName}！"`
+- `草稿已保存到 ${platform.displayName}！`
+  - createDraft · L167 · ui · x1
+  - `_statusMessage.value = "草稿已保存到 ${platform.displayName}！"`
+- `Post published successfully!`
+  - approvePost · L223 · ui · x1
+  - `_statusMessage.value = if (immediatePublish) "Post published successfully!" else "Post approved for scheduling."`
+- `Post approved for scheduling.`
+  - approvePost · L223 · ui · x1
+  - `_statusMessage.value = if (immediatePublish) "Post published successfully!" else "Post approved for scheduling."`
+- `Post scheduled successfully.`
+  - schedulePost · L234 · tr · x2
+  - `_statusMessage.value = tr("Post scheduled successfully.")`
+- `排期失败：${result.exceptionOrNull()?.message}`
+  - schedulePost · L236 · ui · x1
+  - `_statusMessage.value = "排期失败：${result.exceptionOrNull()?.message}"`
+- `Published successfully!`
+  - publishPostNow · L247 · tr · x2
+  - `_statusMessage.value = tr("Published successfully!")`
+- `发布失败：${result.exceptionOrNull()?.message}`
+  - publishPostNow · L249 · ui · x1
+  - `_statusMessage.value = "发布失败：${result.exceptionOrNull()?.message}"`
+- `Post cancelled.`
+  - cancelPost · L257 · tr · x2
+  - `_statusMessage.value = tr("Post cancelled.")`
+- `Post deleted.`
+  - deletePost · L264 · tr · x2
+  - `_statusMessage.value = tr("Post deleted.")`
+- `USER`
+  - replyToComment · L270 · ui · x11
+  - `val result = socialManager.replyToComment(commentId, text, actor = "USER")`
+- `Reply sent!`
+  - replyToComment · L272 · tr · x2
+  - `_statusMessage.value = tr("Reply sent!")`
+- `回复失败：${result.exceptionOrNull()?.message}`
+  - replyToComment · L274 · ui · x1
+  - `_statusMessage.value = "回复失败：${result.exceptionOrNull()?.message}"`
+- `Comment dismissed.`
+  - ignoreComment · L282 · tr · x2
+  - `_statusMessage.value = tr("Comment dismissed.")`
+- `RESOLVED`
+  - resolveInteraction · L288 · ui · x3
+  - `socialRepository.updateInteractionStatus(interactionId, "RESOLVED")`
+- `Interaction marked as resolved.`
+  - resolveInteraction · L289 · tr · x2
+  - `_statusMessage.value = tr("Interaction marked as resolved.")`
+- `DISMISSED`
+  - dismissInteraction · L295 · ui · x2
+  - `socialRepository.updateInteractionStatus(interactionId, "DISMISSED")`
+- `Interaction dismissed.`
+  - dismissInteraction · L296 · tr · x2
+  - `_statusMessage.value = tr("Interaction dismissed.")`
+- `已创建营销活动“${plan.campaign.name}”，共 ${plan.plannedPosts.size} 篇帖子！`
+  - createCampaign · L307 · ui · x1
+  - `_statusMessage.value = "已创建营销活动“${plan.campaign.name}”，共 ${plan.plannedPosts.size} 篇帖子！"`
+- `营销活动生成失败：${e.message}`
+  - createCampaign · L309 · ui · x1
+  - `_statusMessage.value = "营销活动生成失败：${e.message}"`
+- `Automation rule saved.`
+  - saveRule · L319 · tr · x2
+  - `_statusMessage.value = tr("Automation rule saved.")`
+- `Rule deleted.`
+  - deleteRule · L332 · tr · x2
+  - `_statusMessage.value = tr("Rule deleted.")`
+- `Refreshed social data.`
+  - refreshAll · L346 · tr · x2
+  - `_statusMessage.value = tr("Refreshed social data.")`
+
+## ui/components/ContactPickerCard.kt  (5 条)
+
+- `你指的是哪个“$query”？`
+  - ContactPickerCard · L63 · ui · x1
+  - `text = "你指的是哪个“$query”？",`
+- `Mobile`
+  - ContactPickerCard · L78 · ui · x1
+  - `type = contact["type"] ?: "Mobile",`
+- `Tap to select, or type the number (1, 2, 3...)`
+  - ContactPickerCard · L93 · tr · x2
+  - `text = tr("Tap to select, or type the number (1, 2, 3...)"),`
+- `$number`
+  - ContactOptionRow · L128 · ui · x1
+  - `text = "$number",`
+- `$type • $phone`
+  - ContactOptionRow · L145 · ui · x1
+  - `text = "$type • $phone",`
+
+## ui/components/PlanStepCard.kt  (25 条)
+
+- `auto-fixed`
+  - getDisplayState · L42 · ui · x1
+  - `step.status == StepStatus.COMPLETED && (resultText.contains("auto-fixed") || resultText.contains("primary failed") || resultText.contains("repaired")) -> StepDi`
+- `primary failed`
+  - getDisplayState · L42 · ui · x1
+  - `step.status == StepStatus.COMPLETED && (resultText.contains("auto-fixed") || resultText.contains("primary failed") || resultText.contains("repaired")) -> StepDi`
+- `is not registered in ActionDispatcher`
+  - getDisplayState · L44 · ui · x1
+  - `step.status == StepStatus.FAILED && errorText.contains("is not registered in ActionDispatcher") -> StepDisplayState.AUTO_FIXING`
+- `${step.order}`
+  - PlanStepCard · L108 · ui · x1
+  - `text = "${step.order}",`
+- `Edit step`
+  - PlanStepCard · L133 · tr · x2
+  - `contentDescription = tr("Edit step"),`
+- `Delete step`
+  - PlanStepCard · L144 · tr · x2
+  - `contentDescription = tr("Delete step"),`
+- `操作模块：${step.action}`
+  - PlanStepCard · L174 · ui · x2
+  - `AppText("操作模块：${step.action}", fontSize = 11.sp, color = AccentPurple, fontFamily = FontFamily.Monospace)`
+- `Step Description`
+  - PlanStepCard · L180 · tr · x4
+  - `label = { AppText(tr("Step Description"), fontSize = 11.sp) },`
+- `Parameters`
+  - PlanStepCard · L191 · tr · x2
+  - `AppText(tr("Parameters"), fontSize = 11.sp, color = TextSecondary)`
+- `Key`
+  - PlanStepCard · L205 · tr · x2
+  - `label = { AppText(tr("Key"), fontSize = 10.sp) },`
+- `Value`
+  - PlanStepCard · L221 · tr · x2
+  - `label = { AppText(tr("Value"), fontSize = 10.sp) },`
+- `Remove`
+  - PlanStepCard · L235 · tr · x2
+  - `Icon(Icons.Default.Close, contentDescription = tr("Remove"), tint = AccentRed, modifier = Modifier.size(16.dp))`
+- `Add`
+  - PlanStepCard · L246 · tr · x2
+  - `Icon(Icons.Default.Add, contentDescription = tr("Add"), tint = AccentCyan, modifier = Modifier.size(14.dp))`
+- `Add Parameter`
+  - PlanStepCard · L248 · tr · x2
+  - `AppText(tr("Add Parameter"), fontSize = 11.sp, color = AccentCyan)`
+- `Cancel`
+  - PlanStepCard · L263 · tr · x48
+  - `AppText(tr("Cancel"), fontSize = 12.sp, color = TextSecondary)`
+- `Save`
+  - PlanStepCard · L278 · tr · x4
+  - `AppText(tr("Save"), fontWeight = FontWeight.Bold, fontSize = 12.sp)`
+- `Parameters:`
+  - PlanStepCard · L292 · tr · x4
+  - `AppText(tr("Parameters:"), fontSize = 11.sp, color = TextSecondary)`
+- `- $key: $valStr`
+  - PlanStepCard · L294 · ui · x1
+  - `AppText("- $key: $valStr", fontSize = 11.sp, color = TextPrimary, fontFamily = FontFamily.Monospace)`
+- `依赖步骤：${step.dependsOn.joinToString()}`
+  - PlanStepCard · L300 · ui · x1
+  - `AppText("依赖步骤：${step.dependsOn.joinToString()}", fontSize = 11.sp, color = TextSecondary, fontFamily = FontFamily.Monospace)`
+- `Parallel execution supported`
+  - PlanStepCard · L305 · tr · x2
+  - `AppText(tr("Parallel execution supported"), fontSize = 11.sp, color = AccentCyan)`
+- `Fallback Routine:`
+  - PlanStepCard · L310 · tr · x2
+  - `AppText(tr("Fallback Routine:"), fontSize = 11.sp, color = TextSecondary)`
+- `Execution Result:`
+  - PlanStepCard · L324 · tr · x2
+  - `AppText(tr("Execution Result:"), fontSize = 10.sp, color = AccentCyan, fontWeight = FontWeight.Bold)`
+- `Auto-fixing: The requested system action is currently being recovered and updated by the OpenDroid Repair Engine.`
+  - PlanStepCard · L337 · ui · x1
+  - `val errorTextDisplay = if (isHallucinationError) "Auto-fixing: The requested system action is currently being recovered and updated by the OpenDroid Repair Engi`
+- `Repair Phase Active`
+  - PlanStepCard · L349 · ui · x1
+  - `text = if (isHallucinationError) "Repair Phase Active" else "Execution Error:",`
+- `Execution Error:`
+  - PlanStepCard · L349 · ui · x1
+  - `text = if (isHallucinationError) "Repair Phase Active" else "Execution Error:",`
+
+## ui/components/SocialCharts.kt  (1 条)
+
+- `No data points available`
+  - SimpleLineChart · L36 · tr · x2
+  - `AppText(tr("No data points available"), color = AppTheme.colors.textSecondary, fontSize = 12.sp)`
+
+## ui/screens/AboutScreen.kt  (61 条)
+
+- `ABOUT`
+  - AboutScreen · L46 · tr · x2
+  - `text = tr("ABOUT"),`
+- `Back`
+  - AboutScreen · L58 · tr · x22
+  - `contentDescription = tr("Back"),`
+- `OpenDroid app icon`
+  - AboutScreen · L114 · tr · x2
+  - `contentDescription = tr("OpenDroid app icon"),`
+- `OpenDroid`
+  - AboutScreen · L122 · tr · x2
+  - `text = tr("OpenDroid"),`
+- `Autonomous AI Agent for Android`
+  - AboutScreen · L132 · tr · x2
+  - `text = tr("Autonomous AI Agent for Android"),`
+- `版本 ${BuildConfig.VERSION_NAME}`
+  - AboutScreen · L141 · ui · x1
+  - `text = "版本 ${BuildConfig.VERSION_NAME}",`
+- `WHAT IS OPENDROID?`
+  - AboutScreen · L160 · tr · x2
+  - `text = tr("WHAT IS OPENDROID?"),`
+- `OpenDroid is an advanced autonomous AI assistant that runs directly on your Android device. `
+  - AboutScreen · L168 · tr · x2
+  - `text = tr("OpenDroid is an advanced autonomous AI assistant that runs directly on your Android device. ") +`
+- `It can understand natural language commands, create multi-step execution plans, and automate `
+  - AboutScreen · L169 · tr · x2
+  - `tr("It can understand natural language commands, create multi-step execution plans, and automate ") +`
+- `virtually any task on your phone — from sending messages and making calls to controlling `
+  - AboutScreen · L170 · tr · x2
+  - `tr("virtually any task on your phone — from sending messages and making calls to controlling ") +`
+- `system settings and managing files.\n\n`
+  - AboutScreen · L171 · tr · x2
+  - `tr("system settings and managing files.\n\n") +`
+- `Powered by your choice of LLM provider (Gemini, OpenAI, Claude, Groq, local Ollama, and more), `
+  - AboutScreen · L172 · tr · x2
+  - `tr("Powered by your choice of LLM provider (Gemini, OpenAI, Claude, Groq, local Ollama, and more), ") +`
+- `OpenDroid combines intelligent planning with real device automation through Android's Accessibility framework.`
+  - AboutScreen · L173 · tr · x2
+  - `tr("OpenDroid combines intelligent planning with real device automation through Android's Accessibility framework."),`
+- `KEY CAPABILITIES`
+  - AboutScreen · L192 · tr · x2
+  - `text = tr("KEY CAPABILITIES"),`
+- `Natural Language Control`
+  - AboutScreen · L200 · ui · x1
+  - `FeatureItem(Icons.Default.Chat, "Natural Language Control", "Speak or type commands in plain English")`
+- `Speak or type commands in plain English`
+  - AboutScreen · L200 · ui · x1
+  - `FeatureItem(Icons.Default.Chat, "Natural Language Control", "Speak or type commands in plain English")`
+- `Multi-Step Planning`
+  - AboutScreen · L201 · ui · x1
+  - `FeatureItem(Icons.Default.List, "Multi-Step Planning", "Automatically breaks complex tasks into executable steps")`
+- `Automatically breaks complex tasks into executable steps`
+  - AboutScreen · L201 · ui · x1
+  - `FeatureItem(Icons.Default.List, "Multi-Step Planning", "Automatically breaks complex tasks into executable steps")`
+- `Persistent Memory`
+  - AboutScreen · L202 · ui · x1
+  - `FeatureItem(Icons.Default.Star, "Persistent Memory", "Remembers your preferences across sessions")`
+- `Remembers your preferences across sessions`
+  - AboutScreen · L202 · ui · x1
+  - `FeatureItem(Icons.Default.Star, "Persistent Memory", "Remembers your preferences across sessions")`
+- `Custom Macros`
+  - AboutScreen · L203 · ui · x1
+  - `FeatureItem(Icons.Default.Build, "Custom Macros", "Record and replay complex workflows")`
+- `Record and replay complex workflows`
+  - AboutScreen · L203 · ui · x1
+  - `FeatureItem(Icons.Default.Build, "Custom Macros", "Record and replay complex workflows")`
+- `App Automation`
+  - AboutScreen · L204 · ui · x1
+  - `FeatureItem(Icons.Default.Accessibility, "App Automation", "Controls other apps via Accessibility Service")`
+- `Controls other apps via Accessibility Service`
+  - AboutScreen · L204 · ui · x1
+  - `FeatureItem(Icons.Default.Accessibility, "App Automation", "Controls other apps via Accessibility Service")`
+- `System Control`
+  - AboutScreen · L205 · ui · x1
+  - `FeatureItem(Icons.Default.Settings, "System Control", "WiFi, Bluetooth, flashlight, volume, and more")`
+- `WiFi, Bluetooth, flashlight, volume, and more`
+  - AboutScreen · L205 · ui · x1
+  - `FeatureItem(Icons.Default.Settings, "System Control", "WiFi, Bluetooth, flashlight, volume, and more")`
+- `Communication`
+  - AboutScreen · L206 · ui · x1
+  - `FeatureItem(Icons.Default.Call, "Communication", "WhatsApp, calls, SMS, email — hands-free")`
+- `WhatsApp, calls, SMS, email — hands-free`
+  - AboutScreen · L206 · ui · x1
+  - `FeatureItem(Icons.Default.Call, "Communication", "WhatsApp, calls, SMS, email — hands-free")`
+- `Privacy-First`
+  - AboutScreen · L207 · ui · x1
+  - `FeatureItem(Icons.Default.Lock, "Privacy-First", "All data stays on your device")`
+- `All data stays on your device`
+  - AboutScreen · L207 · ui · x1
+  - `FeatureItem(Icons.Default.Lock, "Privacy-First", "All data stays on your device")`
+- `TECHNOLOGY STACK`
+  - AboutScreen · L222 · tr · x2
+  - `text = tr("TECHNOLOGY STACK"),`
+- `Language`
+  - AboutScreen · L230 · ui · x1
+  - `TechItem("Language", "Kotlin")`
+- `Kotlin`
+  - AboutScreen · L230 · ui · x1
+  - `TechItem("Language", "Kotlin")`
+- `UI Framework`
+  - AboutScreen · L231 · ui · x1
+  - `TechItem("UI Framework", "Jetpack Compose + Material 3")`
+- `Jetpack Compose + Material 3`
+  - AboutScreen · L231 · ui · x1
+  - `TechItem("UI Framework", "Jetpack Compose + Material 3")`
+- `Architecture`
+  - AboutScreen · L232 · ui · x1
+  - `TechItem("Architecture", "MVVM + Hilt DI")`
+- `MVVM + Hilt DI`
+  - AboutScreen · L232 · ui · x1
+  - `TechItem("Architecture", "MVVM + Hilt DI")`
+- `Database`
+  - AboutScreen · L233 · ui · x1
+  - `TechItem("Database", "Room (SQLite)")`
+- `Room (SQLite)`
+  - AboutScreen · L233 · ui · x1
+  - `TechItem("Database", "Room (SQLite)")`
+- `AI Integration`
+  - AboutScreen · L234 · ui · x1
+  - `TechItem("AI Integration", "Multi-provider LLM support")`
+- `Multi-provider LLM support`
+  - AboutScreen · L234 · ui · x1
+  - `TechItem("AI Integration", "Multi-provider LLM support")`
+- `Automation`
+  - AboutScreen · L235 · ui · x1
+  - `TechItem("Automation", "Android Accessibility Service")`
+- `Android Accessibility Service`
+  - AboutScreen · L235 · ui · x1
+  - `TechItem("Automation", "Android Accessibility Service")`
+- `Async`
+  - AboutScreen · L236 · ui · x1
+  - `TechItem("Async", "Kotlin Coroutines + Flow")`
+- `Kotlin Coroutines + Flow`
+  - AboutScreen · L236 · ui · x1
+  - `TechItem("Async", "Kotlin Coroutines + Flow")`
+- `Serialization`
+  - AboutScreen · L237 · ui · x1
+  - `TechItem("Serialization", "kotlinx.serialization")`
+- `kotlinx.serialization`
+  - AboutScreen · L237 · ui · x1
+  - `TechItem("Serialization", "kotlinx.serialization")`
+- `SUPPORTED LLM PROVIDERS`
+  - AboutScreen · L252 · tr · x2
+  - `text = tr("SUPPORTED LLM PROVIDERS"),`
+- `Google Gemini`
+  - AboutScreen · L261 · ui · x4
+  - `"Google Gemini", "OpenAI (GPT-4o, etc.)", "Anthropic Claude",`
+- `OpenAI (GPT-4o, etc.)`
+  - AboutScreen · L261 · ui · x1
+  - `"Google Gemini", "OpenAI (GPT-4o, etc.)", "Anthropic Claude",`
+- `Groq`
+  - AboutScreen · L262 · ui · x3
+  - `"Groq", "Mistral AI", "OpenRouter", "Together AI",`
+- `Mistral AI`
+  - AboutScreen · L262 · ui · x3
+  - `"Groq", "Mistral AI", "OpenRouter", "Together AI",`
+- `OpenRouter`
+  - AboutScreen · L262 · ui · x3
+  - `"Groq", "Mistral AI", "OpenRouter", "Together AI",`
+- `Together AI`
+  - AboutScreen · L262 · ui · x3
+  - `"Groq", "Mistral AI", "OpenRouter", "Together AI",`
+- `Cohere`
+  - AboutScreen · L263 · ui · x3
+  - `"Cohere", "DeepSeek", "Copilot API", "Ollama (Local)"`
+- `DeepSeek`
+  - AboutScreen · L263 · ui · x3
+  - `"Cohere", "DeepSeek", "Copilot API", "Ollama (Local)"`
+- `Ollama (Local)`
+  - AboutScreen · L263 · ui · x1
+  - `"Cohere", "DeepSeek", "Copilot API", "Ollama (Local)"`
+- `OPEN SOURCE`
+  - AboutScreen · L303 · tr · x2
+  - `text = tr("OPEN SOURCE"),`
+- `OpenDroid is open source software. Contributions, bug reports, and feature requests are welcome.`
+  - AboutScreen · L311 · tr · x2
+  - `text = tr("OpenDroid is open source software. Contributions, bug reports, and feature requests are welcome."),`
+- `github.com/yashab-cyber/opendroid`
+  - AboutScreen · L319 · tr · x2
+  - `text = tr("github.com/yashab-cyber/opendroid"),`
+- `Made with ❤ for the Android community`
+  - AboutScreen · L332 · tr · x2
+  - `text = tr("Made with ❤ for the Android community"),`
+
+## ui/screens/AutoReplySettingsScreen.kt  (24 条)
+
+- `AutoReplySettings`
+  - saveConfig · L87 · ui · x1
+  - `android.util.Log.e("AutoReplySettings", "保存配置失败：${e.message}", e)`
+- `保存配置失败：${e.message}`
+  - saveConfig · L87 · ui · x1
+  - `android.util.Log.e("AutoReplySettings", "保存配置失败：${e.message}", e)`
+- `Auto-Reply Settings`
+  - saveConfig · L97 · tr · x2
+  - `title = { AppText(tr("Auto-Reply Settings"), fontWeight = FontWeight.Bold) },`
+- `SYSTEM PERMISSIONS REQUIRED`
+  - saveConfig · L137 · tr · x2
+  - `text = tr("SYSTEM PERMISSIONS REQUIRED"),`
+- `Auto-Reply needs notification access to monitor incoming messages and accessibility access to automate typing & sending replies.`
+  - saveConfig · L145 · tr · x2
+  - `text = tr("Auto-Reply needs notification access to monitor incoming messages and accessibility access to automate typing & sending replies."),`
+- `Grant Notification Access`
+  - saveConfig · L167 · tr · x2
+  - `AppText(tr("Grant Notification Access"), fontSize = 10.sp, color = Color.White)`
+- `Grant Accessibility Access`
+  - saveConfig · L182 · tr · x2
+  - `AppText(tr("Grant Accessibility Access"), fontSize = 10.sp, color = Color.White)`
+- `Auto-Reply`
+  - saveConfig · L213 · tr · x2
+  - `tr("Auto-Reply"),`
+- `AI 将在 ${config.replyDelayMinutes} 分钟后自动回复消息`
+  - saveConfig · L220 · ui · x1
+  - `if (config.globalEnabled) "AI 将在 ${config.replyDelayMinutes} 分钟后自动回复消息"`
+- `Auto-reply is disabled`
+  - saveConfig · L221 · ui · x1
+  - `else "Auto-reply is disabled",`
+- `Enabled Apps`
+  - saveConfig · L240 · tr · x2
+  - `tr("Enabled Apps"),`
+- `WhatsApp`
+  - saveConfig · L254 · ui · x1
+  - `AppToggleRow("WhatsApp", "💬", config.whatsappEnabled, themeColors) {`
+- `Email`
+  - saveConfig · L262 · ui · x1
+  - `AppToggleRow("Email", "📧", config.emailEnabled, themeColors) {`
+- `Reply Delay`
+  - saveConfig · L270 · tr · x2
+  - `tr("Reply Delay"),`
+- `Wait before replying`
+  - saveConfig · L289 · tr · x2
+  - `tr("Wait before replying"),`
+- `${config.replyDelayMinutes} 分钟`
+  - saveConfig · L294 · ui · x1
+  - `"${config.replyDelayMinutes} 分钟",`
+- `1 min`
+  - saveConfig · L317 · tr · x2
+  - `AppText(tr("1 min"), fontSize = 12.sp, color = themeColors.textSecondary.copy(alpha = 0.6f))`
+- `60 min`
+  - saveConfig · L318 · tr · x2
+  - `AppText(tr("60 min"), fontSize = 12.sp, color = themeColors.textSecondary.copy(alpha = 0.6f))`
+- `Rate Limit`
+  - saveConfig · L325 · tr · x2
+  - `tr("Rate Limit"),`
+- `Max replies per contact/hour`
+  - saveConfig · L344 · tr · x2
+  - `tr("Max replies per contact/hour"),`
+- `${config.maxRepliesPerContactPerHour}`
+  - saveConfig · L349 · ui · x1
+  - `"${config.maxRepliesPerContactPerHour}",`
+- `Reply Tone`
+  - saveConfig · L373 · tr · x2
+  - `tr("Reply Tone"),`
+- `Custom reply style (optional)`
+  - saveConfig · L388 · tr · x2
+  - `tr("Custom reply style (optional)"),`
+- `e.g., casual and friendly, use emojis`
+  - saveConfig · L401 · tr · x2
+  - `tr("e.g., casual and friendly, use emojis"),`
+
+## ui/screens/BenchmarkScreen.kt  (29 条)
+
+- `Custom OpenAI Compatible`
+  - BenchmarkScreen · L47 · ui · x6
+  - `.filter { it != "Custom OpenAI Compatible" }`
+- `BRAIN BENCHMARK`
+  - BenchmarkScreen · L54 · tr · x2
+  - `text = tr("BRAIN BENCHMARK"),`
+- `Run Test`
+  - BenchmarkScreen · L84 · tr · x2
+  - `contentDescription = tr("Run Test"),`
+- `Test all configured`
+  - BenchmarkScreen · L88 · tr · x2
+  - `AppText(tr("Test all configured"), fontSize = 11.sp, fontWeight = FontWeight.Bold)`
+- `Test all configured?`
+  - BenchmarkScreen · L102 · tr · x3
+  - `title = { AppText(tr("Test all configured?")) },`
+- `将依次发送 $configuredCount 个服务商请求。 `
+  - BenchmarkScreen · L105 · ui · x1
+  - `"将依次发送 $configuredCount 个服务商请求。 " +`
+- `Provider charges may apply.`
+  - BenchmarkScreen · L106 · tr · x2
+  - `tr("Provider charges may apply.")`
+- `Continue`
+  - BenchmarkScreen · L115 · tr · x4
+  - `) { AppText(tr("Continue")) }`
+- `DIAGNOSTIC REPORT SUMMARY`
+  - BenchmarkScreen · L140 · tr · x2
+  - `text = tr("DIAGNOSTIC REPORT SUMMARY"),`
+- `正在测试第 ${it.index} / ${it.total} 项：${it.provider}`
+  - BenchmarkScreen · L149 · ui · x1
+  - `"正在测试第 ${it.index} / ${it.total} 项：${it.provider}"`
+- `Explicit connection tests use each provider's own selected model. `
+  - BenchmarkScreen · L150 · ui · x1
+  - `} ?: "Explicit connection tests use each provider's own selected model. " +`
+- `Missing keys surface as configuration errors instead of silent skips.`
+  - BenchmarkScreen · L151 · tr · x2
+  - `tr("Missing keys surface as configuration errors instead of silent skips."),`
+- `Testing…`
+  - ProviderConnectionRow · L181 · ui · x2
+  - `is ConnectionTestState.Testing -> "Testing…"`
+- `已连接 · ${state.latencyMs} ms · ${state.model}`
+  - ProviderConnectionRow · L182 · ui · x1
+  - `is ConnectionTestState.Connected -> "已连接 · ${state.latencyMs} ms · ${state.model}"`
+- `Key required`
+  - ProviderConnectionRow · L185 · ui · x4
+  - `LLMError.AuthMissing -> "Key required"`
+- `Configuration required`
+  - ProviderConnectionRow · L186 · ui · x2
+  - `else -> "Configuration required"`
+- `上次延迟 $it ms`
+  - ProviderConnectionRow · L188 · ui · x1
+  - `else -> legacyLatencyMs?.takeIf { it > 0 && it != 9999L }?.let { "上次延迟 $it ms" }`
+- `Not tested`
+  - ProviderConnectionRow · L189 · ui · x2
+  - `?: "Not tested"`
+- `Test`
+  - ProviderConnectionRow · L217 · tr · x2
+  - `AppText(tr("Test"), fontSize = 11.sp)`
+- `Invalid key`
+  - connectionFailureLabel · L256 · ui · x1
+  - `LLMError.AuthInvalid -> "Invalid key"`
+- `Quota exhausted`
+  - connectionFailureLabel · L257 · ui · x2
+  - `LLMError.QuotaExhausted -> "Quota exhausted"`
+- `Rate limited`
+  - connectionFailureLabel · L258 · ui · x2
+  - `LLMError.RateLimited -> "Rate limited"`
+- `Model unavailable`
+  - connectionFailureLabel · L259 · ui · x1
+  - `LLMError.ModelUnavailable -> "Model unavailable"`
+- `Invalid request`
+  - connectionFailureLabel · L260 · ui · x1
+  - `LLMError.RequestInvalid -> "Invalid request"`
+- `Network error`
+  - connectionFailureLabel · L261 · ui · x2
+  - `LLMError.Network -> "Network error"`
+- `Server error`
+  - connectionFailureLabel · L262 · ui · x1
+  - `LLMError.ServerError -> "Server error"`
+- `Malformed response`
+  - connectionFailureLabel · L263 · ui · x1
+  - `LLMError.MalformedResponse -> "Malformed response"`
+- `No safe fallback`
+  - connectionFailureLabel · L264 · ui · x1
+  - `LLMError.SafeFallbackUnavailable -> "No safe fallback"`
+- `Failed`
+  - connectionFailureLabel · L265 · ui · x2
+  - `LLMError.Unknown -> "Failed"`
+
+## ui/screens/ChatScreen.kt  (55 条)
+
+- `still running`
+  - ChatScreen · L94 · ui · x2
+  - `// chat is currently displayed - drives the chat-picker's "still running" indicator.`
+- `OPENDROID`
+  - submitInput · L208 · tr · x4
+  - `text = tr("OPENDROID"),`
+- `MANUAL`
+  - submitInput · L234 · ui · x1
+  - `AutoMode.OFF -> "MANUAL"`
+- `AUTO`
+  - submitInput · L235 · ui · x1
+  - `AutoMode.AUTO -> "AUTO"`
+- `YOLO`
+  - submitInput · L236 · ui · x2
+  - `AutoMode.YOLO -> "YOLO"`
+- `New chat`
+  - submitInput · L246 · tr · x2
+  - `contentDescription = tr("New chat"),`
+- `Chats`
+  - submitInput · L254 · tr · x2
+  - `contentDescription = tr("Chats"),`
+- `No chats yet`
+  - submitInput · L265 · tr · x2
+  - `text = { AppText(tr("No chats yet"), color = TextSecondary, fontSize = 13.sp) },`
+- `Rename chat`
+  - submitInput · L318 · tr · x4
+  - `contentDescription = tr("Rename chat"),`
+- `Delete chat`
+  - submitInput · L332 · tr · x2
+  - `contentDescription = tr("Delete chat"),`
+- `Clear`
+  - submitInput · L348 · tr · x2
+  - `AppText(tr("Clear"), color = TextSecondary, fontSize = 12.sp)`
+- `chat-error-${error.requestId}-${error.runId}`
+  - submitInput · L397 · ui · x1
+  - `item(key = "chat-error-${error.requestId}-${error.runId}") {`
+- `Editing message`
+  - submitInput · L478 · tr · x2
+  - `text = tr("Editing message"),`
+- `Cancel edit`
+  - submitInput · L485 · tr · x2
+  - `contentDescription = tr("Cancel edit"),`
+- `Ask OpenDroid to run an autonomous task...`
+  - ? · L575 · tr · x2
+  - `placeholder = { AppText(tr("Ask OpenDroid to run an autonomous task..."), color = TextSecondary, fontSize = 14.sp) },`
+- `Send`
+  - ? · L609 · tr · x3
+  - `contentDescription = tr("Send"),`
+- `Delete chat?`
+  - ? · L625 · tr · x2
+  - `title = { AppText(tr("Delete chat?"), color = TextPrimary) },`
+- `\"${session.title}\"及其消息将被永久删除。`
+  - ? · L628 · ui · x1
+  - `"\"${session.title}\"及其消息将被永久删除。",`
+- `Delete`
+  - ? · L637 · tr · x14
+  - `AppText(tr("Delete"), color = AccentRed, fontWeight = FontWeight.Bold)`
+- `Online & Ready`
+  - AgentStatusSubtitle · L690 · ui · x2
+  - `// so explicitly instead of showing a plain "Online & Ready" that would hide the`
+- `Online & Ready · Task running in another chat`
+  - AgentStatusSubtitle · L693 · tr · x2
+  - `tr("Online & Ready · Task running in another chat")`
+- `Listening to voice input...`
+  - AgentStatusSubtitle · L697 · ui · x1
+  - `is AgentState.Listening -> "Listening to voice input..."`
+- `Analyzing intent & planning...`
+  - AgentStatusSubtitle · L698 · ui · x1
+  - `is AgentState.Thinking -> "Analyzing intent & planning..."`
+- `Requires Plan Approval`
+  - AgentStatusSubtitle · L699 · ui · x1
+  - `is AgentState.PlanProposed -> "Requires Plan Approval"`
+- `正在执行：${state.currentStepDesc}`
+  - AgentStatusSubtitle · L700 · ui · x1
+  - `is AgentState.ExecutingPlan -> "正在执行：${state.currentStepDesc}"`
+- `正在朗读：${state.text.take(30)}...`
+  - AgentStatusSubtitle · L701 · ui · x1
+  - `is AgentState.Speaking -> "正在朗读：${state.text.take(30)}..."`
+- `Execution Error`
+  - AgentStatusSubtitle · L702 · ui · x1
+  - `is AgentState.Error -> "Execution Error"`
+- `Which 'dad' do you mean?`
+  - ChatBubble · L760 · ui · x1
+  - `// Extract query from text ("Which 'dad' do you mean?" ? "dad")`
+- `Which '(.*?)'`
+  - ChatBubble · L761 · ui · x1
+  - `val query = Regex("Which '(.*?)'").find(message.text)?.groupValues?.getOrNull(1) ?: "contact"`
+- `Gemma 4 (On-device)`
+  - ChatBubble · L811 · ui · x3
+  - `"Gemma 4 (On-device)" -> "ON-DEVICE (AI CORE)"`
+- `ON-DEVICE (AI CORE)`
+  - ChatBubble · L811 · ui · x1
+  - `"Gemma 4 (On-device)" -> "ON-DEVICE (AI CORE)"`
+- `On-Device AI`
+  - ChatBubble · L812 · ui · x12
+  - `"On-Device AI" -> "ON-DEVICE AI"`
+- `ON-DEVICE AI`
+  - ChatBubble · L812 · ui · x1
+  - `"On-Device AI" -> "ON-DEVICE AI"`
+- `LiteRT-LM (On-device)`
+  - ChatBubble · L813 · ui · x1
+  - `"LiteRT-LM (On-device)" -> "ON-DEVICE (LITERT)"`
+- `ON-DEVICE (LITERT)`
+  - ChatBubble · L813 · ui · x1
+  - `"LiteRT-LM (On-device)" -> "ON-DEVICE (LITERT)"`
+- `Edit message`
+  - ChatBubble · L846 · tr · x3
+  - `contentDescription = tr("Edit message"),`
+- `Plan Proposed`
+  - ProposedPlanPrompt · L935 · tr · x2
+  - `contentDescription = tr("Plan Proposed"),`
+- `AUTONOMOUS PLAN PROPOSED`
+  - ProposedPlanPrompt · L941 · tr · x2
+  - `text = tr("AUTONOMOUS PLAN PROPOSED"),`
+- `目标：\"$goal\"`
+  - ProposedPlanPrompt · L950 · ui · x1
+  - `text = "目标：\"$goal\"",`
+- `OpenDroid 已制定包含 $stepsCount 个步骤的执行序列来完成该目标。你可以在“计划”标签页查看步骤，或在下方批准执行。`
+  - ProposedPlanPrompt · L957 · ui · x1
+  - `text = "OpenDroid 已制定包含 $stepsCount 个步骤的执行序列来完成该目标。你可以在“计划”标签页查看步骤，或在下方批准执行。",`
+- `BLOCKED AUTO-RUN — these steps aren't in your allowlist:`
+  - ProposedPlanPrompt · L964 · tr · x2
+  - `text = tr("BLOCKED AUTO-RUN — these steps aren't in your allowlist:"),`
+- `始终允许 $action`
+  - ProposedPlanPrompt · L981 · ui · x1
+  - `text = "始终允许 $action",`
+- `• $action（每次询问）`
+  - ProposedPlanPrompt · L988 · ui · x1
+  - `text = "• $action（每次询问）",`
+- `Reject`
+  - ProposedPlanPrompt · L1007 · tr · x2
+  - `AppText(tr("Reject"), fontWeight = FontWeight.Bold)`
+- `Approve & Run`
+  - ProposedPlanPrompt · L1015 · tr · x2
+  - `AppText(tr("Approve & Run"), fontWeight = FontWeight.Bold)`
+- `Open Settings`
+  - ChatErrorRecoveryCard · L1182 · ui · x1
+  - `ChatErrorPrimaryAction.OPEN_SETTINGS -> "Open Settings"`
+- `Choose provider`
+  - ChatErrorRecoveryCard · L1183 · ui · x1
+  - `ChatErrorPrimaryAction.CHOOSE_PROVIDER -> "Choose provider"`
+- `Choose model`
+  - ChatErrorRecoveryCard · L1184 · ui · x1
+  - `ChatErrorPrimaryAction.CHOOSE_MODEL -> "Choose model"`
+- `Retry`
+  - ChatErrorRecoveryCard · L1186 · ui · x3
+  - `ChatErrorPrimaryAction.RETRY -> "Retry"`
+- `Incomplete response`
+  - ChatErrorRecoveryCard · L1212 · tr · x2
+  - `text = tr("Incomplete response"),`
+- `${waitSecondsLeft} 秒后可重试`
+  - ChatErrorRecoveryCard · L1221 · ui · x1
+  - `text = "${waitSecondsLeft} 秒后可重试",`
+- `Hide details`
+  - ChatErrorRecoveryCard · L1242 · ui · x1
+  - `AppText(if (detailsExpanded) "Hide details" else "Technical details")`
+- `Technical details`
+  - ChatErrorRecoveryCard · L1242 · ui · x1
+  - `AppText(if (detailsExpanded) "Hide details" else "Technical details")`
+- `Dismiss`
+  - ChatErrorRecoveryCard · L1244 · tr · x6
+  - `TextButton(onClick = onDismiss) { AppText(tr("Dismiss")) }`
+- ` · HTTP `
+  - ChatErrorRecoveryCard · L1251 · ui · x1
+  - `error.httpStatus?.let { append(" · HTTP "); append(it) }`
+
+## ui/screens/CrashLogScreen.kt  (16 条)
+
+- `text/plain`
+  - share · L64 · ui · x2
+  - `type = "text/plain"`
+- `OpenDroid crash report`
+  - share · L65 · ui · x2
+  - `putExtra(Intent.EXTRA_SUBJECT, "OpenDroid crash report")`
+- `Share crash report`
+  - share · L68 · ui · x1
+  - `context.startActivity(Intent.createChooser(intent, "Share crash report"))`
+- `Crash report copied`
+  - copy · L76 · tr · x2
+  - `Toast.makeText(context, tr("Crash report copied"), Toast.LENGTH_SHORT).show()`
+- `Delete all crash reports?`
+  - copy · L83 · tr · x2
+  - `title = { AppText(tr("Delete all crash reports?")) },`
+- `This removes every stored crash report from this device. It cannot be undone.`
+  - copy · L84 · tr · x2
+  - `text = { AppText(tr("This removes every stored crash report from this device. It cannot be undone.")) },`
+- `Crash Log`
+  - copy · L105 · tr · x2
+  - `title = { AppText(tr("Crash Log"), fontWeight = FontWeight.Bold) },`
+- `Share all crash reports`
+  - copy · L118 · tr · x2
+  - `contentDescription = tr("Share all crash reports"),`
+- `Delete all crash reports`
+  - copy · L132 · tr · x2
+  - `contentDescription = tr("Delete all crash reports"),`
+- `✅`
+  - copy · L159 · tr · x1
+  - `AppText(tr("✅"), fontSize = 48.sp)`
+- `No crashes recorded`
+  - copy · L162 · tr · x2
+  - `tr("No crashes recorded"),`
+- `Crashes are captured automatically and kept on this device.`
+  - copy · L168 · tr · x2
+  - `tr("Crashes are captured automatically and kept on this device."),`
+- `v${crash.device.appVersionName} · Android ${crash.device.androidRelease} · `
+  - CrashCard · L253 · ui · x1
+  - `text = "v${crash.device.appVersionName} · Android ${crash.device.androidRelease} · " +`
+- `${crash.device.deviceManufacturer} ${crash.device.deviceModel} · ${crash.threadName}`
+  - CrashCard · L254 · ui · x1
+  - `"${crash.device.deviceManufacturer} ${crash.device.deviceModel} · ${crash.threadName}",`
+- `Share`
+  - CrashCard · L289 · tr · x2
+  - `AppText(tr("Share"), fontSize = 13.sp, color = themeColors.accentCyan)`
+- `Copy`
+  - CrashCard · L299 · tr · x2
+  - `AppText(tr("Copy"), fontSize = 13.sp, color = themeColors.accentCyan)`
+
+## ui/screens/HelpCenterScreen.kt  (66 条)
+
+- `HELP CENTER`
+  - HelpCenterScreen · L38 · tr · x4
+  - `text = tr("HELP CENTER"),`
+- `Help`
+  - HelpCenterScreen · L84 · tr · x2
+  - `contentDescription = tr("Help"),`
+- `How can we help?`
+  - HelpCenterScreen · L91 · tr · x2
+  - `text = tr("How can we help?"),`
+- `Quick answers to common questions`
+  - HelpCenterScreen · L97 · tr · x2
+  - `text = tr("Quick answers to common questions"),`
+- `GETTING STARTED`
+  - HelpCenterScreen · L108 · tr · x2
+  - `title = tr("GETTING STARTED"),`
+- `1. Launch OpenDroid and complete the onboarding setup\n`
+  - HelpCenterScreen · L109 · ui · x1
+  - `content = "1. Launch OpenDroid and complete the onboarding setup\n" +`
+- `2. Grant the requested permissions (microphone, accessibility, etc.)\n`
+  - HelpCenterScreen · L110 · tr · x2
+  - `tr("2. Grant the requested permissions (microphone, accessibility, etc.)\n") +`
+- `3. Go to Settings and enter your LLM provider API key\n`
+  - HelpCenterScreen · L111 · tr · x2
+  - `tr("3. Go to Settings and enter your LLM provider API key\n") +`
+- `4. Start talking or typing commands!\n\n`
+  - HelpCenterScreen · L112 · tr · x2
+  - `tr("4. Start talking or typing commands!\n\n") +`
+- `Tip: Google Gemini is the default provider. Get a free API key at ai.google.dev`
+  - HelpCenterScreen · L113 · tr · x2
+  - `tr("Tip: Google Gemini is the default provider. Get a free API key at ai.google.dev")`
+- `VOICE COMMANDS`
+  - HelpCenterScreen · L119 · tr · x2
+  - `title = tr("VOICE COMMANDS"),`
+- `OpenDroid listens for the wake word \"Hey OpenDroid\" when the app is running.\n\n`
+  - HelpCenterScreen · L120 · ui · x1
+  - `content = "OpenDroid listens for the wake word \"Hey OpenDroid\" when the app is running.\n\n" +`
+- `Examples of what you can say:\n\n`
+  - HelpCenterScreen · L121 · tr · x2
+  - `tr("Examples of what you can say:\n\n") +`
+- `• \"Send a WhatsApp message to Mom saying I'll be late\"\n`
+  - HelpCenterScreen · L122 · tr · x2
+  - `tr("• \"Send a WhatsApp message to Mom saying I'll be late\"\n") +`
+- `• \"Set an alarm for 7 AM tomorrow\"\n`
+  - HelpCenterScreen · L123 · tr · x2
+  - `tr("• \"Set an alarm for 7 AM tomorrow\"\n") +`
+- `• \"Turn on the flashlight\"\n`
+  - HelpCenterScreen · L124 · tr · x2
+  - `tr("• \"Turn on the flashlight\"\n") +`
+- `• \"What's the weather like today?\"\n`
+  - HelpCenterScreen · L125 · tr · x2
+  - `tr("• \"What's the weather like today?\"\n") +`
+- `• \"Play some music on Spotify\"\n`
+  - HelpCenterScreen · L126 · tr · x2
+  - `tr("• \"Play some music on Spotify\"\n") +`
+- `• \"Call John\"\n`
+  - HelpCenterScreen · L127 · tr · x2
+  - `tr("• \"Call John\"\n") +`
+- `• \"Take a photo\"`
+  - HelpCenterScreen · L128 · tr · x2
+  - `tr("• \"Take a photo\"")`
+- `SETTING UP API KEYS`
+  - HelpCenterScreen · L134 · tr · x2
+  - `title = tr("SETTING UP API KEYS"),`
+- `OpenDroid needs an LLM API key to generate responses:\n\n`
+  - HelpCenterScreen · L135 · ui · x1
+  - `content = "OpenDroid needs an LLM API key to generate responses:\n\n" +`
+- `1. Go to Settings → Provider API Keys\n`
+  - HelpCenterScreen · L136 · tr · x2
+  - `tr("1. Go to Settings → Provider API Keys\n") +`
+- `2. Enter your API key for the provider you want to use\n`
+  - HelpCenterScreen · L137 · tr · x2
+  - `tr("2. Enter your API key for the provider you want to use\n") +`
+- `3. Select that provider from the \"Active Brain Provider\" dropdown\n\n`
+  - HelpCenterScreen · L138 · tr · x2
+  - `tr("3. Select that provider from the \"Active Brain Provider\" dropdown\n\n") +`
+- `Supported providers:\n`
+  - HelpCenterScreen · L139 · tr · x2
+  - `tr("Supported providers:\n") +`
+- `• Google Gemini (recommended for beginners)\n`
+  - HelpCenterScreen · L140 · tr · x2
+  - `tr("• Google Gemini (recommended for beginners)\n") +`
+- `• OpenAI (GPT-4, GPT-3.5)\n`
+  - HelpCenterScreen · L141 · tr · x2
+  - `tr("• OpenAI (GPT-4, GPT-3.5)\n") +`
+- `• Anthropic Claude\n`
+  - HelpCenterScreen · L142 · tr · x2
+  - `tr("• Anthropic Claude\n") +`
+- `• Groq (fast inference)\n`
+  - HelpCenterScreen · L143 · tr · x2
+  - `tr("• Groq (fast inference)\n") +`
+- `• Mistral AI, OpenRouter, Together AI, Cohere, DeepSeek\n`
+  - HelpCenterScreen · L144 · tr · x2
+  - `tr("• Mistral AI, OpenRouter, Together AI, Cohere, DeepSeek\n") +`
+- `• Ollama (fully local, no API key needed)`
+  - HelpCenterScreen · L145 · tr · x2
+  - `tr("• Ollama (fully local, no API key needed)")`
+- `ACCESSIBILITY SERVICE`
+  - HelpCenterScreen · L151 · tr · x2
+  - `title = tr("ACCESSIBILITY SERVICE"),`
+- `The Accessibility Service lets OpenDroid tap buttons and type in other apps (e.g., sending WhatsApp messages automatically).\n\n`
+  - HelpCenterScreen · L152 · ui · x1
+  - `content = "The Accessibility Service lets OpenDroid tap buttons and type in other apps (e.g., sending WhatsApp messages automatically).\n\n" +`
+- `To enable it:\n`
+  - HelpCenterScreen · L153 · tr · x2
+  - `tr("To enable it:\n") +`
+- `1. Go to Android Settings → Accessibility\n`
+  - HelpCenterScreen · L154 · tr · x2
+  - `tr("1. Go to Android Settings → Accessibility\n") +`
+- `2. Find \"OpenDroid\" in Installed Services\n`
+  - HelpCenterScreen · L155 · tr · x2
+  - `tr("2. Find \"OpenDroid\" in Installed Services\n") +`
+- `3. Toggle it ON\n\n`
+  - HelpCenterScreen · L156 · tr · x2
+  - `tr("3. Toggle it ON\n\n") +`
+- `Note: This is optional. Without it, OpenDroid will still open apps but may need you to tap the final \"Send\" button.`
+  - HelpCenterScreen · L157 · tr · x2
+  - `tr("Note: This is optional. Without it, OpenDroid will still open apps but may need you to tap the final \"Send\" button.")`
+- `MACROS & AUTOMATION`
+  - HelpCenterScreen · L163 · tr · x2
+  - `title = tr("MACROS & AUTOMATION"),`
+- `You can create macros to run multiple actions in sequence:\n\n`
+  - HelpCenterScreen · L164 · ui · x1
+  - `content = "You can create macros to run multiple actions in sequence:\n\n" +`
+- `• Go to the Macros tab\n`
+  - HelpCenterScreen · L165 · tr · x2
+  - `tr("• Go to the Macros tab\n") +`
+- `• Create a new macro with a name and list of steps\n`
+  - HelpCenterScreen · L166 · tr · x2
+  - `tr("• Create a new macro with a name and list of steps\n") +`
+- `• Schedule macros with cron expressions for timed automation\n\n`
+  - HelpCenterScreen · L167 · tr · x2
+  - `tr("• Schedule macros with cron expressions for timed automation\n\n") +`
+- `Example: Create a \"Good Morning\" macro that turns on lights, reads the weather, and plays your favorite playlist.`
+  - HelpCenterScreen · L168 · tr · x2
+  - `tr("Example: Create a \"Good Morning\" macro that turns on lights, reads the weather, and plays your favorite playlist.")`
+- `MEMORY SYSTEM`
+  - HelpCenterScreen · L174 · tr · x2
+  - `title = tr("MEMORY SYSTEM"),`
+- `OpenDroid has 4 types of memory:\n\n`
+  - HelpCenterScreen · L175 · ui · x1
+  - `content = "OpenDroid has 4 types of memory:\n\n" +`
+- `• Working Memory — Current session context (auto-cleared)\n`
+  - HelpCenterScreen · L176 · tr · x2
+  - `tr("• Working Memory — Current session context (auto-cleared)\n") +`
+- `• Episodic Memory — Conversation history\n`
+  - HelpCenterScreen · L177 · tr · x2
+  - `tr("• Episodic Memory — Conversation history\n") +`
+- `• Semantic Memory — Facts about you (name, preferences)\n`
+  - HelpCenterScreen · L178 · tr · x2
+  - `tr("• Semantic Memory — Facts about you (name, preferences)\n") +`
+- `• Procedural Memory — Learned task patterns\n\n`
+  - HelpCenterScreen · L179 · tr · x2
+  - `tr("• Procedural Memory — Learned task patterns\n\n") +`
+- `You can view and clear any memory type from the Memory tab.`
+  - HelpCenterScreen · L180 · tr · x2
+  - `tr("You can view and clear any memory type from the Memory tab.")`
+- `TROUBLESHOOTING`
+  - HelpCenterScreen · L186 · tr · x2
+  - `title = tr("TROUBLESHOOTING"),`
+- `\"OpenDroid isn't responding\"\n`
+  - HelpCenterScreen · L187 · ui · x1
+  - `content = "\"OpenDroid isn't responding\"\n" +`
+- `→ Check that your API key is valid and the provider is reachable.\n\n`
+  - HelpCenterScreen · L188 · tr · x2
+  - `tr("→ Check that your API key is valid and the provider is reachable.\n\n") +`
+- `\"Voice commands don't work\"\n`
+  - HelpCenterScreen · L189 · tr · x2
+  - `tr("\"Voice commands don't work\"\n") +`
+- `→ Make sure microphone permission is granted and the service is running.\n\n`
+  - HelpCenterScreen · L190 · tr · x2
+  - `tr("→ Make sure microphone permission is granted and the service is running.\n\n") +`
+- `\"WhatsApp messages aren't sending automatically\"\n`
+  - HelpCenterScreen · L191 · tr · x2
+  - `tr("\"WhatsApp messages aren't sending automatically\"\n") +`
+- `→ Enable the Accessibility Service in Android Settings.\n\n`
+  - HelpCenterScreen · L192 · tr · x2
+  - `tr("→ Enable the Accessibility Service in Android Settings.\n\n") +`
+- `\"App crashes on startup\"\n`
+  - HelpCenterScreen · L193 · tr · x2
+  - `tr("\"App crashes on startup\"\n") +`
+- `→ Clear app data and re-enter your settings. Your API keys are encrypted and will need to be re-entered.`
+  - HelpCenterScreen · L194 · tr · x2
+  - `tr("→ Clear app data and re-enter your settings. Your API keys are encrypted and will need to be re-entered.")`
+- `CONTACT & SUPPORT`
+  - HelpCenterScreen · L200 · tr · x2
+  - `title = tr("CONTACT & SUPPORT"),`
+- `• GitHub: Report bugs and request features at github.com/yashab-cyber/opendroid\n`
+  - HelpCenterScreen · L201 · ui · x1
+  - `content = "• GitHub: Report bugs and request features at github.com/yashab-cyber/opendroid\n" +`
+- `• Discord: Join our community for live help and discussion\n`
+  - HelpCenterScreen · L202 · tr · x2
+  - `tr("• Discord: Join our community for live help and discussion\n") +`
+- `• Email: opendroid.ai@gmail.com / yashabalam707@gmail.com\n\n`
+  - HelpCenterScreen · L203 · tr · x2
+  - `tr("• Email: opendroid.ai@gmail.com / yashabalam707@gmail.com\n\n") +`
+- `OpenDroid is open-source and community-driven. We welcome contributions!`
+  - HelpCenterScreen · L204 · tr · x2
+  - `tr("OpenDroid is open-source and community-driven. We welcome contributions!")`
+
+## ui/screens/LicenseScreen.kt  (39 条)
+
+- `LICENSE`
+  - LicenseScreen · L38 · tr · x4
+  - `text = tr("LICENSE"),`
+- `License`
+  - LicenseScreen · L84 · tr · x4
+  - `contentDescription = tr("License"),`
+- `Open Source License`
+  - LicenseScreen · L91 · tr · x2
+  - `text = tr("Open Source License"),`
+- `Apache License 2.0`
+  - LicenseScreen · L97 · tr · x2
+  - `text = tr("Apache License 2.0"),`
+- `APACHE LICENSE 2.0`
+  - LicenseScreen · L108 · tr · x2
+  - `title = tr("APACHE LICENSE 2.0"),`
+- `Copyright (c) 2026 OpenDroid Contributors\n`
+  - LicenseScreen · L109 · ui · x1
+  - `content = "Copyright (c) 2026 OpenDroid Contributors\n" +`
+- `Last Updated: August 18, 2026\n\n`
+  - LicenseScreen · L110 · tr · x2
+  - `tr("Last Updated: August 18, 2026\n\n") +`
+- `Licensed under the Apache License, Version 2.0 (the \"License\"); `
+  - LicenseScreen · L111 · tr · x2
+  - `tr("Licensed under the Apache License, Version 2.0 (the \"License\"); ") +`
+- `you may not use this file except in compliance with the License.\n`
+  - LicenseScreen · L112 · tr · x2
+  - `tr("you may not use this file except in compliance with the License.\n") +`
+- `You may obtain a copy of the License at:\n\n`
+  - LicenseScreen · L113 · tr · x2
+  - `tr("You may obtain a copy of the License at:\n\n") +`
+- `    http://www.apache.org/licenses/LICENSE-2.0\n\n`
+  - LicenseScreen · L114 · tr · x2
+  - `tr("    http://www.apache.org/licenses/LICENSE-2.0\n\n") +`
+- `Unless required by applicable law or agreed to in writing, software `
+  - LicenseScreen · L115 · tr · x2
+  - `tr("Unless required by applicable law or agreed to in writing, software ") +`
+- `distributed under the License is distributed on an \"AS IS\" BASIS, `
+  - LicenseScreen · L116 · tr · x2
+  - `tr("distributed under the License is distributed on an \"AS IS\" BASIS, ") +`
+- `WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. `
+  - LicenseScreen · L117 · tr · x2
+  - `tr("WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. ") +`
+- `See the License for the specific language governing permissions and `
+  - LicenseScreen · L118 · tr · x2
+  - `tr("See the License for the specific language governing permissions and ") +`
+- `limitations under the License.`
+  - LicenseScreen · L119 · tr · x2
+  - `tr("limitations under the License.")`
+- `THIRD-PARTY LICENSES`
+  - LicenseScreen · L125 · tr · x2
+  - `title = tr("THIRD-PARTY LICENSES"),`
+- `OpenDroid uses the following open-source libraries:\n\n`
+  - LicenseScreen · L126 · ui · x1
+  - `content = "OpenDroid uses the following open-source libraries:\n\n" +`
+- `• Jetpack Compose — Apache License 2.0\n`
+  - LicenseScreen · L127 · tr · x2
+  - `tr("• Jetpack Compose — Apache License 2.0\n") +`
+- `• Dagger/Hilt — Apache License 2.0\n`
+  - LicenseScreen · L128 · tr · x2
+  - `tr("• Dagger/Hilt — Apache License 2.0\n") +`
+- `• Room Database — Apache License 2.0\n`
+  - LicenseScreen · L129 · tr · x2
+  - `tr("• Room Database — Apache License 2.0\n") +`
+- `• OkHttp & Retrofit — Apache License 2.0\n`
+  - LicenseScreen · L130 · tr · x2
+  - `tr("• OkHttp & Retrofit — Apache License 2.0\n") +`
+- `• Kotlin Serialization — Apache License 2.0\n`
+  - LicenseScreen · L131 · tr · x2
+  - `tr("• Kotlin Serialization — Apache License 2.0\n") +`
+- `• Coil Image Loading — Apache License 2.0\n`
+  - LicenseScreen · L132 · tr · x2
+  - `tr("• Coil Image Loading — Apache License 2.0\n") +`
+- `• Lottie Animations — Apache License 2.0\n`
+  - LicenseScreen · L133 · tr · x2
+  - `tr("• Lottie Animations — Apache License 2.0\n") +`
+- `• DataStore Preferences — Apache License 2.0`
+  - LicenseScreen · L134 · tr · x2
+  - `tr("• DataStore Preferences — Apache License 2.0")`
+- `CONTRIBUTION`
+  - LicenseScreen · L140 · tr · x2
+  - `title = tr("CONTRIBUTION"),`
+- `OpenDroid is a community-driven project. By contributing code, documentation, or other materials, `
+  - LicenseScreen · L141 · ui · x1
+  - `content = "OpenDroid is a community-driven project. By contributing code, documentation, or other materials, " +`
+- `you agree that your contributions will be licensed under the same MIT License.\n\n`
+  - LicenseScreen · L142 · tr · x2
+  - `tr("you agree that your contributions will be licensed under the same MIT License.\n\n") +`
+- `We welcome contributions of all kinds:\n\n`
+  - LicenseScreen · L143 · tr · x2
+  - `tr("We welcome contributions of all kinds:\n\n") +`
+- `• Bug reports and feature requests\n`
+  - LicenseScreen · L144 · tr · x2
+  - `tr("• Bug reports and feature requests\n") +`
+- `• Code contributions via pull requests\n`
+  - LicenseScreen · L145 · tr · x2
+  - `tr("• Code contributions via pull requests\n") +`
+- `• Documentation improvements\n`
+  - LicenseScreen · L146 · tr · x2
+  - `tr("• Documentation improvements\n") +`
+- `• Translation and localization\n\n`
+  - LicenseScreen · L147 · tr · x2
+  - `tr("• Translation and localization\n\n") +`
+- `Please refer to CONTRIBUTING.md in the repository for contribution guidelines.`
+  - LicenseScreen · L148 · tr · x2
+  - `tr("Please refer to CONTRIBUTING.md in the repository for contribution guidelines.")`
+- `ATTRIBUTION`
+  - LicenseScreen · L154 · tr · x2
+  - `title = tr("ATTRIBUTION"),`
+- `OpenDroid is built with ❤\uFE0F by the open-source community.\n\n`
+  - LicenseScreen · L155 · ui · x1
+  - `content = "OpenDroid is built with ❤\uFE0F by the open-source community.\n\n" +`
+- `Special thanks to all contributors who have helped make this project possible. `
+  - LicenseScreen · L156 · tr · x2
+  - `tr("Special thanks to all contributors who have helped make this project possible. ") +`
+- `Full contributor list is available on the GitHub repository.`
+  - LicenseScreen · L157 · tr · x2
+  - `tr("Full contributor list is available on the GitHub repository.")`
+
+## ui/screens/LogsScreen.kt  (31 条)
+
+- `Execution Logs`
+  - LogsScreen · L46 · ui · x1
+  - `val tabs = listOf("Execution Logs", "Action Errors")`
+- `Action Errors`
+  - LogsScreen · L46 · ui · x1
+  - `val tabs = listOf("Execution Logs", "Action Errors")`
+- `n/a`
+  - LogsScreen · L57 · ui · x1
+  - `planId.isNotBlank() && planId != "n/a" && entries.isNotEmpty() && entries.all { it.success }`
+- `SYSTEM LOGS`
+  - LogsScreen · L70 · tr · x2
+  - `text = tr("SYSTEM LOGS"),`
+- `Clear logs`
+  - LogsScreen · L92 · tr · x2
+  - `contentDescription = tr("Clear logs"),`
+- `${log.description.take(40).ifBlank { `
+  - LogsScreen · L158 · ui · x1
+  - `macroName = "${log.description.take(40).ifBlank { "Completed task" }} macro"`
+- ` }} macro`
+  - LogsScreen · L158 · ui · x1
+  - `macroName = "${log.description.take(40).ifBlank { "Completed task" }} macro"`
+- `No executions recorded yet`
+  - LogsScreen · L169 · tr · x2
+  - `title = tr("No executions recorded yet"),`
+- `Every step OpenDroid executes is archived here.`
+  - LogsScreen · L170 · tr · x2
+  - `subtitle = tr("Every step OpenDroid executes is archived here."),`
+- `All systems fully aligned`
+  - LogsScreen · L187 · tr · x2
+  - `title = tr("All systems fully aligned"),`
+- `OpenDroid's Repair Engine has not encountered any unrecognized commands.`
+  - LogsScreen · L188 · tr · x2
+  - `subtitle = tr("OpenDroid's Repair Engine has not encountered any unrecognized commands."),`
+- `Save completed task as macro`
+  - LogsScreen · L204 · tr · x4
+  - `title = { AppText(tr("Save completed task as macro")) },`
+- `Only successful steps will be recorded. Credential, API-key, and token values are removed.`
+  - LogsScreen · L208 · tr · x2
+  - `tr("Only successful steps will be recorded. Credential, API-key, and token values are removed."),`
+- `Macro name`
+  - LogsScreen · L216 · tr · x2
+  - `label = { AppText(tr("Macro name")) },`
+- `Save macro`
+  - LogsScreen · L243 · tr · x2
+  - `AppText(tr("Save macro"))`
+- `AUTO_FIXED`
+  - UnknownActionCard · L299 · ui · x3
+  - `"AUTO_FIXED" -> AccentCyan`
+- `REPLANNED`
+  - UnknownActionCard · L300 · ui · x4
+  - `"REPLANNED" -> AccentCyan`
+- `FAILED`
+  - UnknownActionCard · L301 · ui · x8
+  - `"FAILED" -> AccentRed`
+- `AUTO-FIXED`
+  - UnknownActionCard · L306 · ui · x1
+  - `"AUTO_FIXED" -> "AUTO-FIXED"`
+- `Successfully auto-corrected by OpenDroid's Repair Engine.`
+  - UnknownActionCard · L313 · ui · x1
+  - `"AUTO_FIXED" -> "Successfully auto-corrected by OpenDroid's Repair Engine."`
+- `Dynamically replanned and bypassed the unrecognized command.`
+  - UnknownActionCard · L314 · ui · x1
+  - `"REPLANNED" -> "Dynamically replanned and bypassed the unrecognized command."`
+- `Unrecognized system command failed execution.`
+  - UnknownActionCard · L315 · ui · x1
+  - `"FAILED" -> "Unrecognized system command failed execution."`
+- `System anomaly tracked.`
+  - UnknownActionCard · L316 · ui · x1
+  - `else -> "System anomaly tracked."`
+- `无法识别：${error.attemptedAction}`
+  - UnknownActionCard · L366 · ui · x1
+  - `text = "无法识别：${error.attemptedAction}",`
+- `目标：${error.goal}`
+  - UnknownActionCard · L376 · ui · x1
+  - `text = "目标：${error.goal}",`
+- `System Status Details:`
+  - UnknownActionCard · L387 · tr · x2
+  - `text = tr("System Status Details:"),`
+- `Expand info`
+  - UnknownActionCard · L413 · tr · x4
+  - `contentDescription = tr("Expand info"),`
+- `SUCCESS`
+  - HistoryLogCard · L458 · ui · x2
+  - `text = if (log.success) "SUCCESS" else "FAILED",`
+- `模块：${log.actionType}`
+  - HistoryLogCard · L486 · ui · x1
+  - `text = "模块：${log.actionType}",`
+- `Execution Result Data:`
+  - HistoryLogCard · L524 · tr · x2
+  - `AppText(tr("Execution Result Data:"), fontSize = 11.sp, color = TextSecondary)`
+- `Diagnostic Error Log:`
+  - HistoryLogCard · L539 · tr · x2
+  - `AppText(tr("Diagnostic Error Log:"), fontSize = 11.sp, color = TextSecondary)`
+
+## ui/screens/MacrosScreen.kt  (27 条)
+
+- `MACRO ENGINE`
+  - MacrosScreen · L69 · tr · x2
+  - `text = tr("MACRO ENGINE"),`
+- `Create Macro`
+  - MacrosScreen · L83 · tr · x2
+  - `contentDescription = tr("Create Macro"),`
+- `⚡`
+  - MacrosScreen · L117 · tr · x2
+  - `AppText(tr("⚡"), fontSize = 24.sp)`
+- `HABIT & ROUTINE DETECTION`
+  - MacrosScreen · L121 · tr · x2
+  - `text = tr("HABIT & ROUTINE DETECTION"),`
+- `Detect repeated daily habits (Gmail, Calendar, Slack) & automate morning routines.`
+  - MacrosScreen · L129 · tr · x2
+  - `text = tr("Detect repeated daily habits (Gmail, Calendar, Slack) & automate morning routines."),`
+- `View Routines`
+  - MacrosScreen · L137 · tr · x2
+  - `contentDescription = tr("View Routines"),`
+- `DEFINE CUSTOM WORKFLOW MACRO`
+  - MacrosScreen · L155 · tr · x2
+  - `text = tr("DEFINE CUSTOM WORKFLOW MACRO"),`
+- `Macro Name`
+  - MacrosScreen · L166 · tr · x2
+  - `label = { AppText(tr("Macro Name"), fontSize = 12.sp) },`
+- `Voice TriggerPhrase`
+  - MacrosScreen · L180 · tr · x2
+  - `label = { AppText(tr("Voice TriggerPhrase"), fontSize = 12.sp) },`
+- `宏步骤序列（${macroSteps.size}）`
+  - MacrosScreen · L196 · ui · x1
+  - `AppText("宏步骤序列（${macroSteps.size}）", fontSize = 12.sp, color = TextPrimary, fontWeight = FontWeight.Bold)`
+- `第 ${idx + 1} 步：${st.description} [${st.action}]`
+  - MacrosScreen · L201 · ui · x1
+  - `append("第 ${idx + 1} 步：${st.description} [${st.action}]")`
+- ` → 回退：${st.fallback}`
+  - MacrosScreen · L202 · ui · x1
+  - `if (st.fallback.isNotBlank()) append(" → 回退：${st.fallback}")`
+- `Add step details:`
+  - MacrosScreen · L212 · tr · x2
+  - `AppText(tr("Add step details:"), fontSize = 11.sp, color = TextSecondary)`
+- `Action Type (e.g. system/brightness)`
+  - MacrosScreen · L231 · tr · x2
+  - `label = { AppText(tr("Action Type (e.g. system/brightness)"), fontSize = 11.sp) },`
+- `Param Key`
+  - MacrosScreen · L245 · tr · x2
+  - `label = { AppText(tr("Param Key"), fontSize = 11.sp) },`
+- `Param Value`
+  - MacrosScreen · L258 · tr · x2
+  - `label = { AppText(tr("Param Value"), fontSize = 11.sp) },`
+- `Fallback Action (optional)`
+  - MacrosScreen · L272 · tr · x2
+  - `label = { AppText(tr("Fallback Action (optional)"), fontSize = 11.sp) },`
+- `Runs once if the primary action fails.`
+  - MacrosScreen · L274 · tr · x2
+  - `AppText(tr("Runs once if the primary action fails."), fontSize = 10.sp)`
+- `Add Step to List`
+  - MacrosScreen · L311 · tr · x2
+  - `AppText(tr("Add Step to List"), fontSize = 11.sp)`
+- `Discard`
+  - MacrosScreen · L325 · tr · x2
+  - `AppText(tr("Discard"), color = AccentRed)`
+- `Save Macro`
+  - MacrosScreen · L348 · tr · x2
+  - `AppText(tr("Save Macro"), fontWeight = FontWeight.Bold)`
+- `No custom macros declared.`
+  - MacrosScreen · L374 · tr · x2
+  - `text = tr("No custom macros declared."),`
+- `触发条件：\"${macro.trigger}\"`
+  - MacroCard · L415 · ui · x2
+  - `text = "触发条件：\"${macro.trigger}\"",`
+- `按顺序排定的 ${macro.steps.size} 个步骤`
+  - MacroCard · L442 · ui · x1
+  - `text = "按顺序排定的 ${macro.steps.size} 个步骤",`
+- `Expand steps`
+  - MacroCard · L448 · tr · x2
+  - `contentDescription = tr("Expand steps"),`
+- `${step.description} [${step.action}]`
+  - MacroCard · L466 · ui · x1
+  - `text = "${step.description} [${step.action}]",`
+- `Delete Macro`
+  - MacroCard · L483 · tr · x4
+  - `AppText(tr("Delete Macro"), fontSize = 11.sp, fontWeight = FontWeight.Bold)`
+
+## ui/screens/MemoryScreen.kt  (72 条)
+
+- `GROWTH GRAPH`
+  - ? · L51 · ui · x1
+  - `GROWTH_GRAPH("GROWTH GRAPH"),`
+- `LONG-TERM`
+  - ? · L52 · ui · x1
+  - `SEMANTIC("LONG-TERM"),`
+- `TEMPORARY`
+  - ? · L53 · ui · x1
+  - `WORKING("TEMPORARY"),`
+- `EPISODIC`
+  - ? · L54 · ui · x1
+  - `EPISODIC("EPISODIC"),`
+- `MACROS`
+  - ? · L55 · ui · x1
+  - `PROCEDURAL("MACROS")`
+- `PERSONAL MEMORY`
+  - MemoryScreen · L76 · tr · x2
+  - `text = tr("PERSONAL MEMORY"),`
+- `Wipe Category`
+  - MemoryScreen · L94 · tr · x2
+  - `AppText(tr("Wipe Category"), color = AccentRed, fontSize = 12.sp)`
+- `Search Knowledge Graph...`
+  - MemoryScreen · L150 · ui · x1
+  - `MemoryScreenTab.GROWTH_GRAPH -> "Search Knowledge Graph..."`
+- `Search conversation logs...`
+  - MemoryScreen · L151 · ui · x1
+  - `MemoryScreenTab.EPISODIC -> "Search conversation logs..."`
+- `Search macros...`
+  - MemoryScreen · L152 · ui · x1
+  - `MemoryScreenTab.PROCEDURAL -> "Search macros..."`
+- `Search facts...`
+  - MemoryScreen · L153 · ui · x1
+  - `else -> "Search facts..."`
+- `Search`
+  - MemoryScreen · L157 · tr · x2
+  - `leadingIcon = { Icon(Icons.Default.Search, contentDescription = tr("Search"), tint = TextSecondary) },`
+- `Add Memory`
+  - MemoryScreen · L176 · tr · x2
+  - `Icon(Icons.Default.Add, contentDescription = tr("Add Memory"), tint = DarkBackground)`
+- `ACTIVE ENVIRONMENT STATE`
+  - WorkingMemoryView · L236 · tr · x2
+  - `text = tr("ACTIVE ENVIRONMENT STATE"),`
+- `Battery Level`
+  - WorkingMemoryView · L249 · ui · x1
+  - `StateItem("Battery Level", "${workingMemory.batteryLevel}%", AccentCyan)`
+- `${workingMemory.batteryLevel}%`
+  - WorkingMemoryView · L249 · ui · x1
+  - `StateItem("Battery Level", "${workingMemory.batteryLevel}%", AccentCyan)`
+- `WiFi State`
+  - WorkingMemoryView · L250 · ui · x1
+  - `StateItem("WiFi State", workingMemory.wifiState, if (workingMemory.wifiState == "Active") AccentCyan else if (workingMemory.wifiState == "Inactive") AccentRed e`
+- `Active`
+  - WorkingMemoryView · L250 · ui · x6
+  - `StateItem("WiFi State", workingMemory.wifiState, if (workingMemory.wifiState == "Active") AccentCyan else if (workingMemory.wifiState == "Inactive") AccentRed e`
+- `Inactive`
+  - WorkingMemoryView · L250 · ui · x1
+  - `StateItem("WiFi State", workingMemory.wifiState, if (workingMemory.wifiState == "Active") AccentCyan else if (workingMemory.wifiState == "Inactive") AccentRed e`
+- `Connectivity`
+  - WorkingMemoryView · L257 · ui · x1
+  - `StateItem("Connectivity", workingMemory.connectivity, AccentCyan)`
+- `Internet`
+  - WorkingMemoryView · L258 · ui · x1
+  - `StateItem("Internet", if (workingMemory.isInternetAvailable) "Available" else "NOT AVAILABLE", if (workingMemory.isInternetAvailable) AccentCyan else AccentRed)`
+- `Available`
+  - WorkingMemoryView · L258 · ui · x1
+  - `StateItem("Internet", if (workingMemory.isInternetAvailable) "Available" else "NOT AVAILABLE", if (workingMemory.isInternetAvailable) AccentCyan else AccentRed)`
+- `NOT AVAILABLE`
+  - WorkingMemoryView · L258 · ui · x1
+  - `StateItem("Internet", if (workingMemory.isInternetAvailable) "Available" else "NOT AVAILABLE", if (workingMemory.isInternetAvailable) AccentCyan else AccentRed)`
+- `Location Context`
+  - WorkingMemoryView · L265 · ui · x1
+  - `StateItem("Location Context", workingMemory.locationContext, TextSecondary)`
+- `ACTIVE PLAN MONITOR`
+  - WorkingMemoryView · L281 · tr · x2
+  - `text = tr("ACTIVE PLAN MONITOR"),`
+- `RUNNING`
+  - WorkingMemoryView · L302 · ui · x5
+  - `"RUNNING" -> AccentCyan.copy(alpha = 0.2f)`
+- `COMPLETED`
+  - WorkingMemoryView · L303 · ui · x6
+  - `"COMPLETED" -> AccentCyan.copy(alpha = 0.2f)`
+- `${index + 1}. ${step.description}`
+  - WorkingMemoryView · L352 · ui · x1
+  - `text = "${index + 1}. ${step.description}",`
+- `结果：${step.result}`
+  - WorkingMemoryView · L359 · ui · x1
+  - `text = "结果：${step.result}",`
+- `错误：${step.error}`
+  - WorkingMemoryView · L368 · ui · x1
+  - `text = "错误：${step.error}",`
+- `No active autonomous plan running.`
+  - WorkingMemoryView · L386 · tr · x2
+  - `text = tr("No active autonomous plan running."),`
+- `WORKING SESSION HISTORY (LAST 20)`
+  - WorkingMemoryView · L407 · tr · x2
+  - `text = tr("WORKING SESSION HISTORY (LAST 20)"),`
+- `AGENT`
+  - WorkingMemoryView · L434 · ui · x2
+  - `text = if (msg.sender.name == "USER") "USER" else "AGENT",`
+- `No messages in current working session.`
+  - WorkingMemoryView · L459 · tr · x2
+  - `text = tr("No messages in current working session."),`
+- `No episodic chat logs recorded.`
+  - EpisodicMemoryView · L557 · tr · x2
+  - `text = tr("No episodic chat logs recorded."),`
+- `STORE NEW MEMORY FACT`
+  - SemanticMemoryView · L597 · tr · x2
+  - `text = tr("STORE NEW MEMORY FACT"),`
+- `Fact Key/Identifier`
+  - SemanticMemoryView · L607 · tr · x2
+  - `label = { AppText(tr("Fact Key/Identifier"), fontSize = 12.sp) },`
+- `Fact Content/Details`
+  - SemanticMemoryView · L621 · tr · x2
+  - `label = { AppText(tr("Fact Content/Details"), fontSize = 12.sp) },`
+- `Save Fact`
+  - SemanticMemoryView · L648 · tr · x2
+  - `AppText(tr("Save Fact"), fontWeight = FontWeight.Bold)`
+- `No semantic facts indexed in this category.`
+  - SemanticMemoryView · L678 · tr · x2
+  - `text = tr("No semantic facts indexed in this category."),`
+- `索引时间：${dateFormat.format(Date(memory.timestamp))}`
+  - MemoryItemCard · L724 · ui · x1
+  - `text = "索引时间：${dateFormat.format(Date(memory.timestamp))}",`
+- `Delete Memory`
+  - MemoryItemCard · L733 · tr · x2
+  - `contentDescription = tr("Delete Memory"),`
+- `SYSTEM`
+  - ProceduralMemoryView · L785 · ui · x2
+  - `text = if (macro.isSystem) "SYSTEM" else "USER",`
+- `PROCEDURAL ACTIONS:`
+  - ProceduralMemoryView · L803 · tr · x2
+  - `text = tr("PROCEDURAL ACTIONS:"),`
+- `  → `
+  - ProceduralMemoryView · L816 · tr · x1
+  - `text = tr("  → "),`
+- `No custom macros or procedures registered.`
+  - ProceduralMemoryView · L849 · tr · x2
+  - `text = tr("No custom macros or procedures registered."),`
+- `全部层级（${allNodes.size}）`
+  - KnowledgeGraphView · L904 · ui · x1
+  - `label = { AppText("全部层级（${allNodes.size}）", fontSize = 11.sp, fontFamily = FontFamily.Monospace) },`
+- `Level 1: Temp`
+  - KnowledgeGraphView · L916 · ui · x1
+  - `MemoryTier.TEMPORARY -> "Level 1: Temp" to "⚡"`
+- `Level 2: Long-Term`
+  - KnowledgeGraphView · L917 · ui · x1
+  - `MemoryTier.LONG_TERM -> "Level 2: Long-Term" to "🧠"`
+- `Level 3: Patterns`
+  - KnowledgeGraphView · L918 · ui · x1
+  - `MemoryTier.LEARNED_PATTERN -> "Level 3: Patterns" to "📈"`
+- `Level 4: Sensitive`
+  - KnowledgeGraphView · L919 · ui · x1
+  - `MemoryTier.SENSITIVE -> "Level 4: Sensitive" to "🔒"`
+- `$icon $label ($count)`
+  - KnowledgeGraphView · L924 · ui · x1
+  - `label = { AppText("$icon $label ($count)", fontSize = 11.sp, fontFamily = FontFamily.Monospace) },`
+- `All Categories`
+  - KnowledgeGraphView · L951 · tr · x2
+  - `label = { AppText(tr("All Categories"), fontSize = 10.sp) },`
+- `$icon ${cat.name.replace('_', ' ')}`
+  - KnowledgeGraphView · L974 · ui · x1
+  - `label = { AppText("$icon ${cat.name.replace('_', ' ')}", fontSize = 10.sp) },`
+- `知识实体（${filteredNodes.size}）`
+  - KnowledgeGraphView · L994 · ui · x1
+  - `text = "知识实体（${filteredNodes.size}）",`
+- `Close`
+  - KnowledgeGraphView · L1004 · ui · x1
+  - `AppText(if (isAddingKnowledge) "Close" else "Add Entity / Secret", color = TextPrimary, fontSize = 11.sp)`
+- `Add Entity / Secret`
+  - KnowledgeGraphView · L1004 · ui · x1
+  - `AppText(if (isAddingKnowledge) "Close" else "Add Entity / Secret", color = TextPrimary, fontSize = 11.sp)`
+- `ADD LEVEL 4 ENCRYPTED SECRET`
+  - KnowledgeGraphView · L1019 · ui · x1
+  - `text = if (addIsSensitive) "ADD LEVEL 4 ENCRYPTED SECRET" else "ADD LEVEL 2 LONG-TERM KNOWLEDGE",`
+- `ADD LEVEL 2 LONG-TERM KNOWLEDGE`
+  - KnowledgeGraphView · L1019 · ui · x1
+  - `text = if (addIsSensitive) "ADD LEVEL 4 ENCRYPTED SECRET" else "ADD LEVEL 2 LONG-TERM KNOWLEDGE",`
+- `🧠 Long-Term Memory`
+  - KnowledgeGraphView · L1030 · tr · x2
+  - `label = { AppText(tr("🧠 Long-Term Memory"), fontSize = 11.sp) }`
+- `🔒 Keystore Encrypted`
+  - KnowledgeGraphView · L1036 · tr · x2
+  - `label = { AppText(tr("🔒 Keystore Encrypted"), fontSize = 11.sp) }`
+- `Secret Key / Label (e.g. locker_code)`
+  - KnowledgeGraphView · L1043 · ui · x1
+  - `label = { AppText(if (addIsSensitive) "Secret Key / Label (e.g. locker_code)" else "Label / Title (e.g. Favorite Coffee)", fontSize = 12.sp) },`
+- `Label / Title (e.g. Favorite Coffee)`
+  - KnowledgeGraphView · L1043 · ui · x1
+  - `label = { AppText(if (addIsSensitive) "Secret Key / Label (e.g. locker_code)" else "Label / Title (e.g. Favorite Coffee)", fontSize = 12.sp) },`
+- `Secret Value (Hardware Encrypted)`
+  - KnowledgeGraphView · L1057 · ui · x1
+  - `label = { AppText(if (addIsSensitive) "Secret Value (Hardware Encrypted)" else "Details / Description", fontSize = 12.sp) },`
+- `Details / Description`
+  - KnowledgeGraphView · L1057 · ui · x1
+  - `label = { AppText(if (addIsSensitive) "Secret Value (Hardware Encrypted)" else "Details / Description", fontSize = 12.sp) },`
+- `Save Entry`
+  - KnowledgeGraphView · L1091 · tr · x2
+  - `AppText(tr("Save Entry"), fontWeight = FontWeight.Bold)`
+- `No Knowledge Graph entities matching filter.`
+  - KnowledgeGraphView · L1122 · tr · x2
+  - `text = tr("No Knowledge Graph entities matching filter."),`
+- `$tierIcon ${node.tier.name}`
+  - KnowledgeNodeCard · L1173 · ui · x1
+  - `text = "$tierIcon ${node.tier.name}",`
+- `${(node.confidence * 100).toInt()}% 置信度`
+  - KnowledgeNodeCard · L1198 · ui · x1
+  - `text = "${(node.confidence * 100).toInt()}% 置信度",`
+- `Delete Node`
+  - KnowledgeNodeCard · L1212 · tr · x2
+  - `contentDescription = tr("Delete Node"),`
+- `$k: $v`
+  - KnowledgeNodeCard · L1244 · ui · x1
+  - `text = "$k: $v",`
+- `Promote to Long-Term`
+  - KnowledgeNodeCard · L1267 · tr · x2
+  - `AppText(tr("Promote to Long-Term"), fontSize = 10.sp, color = AccentCyan)`
+
+## ui/screens/NotificationHistoryScreen.kt  (17 条)
+
+- `MESSAGE`
+  - NotificationHistoryScreen · L47 · ui · x5
+  - `"MESSAGE" -> notifications.filter { it.category == "MESSAGE" }`
+- `EMAIL`
+  - NotificationHistoryScreen · L48 · ui · x4
+  - `"EMAIL" -> notifications.filter { it.category == "EMAIL" }`
+- `SOCIAL`
+  - NotificationHistoryScreen · L49 · ui · x4
+  - `"SOCIAL" -> notifications.filter { it.category == "SOCIAL" }`
+- `REPLIED`
+  - NotificationHistoryScreen · L50 · ui · x5
+  - `"REPLIED" -> notifications.filter { it.isAutoReplied }`
+- `Notification History`
+  - NotificationHistoryScreen · L63 · tr · x2
+  - `title = { AppText(tr("Notification History"), fontWeight = FontWeight.Bold) },`
+- `Clear All`
+  - NotificationHistoryScreen · L73 · tr · x2
+  - `Icon(Icons.Default.Delete, contentDescription = tr("Clear All"), tint = themeColors.textSecondary)`
+- `📋 $totalCount`
+  - NotificationHistoryScreen · L98 · ui · x1
+  - `StatChip("📋 $totalCount", "Total", themeColors, Modifier.weight(1f))`
+- `Total`
+  - NotificationHistoryScreen · L98 · ui · x1
+  - `StatChip("📋 $totalCount", "Total", themeColors, Modifier.weight(1f))`
+- `💬 $messageCount`
+  - NotificationHistoryScreen · L99 · ui · x1
+  - `StatChip("💬 $messageCount", "Messages", themeColors, Modifier.weight(1f))`
+- `Messages`
+  - NotificationHistoryScreen · L99 · ui · x1
+  - `StatChip("💬 $messageCount", "Messages", themeColors, Modifier.weight(1f))`
+- `🤖 $repliedCount`
+  - NotificationHistoryScreen · L100 · ui · x1
+  - `StatChip("🤖 $repliedCount", "Replied", themeColors, Modifier.weight(1f))`
+- `Replied`
+  - NotificationHistoryScreen · L100 · ui · x1
+  - `StatChip("🤖 $repliedCount", "Replied", themeColors, Modifier.weight(1f))`
+- `🔔`
+  - NotificationHistoryScreen · L147 · tr · x2
+  - `AppText(tr("🔔"), fontSize = 48.sp)`
+- `No notifications captured yet`
+  - NotificationHistoryScreen · L150 · tr · x2
+  - `tr("No notifications captured yet"),`
+- `Grant notification access in Settings`
+  - NotificationHistoryScreen · L156 · tr · x2
+  - `tr("Grant notification access in Settings"),`
+- `MMM d, h:mm a`
+  - NotificationCard · L204 · ui · x1
+  - `val dateFormat = remember { java.text.SimpleDateFormat("MMM d, h:mm a", java.util.Locale.getDefault()) }`
+- `🤖 `
+  - NotificationCard · L275 · tr · x1
+  - `AppText(tr("🤖 "), fontSize = 13.sp)`
+
+## ui/screens/OnboardingScreen.kt  (20 条)
+
+- `About You`
+  - OnboardingScreen · L67 · ui · x1
+  - `OnboardingStage.INTRODUCTION -> "About You"`
+- `Permissions`
+  - OnboardingScreen · L68 · ui · x3
+  - `OnboardingStage.PERMISSION_PROMPT -> "Permissions"`
+- `OpenDroid Bot Avatar`
+  - IntroductionPanel · L147 · tr · x4
+  - `contentDescription = tr("OpenDroid Bot Avatar"),`
+- `Hello! I am OpenDroid`
+  - IntroductionPanel · L155 · tr · x2
+  - `text = tr("Hello! I am OpenDroid"),`
+- `Your open autonomous device assistant. Please introduce yourself so I can serve you personally.`
+  - IntroductionPanel · L164 · tr · x2
+  - `text = tr("Your open autonomous device assistant. Please introduce yourself so I can serve you personally."),`
+- `Your saved details could not be unlocked on this device, so they were `
+  - IntroductionPanel · L173 · tr · x2
+  - `text = tr("Your saved details could not be unlocked on this device, so they were ") +`
+- `not kept. Nothing was stored unencrypted - please enter them again.`
+  - IntroductionPanel · L174 · tr · x2
+  - `tr("not kept. Nothing was stored unencrypted - please enter them again."),`
+- `What should I call you?`
+  - IntroductionPanel · L187 · tr · x2
+  - `label = { AppText(tr("What should I call you?"), color = TextSecondary) },`
+- `Enter your name`
+  - IntroductionPanel · L188 · tr · x2
+  - `placeholder = { AppText(tr("Enter your name"), color = TextSecondary.copy(alpha = 0.6f)) },`
+- `When is your birthday?`
+  - IntroductionPanel · L210 · tr · x2
+  - `label = { AppText(tr("When is your birthday?"), color = TextSecondary) },`
+- `e.g. MM/DD/YYYY`
+  - IntroductionPanel · L211 · tr · x2
+  - `placeholder = { AppText(tr("e.g. MM/DD/YYYY"), color = TextSecondary.copy(alpha = 0.6f)) },`
+- `Pick your birthday`
+  - IntroductionPanel · L216 · tr · x2
+  - `contentDescription = tr("Pick your birthday"),`
+- `OK`
+  - IntroductionPanel · L252 · tr · x3
+  - `) { AppText(tr("OK"), color = TextPrimary, fontWeight = FontWeight.Bold) }`
+- `Please enter both your name and birth date.`
+  - IntroductionPanel · L267 · tr · x2
+  - `text = tr("Please enter both your name and birth date."),`
+- `Your details could not be saved securely. Please try again.`
+  - IntroductionPanel · L277 · tr · x2
+  - `text = tr("Your details could not be saved securely. Please try again."),`
+- `Let's Go`
+  - IntroductionPanel · L292 · tr · x2
+  - `AppText(tr("Let's Go"), fontWeight = FontWeight.Bold, fontSize = 16.sp)`
+- `Permissions Setup`
+  - PermissionPromptPanel · L345 · tr · x2
+  - `text = tr("Permissions Setup"),`
+- `Let's give me permission so I can serve you well`
+  - PermissionPromptPanel · L354 · tr · x2
+  - `text = tr("Let's give me permission so I can serve you well"),`
+- `To allow me to interact with your device, run commands, list files, and operate system features, some standard Android permissions are required.`
+  - PermissionPromptPanel · L364 · tr · x2
+  - `text = tr("To allow me to interact with your device, run commands, list files, and operate system features, some standard Android permissions are required."),`
+- `Grant Permissions`
+  - PermissionPromptPanel · L378 · tr · x3
+  - `AppText(tr("Grant Permissions"), fontWeight = FontWeight.Bold, fontSize = 16.sp)`
+
+## ui/screens/PermissionsScreen.kt  (31 条)
+
+- `PERMISSIONS`
+  - PermissionsScreen · L115 · tr · x4
+  - `text = tr("PERMISSIONS"),`
+- `Grant all permissions?`
+  - launchRuntimePlan · L270 · tr · x2
+  - `title = { AppText(tr("Grant all permissions?")) },`
+- `Android will ask for the remaining runtime permissions in one batch:\n\n`
+  - launchRuntimePlan · L273 · tr · x2
+  - `tr("Android will ask for the remaining runtime permissions in one batch:\n\n") +`
+- `\n`
+  - launchRuntimePlan · L274 · ui · x1
+  - `pendingGroups.joinToString("\n") { group -> "• $group" },`
+- `• $group`
+  - launchRuntimePlan · L274 · ui · x1
+  - `pendingGroups.joinToString("\n") { group -> "• $group" },`
+- `Required Permissions`
+  - PermissionsPanelContent · L340 · tr · x2
+  - `text = tr("Required Permissions"),`
+- `Configure permissions below to enable full autonomous features.`
+  - PermissionsPanelContent · L347 · tr · x2
+  - `text = tr("Configure permissions below to enable full autonomous features."),`
+- `manual-settings-header`
+  - PermissionsPanelContent · L387 · ui · x1
+  - `item(key = "manual-settings-header") {`
+- `You can continue now and grant the rest later in Settings → Permissions.`
+  - PermissionsPanelContent · L425 · tr · x2
+  - `text = tr("You can continue now and grant the rest later in Settings → Permissions."),`
+- `Proceed to OpenDroid Agent`
+  - PermissionsPanelContent · L444 · tr · x2
+  - `text = tr("Proceed to OpenDroid Agent"),`
+- `NEEDS A TRIP TO SETTINGS`
+  - ManualSettingsHeader · L457 · tr · x2
+  - `text = tr("NEEDS A TRIP TO SETTINGS"),`
+- `Android does not allow these to be granted from inside an app. `
+  - ManualSettingsHeader · L466 · tr · x2
+  - `text = tr("Android does not allow these to be granted from inside an app. ") +`
+- `\"Grant all permissions\" cannot cover them → open each one yourself.`
+  - ManualSettingsHeader · L467 · tr · x2
+  - `tr("\"Grant all permissions\" cannot cover them → open each one yourself."),`
+- `Microphone`
+  - cardTitle · L738 · ui · x1
+  - `PermissionCardId.MICROPHONE -> "Microphone"`
+- `Location`
+  - cardTitle · L739 · ui · x1
+  - `PermissionCardId.LOCATION -> "Location"`
+- `SMS & Telephony`
+  - cardTitle · L740 · ui · x1
+  - `PermissionCardId.SMS_TELEPHONY -> "SMS & Telephony"`
+- `Contacts & Calendar`
+  - cardTitle · L741 · ui · x1
+  - `PermissionCardId.CONTACTS_CALENDAR -> "Contacts & Calendar"`
+- `Camera`
+  - cardTitle · L742 · ui · x1
+  - `PermissionCardId.CAMERA -> "Camera"`
+- `Notifications`
+  - cardTitle · L743 · ui · x1
+  - `PermissionCardId.NOTIFICATIONS -> "Notifications"`
+- `Storage / Workspace`
+  - cardTitle · L744 · ui · x1
+  - `PermissionCardId.STORAGE -> "Storage / Workspace"`
+- `System Settings Control`
+  - cardTitle · L745 · ui · x1
+  - `PermissionCardId.WRITE_SETTINGS -> "System Settings Control"`
+- `Accessibility Service`
+  - cardTitle · L746 · ui · x1
+  - `PermissionCardId.ACCESSIBILITY -> "Accessibility Service"`
+- `Needed for wake word and speech recognition.`
+  - cardDescription · L750 · ui · x1
+  - `PermissionCardId.MICROPHONE -> "Needed for wake word and speech recognition."`
+- `Needed to fetch weather, directions, and maps.`
+  - cardDescription · L751 · ui · x1
+  - `PermissionCardId.LOCATION -> "Needed to fetch weather, directions, and maps."`
+- `Needed to read and send messages, and place calls.`
+  - cardDescription · L752 · ui · x1
+  - `PermissionCardId.SMS_TELEPHONY -> "Needed to read and send messages, and place calls."`
+- `Needed to resolve recipient names and manage events.`
+  - cardDescription · L754 · tr · x2
+  - `tr("Needed to resolve recipient names and manage events.")`
+- `Needed for image input and vision capabilities.`
+  - cardDescription · L756 · ui · x1
+  - `PermissionCardId.CAMERA -> "Needed for image input and vision capabilities."`
+- `Needed to post system notifications and service status.`
+  - cardDescription · L758 · tr · x2
+  - `tr("Needed to post system notifications and service status.")`
+- `App workspace storage is ready. You can also choose a custom folder (e.g. Documents) for agent files.`
+  - cardDescription · L761 · tr · x2
+  - `tr("App workspace storage is ready. You can also choose a custom folder (e.g. Documents) for agent files.")`
+- `Needed to adjust brightness, volume, and other system settings.`
+  - cardDescription · L763 · tr · x2
+  - `tr("Needed to adjust brightness, volume, and other system settings.")`
+- `Enables full agent screen automation (clicks & inputs).`
+  - cardDescription · L766 · tr · x2
+  - `tr("Enables full agent screen automation (clicks & inputs).")`
+
+## ui/screens/PlanScreen.kt  (14 条)
+
+- `PLAN ENGINE`
+  - PlanScreen · L62 · tr · x2
+  - `text = tr("PLAN ENGINE"),`
+- `PLAN SEQUENCE STAGE`
+  - PlanScreen · L99 · tr · x2
+  - `text = tr("PLAN SEQUENCE STAGE"),`
+- `AUTONOMOUS EXECUTION HISTORY`
+  - PlanScreen · L131 · tr · x2
+  - `text = tr("AUTONOMOUS EXECUTION HISTORY"),`
+- `Viewing Past Run`
+  - PlanHeaderCard · L198 · tr · x2
+  - `text = tr("Viewing Past Run"),`
+- `ACTIVE RUN`
+  - PlanHeaderCard · L211 · tr · x2
+  - `text = tr("ACTIVE RUN"),`
+- `Steps`
+  - PlanHeaderCard · L238 · tr · x2
+  - `AppText(tr("Steps"), fontSize = 10.sp, color = TextSecondary)`
+- `已排定 ${plan.steps.size} 个`
+  - PlanHeaderCard · L239 · ui · x1
+  - `AppText("已排定 ${plan.steps.size} 个", fontSize = 13.sp, fontWeight = FontWeight.Bold, color = TextPrimary)`
+- `Estimated duration`
+  - PlanHeaderCard · L242 · tr · x2
+  - `AppText(tr("Estimated duration"), fontSize = 10.sp, color = TextSecondary)`
+- `STOP TASK`
+  - PlanHeaderCard · L264 · tr · x2
+  - `text = tr("STOP TASK"),`
+- `No plan`
+  - EmptyPlanPlaceholder · L292 · tr · x2
+  - `contentDescription = tr("No plan"),`
+- `No active plans running`
+  - EmptyPlanPlaceholder · L298 · tr · x2
+  - `text = tr("No active plans running"),`
+- `Plans formulated by the autonomous system will display here in real-time.`
+  - EmptyPlanPlaceholder · L305 · tr · x2
+  - `text = tr("Plans formulated by the autonomous system will display here in real-time."),`
+- `${plan.steps.size} 个步骤`
+  - PastPlanRow · L351 · ui · x1
+  - `text = "${plan.steps.size} 个步骤",`
+- `Delete Plan`
+  - PastPlanRow · L382 · tr · x2
+  - `contentDescription = tr("Delete Plan"),`
+
+## ui/screens/PrivacyPolicyScreen.kt  (79 条)
+
+- `PRIVACY POLICY`
+  - PrivacyPolicyScreen · L38 · tr · x4
+  - `text = tr("PRIVACY POLICY"),`
+- `Privacy`
+  - PrivacyPolicyScreen · L84 · tr · x2
+  - `contentDescription = tr("Privacy"),`
+- `Your Privacy Matters`
+  - PrivacyPolicyScreen · L91 · tr · x2
+  - `text = tr("Your Privacy Matters"),`
+- `Last updated: August 2026`
+  - PrivacyPolicyScreen · L97 · tr · x2
+  - `text = tr("Last updated: August 2026"),`
+- `1. OVERVIEW`
+  - PrivacyPolicyScreen · L109 · tr · x2
+  - `title = tr("1. OVERVIEW"),`
+- `OpenDroid is an autonomous AI assistant that runs entirely on your Android device. `
+  - PrivacyPolicyScreen · L110 · ui · x1
+  - `content = "OpenDroid is an autonomous AI assistant that runs entirely on your Android device. " +`
+- `We are committed to protecting your privacy and ensuring transparency about how your data is handled. `
+  - PrivacyPolicyScreen · L111 · tr · x2
+  - `tr("We are committed to protecting your privacy and ensuring transparency about how your data is handled. ") +`
+- `This policy explains what data OpenDroid collects, how it is used, and your rights regarding that data.`
+  - PrivacyPolicyScreen · L112 · tr · x2
+  - `tr("This policy explains what data OpenDroid collects, how it is used, and your rights regarding that data.")`
+- `2. DATA COLLECTION`
+  - PrivacyPolicyScreen · L119 · tr · x2
+  - `title = tr("2. DATA COLLECTION"),`
+- `OpenDroid processes the following data locally on your device:\n\n`
+  - PrivacyPolicyScreen · L120 · ui · x1
+  - `content = "OpenDroid processes the following data locally on your device:\n\n" +`
+- `• Voice commands and text queries you provide\n`
+  - PrivacyPolicyScreen · L121 · tr · x2
+  - `tr("• Voice commands and text queries you provide\n") +`
+- `• Device state information (battery level, WiFi status, connectivity)\n`
+  - PrivacyPolicyScreen · L122 · tr · x2
+  - `tr("• Device state information (battery level, WiFi status, connectivity)\n") +`
+- `• Contact names for resolving communication actions\n`
+  - PrivacyPolicyScreen · L123 · tr · x2
+  - `tr("• Contact names for resolving communication actions\n") +`
+- `• Conversation history for context-aware responses\n`
+  - PrivacyPolicyScreen · L124 · tr · x2
+  - `tr("• Conversation history for context-aware responses\n") +`
+- `• User preferences and semantic memory facts you share\n\n`
+  - PrivacyPolicyScreen · L125 · tr · x2
+  - `tr("• User preferences and semantic memory facts you share\n\n") +`
+- `All data is stored in a local Room database on your device. No data is collected by the OpenDroid developers.`
+  - PrivacyPolicyScreen · L126 · tr · x2
+  - `tr("All data is stored in a local Room database on your device. No data is collected by the OpenDroid developers.")`
+- `3. THIRD-PARTY LLM PROVIDERS`
+  - PrivacyPolicyScreen · L133 · tr · x2
+  - `title = tr("3. THIRD-PARTY LLM PROVIDERS"),`
+- `OpenDroid sends your queries to the LLM provider you configure (e.g., Google Gemini, OpenAI, Anthropic, Groq, etc.) `
+  - PrivacyPolicyScreen · L134 · ui · x1
+  - `content = "OpenDroid sends your queries to the LLM provider you configure (e.g., Google Gemini, OpenAI, Anthropic, Groq, etc.) " +`
+- `to generate responses and action plans. Each provider has its own privacy policy governing how they handle your data.\n\n`
+  - PrivacyPolicyScreen · L135 · tr · x2
+  - `tr("to generate responses and action plans. Each provider has its own privacy policy governing how they handle your data.\n\n") +`
+- `• Your API keys are stored locally on your device and are never transmitted to OpenDroid servers.\n`
+  - PrivacyPolicyScreen · L136 · tr · x2
+  - `tr("• Your API keys are stored locally on your device and are never transmitted to OpenDroid servers.\n") +`
+- `• Query data sent to LLM providers is subject to their respective privacy policies.\n`
+  - PrivacyPolicyScreen · L137 · tr · x2
+  - `tr("• Query data sent to LLM providers is subject to their respective privacy policies.\n") +`
+- `• You can switch providers or use local models (Ollama) at any time to keep data fully on-device.`
+  - PrivacyPolicyScreen · L138 · tr · x2
+  - `tr("• You can switch providers or use local models (Ollama) at any time to keep data fully on-device.")`
+- `4. DEVICE PERMISSIONS`
+  - PrivacyPolicyScreen · L145 · tr · x2
+  - `title = tr("4. DEVICE PERMISSIONS"),`
+- `OpenDroid requests the following permissions to function:\n\n`
+  - PrivacyPolicyScreen · L146 · ui · x1
+  - `content = "OpenDroid requests the following permissions to function:\n\n" +`
+- `• Microphone — For voice command input\n`
+  - PrivacyPolicyScreen · L147 · tr · x2
+  - `tr("• Microphone — For voice command input\n") +`
+- `• Accessibility Service — For automating app interactions (WhatsApp, etc.)\n`
+  - PrivacyPolicyScreen · L148 · tr · x2
+  - `tr("• Accessibility Service — For automating app interactions (WhatsApp, etc.)\n") +`
+- `• Contacts — For resolving contact names to phone numbers\n`
+  - PrivacyPolicyScreen · L149 · tr · x2
+  - `tr("• Contacts — For resolving contact names to phone numbers\n") +`
+- `• Phone — For placing calls\n`
+  - PrivacyPolicyScreen · L150 · tr · x2
+  - `tr("• Phone — For placing calls\n") +`
+- `• SMS — For sending text messages\n`
+  - PrivacyPolicyScreen · L151 · tr · x2
+  - `tr("• SMS — For sending text messages\n") +`
+- `• Camera — For taking photos/flashlight control\n`
+  - PrivacyPolicyScreen · L152 · tr · x2
+  - `tr("• Camera — For taking photos/flashlight control\n") +`
+- `• Storage — For file management actions\n`
+  - PrivacyPolicyScreen · L153 · tr · x2
+  - `tr("• Storage — For file management actions\n") +`
+- `• Location — For weather and directions features\n\n`
+  - PrivacyPolicyScreen · L154 · tr · x2
+  - `tr("• Location — For weather and directions features\n\n") +`
+- `All permissions are optional. Features requiring ungranted permissions will gracefully degrade or prompt you.`
+  - PrivacyPolicyScreen · L155 · tr · x2
+  - `tr("All permissions are optional. Features requiring ungranted permissions will gracefully degrade or prompt you.")`
+- `4b. ACCESSIBILITY SERVICE`
+  - PrivacyPolicyScreen · L162 · tr · x2
+  - `title = tr("4b. ACCESSIBILITY SERVICE"),`
+- `OpenDroid uses Android Accessibility Service to automate app interactions `
+  - PrivacyPolicyScreen · L163 · ui · x1
+  - `content = "OpenDroid uses Android Accessibility Service to automate app interactions " +`
+- `(such as sending WhatsApp messages) when you explicitly request it.\n\n`
+  - PrivacyPolicyScreen · L164 · tr · x2
+  - `tr("(such as sending WhatsApp messages) when you explicitly request it.\n\n") +`
+- `The Accessibility Service:\n\n`
+  - PrivacyPolicyScreen · L165 · tr · x2
+  - `tr("The Accessibility Service:\n\n") +`
+- `• Only activates when you enable it in Android Settings\n`
+  - PrivacyPolicyScreen · L166 · tr · x2
+  - `tr("• Only activates when you enable it in Android Settings\n") +`
+- `• Only acts when you give OpenDroid a command\n`
+  - PrivacyPolicyScreen · L167 · tr · x2
+  - `tr("• Only acts when you give OpenDroid a command\n") +`
+- `• Does NOT run in the background without your command\n`
+  - PrivacyPolicyScreen · L168 · tr · x2
+  - `tr("• Does NOT run in the background without your command\n") +`
+- `• Does NOT read passwords or banking information\n`
+  - PrivacyPolicyScreen · L169 · tr · x2
+  - `tr("• Does NOT read passwords or banking information\n") +`
+- `• Does NOT record or log screen content passively\n`
+  - PrivacyPolicyScreen · L170 · tr · x2
+  - `tr("• Does NOT record or log screen content passively\n") +`
+- `• Does NOT collect, store, or transmit any data observed through the Accessibility Service to external servers\n\n`
+  - PrivacyPolicyScreen · L171 · tr · x2
+  - `tr("• Does NOT collect, store, or transmit any data observed through the Accessibility Service to external servers\n\n") +`
+- `The service is used solely to perform on-screen actions you request, such as tapping buttons or typing text in other apps. `
+  - PrivacyPolicyScreen · L172 · tr · x2
+  - `tr("The service is used solely to perform on-screen actions you request, such as tapping buttons or typing text in other apps. ") +`
+- `You can revoke Accessibility Service access at any time from Android Settings > Accessibility > OpenDroid.`
+  - PrivacyPolicyScreen · L173 · tr · x2
+  - `tr("You can revoke Accessibility Service access at any time from Android Settings > Accessibility > OpenDroid.")`
+- `5. DATA STORAGE & RETENTION`
+  - PrivacyPolicyScreen · L180 · tr · x2
+  - `title = tr("5. DATA STORAGE & RETENTION"),`
+- `• All conversation history, memory facts, and task logs are stored in a local SQLite database on your device.\n`
+  - PrivacyPolicyScreen · L181 · ui · x1
+  - `content = "• All conversation history, memory facts, and task logs are stored in a local SQLite database on your device.\n" +`
+- `• Memory entries support time-to-live (TTL) and are automatically cleaned on expiration.\n`
+  - PrivacyPolicyScreen · L182 · tr · x2
+  - `tr("• Memory entries support time-to-live (TTL) and are automatically cleaned on expiration.\n") +`
+- `• Execution history remains until you clear it from System Logs or uninstall the app.\n`
+  - PrivacyPolicyScreen · L183 · tr · x2
+  - `tr("• Execution history remains until you clear it from System Logs or uninstall the app.\n") +`
+- `• Saving a completed task as a macro is an explicit user action; API keys, tokens, passwords, and recognized credentials are replaced with [REDACTED] before recording.\n`
+  - PrivacyPolicyScreen · L184 · tr · x2
+  - `tr("• Saving a completed task as a macro is an explicit user action; API keys, tokens, passwords, and recognized credentials are replaced with [REDACTED] before`
+- `• You can clear any memory type (Working, Episodic, Semantic, Procedural) from the Memory screen.\n`
+  - PrivacyPolicyScreen · L185 · tr · x2
+  - `tr("• You can clear any memory type (Working, Episodic, Semantic, Procedural) from the Memory screen.\n") +`
+- `• Uninstalling the app removes all stored data permanently.`
+  - PrivacyPolicyScreen · L186 · tr · x2
+  - `tr("• Uninstalling the app removes all stored data permanently.")`
+- `6. DATA SHARING`
+  - PrivacyPolicyScreen · L193 · tr · x2
+  - `title = tr("6. DATA SHARING"),`
+- `OpenDroid does NOT:\n\n`
+  - PrivacyPolicyScreen · L194 · ui · x1
+  - `content = "OpenDroid does NOT:\n\n" +`
+- `• Sell, rent, or share your personal data with third parties\n`
+  - PrivacyPolicyScreen · L195 · tr · x2
+  - `tr("• Sell, rent, or share your personal data with third parties\n") +`
+- `• Collect analytics, telemetry, or usage statistics\n`
+  - PrivacyPolicyScreen · L196 · tr · x2
+  - `tr("• Collect analytics, telemetry, or usage statistics\n") +`
+- `• Transmit data to any server owned by the OpenDroid team\n`
+  - PrivacyPolicyScreen · L197 · tr · x2
+  - `tr("• Transmit data to any server owned by the OpenDroid team\n") +`
+- `• Display advertisements or use ad-tracking technologies\n\n`
+  - PrivacyPolicyScreen · L198 · tr · x2
+  - `tr("• Display advertisements or use ad-tracking technologies\n\n") +`
+- `The only external data transmission occurs when your queries are sent to the LLM provider you have configured.`
+  - PrivacyPolicyScreen · L199 · tr · x2
+  - `tr("The only external data transmission occurs when your queries are sent to the LLM provider you have configured.")`
+- `7. SECURITY`
+  - PrivacyPolicyScreen · L206 · tr · x2
+  - `title = tr("7. SECURITY"),`
+- `• API keys are stored with Android Keystore AES-256-GCM encryption on your device.\n`
+  - PrivacyPolicyScreen · L207 · ui · x1
+  - `content = "• API keys are stored with Android Keystore AES-256-GCM encryption on your device.\n" +`
+- `• Your profile name and birth date are encrypted the same way, with a separate device key.\n`
+  - PrivacyPolicyScreen · L208 · tr · x2
+  - `tr("• Your profile name and birth date are encrypted the same way, with a separate device key.\n") +`
+- `• Encryption keys never leave the device's hardware-backed keystore, so encrypted values cannot be read on another device or restored from a backup.\n`
+  - PrivacyPolicyScreen · L209 · tr · x2
+  - `tr("• Encryption keys never leave the device's hardware-backed keystore, so encrypted values cannot be read on another device or restored from a backup.\n") +`
+- `• If a key is invalidated, the affected values are not recoverable and are never rewritten unencrypted; the app asks you to enter them again.\n`
+  - PrivacyPolicyScreen · L210 · tr · x2
+  - `tr("• If a key is invalidated, the affected values are not recoverable and are never rewritten unencrypted; the app asks you to enter them again.\n") +`
+- `• Ordinary non-personal settings, such as whether onboarding is complete, are stored unencrypted in app-private storage.\n`
+  - PrivacyPolicyScreen · L211 · tr · x2
+  - `tr("• Ordinary non-personal settings, such as whether onboarding is complete, are stored unencrypted in app-private storage.\n") +`
+- `• All LLM API communication uses HTTPS encryption.\n`
+  - PrivacyPolicyScreen · L212 · tr · x2
+  - `tr("• All LLM API communication uses HTTPS encryption.\n") +`
+- `• The accessibility service only activates when explicitly enabled by you.\n`
+  - PrivacyPolicyScreen · L213 · tr · x2
+  - `tr("• The accessibility service only activates when explicitly enabled by you.\n") +`
+- `• Destructive actions (device restart, file deletion) require user confirmation.`
+  - PrivacyPolicyScreen · L214 · tr · x2
+  - `tr("• Destructive actions (device restart, file deletion) require user confirmation.")`
+- `8. CHILDREN'S PRIVACY`
+  - PrivacyPolicyScreen · L221 · tr · x2
+  - `title = tr("8. CHILDREN'S PRIVACY"),`
+- `OpenDroid is not intended for use by children under 13 years of age. `
+  - PrivacyPolicyScreen · L222 · ui · x1
+  - `content = "OpenDroid is not intended for use by children under 13 years of age. " +`
+- `We do not knowingly collect information from children.`
+  - PrivacyPolicyScreen · L223 · tr · x2
+  - `tr("We do not knowingly collect information from children.")`
+- `9. CHANGES TO THIS POLICY`
+  - PrivacyPolicyScreen · L230 · tr · x2
+  - `title = tr("9. CHANGES TO THIS POLICY"),`
+- `We may update this privacy policy from time to time. Any changes will be reflected in the app with an updated \"Last updated\" date. `
+  - PrivacyPolicyScreen · L231 · ui · x1
+  - `content = "We may update this privacy policy from time to time. Any changes will be reflected in the app with an updated \"Last updated\" date. " +`
+- `Continued use of OpenDroid after changes constitutes acceptance of the updated policy.`
+  - PrivacyPolicyScreen · L232 · tr · x2
+  - `tr("Continued use of OpenDroid after changes constitutes acceptance of the updated policy.")`
+- `10. CONTACT`
+  - PrivacyPolicyScreen · L239 · tr · x2
+  - `title = tr("10. CONTACT"),`
+- `If you have questions about this privacy policy or OpenDroid's data practices, `
+  - PrivacyPolicyScreen · L240 · ui · x1
+  - `content = "If you have questions about this privacy policy or OpenDroid's data practices, " +`
+- `please open an issue on our GitHub repository (yashab-cyber/opendroid) or contact the development team.\n\n`
+  - PrivacyPolicyScreen · L241 · tr · x2
+  - `tr("please open an issue on our GitHub repository (yashab-cyber/opendroid) or contact the development team.\n\n") +`
+- `• Email: yashabalam707@gmail.com\n`
+  - PrivacyPolicyScreen · L242 · tr · x2
+  - `tr("• Email: yashabalam707@gmail.com\n") +`
+- `• You can also contact us at: opendroid.ai@gmail.com`
+  - PrivacyPolicyScreen · L243 · tr · x2
+  - `tr("• You can also contact us at: opendroid.ai@gmail.com")`
+
+## ui/screens/RoutinesScreen.kt  (37 条)
+
+- `HABITS & ROUTINES`
+  - RoutinesScreen · L57 · tr · x4
+  - `text = tr("HABITS & ROUTINES"),`
+- `Scanning habit patterns...`
+  - RoutinesScreen · L77 · tr · x2
+  - `Toast.makeText(context, tr("Scanning habit patterns..."), Toast.LENGTH_SHORT).show()`
+- `Scan Habits`
+  - RoutinesScreen · L81 · tr · x2
+  - `contentDescription = tr("Scan Habits"),`
+- `DISCOVERED HABITS & SUGGESTIONS`
+  - RoutinesScreen · L104 · tr · x2
+  - `text = tr("DISCOVERED HABITS & SUGGESTIONS"),`
+- `例程“${routine.name}”已自动化！`
+  - RoutinesScreen · L119 · ui · x1
+  - `Toast.makeText(context, "例程“${routine.name}”已自动化！", Toast.LENGTH_SHORT).show()`
+- `Suggestion dismissed`
+  - RoutinesScreen · L123 · tr · x2
+  - `Toast.makeText(context, tr("Suggestion dismissed"), Toast.LENGTH_SHORT).show()`
+- `已自动化例程（${activeRoutines.size}）`
+  - RoutinesScreen · L132 · ui · x1
+  - `text = "已自动化例程（${activeRoutines.size}）",`
+- `No Active Routines Yet`
+  - RoutinesScreen · L162 · tr · x2
+  - `text = tr("No Active Routines Yet"),`
+- `As you use apps like Gmail, Calendar, and Slack, OpenDroid detects repeated patterns and suggests automations here.`
+  - RoutinesScreen · L169 · tr · x2
+  - `text = tr("As you use apps like Gmail, Calendar, and Slack, OpenDroid detects repeated patterns and suggests automations here."),`
+- `例程已完成：$msg`
+  - RoutinesScreen · L191 · ui · x1
+  - `if (success) "例程已完成：$msg" else "执行失败：$msg",`
+- `执行失败：$msg`
+  - RoutinesScreen · L191 · ui · x1
+  - `if (success) "例程已完成：$msg" else "执行失败：$msg",`
+- `SAMPLE ROUTINE TEMPLATES`
+  - RoutinesScreen · L206 · tr · x2
+  - `text = tr("SAMPLE ROUTINE TEMPLATES"),`
+- `🌅 Morning Routine`
+  - RoutinesScreen · L218 · tr · x2
+  - `title = tr("🌅 Morning Routine"),`
+- `Read calendar → Summarize today's meetings → Check notifications → Task list → Morning briefing`
+  - RoutinesScreen · L219 · tr · x2
+  - `description = tr("Read calendar → Summarize today's meetings → Check notifications → Task list → Morning briefing"),`
+- `Every weekday at 9:00 AM`
+  - RoutinesScreen · L220 · ui · x1
+  - `trigger = "Every weekday at 9:00 AM",`
+- `Morning Routine template activated!`
+  - RoutinesScreen · L223 · tr · x2
+  - `Toast.makeText(context, tr("Morning Routine template activated!"), Toast.LENGTH_SHORT).show()`
+- `💼 Work Focus Routine`
+  - RoutinesScreen · L230 · tr · x2
+  - `title = tr("💼 Work Focus Routine"),`
+- `Open Slack → Check Calendar → Read important notifications`
+  - RoutinesScreen · L231 · tr · x2
+  - `description = tr("Open Slack → Check Calendar → Read important notifications"),`
+- `Every weekday at 9:30 AM`
+  - RoutinesScreen · L232 · ui · x1
+  - `trigger = "Every weekday at 9:30 AM",`
+- `Work Focus template activated!`
+  - RoutinesScreen · L235 · tr · x2
+  - `Toast.makeText(context, tr("Work Focus template activated!"), Toast.LENGTH_SHORT).show()`
+- `🌙 Evening Wrap-up`
+  - RoutinesScreen · L242 · tr · x2
+  - `title = tr("🌙 Evening Wrap-up"),`
+- `Check tomorrow's calendar → Check unread notifications → Daily summary`
+  - RoutinesScreen · L243 · tr · x2
+  - `description = tr("Check tomorrow's calendar → Check unread notifications → Daily summary"),`
+- `Daily at 9:00 PM`
+  - RoutinesScreen · L244 · ui · x1
+  - `trigger = "Daily at 9:00 PM",`
+- `Evening Wrap-up template activated!`
+  - RoutinesScreen · L247 · tr · x2
+  - `Toast.makeText(context, tr("Evening Wrap-up template activated!"), Toast.LENGTH_SHORT).show()`
+- `HABIT LEARNING ENGINE`
+  - RoutinesScreen · L270 · tr · x2
+  - `text = tr("HABIT LEARNING ENGINE"),`
+- `已记录事件：记录了 ${recentEvents.size} 条近期活动。\nOpenDroid 会在本机安全分析应用切换情况以学习你的日常例程，不会将数据传输到云端。`
+  - RoutinesScreen · L279 · ui · x1
+  - `text = "已记录事件：记录了 ${recentEvents.size} 条近期活动。\nOpenDroid 会在本机安全分析应用切换情况以学习你的日常例程，不会将数据传输到云端。",`
+- `💡 ROUTINE DETECTED`
+  - SuggestedRoutineCard · L315 · tr · x2
+  - `text = tr("💡 ROUTINE DETECTED"),`
+- `匹配度 ${(routine.confidence * 100).toInt()}%`
+  - SuggestedRoutineCard · L329 · ui · x1
+  - `text = "匹配度 ${(routine.confidence * 100).toInt()}%",`
+- `I noticed you usually do these tasks. Would you like me to automate them?`
+  - SuggestedRoutineCard · L341 · ui · x1
+  - `text = routine.suggestionMessage.ifBlank { "I noticed you usually do these tasks. Would you like me to automate them?" },`
+- `⚡ ${routine.triggerLabel}`
+  - SuggestedRoutineCard · L351 · ui · x2
+  - `text = "⚡ ${routine.triggerLabel}",`
+- `建议的自动化（${routine.suggestedSteps.size} 个步骤）`
+  - SuggestedRoutineCard · L391 · ui · x1
+  - `text = "建议的自动化（${routine.suggestedSteps.size} 个步骤）",`
+- `${idx + 1}.`
+  - SuggestedRoutineCard · L413 · ui · x1
+  - `text = "${idx + 1}.",`
+- `Approve & Automate`
+  - SuggestedRoutineCard · L454 · tr · x2
+  - `text = tr("Approve & Automate"),`
+- `Running...`
+  - ActiveRoutineCard · L556 · tr · x2
+  - `AppText(tr("Running..."), color = AppTheme.colors.accentCyan, fontSize = 12.sp)`
+- `Run Routine Now`
+  - ActiveRoutineCard · L566 · tr · x2
+  - `text = tr("Run Routine Now"),`
+- `⏰ $trigger`
+  - RoutineTemplateCard · L619 · ui · x1
+  - `text = "⏰ $trigger",`
+- `Activate`
+  - RoutineTemplateCard · L631 · tr · x2
+  - `contentDescription = tr("Activate"),`
+
+## ui/screens/SettingsScreen.kt  (181 条)
+
+- `OpenAI`
+  - SettingsScreen · L100 · tr · x2
+  - `tr("OpenAI"),`
+- `AGENT PREFERENCES`
+  - SettingsScreen · L145 · tr · x2
+  - `text = tr("AGENT PREFERENCES"),`
+- `CREDENTIALS MUST BE RE-ENTERED`
+  - SettingsScreen · L179 · tr · x2
+  - `text = tr("CREDENTIALS MUST BE RE-ENTERED"),`
+- `Saved provider credentials cannot be read on this device. `
+  - SettingsScreen · L187 · tr · x2
+  - `text = tr("Saved provider credentials cannot be read on this device. ") +`
+- `Clear unavailable records, then enter your API keys again.`
+  - SettingsScreen · L188 · tr · x2
+  - `tr("Clear unavailable records, then enter your API keys again."),`
+- `Clear unavailable credentials`
+  - SettingsScreen · L197 · tr · x2
+  - `AppText(tr("Clear unavailable credentials"), color = DarkBackground)`
+- `CREDENTIALS WERE NOT SAVED`
+  - SettingsScreen · L216 · tr · x2
+  - `text = tr("CREDENTIALS WERE NOT SAVED"),`
+- `Secure credential storage is unavailable. Existing settings `
+  - SettingsScreen · L224 · tr · x2
+  - `text = tr("Secure credential storage is unavailable. Existing settings ") +`
+- `were preserved; check device storage and try again.`
+  - SettingsScreen · L225 · tr · x2
+  - `tr("were preserved; check device storage and try again."),`
+- `ACTIVE BRAIN PROVIDER`
+  - SettingsScreen · L244 · tr · x2
+  - `text = tr("ACTIVE BRAIN PROVIDER"),`
+- `Dropdown`
+  - SettingsScreen · L277 · tr · x2
+  - `contentDescription = tr("Dropdown"),`
+- `OFFLINE AI`
+  - SettingsScreen · L293 · tr · x2
+  - `text = tr("OFFLINE AI"),`
+- `CLOUD AI`
+  - SettingsScreen · L316 · tr · x2
+  - `text = tr("CLOUD AI"),`
+- `Gemini`
+  - SettingsScreen · L329 · ui · x1
+  - `"Google Gemini" -> "Gemini"`
+- `Claude`
+  - SettingsScreen · L330 · ui · x1
+  - `"Anthropic Claude" -> "Claude"`
+- `ACTIVE MODEL`
+  - SettingsScreen · L357 · tr · x2
+  - `text = tr("ACTIVE MODEL"),`
+- `Refresh models`
+  - SettingsScreen · L376 · tr · x2
+  - `contentDescription = tr("Refresh models"),`
+- `Active LLM Model`
+  - SettingsScreen · L390 · tr · x2
+  - `label = { AppText(tr("Active LLM Model"), fontSize = 12.sp) },`
+- `Show models dropdown`
+  - SettingsScreen · L396 · tr · x2
+  - `contentDescription = tr("Show models dropdown"),`
+- `REC`
+  - SettingsScreen · L446 · tr · x2
+  - `text = tr("REC"),`
+- `FREE`
+  - SettingsScreen · L463 · tr · x2
+  - `text = tr("FREE"),`
+- `PRO`
+  - ? · L480 · tr · x1
+  - `text = tr("PRO"),`
+- `EXPLICIT PLANNING FALLBACKS`
+  - ? · L502 · tr · x2
+  - `text = tr("EXPLICIT PLANNING FALLBACKS"),`
+- `Only selected providers may receive a retry after an unusable low-impact local plan. High-impact plans never switch automatically.`
+  - ? · L509 · tr · x2
+  - `text = tr("Only selected providers may receive a retry after an unusable low-impact local plan. High-impact plans never switch automatically."),`
+- `Benchmark`
+  - ? · L573 · tr · x2
+  - `contentDescription = tr("Benchmark"),`
+- `LLM RESPONSIVENESS REPORT`
+  - ? · L580 · tr · x2
+  - `text = tr("LLM RESPONSIVENESS REPORT"),`
+- `View live charts comparing speeds & latency.`
+  - ? · L588 · tr · x2
+  - `text = tr("View live charts comparing speeds & latency."),`
+- `OLLAMA LOCAL ENDPOINT`
+  - ? · L608 · tr · x2
+  - `text = tr("OLLAMA LOCAL ENDPOINT"),`
+- `Ollama Server URL`
+  - ? · L618 · tr · x2
+  - `label = { AppText(tr("Ollama Server URL"), fontSize = 12.sp) },`
+- `Use local LAN IP (e.g. http://192.168.1.50:11434) if testing from a physical Android device.`
+  - ? · L630 · tr · x2
+  - `text = tr("Use local LAN IP (e.g. http://192.168.1.50:11434) if testing from a physical Android device."),`
+- `ON-DEVICE AI STATUS`
+  - ? · L650 · tr · x2
+  - `text = tr("ON-DEVICE AI STATUS"),`
+- `当前：${activeSpec?.displayName ?: config.activeModel}`
+  - ? · L661 · ui · x1
+  - `text = "当前：${activeSpec?.displayName ?: config.activeModel}",`
+- `Backend: ${if (activeSpec.backend == OnDeviceBackend.AI_CORE) `
+  - ? · L668 · ui · x1
+  - `text = "Backend: ${if (activeSpec.backend == OnDeviceBackend.AI_CORE) "Android AI Core" else "LiteRT-LM"}",`
+- ` else `
+  - ? · L668 · ui · x1
+  - `text = "Backend: ${if (activeSpec.backend == OnDeviceBackend.AI_CORE) "Android AI Core" else "LiteRT-LM"}",`
+- `ANDROID AI CORE`
+  - ? · L678 · tr · x2
+  - `text = tr("ANDROID AI CORE"),`
+- `Checking...`
+  - ? · L686 · ui · x2
+  - `var gemma4Status by remember { mutableStateOf("Checking...") }`
+- `Available and ready`
+  - ? · L697 · ui · x2
+  - `FeatureStatus.AVAILABLE -> "Available and ready"`
+- `Download needed`
+  - ? · L700 · tr · x4
+  - `tr("Download needed")`
+- `Downloading...`
+  - ? · L702 · ui · x4
+  - `FeatureStatus.DOWNLOADING -> "Downloading..."`
+- `Not supported on this device`
+  - ? · L703 · ui · x4
+  - `FeatureStatus.UNAVAILABLE -> "Not supported on this device"`
+- `Unknown`
+  - ? · L704 · ui · x2
+  - `else -> "Unknown"`
+- `Gemma 4`
+  - ? · L741 · tr · x2
+  - `AppText(tr("Gemma 4"), fontSize = 13.sp, color = TextPrimary, fontWeight = FontWeight.SemiBold)`
+- `Download complete`
+  - ? · L758 · ui · x2
+  - `gemma4Status = "Download complete"`
+- `下载失败：${e.localizedMessage}`
+  - ? · L760 · ui · x2
+  - `gemma4Status = "下载失败：${e.localizedMessage}"`
+- `Download Gemma 4 (AI Core)`
+  - ? · L768 · tr · x2
+  - `AppText(tr("Download Gemma 4 (AI Core)"), color = DarkBackground)`
+- `Gemma 3n Multimodal`
+  - ? · L780 · tr · x2
+  - `AppText(tr("Gemma 3n Multimodal"), fontSize = 13.sp, color = TextPrimary, fontWeight = FontWeight.SemiBold)`
+- `Download Gemma 3n (AI Core)`
+  - ? · L813 · tr · x2
+  - `AppText(tr("Download Gemma 3n (AI Core)"), color = DarkBackground)`
+- `HUGGING FACE TOKEN (GATED MODELS ONLY)`
+  - ? · L823 · tr · x2
+  - `text = tr("HUGGING FACE TOKEN (GATED MODELS ONLY)"),`
+- `Needed only for gated Hugging Face downloads (the Google-hosted Gemma 3n LiteRT builds). Public models such as Qwen 2.5 and the Gemma 4 community mirrors download without a token. Not used for cloud API providers.`
+  - ? · L831 · tr · x2
+  - `text = tr("Needed only for gated Hugging Face downloads (the Google-hosted Gemma 3n LiteRT builds). Public models such as Qwen 2.5 and the Gemma 4 community mir`
+- `Hugging Face Access Token`
+  - ? · L851 · tr · x2
+  - `label = { AppText(tr("Hugging Face Access Token"), fontSize = 12.sp) },`
+- `hf_...`
+  - ? · L854 · tr · x2
+  - `placeholder = { AppText(tr("hf_..."), fontSize = 12.sp, color = TextSecondary) },`
+- `Toggle Token Visibility`
+  - ? · L859 · tr · x2
+  - `contentDescription = tr("Toggle Token Visibility"),`
+- `📋 Paste`
+  - ? · L894 · tr · x2
+  - `AppText(tr("📋 Paste"), fontSize = 11.sp, color = Color(0xFFFF9800))`
+- `❌ Clear`
+  - ? · L901 · tr · x2
+  - `AppText(tr("❌ Clear"), fontSize = 11.sp, color = Color.Red)`
+- `✓ Token Valid`
+  - ? · L910 · ui · x1
+  - `"Valid" -> "✓ Token Valid"`
+- `✗ Invalid Token`
+  - ? · L911 · ui · x1
+  - `"Invalid" -> "✗ Invalid Token"`
+- `Checking token...`
+  - ? · L912 · ui · x1
+  - `"Verifying..." -> "Checking token..."`
+- `Unable to verify token.`
+  - ? · L913 · ui · x1
+  - `"Unable to verify" -> "Unable to verify token."`
+- `⚠ Token Required`
+  - ? · L914 · ui · x1
+  - `else -> "⚠ Token Required"`
+- `状态：$statusDisplay`
+  - ? · L931 · ui · x1
+  - `AppText("状态：$statusDisplay", fontSize = 11.sp, color = statusColor, fontWeight = FontWeight.Bold)`
+- `上次验证：$lastVerified`
+  - ? · L932 · ui · x1
+  - `AppText("上次验证：$lastVerified", fontSize = 9.sp, color = TextSecondary)`
+- `Storage: Encrypted`
+  - ? · L933 · tr · x2
+  - `AppText(tr("Storage: Encrypted"), fontSize = 9.sp, color = TextSecondary)`
+- `Validate Token`
+  - ? · L943 · tr · x2
+  - `AppText(tr("Validate Token"), fontSize = 10.sp, color = DarkBackground, fontWeight = FontWeight.Bold)`
+- `Remove Token`
+  - ? · L953 · tr · x2
+  - `AppText(tr("Remove Token"), fontSize = 10.sp, color = Color.Red, fontWeight = FontWeight.Bold)`
+- `LITERT-LM (FALLBACK)`
+  - ? · L967 · tr · x2
+  - `text = tr("LITERT-LM (FALLBACK)"),`
+- `Runs without Google AI Core. Models tagged PUBLIC (Qwen, the Gemma 4 community mirrors) need no HF token; models tagged GATED (the Google-hosted Gemma 3n builds) do. Or import your own .task / .litertlm file.`
+  - ? · L975 · tr · x2
+  - `text = tr("Runs without Google AI Core. Models tagged PUBLIC (Qwen, the Gemma 4 community mirrors) need no HF token; models tagged GATED (the Google-hosted Gemm`
+- `GATED · HF TOKEN`
+  - ? · L1050 · ui · x1
+  - `text = if (spec.authRequired) "GATED · HF TOKEN" else "PUBLIC · NO TOKEN",`
+- `PUBLIC · NO TOKEN`
+  - ? · L1050 · ui · x1
+  - `text = if (spec.authRequired) "GATED · HF TOKEN" else "PUBLIC · NO TOKEN",`
+- `Backend: LiteRT-LM · Gated Hugging Face download`
+  - ? · L1060 · tr · x2
+  - `tr("Backend: LiteRT-LM · Gated Hugging Face download")`
+- `Backend: LiteRT-LM · Public download (no token)`
+  - ? · L1062 · tr · x2
+  - `tr("Backend: LiteRT-LM · Public download (no token)")`
+- `Backend: LiteRT-LM · In-app download unavailable; local import only`
+  - ? · L1065 · tr · x2
+  - `tr("Backend: LiteRT-LM · In-app download unavailable; local import only")`
+- `需 API ${spec.minSdk}+`
+  - ? · L1082 · ui · x1
+  - `!isApiCompatible -> "需 API ${spec.minSdk}+"`
+- `Downloaded`
+  - ? · L1083 · ui · x1
+  - `status == ModelStatus.READY -> "Downloaded"`
+- `In-app unavailable`
+  - ? · L1084 · ui · x1
+  - `!managedDownloadAvailable -> "In-app unavailable"`
+- `${progress}%`
+  - ? · L1085 · ui · x1
+  - `status == ModelStatus.DOWNLOADING -> "${progress}%"`
+- `Paused`
+  - ? · L1086 · ui · x1
+  - `status == ModelStatus.PAUSED -> "Paused"`
+- `Loading...`
+  - ? · L1087 · ui · x1
+  - `status == ModelStatus.LOADING -> "Loading..."`
+- `Not Downloaded`
+  - ? · L1089 · ui · x1
+  - `else -> "Not Downloaded"`
+- `${formatBytes(downloadedSize)} / ${formatBytes(totalSize)}`
+  - ? · L1119 · ui · x1
+  - `text = "${formatBytes(downloadedSize)} / ${formatBytes(totalSize)}" +`
+- ` @ $speed`
+  - ? · L1120 · ui · x1
+  - `(if (status == ModelStatus.DOWNLOADING && speed.isNotEmpty()) " @ $speed" else ""),`
+- `预计剩余：$eta`
+  - ? · L1126 · ui · x1
+  - `text = "预计剩余：$eta",`
+- `Pause`
+  - ? · L1145 · tr · x4
+  - `Icon(Icons.Default.Pause, contentDescription = tr("Pause"), modifier = Modifier.size(12.dp), tint = TextPrimary)`
+- `Resume`
+  - ? · L1162 · tr · x6
+  - `Icon(Icons.Default.PlayArrow, contentDescription = tr("Resume"), modifier = Modifier.size(12.dp), tint = DarkBackground)`
+- `Download failed`
+  - ? · L1181 · ui · x1
+  - `val errorText = modelEntity?.etaString ?: "Download failed"`
+- `Open Model Page`
+  - ? · L1197 · tr · x2
+  - `AppText(tr("Open Model Page"), color = Color(0xFFFF9800), fontSize = 10.sp, fontWeight = FontWeight.Bold)`
+- `Download`
+  - ? · L1230 · tr · x4
+  - `AppText(tr("Download"), fontSize = 11.sp, color = DarkBackground)`
+- `Import`
+  - ? · L1244 · tr · x2
+  - `AppText(tr("Import"), fontSize = 11.sp, color = TextPrimary)`
+- `Load Model`
+  - ? · L1264 · ui · x2
+  - `AppText(if (config.activeModel == spec.id) "Active" else "Load Model", fontSize = 11.sp, color = DarkBackground)`
+- `Info`
+  - ? · L1285 · tr · x2
+  - `Icon(Icons.Default.Info, contentDescription = tr("Info"), modifier = Modifier.size(14.dp), tint = TextSecondary)`
+- `CUSTOM LITERT MODELS`
+  - ? · L1299 · tr · x2
+  - `text = tr("CUSTOM LITERT MODELS"),`
+- `Import any .task or .litertlm file as its own model (not tied to a catalog slot). GGUF is not supported yet.`
+  - ? · L1307 · tr · x2
+  - `text = tr("Import any .task or .litertlm file as its own model (not tied to a catalog slot). GGUF is not supported yet."),`
+- `Import custom LiteRT model`
+  - ? · L1321 · tr · x2
+  - `AppText(tr("Import custom LiteRT model"), fontSize = 12.sp, color = DarkBackground)`
+- `自定义 LiteRT · ${formatBytes(entity.size)} · 无需令牌`
+  - ? · L1362 · ui · x1
+  - `text = "自定义 LiteRT · ${formatBytes(entity.size)} · 无需令牌",`
+- `Ready`
+  - ? · L1368 · ui · x1
+  - `text = if (config.activeModel == entity.id) "Active" else "Ready",`
+- `STORAGE CLEANUP`
+  - ? · L1429 · tr · x2
+  - `text = tr("STORAGE CLEANUP"),`
+- `已用：${formatBytes(totalSpace - freeSpace)} / ${formatBytes(totalSpace)}`
+  - ? · L1447 · ui · x1
+  - `text = "已用：${formatBytes(totalSpace - freeSpace)} / ${formatBytes(totalSpace)}",`
+- `${((totalSpace - freeSpace) * 100 / (totalSpace.coerceAtLeast(1L)))}% 已用`
+  - ? · L1452 · ui · x1
+  - `text = "${((totalSpace - freeSpace) * 100 / (totalSpace.coerceAtLeast(1L)))}% 已用",`
+- `OpenDroid 模型占用了 ${formatBytes(usedByApp)} 的本机存储空间。`
+  - ? · L1469 · ui · x1
+  - `text = "OpenDroid 模型占用了 ${formatBytes(usedByApp)} 的本机存储空间。",`
+- `Delete Unused Models`
+  - ? · L1480 · tr · x2
+  - `AppText(tr("Delete Unused Models"), color = Color.White, fontSize = 11.sp, fontWeight = FontWeight.Bold)`
+- `COPILOT LOCAL ENDPOINT`
+  - ? · L1498 · tr · x2
+  - `text = tr("COPILOT LOCAL ENDPOINT"),`
+- `Copilot Server URL`
+  - ? · L1508 · tr · x2
+  - `label = { AppText(tr("Copilot Server URL"), fontSize = 12.sp) },`
+- `Use local LAN IP (e.g. http://192.168.1.50:4141) if testing from a physical Android device.`
+  - ? · L1520 · tr · x2
+  - `text = tr("Use local LAN IP (e.g. http://192.168.1.50:4141) if testing from a physical Android device."),`
+- `CUSTOM OPENAI ENDPOINT`
+  - ? · L1540 · tr · x2
+  - `text = tr("CUSTOM OPENAI ENDPOINT"),`
+- `Base URL (e.g. https://api.openai.com/v1)`
+  - ? · L1550 · tr · x2
+  - `label = { AppText(tr("Base URL (e.g. https://api.openai.com/v1)"), fontSize = 12.sp) },`
+- `Provide the custom OpenAI-compatible API base URL (e.g. from Pollination, Aqua Dev, Portkey, etc.)`
+  - ? · L1562 · tr · x2
+  - `text = tr("Provide the custom OpenAI-compatible API base URL (e.g. from Pollination, Aqua Dev, Portkey, etc.)"),`
+- `PROVIDER API KEYS`
+  - ? · L1588 · tr · x2
+  - `text = tr("PROVIDER API KEYS"),`
+- `Toggle Keys Section`
+  - ? · L1596 · tr · x2
+  - `contentDescription = tr("Toggle Keys Section"),`
+- `$providerName API 密钥`
+  - ? · L1613 · ui · x1
+  - `label = "$providerName API 密钥"`
+- `Test connection`
+  - ? · L1630 · tr · x2
+  - `AppText(tr("Test connection"), fontSize = 11.sp)`
+- `向 $providerName 发送一次最小请求；可能产生服务商费用。`
+  - ? · L1634 · ui · x1
+  - `text = "向 $providerName 发送一次最小请求；可能产生服务商费用。",`
+- `ELEVENLABS VOICE SYNTHESIS`
+  - ? · L1662 · tr · x2
+  - `text = tr("ELEVENLABS VOICE SYNTHESIS"),`
+- `Toggle Voice Section`
+  - ? · L1670 · tr · x2
+  - `contentDescription = tr("Toggle Voice Section"),`
+- `ElevenLabs API Key`
+  - ? · L1683 · ui · x1
+  - `label = "ElevenLabs API Key"`
+- `ElevenLabs Voice ID`
+  - ? · L1688 · tr · x2
+  - `label = { AppText(tr("ElevenLabs Voice ID"), fontSize = 12.sp) },`
+- `If ElevenLabs key is not set, OpenDroid automatically falls back to native offline Android Text-to-Speech.`
+  - ? · L1699 · tr · x2
+  - `text = tr("If ElevenLabs key is not set, OpenDroid automatically falls back to native offline Android Text-to-Speech."),`
+- `PLANNING & AUTOMATION`
+  - ? · L1726 · tr · x2
+  - `text = tr("PLANNING & AUTOMATION"),`
+- `Toggle Planning Section`
+  - ? · L1734 · tr · x2
+  - `contentDescription = tr("Toggle Planning Section"),`
+- `Auto Mode`
+  - ? · L1746 · tr · x2
+  - `text = tr("Auto Mode"),`
+- `Auto runs plans whose every step you've allowed. YOLO runs everything without asking.`
+  - ? · L1752 · tr · x2
+  - `text = tr("Auto runs plans whose every step you've allowed. YOLO runs everything without asking."),`
+- `Off`
+  - ? · L1775 · ui · x1
+  - `AutoMode.OFF -> "Off"`
+- `Auto`
+  - ? · L1776 · ui · x1
+  - `AutoMode.AUTO -> "Auto"`
+- `Enable YOLO mode?`
+  - ? · L1789 · tr · x2
+  - `title = { AppText(tr("Enable YOLO mode?"), color = AccentRed, fontWeight = FontWeight.Bold) },`
+- `YOLO runs EVERY plan without asking — including actions that `
+  - ? · L1792 · tr · x2
+  - `tr("YOLO runs EVERY plan without asking — including actions that ") +`
+- `spend money (UPI payments, food and cab orders) and irreversible `
+  - ? · L1793 · tr · x2
+  - `tr("spend money (UPI payments, food and cab orders) and irreversible ") +`
+- `ones (installing apps, deleting files, restarting the device). `
+  - ? · L1794 · tr · x2
+  - `tr("ones (installing apps, deleting files, restarting the device). ") +`
+- `No approval gate remains.`
+  - ? · L1795 · tr · x2
+  - `tr("No approval gate remains."),`
+- `I understand, enable`
+  - ? · L1803 · tr · x2
+  - `}) { AppText(tr("I understand, enable"), color = AccentRed) }`
+- `已允许的操作（${grantedActions.size}）`
+  - ? · L1816 · ui · x1
+  - `text = "已允许的操作（${grantedActions.size}）",`
+- `Default`
+  - ? · L1834 · ui · x1
+  - `text = if (grantedAt == 0L) "Default" else "授予于 ${dateFormat.format(java.util.Date(grantedAt))}",`
+- `授予于 ${dateFormat.format(java.util.Date(grantedAt))}`
+  - ? · L1834 · ui · x1
+  - `text = if (grantedAt == 0L) "Default" else "授予于 ${dateFormat.format(java.util.Date(grantedAt))}",`
+- `Revoke`
+  - ? · L1840 · tr · x4
+  - `AppText(tr("Revoke"), color = AccentRed, fontSize = 12.sp)`
+- `Multi-Agent Planning Mode`
+  - ? · L1861 · tr · x2
+  - `text = tr("Multi-Agent Planning Mode"),`
+- `Use critic and plan merger agents for safer, more robust plan generation.`
+  - ? · L1867 · tr · x2
+  - `text = tr("Use critic and plan merger agents for safer, more robust plan generation."),`
+- `Show Floating Button`
+  - ? · L1898 · tr · x2
+  - `text = tr("Show Floating Button"),`
+- `Show a tiny floating bubble to launch the app or record commands directly.`
+  - ? · L1904 · tr · x2
+  - `text = tr("Show a tiny floating bubble to launch the app or record commands directly."),`
+- `Dark Mode`
+  - ? · L1935 · ui · x1
+  - `text = if (config.isDarkMode) "Dark Mode" else "Light Mode",`
+- `Light Mode`
+  - ? · L1935 · ui · x1
+  - `text = if (config.isDarkMode) "Dark Mode" else "Light Mode",`
+- `Switch between dark and light appearance.`
+  - ? · L1941 · tr · x2
+  - `text = tr("Switch between dark and light appearance."),`
+- `🤖`
+  - ? · L1976 · tr · x1
+  - `AppText(tr("🤖"), fontSize = 22.sp)`
+- `AUTO-REPLY SETTINGS`
+  - ? · L1980 · tr · x2
+  - `text = tr("AUTO-REPLY SETTINGS"),`
+- `Configure AI auto-reply for WhatsApp, SMS & Email.`
+  - ? · L1988 · tr · x2
+  - `text = tr("Configure AI auto-reply for WhatsApp, SMS & Email."),`
+- `Go`
+  - ? · L1995 · tr · x20
+  - `contentDescription = tr("Go"),`
+- `NOTIFICATION HISTORY`
+  - ? · L2021 · tr · x2
+  - `text = tr("NOTIFICATION HISTORY"),`
+- `View captured notifications and auto-reply log.`
+  - ? · L2029 · tr · x2
+  - `text = tr("View captured notifications and auto-reply log."),`
+- `Review and grant microphone, storage, accessibility & other permissions.`
+  - ? · L2075 · tr · x2
+  - `text = tr("Review and grant microphone, storage, accessibility & other permissions."),`
+- `Detect repeated daily patterns & automate morning routines.`
+  - ? · L2116 · tr · x2
+  - `text = tr("Detect repeated daily patterns & automate morning routines."),`
+- `💥`
+  - ? · L2145 · tr · x1
+  - `AppText(tr("💥"), fontSize = 22.sp)`
+- `CRASH LOG`
+  - ? · L2149 · tr · x2
+  - `text = tr("CRASH LOG"),`
+- `View and share crashes recorded on this device.`
+  - ? · L2157 · tr · x2
+  - `text = tr("View and share crashes recorded on this device."),`
+- `Privacy Policy`
+  - ? · L2188 · tr · x2
+  - `contentDescription = tr("Privacy Policy"),`
+- `How OpenDroid handles your data and privacy.`
+  - ? · L2203 · tr · x2
+  - `text = tr("How OpenDroid handles your data and privacy."),`
+- `Terms of Use`
+  - ? · L2234 · tr · x4
+  - `contentDescription = tr("Terms of Use"),`
+- `TERMS OF USE`
+  - ? · L2241 · tr · x4
+  - `text = tr("TERMS OF USE"),`
+- `Usage terms and conditions for OpenDroid.`
+  - ? · L2249 · tr · x2
+  - `text = tr("Usage terms and conditions for OpenDroid."),`
+- `Help Center`
+  - ? · L2280 · tr · x2
+  - `contentDescription = tr("Help Center"),`
+- `Guides, FAQs, and troubleshooting.`
+  - ? · L2295 · tr · x2
+  - `text = tr("Guides, FAQs, and troubleshooting."),`
+- `Open-source license and third-party credits.`
+  - ? · L2341 · tr · x2
+  - `text = tr("Open-source license and third-party credits."),`
+- `About`
+  - ? · L2372 · tr · x2
+  - `contentDescription = tr("About"),`
+- `ABOUT OPENDROID`
+  - ? · L2379 · tr · x2
+  - `text = tr("ABOUT OPENDROID"),`
+- `Version info, features, and technology stack.`
+  - ? · L2387 · tr · x2
+  - `text = tr("Version info, features, and technology stack."),`
+- `SYSTEM INTEGRATION PERMISSIONS`
+  - ? · L2411 · tr · x2
+  - `text = tr("SYSTEM INTEGRATION PERMISSIONS"),`
+- `To allow OpenDroid to operate other applications autonomously (e.g. WhatsApp, Calendar), verify that the accessibility service 'OpenDroid' is active in Settings -> Accessibility -> Installed Services.`
+  - ? · L2419 · tr · x2
+  - `text = tr("To allow OpenDroid to operate other applications autonomously (e.g. WhatsApp, Calendar), verify that the accessibility service 'OpenDroid' is active `
+- `Authentication Required`
+  - ? · L2434 · tr · x2
+  - `title = { AppText(tr("Authentication Required"), color = TextPrimary) },`
+- `This model is gated on Hugging Face and needs an Access Token to download.\n\n`
+  - ? · L2437 · tr · x2
+  - `text = tr("This model is gated on Hugging Face and needs an Access Token to download.\n\n") +`
+- `Models tagged PUBLIC (for example Qwen 2.5 and the Gemma 4 community mirrors) do not need a token — only the ones tagged GATED do. `
+  - ? · L2438 · tr · x2
+  - `tr("Models tagged PUBLIC (for example Qwen 2.5 and the Gemma 4 community mirrors) do not need a token — only the ones tagged GATED do. ") +`
+- `Add a read-only token in the Hugging Face section above, or pick a PUBLIC model.`
+  - ? · L2439 · tr · x2
+  - `tr("Add a read-only token in the Hugging Face section above, or pick a PUBLIC model."),`
+- `Cellular Network Warning`
+  - ? · L2466 · tr · x4
+  - `title = { AppText(tr("Cellular Network Warning"), color = TextPrimary) },`
+- `You are downloading model on cellular network, data charges may apply.`
+  - ? · L2469 · tr · x4
+  - `text = tr("You are downloading model on cellular network, data charges may apply."),`
+- `Importing Model`
+  - ? · L2540 · ui · x1
+  - `isImporting -> "Importing Model"`
+- `Import Successful`
+  - ? · L2541 · ui · x1
+  - `isSuccess -> "Import Successful"`
+- `Import Failed`
+  - ? · L2542 · ui · x1
+  - `else -> "Import Failed"`
+- `Copying and verifying the model file. This may take a minute...`
+  - ? · L2553 · tr · x2
+  - `AppText(tr("Copying and verifying the model file. This may take a minute..."), color = TextSecondary)`
+- `The model was imported and verified successfully. You can now load it.`
+  - ? · L2556 · tr · x2
+  - `AppText(tr("The model was imported and verified successfully. You can now load it."), color = TextSecondary)`
+- `Failed to import model. Please make sure it is a valid LiteRT model file (.task or .litertlm) and is not corrupted.`
+  - ? · L2561 · ui · x1
+  - `?: "Failed to import model. Please make sure it is a valid LiteRT model file (.task or .litertlm) and is not corrupted.",`
+- `已连接：${state.model} · ${state.latencyMs} ms`
+  - connectionStatusLabel · L2588 · ui · x1
+  - `"已连接：${state.model} · ${state.latencyMs} ms"`
+- `Key rejected`
+  - connectionStatusLabel · L2590 · ui · x1
+  - `LLMError.AuthInvalid -> "Key rejected"`
+- `Connection failed`
+  - connectionStatusLabel · L2595 · ui · x1
+  - `else -> "Connection failed"`
+- `0 B`
+  - formatBytes · L2605 · ui · x1
+  - `if (bytes <= 0) return "0 B"`
+- `%.1f %s`
+  - formatBytes · L2610 · tr · x1
+  - `tr("%.1f %s"),`
+- `Hide API key`
+  - SecureApiKeyField · L2635 · ui · x1
+  - `contentDescription = if (visible) "Hide API key" else "Show API key",`
+- `Show API key`
+  - SecureApiKeyField · L2635 · ui · x1
+  - `contentDescription = if (visible) "Hide API key" else "Show API key",`
+
+## ui/screens/SocialScreen.kt  (13 条)
+
+- `Overview`
+  - SocialScreen · L69 · ui · x1
+  - `SocialTabItem("Overview", Icons.Default.Dashboard),`
+- `Accounts`
+  - SocialScreen · L70 · ui · x1
+  - `SocialTabItem("Accounts", Icons.Default.AccountCircle),`
+- `Inbox`
+  - SocialScreen · L71 · ui · x1
+  - `SocialTabItem("Inbox", Icons.Default.Inbox),`
+- `Content`
+  - SocialScreen · L72 · ui · x1
+  - `SocialTabItem("Content", Icons.Default.EditNote),`
+- `Calendar`
+  - SocialScreen · L73 · ui · x3
+  - `SocialTabItem("Calendar", Icons.Default.CalendarMonth),`
+- `Comments`
+  - SocialScreen · L74 · ui · x1
+  - `SocialTabItem("Comments", Icons.Default.ChatBubbleOutline),`
+- `Campaigns`
+  - SocialScreen · L75 · ui · x1
+  - `SocialTabItem("Campaigns", Icons.Default.Campaign),`
+- `Analytics`
+  - SocialScreen · L76 · ui · x3
+  - `SocialTabItem("Analytics", Icons.Default.BarChart),`
+- `Reports`
+  - SocialScreen · L77 · ui · x1
+  - `SocialTabItem("Reports", Icons.Default.Description),`
+- `Social Studio`
+  - SocialScreen · L128 · tr · x2
+  - `tr("Social Studio"),`
+- `${connectedAccounts.size} 个活跃频道 • ${automationLevel.displayName}`
+  - SocialScreen · L134 · ui · x1
+  - `"${connectedAccounts.size} 个活跃频道 • ${automationLevel.displayName}",`
+- `Sync`
+  - SocialScreen · L159 · tr · x2
+  - `contentDescription = tr("Sync"),`
+- `SocialTabTransition`
+  - SocialScreen · L222 · ui · x1
+  - `label = "SocialTabTransition"`
+
+## ui/screens/SplashScreen.kt  (3 条)
+
+- `OpenDroid Logo`
+  - SplashScreen · L118 · tr · x2
+  - `contentDescription = tr("OpenDroid Logo"),`
+- `Autonomous On-Device Intelligence`
+  - SplashScreen · L137 · tr · x2
+  - `text = tr("Autonomous On-Device Intelligence"),`
+- `SYSTEM ONLINE`
+  - SplashScreen · L164 · tr · x2
+  - `text = tr("SYSTEM ONLINE"),`
+
+## ui/screens/TermsOfUseScreen.kt  (54 条)
+
+- `Terms`
+  - TermsOfUseScreen · L84 · tr · x2
+  - `contentDescription = tr("Terms"),`
+- `Effective: May 2026`
+  - TermsOfUseScreen · L97 · tr · x2
+  - `text = tr("Effective: May 2026"),`
+- `1. ACCEPTANCE OF TERMS`
+  - TermsOfUseScreen · L108 · tr · x2
+  - `title = tr("1. ACCEPTANCE OF TERMS"),`
+- `By downloading, installing, or using OpenDroid (\"the App\"), you agree to be bound by these Terms of Use. `
+  - TermsOfUseScreen · L109 · ui · x1
+  - `content = "By downloading, installing, or using OpenDroid (\"the App\"), you agree to be bound by these Terms of Use. " +`
+- `If you do not agree to these terms, do not use the App.\n\n`
+  - TermsOfUseScreen · L110 · tr · x2
+  - `tr("If you do not agree to these terms, do not use the App.\n\n") +`
+- `OpenDroid is an open-source, autonomous AI assistant for Android. These terms govern your use of the App and all related services.`
+  - TermsOfUseScreen · L111 · tr · x2
+  - `tr("OpenDroid is an open-source, autonomous AI assistant for Android. These terms govern your use of the App and all related services.")`
+- `2. PERMITTED USE`
+  - TermsOfUseScreen · L117 · tr · x2
+  - `title = tr("2. PERMITTED USE"),`
+- `You may use OpenDroid for personal, non-commercial purposes including:\n\n`
+  - TermsOfUseScreen · L118 · ui · x1
+  - `content = "You may use OpenDroid for personal, non-commercial purposes including:\n\n" +`
+- `• Automating device tasks (messaging, calls, alarms, etc.)\n`
+  - TermsOfUseScreen · L119 · tr · x2
+  - `tr("• Automating device tasks (messaging, calls, alarms, etc.)\n") +`
+- `• Managing smart home devices\n`
+  - TermsOfUseScreen · L120 · tr · x2
+  - `tr("• Managing smart home devices\n") +`
+- `• Searching the web and retrieving information\n`
+  - TermsOfUseScreen · L121 · tr · x2
+  - `tr("• Searching the web and retrieving information\n") +`
+- `• File management and device control\n`
+  - TermsOfUseScreen · L122 · tr · x2
+  - `tr("• File management and device control\n") +`
+- `• Voice-activated commands\n\n`
+  - TermsOfUseScreen · L123 · tr · x2
+  - `tr("• Voice-activated commands\n\n") +`
+- `You agree NOT to use OpenDroid to:\n\n`
+  - TermsOfUseScreen · L124 · tr · x2
+  - `tr("You agree NOT to use OpenDroid to:\n\n") +`
+- `• Violate any laws or regulations\n`
+  - TermsOfUseScreen · L125 · tr · x2
+  - `tr("• Violate any laws or regulations\n") +`
+- `• Harass, spam, or harm other individuals\n`
+  - TermsOfUseScreen · L126 · tr · x2
+  - `tr("• Harass, spam, or harm other individuals\n") +`
+- `• Attempt to bypass device security or access unauthorized systems\n`
+  - TermsOfUseScreen · L127 · tr · x2
+  - `tr("• Attempt to bypass device security or access unauthorized systems\n") +`
+- `• Interfere with other applications in a harmful manner`
+  - TermsOfUseScreen · L128 · tr · x2
+  - `tr("• Interfere with other applications in a harmful manner")`
+- `3. API KEYS & THIRD-PARTY SERVICES`
+  - TermsOfUseScreen · L134 · tr · x2
+  - `title = tr("3. API KEYS & THIRD-PARTY SERVICES"),`
+- `OpenDroid connects to third-party LLM providers (Google Gemini, OpenAI, Anthropic, etc.) using API keys you provide.\n\n`
+  - TermsOfUseScreen · L135 · ui · x1
+  - `content = "OpenDroid connects to third-party LLM providers (Google Gemini, OpenAI, Anthropic, etc.) using API keys you provide.\n\n" +`
+- `• You are responsible for obtaining and managing your own API keys.\n`
+  - TermsOfUseScreen · L136 · tr · x2
+  - `tr("• You are responsible for obtaining and managing your own API keys.\n") +`
+- `• API key usage is subject to the respective provider's terms of service.\n`
+  - TermsOfUseScreen · L137 · tr · x2
+  - `tr("• API key usage is subject to the respective provider's terms of service.\n") +`
+- `• OpenDroid is not responsible for charges incurred through third-party API usage.\n`
+  - TermsOfUseScreen · L138 · tr · x2
+  - `tr("• OpenDroid is not responsible for charges incurred through third-party API usage.\n") +`
+- `• Your API keys are stored locally on your device using AES-256 encryption and are never transmitted to OpenDroid servers.`
+  - TermsOfUseScreen · L139 · tr · x2
+  - `tr("• Your API keys are stored locally on your device using AES-256 encryption and are never transmitted to OpenDroid servers.")`
+- `4. ACCESSIBILITY SERVICE`
+  - TermsOfUseScreen · L145 · tr · x2
+  - `title = tr("4. ACCESSIBILITY SERVICE"),`
+- `OpenDroid uses Android's Accessibility Service to perform on-screen automations on your behalf. `
+  - TermsOfUseScreen · L146 · ui · x1
+  - `content = "OpenDroid uses Android's Accessibility Service to perform on-screen automations on your behalf. " +`
+- `By enabling this service, you acknowledge that:\n\n`
+  - TermsOfUseScreen · L147 · tr · x2
+  - `tr("By enabling this service, you acknowledge that:\n\n") +`
+- `• The service can interact with other apps on your device\n`
+  - TermsOfUseScreen · L148 · tr · x2
+  - `tr("• The service can interact with other apps on your device\n") +`
+- `• It only acts when you explicitly give a command\n`
+  - TermsOfUseScreen · L149 · tr · x2
+  - `tr("• It only acts when you explicitly give a command\n") +`
+- `• You can disable it at any time from Android Settings\n`
+  - TermsOfUseScreen · L150 · tr · x2
+  - `tr("• You can disable it at any time from Android Settings\n") +`
+- `• OpenDroid does not use this service to collect or transmit data`
+  - TermsOfUseScreen · L151 · tr · x2
+  - `tr("• OpenDroid does not use this service to collect or transmit data")`
+- `5. DISCLAIMER OF WARRANTIES`
+  - TermsOfUseScreen · L157 · tr · x2
+  - `title = tr("5. DISCLAIMER OF WARRANTIES"),`
+- `OpenDroid is provided \"AS IS\" without warranties of any kind, either express or implied.\n\n`
+  - TermsOfUseScreen · L158 · ui · x1
+  - `content = "OpenDroid is provided \"AS IS\" without warranties of any kind, either express or implied.\n\n" +`
+- `• We do not guarantee uninterrupted or error-free operation.\n`
+  - TermsOfUseScreen · L159 · tr · x2
+  - `tr("• We do not guarantee uninterrupted or error-free operation.\n") +`
+- `• AI-generated responses may be inaccurate or incomplete.\n`
+  - TermsOfUseScreen · L160 · tr · x2
+  - `tr("• AI-generated responses may be inaccurate or incomplete.\n") +`
+- `• Automated actions may not execute as intended in all scenarios.\n`
+  - TermsOfUseScreen · L161 · tr · x2
+  - `tr("• Automated actions may not execute as intended in all scenarios.\n") +`
+- `• You assume all risks associated with using the App.`
+  - TermsOfUseScreen · L162 · tr · x2
+  - `tr("• You assume all risks associated with using the App.")`
+- `6. LIMITATION OF LIABILITY`
+  - TermsOfUseScreen · L168 · tr · x2
+  - `title = tr("6. LIMITATION OF LIABILITY"),`
+- `To the maximum extent permitted by law, the OpenDroid developers shall not be liable for any `
+  - TermsOfUseScreen · L169 · ui · x1
+  - `content = "To the maximum extent permitted by law, the OpenDroid developers shall not be liable for any " +`
+- `direct, indirect, incidental, special, or consequential damages arising from:\n\n`
+  - TermsOfUseScreen · L170 · tr · x2
+  - `tr("direct, indirect, incidental, special, or consequential damages arising from:\n\n") +`
+- `• Use or inability to use the App\n`
+  - TermsOfUseScreen · L171 · tr · x2
+  - `tr("• Use or inability to use the App\n") +`
+- `• Unauthorized access to your data\n`
+  - TermsOfUseScreen · L172 · tr · x2
+  - `tr("• Unauthorized access to your data\n") +`
+- `• Actions performed by the AI assistant\n`
+  - TermsOfUseScreen · L173 · tr · x2
+  - `tr("• Actions performed by the AI assistant\n") +`
+- `• Third-party service failures or charges`
+  - TermsOfUseScreen · L174 · tr · x2
+  - `tr("• Third-party service failures or charges")`
+- `7. OPEN SOURCE`
+  - TermsOfUseScreen · L180 · tr · x2
+  - `title = tr("7. OPEN SOURCE"),`
+- `OpenDroid is open-source software. You are free to view, modify, and distribute the source code `
+  - TermsOfUseScreen · L181 · ui · x1
+  - `content = "OpenDroid is open-source software. You are free to view, modify, and distribute the source code " +`
+- `in accordance with the project's license terms. Contributions to the project are welcome and governed by the project's contribution guidelines.`
+  - TermsOfUseScreen · L182 · tr · x2
+  - `tr("in accordance with the project's license terms. Contributions to the project are welcome and governed by the project's contribution guidelines.")`
+- `8. CHANGES TO TERMS`
+  - TermsOfUseScreen · L188 · tr · x2
+  - `title = tr("8. CHANGES TO TERMS"),`
+- `We may update these terms from time to time. Changes will be reflected in the App with an updated effective date. `
+  - TermsOfUseScreen · L189 · ui · x1
+  - `content = "We may update these terms from time to time. Changes will be reflected in the App with an updated effective date. " +`
+- `Continued use of OpenDroid after changes constitutes acceptance of the updated terms.`
+  - TermsOfUseScreen · L190 · tr · x2
+  - `tr("Continued use of OpenDroid after changes constitutes acceptance of the updated terms.")`
+- `9. CONTACT`
+  - TermsOfUseScreen · L196 · tr · x2
+  - `title = tr("9. CONTACT"),`
+- `For questions about these Terms of Use, please open an issue on our GitHub repository (yashab-cyber/opendroid) or contact the development team.\n\n`
+  - TermsOfUseScreen · L197 · ui · x1
+  - `content = "For questions about these Terms of Use, please open an issue on our GitHub repository (yashab-cyber/opendroid) or contact the development team.\n\n" `
+- `• Email: opendroid.ai@gmail.com\n`
+  - TermsOfUseScreen · L198 · tr · x2
+  - `tr("• Email: opendroid.ai@gmail.com\n") +`
+- `• Email: yashabalam707@gmail.com`
+  - TermsOfUseScreen · L199 · tr · x2
+  - `tr("• Email: yashabalam707@gmail.com")`
+
+## ui/screens/social/SocialAccountsTab.kt  (37 条)
+
+- `Hardware-Encrypted Credentials`
+  - SocialAccountsTab · L72 · tr · x2
+  - `tr("Hardware-Encrypted Credentials"),`
+- `All API tokens are stored in Android KeyStore (AES-256-GCM). Tokens are never logged or stored in plaintext.`
+  - SocialAccountsTab · L78 · tr · x2
+  - `tr("All API tokens are stored in Android KeyStore (AES-256-GCM). Tokens are never logged or stored in plaintext."),`
+- `Connected Platforms`
+  - SocialAccountsTab · L91 · tr · x2
+  - `tr("Connected Platforms"),`
+- `撤销对 ${account.platform.displayName} 的授权？`
+  - SocialAccountsTab · L128 · ui · x1
+  - `AppText("撤销对 ${account.platform.displayName} 的授权？", color = theme.textPrimary, fontWeight = FontWeight.Bold)`
+- `This will delete all hardware-encrypted cryptographic keys and credentials from Android KeyStore. Any active automated tasks for this platform will stop immediately.`
+  - SocialAccountsTab · L132 · tr · x2
+  - `tr("This will delete all hardware-encrypted cryptographic keys and credentials from Android KeyStore. Any active automated tasks for this platform will stop imm`
+- `Revoke & Purge`
+  - SocialAccountsTab · L145 · tr · x2
+  - `AppText(tr("Revoke & Purge"), color = Color.White, fontWeight = FontWeight.Bold)`
+- `@${account.username}`
+  - AccountCard · L210 · ui · x2
+  - `if (account.username.isNotBlank()) "@${account.username}" else account.displayName,`
+- `Not connected`
+  - AccountCard · L216 · tr · x2
+  - `tr("Not connected"),`
+- `Connect`
+  - AccountCard · L230 · tr · x2
+  - `AppText(tr("Connect"), color = Color.Black, fontSize = 12.sp, fontWeight = FontWeight.Bold)`
+- `Permissions:`
+  - AccountCard · L246 · tr · x2
+  - `AppText(tr("Permissions:"), color = theme.textSecondary, fontSize = 11.sp)`
+- `Synced `
+  - AccountCard · L270 · ui · x1
+  - `"Synced " + SimpleDateFormat("MMM d, HH:mm", Locale.getDefault()).format(Date(lastSync))`
+- `Not synced yet`
+  - AccountCard · L272 · tr · x2
+  - `tr("Not synced yet")`
+- `Disconnect`
+  - AccountCard · L281 · tr · x2
+  - `AppText(tr("Disconnect"), color = theme.textSecondary, fontSize = 11.sp)`
+- `Connected`
+  - StatusBadge · L301 · ui · x1
+  - `AccountStatus.CONNECTED -> Triple(theme.accentCyan.copy(alpha = 0.15f), theme.accentCyan, "Connected")`
+- `Offline`
+  - StatusBadge · L302 · ui · x1
+  - `AccountStatus.DISCONNECTED -> Triple(theme.surface, theme.textSecondary, "Offline")`
+- `Expired`
+  - StatusBadge · L303 · ui · x1
+  - `AccountStatus.EXPIRED -> Triple(theme.accentOrange.copy(alpha = 0.15f), theme.accentOrange, "Expired")`
+- `Reauth Needed`
+  - StatusBadge · L304 · ui · x1
+  - `AccountStatus.REAUTH_REQUIRED -> Triple(theme.accentOrange.copy(alpha = 0.15f), theme.accentOrange, "Reauth Needed")`
+- `Denied`
+  - StatusBadge · L305 · ui · x1
+  - `AccountStatus.PERMISSION_DENIED -> Triple(theme.accentRed.copy(alpha = 0.15f), theme.accentRed, "Denied")`
+- `Error`
+  - StatusBadge · L306 · ui · x1
+  - `AccountStatus.ERROR -> Triple(theme.accentRed.copy(alpha = 0.15f), theme.accentRed, "Error")`
+- `连接 ${platform.displayName}`
+  - ConnectAccountDialog · L345 · ui · x1
+  - `AppText("连接 ${platform.displayName}", color = theme.textPrimary, fontWeight = FontWeight.Bold)`
+- `Credentials will be encrypted with AES-256-GCM hardware keys.`
+  - ConnectAccountDialog · L353 · tr · x2
+  - `tr("Credentials will be encrypted with AES-256-GCM hardware keys."),`
+- `Use Sandbox Mock Mode`
+  - ConnectAccountDialog · L370 · tr · x2
+  - `AppText(tr("Use Sandbox Mock Mode"), color = theme.textPrimary, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)`
+- `Simulates live API without external accounts`
+  - ConnectAccountDialog · L371 · tr · x2
+  - `AppText(tr("Simulates live API without external accounts"), color = theme.textSecondary, fontSize = 10.sp)`
+- `Bot Token`
+  - ConnectAccountDialog · L377 · ui · x1
+  - `SocialPlatform.TELEGRAM -> "Bot Token"`
+- `Bot Token or Webhook URL`
+  - ConnectAccountDialog · L378 · ui · x1
+  - `SocialPlatform.DISCORD -> "Bot Token or Webhook URL"`
+- `Bearer Token / API Key`
+  - ConnectAccountDialog · L379 · ui · x1
+  - `SocialPlatform.X -> "Bearer Token / API Key"`
+- `OAuth Access Token`
+  - ConnectAccountDialog · L380 · ui · x1
+  - `SocialPlatform.LINKEDIN -> "OAuth Access Token"`
+- `Graph API Access Token`
+  - ConnectAccountDialog · L381 · ui · x1
+  - `SocialPlatform.INSTAGRAM -> "Graph API Access Token"`
+- `Page Access Token`
+  - ConnectAccountDialog · L382 · ui · x1
+  - `SocialPlatform.FACEBOOK -> "Page Access Token"`
+- `OAuth Token / API Key`
+  - ConnectAccountDialog · L383 · ui · x1
+  - `SocialPlatform.YOUTUBE -> "OAuth Token / API Key"`
+- `Chat ID / Channel ID`
+  - ConnectAccountDialog · L401 · ui · x1
+  - `val label2 = if (platform == SocialPlatform.TELEGRAM) "Chat ID / Channel ID" else "Channel ID (optional)"`
+- `Channel ID (optional)`
+  - ConnectAccountDialog · L401 · ui · x1
+  - `val label2 = if (platform == SocialPlatform.TELEGRAM) "Chat ID / Channel ID" else "Channel ID (optional)"`
+- `Granted Permissions:`
+  - ConnectAccountDialog · L418 · tr · x2
+  - `AppText(tr("Granted Permissions:"), color = theme.textPrimary, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)`
+- `mock_${platform.id}_acc`
+  - ConnectAccountDialog · L445 · ui · x1
+  - `accountId = "mock_${platform.id}_acc",`
+- `mock_${platform.id}_token`
+  - ConnectAccountDialog · L447 · ui · x1
+  - `accessToken = "mock_${platform.id}_token"`
+- `acc_${platform.id}`
+  - ConnectAccountDialog · L451 · ui · x1
+  - `accountId = "acc_${platform.id}",`
+- `Authorize & Connect`
+  - ConnectAccountDialog · L463 · tr · x2
+  - `AppText(tr("Authorize & Connect"), color = Color.Black, fontWeight = FontWeight.Bold)`
+
+## ui/screens/social/SocialAnalyticsTab.kt  (30 条)
+
+- `Performance Analytics`
+  - SocialAnalyticsTab · L59 · tr · x2
+  - `AppText(tr("Performance Analytics"), color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)`
+- `Followers`
+  - SocialAnalyticsTab · L84 · tr · x4
+  - `title = tr("Followers"),`
+- `+$it`
+  - SocialAnalyticsTab · L86 · ui · x4
+  - `delta = summary?.followersGrowthDelta?.let { if (it >= 0) "+$it" else "$it" } ?: "+0",`
+- `$it`
+  - SocialAnalyticsTab · L86 · ui · x4
+  - `delta = summary?.followersGrowthDelta?.let { if (it >= 0) "+$it" else "$it" } ?: "+0",`
+- `Total Reach`
+  - SocialAnalyticsTab · L90 · tr · x4
+  - `title = tr("Total Reach"),`
+- `Engagement`
+  - SocialAnalyticsTab · L104 · tr · x4
+  - `title = tr("Engagement"),`
+- `${String.format(`
+  - SocialAnalyticsTab · L105 · ui · x5
+  - `value = summary?.averageEngagementRate?.let { "${String.format("%.1f", it)}%" } ?: "0.0%",`
+- `, it)}%`
+  - SocialAnalyticsTab · L105 · ui · x2
+  - `value = summary?.averageEngagementRate?.let { "${String.format("%.1f", it)}%" } ?: "0.0%",`
+- `Total Posts`
+  - SocialAnalyticsTab · L110 · tr · x2
+  - `title = tr("Total Posts"),`
+- `Published`
+  - SocialAnalyticsTab · L112 · ui · x1
+  - `delta = "Published",`
+- `Audience Growth Trend`
+  - SocialAnalyticsTab · L127 · tr · x2
+  - `AppText(tr("Audience Growth Trend"), color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)`
+- `Daily follower trajectory over the period`
+  - SocialAnalyticsTab · L129 · tr · x2
+  - `AppText(tr("Daily follower trajectory over the period"), color = theme.textSecondary, fontSize = 11.sp)`
+- `Mon`
+  - SocialAnalyticsTab · L133 · ui · x1
+  - `val trendLabels = listOf("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")`
+- `Tue`
+  - SocialAnalyticsTab · L133 · ui · x1
+  - `val trendLabels = listOf("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")`
+- `Wed`
+  - SocialAnalyticsTab · L133 · ui · x1
+  - `val trendLabels = listOf("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")`
+- `Thu`
+  - SocialAnalyticsTab · L133 · ui · x1
+  - `val trendLabels = listOf("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")`
+- `Fri`
+  - SocialAnalyticsTab · L133 · ui · x1
+  - `val trendLabels = listOf("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")`
+- `Sat`
+  - SocialAnalyticsTab · L133 · ui · x1
+  - `val trendLabels = listOf("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")`
+- `Sun`
+  - SocialAnalyticsTab · L133 · ui · x1
+  - `val trendLabels = listOf("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")`
+- `Daily Impressions & Reach`
+  - SocialAnalyticsTab · L154 · tr · x2
+  - `AppText(tr("Daily Impressions & Reach"), color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)`
+- `Organic post visibility across all channels`
+  - SocialAnalyticsTab · L156 · tr · x2
+  - `AppText(tr("Organic post visibility across all channels"), color = theme.textSecondary, fontSize = 11.sp)`
+- `Audience Share by Platform`
+  - SocialAnalyticsTab · L181 · tr · x2
+  - `AppText(tr("Audience Share by Platform"), color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)`
+- `X (Twitter)`
+  - SocialAnalyticsTab · L203 · ui · x1
+  - `LegendItem("X (Twitter)", "45%", theme.accentCyan)`
+- `Telegram`
+  - SocialAnalyticsTab · L204 · ui · x1
+  - `LegendItem("Telegram", "25%", theme.accentPurple)`
+- `LinkedIn`
+  - SocialAnalyticsTab · L205 · ui · x1
+  - `LegendItem("LinkedIn", "20%", theme.accentOrange)`
+- `Discord / Others`
+  - SocialAnalyticsTab · L206 · ui · x1
+  - `LegendItem("Discord / Others", "10%", theme.textSecondary)`
+- `Channel Breakdown`
+  - SocialAnalyticsTab · L215 · tr · x2
+  - `AppText(tr("Channel Breakdown"), color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 15.sp)`
+- `No accounts connected yet.`
+  - SocialAnalyticsTab · L220 · tr · x2
+  - `AppText(tr("No accounts connected yet."), color = theme.textSecondary, fontSize = 12.sp)`
+- `${accountPosts.size} 篇帖子`
+  - SocialAnalyticsTab · L255 · ui · x1
+  - `AppText("${accountPosts.size} 篇帖子", color = theme.textPrimary, fontWeight = FontWeight.SemiBold, fontSize = 12.sp)`
+- `Active sync`
+  - SocialAnalyticsTab · L256 · tr · x2
+  - `AppText(tr("Active sync"), color = theme.accentCyan, fontSize = 10.sp)`
+
+## ui/screens/social/SocialCalendarTab.kt  (12 条)
+
+- `Schedule Horizon`
+  - SocialCalendarTab · L108 · tr · x2
+  - `AppText(tr("Schedule Horizon"), color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)`
+- `共 $totalScheduled 条排队`
+  - SocialCalendarTab · L110 · ui · x1
+  - `AppText("共 $totalScheduled 条排队", color = theme.accentCyan, fontSize = 11.sp, fontWeight = FontWeight.SemiBold)`
+- `Today's Schedule`
+  - SocialCalendarTab · L148 · ui · x1
+  - `if (selectedDay.isToday) "Today's Schedule" else "${selectedDay.dayOfWeek}, ${selectedDay.dayOfMonth}",`
+- `${selectedDay.dayOfWeek}, ${selectedDay.dayOfMonth}`
+  - SocialCalendarTab · L148 · ui · x1
+  - `if (selectedDay.isToday) "Today's Schedule" else "${selectedDay.dayOfWeek}, ${selectedDay.dayOfMonth}",`
+- `当天已排期 ${scheduledPosts.size} 篇帖子`
+  - SocialCalendarTab · L154 · ui · x1
+  - `"当天已排期 ${scheduledPosts.size} 篇帖子",`
+- `Schedule Post`
+  - SocialCalendarTab · L168 · tr · x2
+  - `AppText(tr("Schedule Post"), color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)`
+- `No Posts Scheduled`
+  - SocialCalendarTab · L189 · tr · x2
+  - `tr("No Posts Scheduled"),`
+- `Tap 'Schedule Post' to queue content for this date.`
+  - SocialCalendarTab · L196 · tr · x2
+  - `tr("Tap 'Schedule Post' to queue content for this date."),`
+- `APPROVAL NEEDED`
+  - ScheduledPostCard · L350 · tr · x2
+  - `AppText(tr("APPROVAL NEEDED"), color = theme.accentOrange, fontSize = 8.sp, fontWeight = FontWeight.Bold)`
+- `AUTO PUBLISH`
+  - ScheduledPostCard · L359 · tr · x2
+  - `AppText(tr("AUTO PUBLISH"), color = theme.accentCyan, fontSize = 8.sp, fontWeight = FontWeight.Bold)`
+- `Reschedule`
+  - ScheduledPostCard · L395 · tr · x2
+  - `AppText(tr("Reschedule"), color = theme.textPrimary, fontSize = 11.sp)`
+- `Publish Now`
+  - ScheduledPostCard · L404 · tr · x6
+  - `AppText(tr("Publish Now"), color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)`
+
+## ui/screens/social/SocialCampaignsTab.kt  (24 条)
+
+- `Campaign Strategies`
+  - SocialCampaignsTab · L57 · tr · x2
+  - `AppText(tr("Campaign Strategies"), color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)`
+- `Multi-day coordinated cross-platform campaigns`
+  - SocialCampaignsTab · L58 · tr · x2
+  - `AppText(tr("Multi-day coordinated cross-platform campaigns"), color = theme.textSecondary, fontSize = 11.sp)`
+- `New Campaign`
+  - SocialCampaignsTab · L69 · tr · x2
+  - `AppText(tr("New Campaign"), color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)`
+- `No Campaigns Created Yet`
+  - SocialCampaignsTab · L95 · tr · x2
+  - `tr("No Campaigns Created Yet"),`
+- `Launch an AI-generated multi-day marketing campaign with teaser, release, and follow-up posts scheduled automatically across your platforms.`
+  - SocialCampaignsTab · L102 · tr · x2
+  - `tr("Launch an AI-generated multi-day marketing campaign with teaser, release, and follow-up posts scheduled automatically across your platforms."),`
+- `Generate First Campaign`
+  - SocialCampaignsTab · L116 · tr · x2
+  - `AppText(tr("Generate First Campaign"), color = Color.Black, fontWeight = FontWeight.Bold, fontSize = 12.sp)`
+- `MMM d`
+  - CampaignCard · L144 · ui · x1
+  - `val timeFormat = SimpleDateFormat("MMM d", Locale.getDefault())`
+- `$startStr – $endStr`
+  - CampaignCard · L168 · ui · x1
+  - `AppText("$startStr – $endStr", color = theme.textSecondary, fontSize = 11.sp)`
+- `Timeline Progress`
+  - CampaignCard · L192 · tr · x2
+  - `AppText(tr("Timeline Progress"), color = theme.textSecondary, fontSize = 10.sp)`
+- `${(progress * 100).toInt()}%`
+  - CampaignCard · L193 · ui · x1
+  - `AppText("${(progress * 100).toInt()}%", color = theme.accentCyan, fontSize = 10.sp, fontWeight = FontWeight.Bold)`
+- `Platforms:`
+  - CampaignCard · L212 · tr · x2
+  - `AppText(tr("Platforms:"), color = theme.textSecondary, fontSize = 11.sp)`
+- `目标受众：${campaign.targetAudience}`
+  - CampaignCard · L229 · ui · x1
+  - `"目标受众：${campaign.targetAudience}",`
+- `ACTIVE`
+  - CampaignStatusBadge · L242 · ui · x1
+  - `CampaignStatus.ACTIVE -> theme.accentCyan to "ACTIVE"`
+- `PLANNING`
+  - CampaignStatusBadge · L243 · ui · x1
+  - `CampaignStatus.PLANNING -> theme.accentOrange to "PLANNING"`
+- `PAUSED`
+  - CampaignStatusBadge · L244 · ui · x1
+  - `CampaignStatus.PAUSED -> theme.textSecondary to "PAUSED"`
+- `AI Campaign Generator`
+  - CreateCampaignDialog · L279 · tr · x2
+  - `AppText(tr("AI Campaign Generator"), color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)`
+- `Campaign Name`
+  - CreateCampaignDialog · L290 · tr · x2
+  - `label = { AppText(tr("Campaign Name"), fontSize = 12.sp) },`
+- `e.g. OpenDroid v2.0 Global Launch`
+  - CreateCampaignDialog · L291 · tr · x2
+  - `placeholder = { AppText(tr("e.g. OpenDroid v2.0 Global Launch"), fontSize = 11.sp) },`
+- `Campaign Objective & Goals`
+  - CreateCampaignDialog · L305 · tr · x2
+  - `label = { AppText(tr("Campaign Objective & Goals"), fontSize = 12.sp) },`
+- `e.g. Highlight on-device privacy, fast responsiveness, and attract open source developers.`
+  - CreateCampaignDialog · L306 · tr · x2
+  - `placeholder = { AppText(tr("e.g. Highlight on-device privacy, fast responsiveness, and attract open source developers."), fontSize = 11.sp) },`
+- `时长：$durationDays 天`
+  - CreateCampaignDialog · L316 · ui · x1
+  - `AppText("时长：$durationDays 天", color = theme.textPrimary, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)`
+- `$days 天`
+  - CreateCampaignDialog · L322 · ui · x1
+  - `label = { AppText("$days 天", fontSize = 10.sp) },`
+- `Target Platforms:`
+  - CreateCampaignDialog · L331 · tr · x2
+  - `AppText(tr("Target Platforms:"), color = theme.textPrimary, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)`
+- `Generate Strategy`
+  - CreateCampaignDialog · L363 · tr · x2
+  - `AppText(tr("Generate Strategy"), color = Color.Black, fontWeight = FontWeight.Bold)`
+
+## ui/screens/social/SocialCommentsTab.kt  (19 条)
+
+- `未回复（${unansweredComments.size}）`
+  - SocialCommentsTab · L72 · ui · x1
+  - `label = { AppText("未回复（${unansweredComments.size}）", fontSize = 12.sp) },`
+- `全部评论（${comments.size}）`
+  - SocialCommentsTab · L82 · ui · x1
+  - `label = { AppText("全部评论（${comments.size}）", fontSize = 12.sp) },`
+- `All Platforms`
+  - SocialCommentsTab · L99 · tr · x2
+  - `label = { AppText(tr("All Platforms"), fontSize = 11.sp) },`
+- `${platform.displayName}（$count）`
+  - SocialCommentsTab · L113 · ui · x1
+  - `label = { AppText("${platform.displayName}（$count）", fontSize = 11.sp) },`
+- `All Caught Up!`
+  - SocialCommentsTab · L141 · ui · x1
+  - `if (showOnlyUnanswered) "All Caught Up!" else "No Comments Found",`
+- `No Comments Found`
+  - SocialCommentsTab · L141 · ui · x1
+  - `if (showOnlyUnanswered) "All Caught Up!" else "No Comments Found",`
+- `Every audience comment has been answered or reviewed.`
+  - SocialCommentsTab · L148 · ui · x1
+  - `if (showOnlyUnanswered) "Every audience comment has been answered or reviewed." else "No comments matching selected filter.",`
+- `No comments matching selected filter.`
+  - SocialCommentsTab · L148 · ui · x1
+  - `if (showOnlyUnanswered) "Every audience comment has been answered or reviewed." else "No comments matching selected filter.",`
+- `${comment.platform.displayName} • $timeFormatted`
+  - CommentReviewCard · L219 · ui · x1
+  - `"${comment.platform.displayName} • $timeFormatted",`
+- `Replied:`
+  - CommentReviewCard · L249 · tr · x2
+  - `AppText(tr("Replied:"), color = theme.textSecondary, fontSize = 10.sp, fontWeight = FontWeight.Bold)`
+- `Grounded AI Reply Draft`
+  - CommentReviewCard · L278 · tr · x2
+  - `AppText(tr("Grounded AI Reply Draft"), color = theme.accentCyan, fontSize = 11.sp, fontWeight = FontWeight.Bold)`
+- `Regenerate`
+  - CommentReviewCard · L285 · tr · x4
+  - `tr("Regenerate"),`
+- `Tap Regenerate or type custom reply...`
+  - CommentReviewCard · L304 · tr · x2
+  - `placeholder = { AppText(tr("Tap Regenerate or type custom reply..."), fontSize = 11.sp) },`
+- `Grounded strictly in verified OpenDroid facts. Anti-hallucination active.`
+  - CommentReviewCard · L317 · tr · x2
+  - `tr("Grounded strictly in verified OpenDroid facts. Anti-hallucination active."),`
+- `Ignore / Dismiss`
+  - CommentReviewCard · L336 · tr · x2
+  - `AppText(tr("Ignore / Dismiss"), color = theme.textSecondary, fontSize = 11.sp)`
+- `Approve & Reply`
+  - CommentReviewCard · L350 · tr · x2
+  - `AppText(tr("Approve & Reply"), color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)`
+- `PENDING`
+  - CommentStatusBadge · L362 · ui · x1
+  - `CommentReplyStatus.NONE -> theme.textSecondary to "PENDING"`
+- `SUGGESTED`
+  - CommentStatusBadge · L363 · ui · x1
+  - `CommentReplyStatus.SUGGESTED -> theme.accentOrange to "SUGGESTED"`
+- `APPROVED`
+  - CommentStatusBadge · L364 · ui · x1
+  - `CommentReplyStatus.APPROVED -> theme.accentCyan to "APPROVED"`
+
+## ui/screens/social/SocialContentTab.kt  (38 条)
+
+- `AI Content Composer`
+  - SocialContentTab · L101 · tr · x2
+  - `AppText(tr("AI Content Composer"), color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 15.sp)`
+- `Target Platform`
+  - SocialContentTab · L112 · tr · x2
+  - `AppText(tr("Target Platform"), color = theme.textSecondary, fontSize = 11.sp, fontWeight = FontWeight.Medium)`
+- `What would you like to post about?`
+  - SocialContentTab · L137 · tr · x2
+  - `label = { AppText(tr("What would you like to post about?"), fontSize = 12.sp) },`
+- `e.g. OpenDroid v2 release with local AI agent capabilities`
+  - SocialContentTab · L138 · tr · x2
+  - `placeholder = { AppText(tr("e.g. OpenDroid v2 release with local AI agent capabilities"), fontSize = 12.sp) },`
+- `Tone`
+  - SocialContentTab · L152 · tr · x2
+  - `AppText(tr("Tone"), color = theme.textSecondary, fontSize = 11.sp, fontWeight = FontWeight.Medium)`
+- `Generate Platform Post`
+  - SocialContentTab · L187 · tr · x2
+  - `AppText(tr("Generate Platform Post"), color = Color.Black, fontWeight = FontWeight.Bold, fontSize = 13.sp)`
+- `Draft Content`
+  - SocialContentTab · L200 · tr · x2
+  - `AppText(tr("Draft Content"), color = theme.textPrimary, fontWeight = FontWeight.SemiBold, fontSize = 13.sp)`
+- `${currentContent.length} / $maxLimit`
+  - SocialContentTab · L203 · ui · x1
+  - `"${currentContent.length} / $maxLimit",`
+- `Generated or custom post text appears here...`
+  - SocialContentTab · L216 · tr · x2
+  - `placeholder = { AppText(tr("Generated or custom post text appears here..."), fontSize = 12.sp) },`
+- `AI Modifiers`
+  - SocialContentTab · L228 · tr · x2
+  - `AppText(tr("AI Modifiers"), color = theme.textSecondary, fontSize = 11.sp, fontWeight = FontWeight.Medium)`
+- `Shorten`
+  - SocialContentTab · L236 · tr · x2
+  - `title = tr("Shorten"),`
+- `Expand`
+  - SocialContentTab · L247 · tr · x2
+  - `title = tr("Expand"),`
+- `Add CTA`
+  - SocialContentTab · L258 · tr · x2
+  - `title = tr("Add CTA"),`
+- `Clean Hashtags`
+  - SocialContentTab · L269 · tr · x2
+  - `title = tr("Clean Hashtags"),`
+- `Make Excited`
+  - SocialContentTab · L280 · tr · x2
+  - `title = tr("Make Excited"),`
+- `Save Draft`
+  - SocialContentTab · L311 · tr · x2
+  - `AppText(tr("Save Draft"), color = theme.textPrimary, fontSize = 12.sp)`
+- `Schedule`
+  - SocialContentTab · L321 · tr · x6
+  - `AppText(tr("Schedule"), color = theme.textPrimary, fontSize = 12.sp)`
+- `Post Now`
+  - SocialContentTab · L337 · tr · x2
+  - `AppText(tr("Post Now"), color = Color.Black, fontWeight = FontWeight.Bold, fontSize = 12.sp)`
+- `Post History & Queue`
+  - SocialContentTab · L351 · tr · x2
+  - `AppText(tr("Post History & Queue"), color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)`
+- `全部（${posts.size}）`
+  - SocialContentTab · L364 · ui · x1
+  - `label = { AppText("全部（${posts.size}）", fontSize = 11.sp) },`
+- `${status.name.lowercase().capitalize(Locale.ROOT)}（$count）`
+  - SocialContentTab · L377 · ui · x1
+  - `label = { AppText("${status.name.lowercase().capitalize(Locale.ROOT)}（$count）", fontSize = 11.sp) },`
+- `No posts found in this filter`
+  - SocialContentTab · L394 · tr · x2
+  - `AppText(tr("No posts found in this filter"), color = theme.textSecondary, fontSize = 13.sp)`
+- `Published `
+  - PostItemCard · L467 · ui · x1
+  - `post.publishedTime != null -> "Published " + timeFormat.format(Date(post.publishedTime))`
+- `Scheduled for `
+  - PostItemCard · L468 · ui · x1
+  - `post.scheduledPublishTime != null -> "Scheduled for " + timeFormat.format(Date(post.scheduledPublishTime))`
+- `Created `
+  - PostItemCard · L469 · ui · x1
+  - `else -> "Created " + timeFormat.format(Date(post.createdAt))`
+- `错误：${post.errorMessage}`
+  - PostItemCard · L514 · ui · x1
+  - `AppText("错误：${post.errorMessage}", color = theme.accentRed, fontSize = 11.sp)`
+- `PUBLISHED`
+  - PostStatusBadge · L589 · ui · x1
+  - `PostStatus.PUBLISHED -> theme.accentCyan to "PUBLISHED"`
+- `SCHEDULED`
+  - PostStatusBadge · L590 · ui · x2
+  - `PostStatus.SCHEDULED -> theme.accentCyan to "SCHEDULED"`
+- `DRAFT`
+  - PostStatusBadge · L591 · ui · x1
+  - `PostStatus.DRAFT -> theme.textSecondary to "DRAFT"`
+- `CANCELLED`
+  - PostStatusBadge · L593 · ui · x1
+  - `PostStatus.CANCELLED -> theme.textSecondary to "CANCELLED"`
+- `Schedule Post Time`
+  - ScheduleTimeDialog · L617 · tr · x2
+  - `title = { AppText(tr("Schedule Post Time"), color = theme.textPrimary, fontWeight = FontWeight.Bold) },`
+- `Select when this post should be automatically published:`
+  - ScheduleTimeDialog · L620 · tr · x2
+  - `AppText(tr("Select when this post should be automatically published:"), color = theme.textSecondary, fontSize = 12.sp)`
+- `In 1 hour`
+  - ScheduleTimeDialog · L623 · ui · x1
+  - `1 to "In 1 hour",`
+- `In 3 hours`
+  - ScheduleTimeDialog · L624 · ui · x1
+  - `3 to "In 3 hours",`
+- `In 6 hours`
+  - ScheduleTimeDialog · L625 · ui · x1
+  - `6 to "In 6 hours",`
+- `In 12 hours`
+  - ScheduleTimeDialog · L626 · ui · x1
+  - `12 to "In 12 hours",`
+- `Tomorrow (24 hours)`
+  - ScheduleTimeDialog · L627 · ui · x1
+  - `24 to "Tomorrow (24 hours)",`
+- `In 2 days`
+  - ScheduleTimeDialog · L628 · ui · x1
+  - `48 to "In 2 days"`
+
+## ui/screens/social/SocialInboxTab.kt  (17 条)
+
+- `全部（${interactions.size}）`
+  - SocialInboxTab · L70 · ui · x1
+  - `label = { AppText("全部（${interactions.size}）", fontSize = 12.sp) },`
+- `${cat.name.replace('_', ' ')}（$count）`
+  - SocialInboxTab · L84 · ui · x1
+  - `label = { AppText("${cat.name.replace('_', ' ')}（$count）", fontSize = 11.sp) },`
+- `Inbox is Clean`
+  - SocialInboxTab · L111 · tr · x2
+  - `tr("Inbox is Clean"),`
+- `No pending notifications, mentions, or messages.`
+  - SocialInboxTab · L118 · tr · x2
+  - `tr("No pending notifications, mentions, or messages."),`
+- `在 ${interaction.platform.displayName} 上回复`
+  - SocialInboxTab · L146 · ui · x1
+  - `"在 ${interaction.platform.displayName} 上回复",`
+- `${interaction.authorName}：\"${interaction.content}\"`
+  - SocialInboxTab · L157 · ui · x1
+  - `"${interaction.authorName}：\"${interaction.content}\"",`
+- `Your Reply`
+  - SocialInboxTab · L166 · tr · x2
+  - `label = { AppText(tr("Your Reply"), fontSize = 12.sp) },`
+- `Send Reply`
+  - SocialInboxTab · L186 · tr · x2
+  - `AppText(tr("Send Reply"), color = Color.Black, fontWeight = FontWeight.Bold)`
+- `User`
+  - InteractionCard · L238 · ui · x1
+  - `interaction.authorName.ifBlank { "User" },`
+- `${interaction.category.name} • $timeFormatted`
+  - InteractionCard · L247 · ui · x1
+  - `"${interaction.category.name} • $timeFormatted",`
+- `建议：\"${interaction.suggestedAction}\"`
+  - InteractionCard · L286 · ui · x1
+  - `"建议：\"${interaction.suggestedAction}\"",`
+- `Resolve`
+  - InteractionCard · L317 · tr · x2
+  - `AppText(tr("Resolve"), color = theme.textPrimary, fontSize = 11.sp)`
+- `Reply`
+  - InteractionCard · L326 · tr · x2
+  - `AppText(tr("Reply"), color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)`
+- `URGENT`
+  - PriorityBadge · L338 · ui · x1
+  - `InteractionPriority.URGENT -> theme.accentRed to "URGENT"`
+- `HIGH`
+  - PriorityBadge · L339 · ui · x1
+  - `InteractionPriority.HIGH -> theme.accentOrange to "HIGH"`
+- `NORMAL`
+  - PriorityBadge · L340 · ui · x1
+  - `InteractionPriority.NORMAL -> theme.accentCyan to "NORMAL"`
+- `UNREAD`
+  - InteractionStatusBadge · L358 · ui · x2
+  - `"UNREAD" -> theme.accentCyan to "UNREAD"`
+
+## ui/screens/social/SocialOverviewTab.kt  (20 条)
+
+- `Scheduled`
+  - SocialOverviewTab · L85 · tr · x2
+  - `title = tr("Scheduled"),`
+- `Queue`
+  - SocialOverviewTab · L87 · ui · x1
+  - `delta = "Queue",`
+- `AI SOCIAL INSIGHTS`
+  - SocialOverviewTab · L117 · tr · x2
+  - `text = tr("AI SOCIAL INSIGHTS"),`
+- `Grounded Analysis`
+  - SocialOverviewTab · L125 · tr · x2
+  - `text = tr("Grounded Analysis"),`
+- `💡 ${topInsight.calculatedInsight}`
+  - SocialOverviewTab · L136 · ui · x1
+  - `text = "💡 ${topInsight.calculatedInsight}",`
+- `观测数据：${topInsight.observedData}`
+  - SocialOverviewTab · L143 · ui · x1
+  - `text = "观测数据：${topInsight.observedData}",`
+- `👉 建议：${topInsight.aiRecommendation}`
+  - SocialOverviewTab · L155 · ui · x1
+  - `text = "👉 建议：${topInsight.aiRecommendation}",`
+- `Analyzing historical records... Connect accounts to generate tailored strategies.`
+  - SocialOverviewTab · L163 · tr · x2
+  - `text = tr("Analyzing historical records... Connect accounts to generate tailored strategies."),`
+- `Recent Activity & Inbox`
+  - SocialOverviewTab · L175 · tr · x2
+  - `title = tr("Recent Activity & Inbox"),`
+- `View All`
+  - SocialOverviewTab · L176 · tr · x2
+  - `actionLabel = tr("View All"),`
+- `No recent social activity recorded.`
+  - SocialOverviewTab · L188 · tr · x2
+  - `AppText(tr("No recent social activity recorded."), color = theme.textSecondary, fontSize = 13.sp)`
+- `Upcoming Content`
+  - SocialOverviewTab · L229 · tr · x2
+  - `title = tr("Upcoming Content"),`
+- `No upcoming scheduled posts. Create one in Content Composer!`
+  - SocialOverviewTab · L242 · tr · x2
+  - `AppText(tr("No upcoming scheduled posts. Create one in Content Composer!"), color = theme.textSecondary, fontSize = 12.sp)`
+- `NEEDS APPROVAL`
+  - SocialOverviewTab · L259 · ui · x1
+  - `AppText(if (post.requiresApproval) "NEEDS APPROVAL" else "SCHEDULED", fontSize = 10.sp, color = theme.textSecondary)`
+- `Approve Post`
+  - SocialOverviewTab · L271 · tr · x2
+  - `AppText(tr("Approve Post"), fontSize = 12.sp, fontWeight = FontWeight.Bold)`
+- `Top Performing Posts`
+  - SocialOverviewTab · L283 · tr · x2
+  - `title = tr("Top Performing Posts"),`
+- `触达 ${post.reach}`
+  - SocialOverviewTab · L300 · ui · x1
+  - `AppText("触达 ${post.reach}", fontSize = 11.sp, fontWeight = FontWeight.Bold, color = theme.textPrimary)`
+- `, post.engagementRate)}% engage`
+  - SocialOverviewTab · L301 · ui · x1
+  - `AppText("${String.format("%.1f", post.engagementRate)}% engage", fontSize = 10.sp, color = theme.textSecondary)`
+- `, count / 1_000_000f)}M`
+  - formatCount · L369 · ui · x1
+  - `count >= 1_000_000 -> "${String.format("%.1f", count / 1_000_000f)}M"`
+- `, count / 1_000f)}K`
+  - formatCount · L370 · ui · x1
+  - `count >= 1_000 -> "${String.format("%.1f", count / 1_000f)}K"`
+
+## ui/screens/social/SocialReportsTab.kt  (26 条)
+
+- `${timeFormat.format(Date(weeklyReport.startDate))} – ${timeFormat.format(Date(weeklyReport.endDate))}`
+  - SocialReportsTab · L50 · ui · x1
+  - `"${timeFormat.format(Date(weeklyReport.startDate))} – ${timeFormat.format(Date(weeklyReport.endDate))}"`
+- `Current Week`
+  - SocialReportsTab · L52 · tr · x2
+  - `tr("Current Week")`
+- `📊 OPENDROID SOCIAL EXECUTIVE REPORT`
+  - SocialReportsTab · L56 · ui · x1
+  - `appendLine("📊 OPENDROID SOCIAL EXECUTIVE REPORT")`
+- `周期：$dateRange`
+  - SocialReportsTab · L57 · ui · x1
+  - `appendLine("周期：$dateRange")`
+- `• 已发布帖子总数：${r.totalPostsPublished}`
+  - SocialReportsTab · L60 · ui · x1
+  - `appendLine("• 已发布帖子总数：${r.totalPostsPublished}")`
+- `• 总触达：${r.totalReach}`
+  - SocialReportsTab · L61 · ui · x1
+  - `appendLine("• 总触达：${r.totalReach}")`
+- `• 平均互动率：${r.averageEngagementRate}%`
+  - SocialReportsTab · L62 · ui · x1
+  - `appendLine("• 平均互动率：${r.averageEngagementRate}%")`
+- `• 粉丝增长：+${r.totalFollowersDelta}`
+  - SocialReportsTab · L63 · ui · x1
+  - `appendLine("• 粉丝增长：+${r.totalFollowersDelta}")`
+- `Executive Summary:`
+  - SocialReportsTab · L65 · ui · x1
+  - `appendLine("Executive Summary:")`
+- `AI Strategic Recommendations:`
+  - SocialReportsTab · L68 · ui · x1
+  - `appendLine("AI Strategic Recommendations:")`
+- `${i + 1}. $rec`
+  - SocialReportsTab · L70 · ui · x1
+  - `appendLine("${i + 1}. $rec")`
+- `Executive Weekly Report`
+  - SocialReportsTab · L95 · tr · x2
+  - `AppText(tr("Executive Weekly Report"), color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)`
+- `Social Report`
+  - SocialReportsTab · L117 · ui · x1
+  - `val clip = ClipData.newPlainText("Social Report", reportText)`
+- `Report copied to clipboard`
+  - SocialReportsTab · L119 · tr · x2
+  - `Toast.makeText(context, tr("Report copied to clipboard"), Toast.LENGTH_SHORT).show()`
+- `Copy Text`
+  - SocialReportsTab · L127 · tr · x2
+  - `AppText(tr("Copy Text"), color = theme.textPrimary, fontSize = 12.sp)`
+- `Share Social Report`
+  - SocialReportsTab · L137 · ui · x1
+  - `context.startActivity(Intent.createChooser(shareIntent, "Share Social Report"))`
+- `Share Report`
+  - SocialReportsTab · L145 · tr · x2
+  - `AppText(tr("Share Report"), color = Color.Black, fontSize = 12.sp, fontWeight = FontWeight.Bold)`
+- `Executive Overview`
+  - SocialReportsTab · L161 · tr · x2
+  - `AppText(tr("Executive Overview"), color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)`
+- `Data is being aggregated from connected platforms. Insights will refresh automatically as activity logs accrue.`
+  - SocialReportsTab · L164 · ui · x1
+  - `weeklyReport?.aiSummary ?: "Data is being aggregated from connected platforms. Insights will refresh automatically as activity logs accrue.",`
+- `Actionable Recommendations`
+  - SocialReportsTab · L185 · tr · x2
+  - `AppText(tr("Actionable Recommendations"), color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)`
+- `Increase X posting frequency between 14:00 - 17:00 UTC for optimal developer engagement.`
+  - SocialReportsTab · L191 · tr · x2
+  - `tr("Increase X posting frequency between 14:00 - 17:00 UTC for optimal developer engagement."),`
+- `Publish community updates to Telegram 15 minutes before global platform posts.`
+  - SocialReportsTab · L192 · tr · x2
+  - `tr("Publish community updates to Telegram 15 minutes before global platform posts."),`
+- `Add explicit Call-To-Action buttons on high-performing announcements to drive GitHub stars.`
+  - SocialReportsTab · L193 · tr · x2
+  - `tr("Add explicit Call-To-Action buttons on high-performing announcements to drive GitHub stars.")`
+- `${index + 1}.`
+  - SocialReportsTab · L202 · ui · x1
+  - `"${index + 1}.",`
+- `Grounded Insights Verification`
+  - SocialReportsTab · L230 · tr · x2
+  - `AppText(tr("Grounded Insights Verification"), color = theme.textPrimary, fontWeight = FontWeight.SemiBold, fontSize = 13.sp)`
+- `OpenDroid strictly distinguishes between Observed Metrics, Calculated Insights, and Strategic Suggestions to eliminate hallucinations.`
+  - SocialReportsTab · L233 · tr · x2
+  - `tr("OpenDroid strictly distinguishes between Observed Metrics, Calculated Insights, and Strategic Suggestions to eliminate hallucinations."),`
+
+## ui/screens/social/SocialSettingsTab.kt  (28 条)
+
+- `Automation Guardrails`
+  - SocialSettingsTab · L55 · tr · x2
+  - `AppText(tr("Automation Guardrails"), color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)`
+- `Configure autonomy boundaries and approval workflows.`
+  - SocialSettingsTab · L56 · tr · x2
+  - `AppText(tr("Configure autonomy boundaries and approval workflows."), color = theme.textSecondary, fontSize = 11.sp)`
+- `Safe Mode (Draft Only)`
+  - SocialSettingsTab · L64 · tr · x2
+  - `title = tr("Safe Mode (Draft Only)"),`
+- `AI creates drafts only. Every post, schedule, and reply requires explicit user confirmation.`
+  - SocialSettingsTab · L65 · tr · x2
+  - `subtitle = tr("AI creates drafts only. Every post, schedule, and reply requires explicit user confirmation."),`
+- `Approval Required (Balanced)`
+  - SocialSettingsTab · L72 · tr · x2
+  - `title = tr("Approval Required (Balanced)"),`
+- `Low-risk comments and routine summaries run autonomously. All new posts and sensitive replies require your approval.`
+  - SocialSettingsTab · L73 · tr · x2
+  - `subtitle = tr("Low-risk comments and routine summaries run autonomously. All new posts and sensitive replies require your approval."),`
+- `Autonomous Mode (Full Agent)`
+  - SocialSettingsTab · L80 · tr · x2
+  - `title = tr("Autonomous Mode (Full Agent)"),`
+- `Approved campaigns, scheduled queue, and high-confidence comment replies publish automatically based on rules.`
+  - SocialSettingsTab · L81 · tr · x2
+  - `subtitle = tr("Approved campaigns, scheduled queue, and high-confidence comment replies publish automatically based on rules."),`
+- `Custom Automation Rules`
+  - SocialSettingsTab · L96 · tr · x2
+  - `AppText(tr("Custom Automation Rules"), color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)`
+- `Custom trigger criteria and confidence gates`
+  - SocialSettingsTab · L97 · tr · x2
+  - `AppText(tr("Custom trigger criteria and confidence gates"), color = theme.textSecondary, fontSize = 11.sp)`
+- `Add Rule`
+  - SocialSettingsTab · L108 · tr · x2
+  - `AppText(tr("Add Rule"), color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)`
+- `No custom rules defined yet. Default guardrails are active.`
+  - SocialSettingsTab · L122 · tr · x2
+  - `AppText(tr("No custom rules defined yet. Default guardrails are active."), color = theme.textSecondary, fontSize = 12.sp)`
+- `Security & Audit Trail`
+  - SocialSettingsTab · L139 · tr · x2
+  - `AppText(tr("Security & Audit Trail"), color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)`
+- `Hardware-isolated cryptographic logs and agent activity`
+  - SocialSettingsTab · L140 · tr · x2
+  - `AppText(tr("Hardware-isolated cryptographic logs and agent activity"), color = theme.textSecondary, fontSize = 11.sp)`
+- `Android KeyStore Protected`
+  - SocialSettingsTab · L160 · tr · x2
+  - `AppText(tr("Android KeyStore Protected"), color = theme.textPrimary, fontWeight = FontWeight.SemiBold, fontSize = 13.sp)`
+- `AES-256-GCM AEAD encrypted. Strict zero-plaintext policy.`
+  - SocialSettingsTab · L161 · tr · x2
+  - `AppText(tr("AES-256-GCM AEAD encrypted. Strict zero-plaintext policy."), color = theme.textSecondary, fontSize = 11.sp)`
+- `No recent audit log entries.`
+  - SocialSettingsTab · L169 · tr · x2
+  - `AppText(tr("No recent audit log entries."), color = theme.textSecondary, fontSize = 12.sp)`
+- `触发：${rule.triggerType} • 操作：${rule.actionType}`
+  - RuleCard · L270 · ui · x1
+  - `"触发：${rule.triggerType} • 操作：${rule.actionType}",`
+- `置信度阈值：${(rule.confidenceThreshold * 100).toInt()}%`
+  - RuleCard · L276 · ui · x1
+  - `"置信度阈值：${(rule.confidenceThreshold * 100).toInt()}%",`
+- `Delete Rule`
+  - RuleCard · L285 · tr · x2
+  - `tr("Delete Rule"),`
+- ` • ${p.displayName}`
+  - AuditLogItem · L321 · ui · x1
+  - `AppText(" • ${p.displayName}", color = theme.accentCyan, fontSize = 10.sp)`
+- `SENTIMENT_POSITIVE`
+  - AddRuleDialog · L339 · ui · x1
+  - `var selectedTrigger by remember { mutableStateOf("SENTIMENT_POSITIVE") }`
+- `AUTO_REPLY`
+  - AddRuleDialog · L340 · ui · x1
+  - `var selectedAction by remember { mutableStateOf("AUTO_REPLY") }`
+- `Add Automation Rule`
+  - AddRuleDialog · L346 · tr · x2
+  - `title = { AppText(tr("Add Automation Rule"), color = theme.textPrimary, fontWeight = FontWeight.Bold) },`
+- `Rule Name`
+  - AddRuleDialog · L352 · tr · x2
+  - `label = { AppText(tr("Rule Name"), fontSize = 12.sp) },`
+- `e.g. Auto reply to positive comments`
+  - AddRuleDialog · L353 · tr · x2
+  - `placeholder = { AppText(tr("e.g. Auto reply to positive comments"), fontSize = 11.sp) },`
+- `置信度阈值：${(confidence * 100).toInt()}%`
+  - AddRuleDialog · L364 · ui · x1
+  - `AppText("置信度阈值：${(confidence * 100).toInt()}%", color = theme.textPrimary, fontSize = 12.sp)`
+- `Save Rule`
+  - AddRuleDialog · L399 · tr · x2
+  - `AppText(tr("Save Rule"), color = Color.Black, fontWeight = FontWeight.Bold)`
+
+## i18n/AppText.kt  (1 条)
+
+- `...`
+  - ? · L23 · tr · x1
+  - `* 与 [tr] 的区别：`tr("...")` 只能翻译**字面量**；而界面里很多文案是**计算出来的**`
+
+## core/service/OpenDroidService.kt  (3 条)
+
+- `OpenDroid Agent Service`
+  - createNotificationChannel · L254 · tr · x1
+  - `tr("OpenDroid Agent Service"),`
+- `OpenDroid Active`
+  - createNotification · L265 · tr · x1
+  - `.setContentTitle(tr("OpenDroid Active"))`
+- `Listening for wake word 'OpenDroid'`
+  - createNotification · L266 · tr · x1
+  - `.setContentText(tr("Listening for wake word 'OpenDroid'"))`
+
+## core/llm/ModelDownloadForegroundInfoFactory.kt  (3 条)
+
+- `Model download in progress`
+  - create · L38 · tr · x1
+  - `.setContentTitle(tr("Model download in progress"))`
+- `OpenDroid is downloading an on-device model.`
+  - create · L39 · tr · x1
+  - `.setContentText(tr("OpenDroid is downloading an on-device model."))`
+- `Model downloads`
+  - createNotificationChannel · L67 · tr · x1
+  - `tr("Model downloads"),`

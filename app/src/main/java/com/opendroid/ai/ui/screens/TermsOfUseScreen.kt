@@ -1,4 +1,11 @@
+// Modified by opendroid-cn (Chinese localization fork): UI strings routed through i18n.tr(). See NOTICE.
 package com.opendroid.ai.ui.screens
+
+
+
+import com.opendroid.ai.i18n.tr
+
+import com.opendroid.ai.i18n.AppText
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -27,8 +34,8 @@ fun TermsOfUseScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(
-                        text = "TERMS OF USE",
+                    AppText(
+                        text = tr("TERMS OF USE"),
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
                         color = TextPrimary,
@@ -40,7 +47,7 @@ fun TermsOfUseScreen(
                     IconButton(onClick = onNavigateBack) {
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
-                            contentDescription = "Back",
+                            contentDescription = tr("Back"),
                             tint = TextPrimary
                         )
                     }
@@ -74,20 +81,20 @@ fun TermsOfUseScreen(
                     ) {
                         Icon(
                             imageVector = Icons.Default.Description,
-                            contentDescription = "Terms",
+                            contentDescription = tr("Terms"),
                             tint = AccentCyan,
                             modifier = Modifier.size(32.dp)
                         )
                         Spacer(modifier = Modifier.width(12.dp))
                         Column {
-                            Text(
-                                text = "Terms of Use",
+                            AppText(
+                                text = tr("Terms of Use"),
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold,
                                 color = TextPrimary
                             )
-                            Text(
-                                text = "Effective: May 2026",
+                            AppText(
+                                text = tr("Effective: May 2026"),
                                 fontSize = 12.sp,
                                 color = TextSecondary
                             )
@@ -98,98 +105,98 @@ fun TermsOfUseScreen(
 
             item {
                 PolicySection(
-                    title = "1. ACCEPTANCE OF TERMS",
+                    title = tr("1. ACCEPTANCE OF TERMS"),
                     content = "By downloading, installing, or using OpenDroid (\"the App\"), you agree to be bound by these Terms of Use. " +
-                            "If you do not agree to these terms, do not use the App.\n\n" +
-                            "OpenDroid is an open-source, autonomous AI assistant for Android. These terms govern your use of the App and all related services."
+                            tr("If you do not agree to these terms, do not use the App.\n\n") +
+                            tr("OpenDroid is an open-source, autonomous AI assistant for Android. These terms govern your use of the App and all related services.")
                 )
             }
 
             item {
                 PolicySection(
-                    title = "2. PERMITTED USE",
+                    title = tr("2. PERMITTED USE"),
                     content = "You may use OpenDroid for personal, non-commercial purposes including:\n\n" +
-                            "• Automating device tasks (messaging, calls, alarms, etc.)\n" +
-                            "• Managing smart home devices\n" +
-                            "• Searching the web and retrieving information\n" +
-                            "• File management and device control\n" +
-                            "• Voice-activated commands\n\n" +
-                            "You agree NOT to use OpenDroid to:\n\n" +
-                            "• Violate any laws or regulations\n" +
-                            "• Harass, spam, or harm other individuals\n" +
-                            "• Attempt to bypass device security or access unauthorized systems\n" +
-                            "• Interfere with other applications in a harmful manner"
+                            tr("• Automating device tasks (messaging, calls, alarms, etc.)\n") +
+                            tr("• Managing smart home devices\n") +
+                            tr("• Searching the web and retrieving information\n") +
+                            tr("• File management and device control\n") +
+                            tr("• Voice-activated commands\n\n") +
+                            tr("You agree NOT to use OpenDroid to:\n\n") +
+                            tr("• Violate any laws or regulations\n") +
+                            tr("• Harass, spam, or harm other individuals\n") +
+                            tr("• Attempt to bypass device security or access unauthorized systems\n") +
+                            tr("• Interfere with other applications in a harmful manner")
                 )
             }
 
             item {
                 PolicySection(
-                    title = "3. API KEYS & THIRD-PARTY SERVICES",
+                    title = tr("3. API KEYS & THIRD-PARTY SERVICES"),
                     content = "OpenDroid connects to third-party LLM providers (Google Gemini, OpenAI, Anthropic, etc.) using API keys you provide.\n\n" +
-                            "• You are responsible for obtaining and managing your own API keys.\n" +
-                            "• API key usage is subject to the respective provider's terms of service.\n" +
-                            "• OpenDroid is not responsible for charges incurred through third-party API usage.\n" +
-                            "• Your API keys are stored locally on your device using AES-256 encryption and are never transmitted to OpenDroid servers."
+                            tr("• You are responsible for obtaining and managing your own API keys.\n") +
+                            tr("• API key usage is subject to the respective provider's terms of service.\n") +
+                            tr("• OpenDroid is not responsible for charges incurred through third-party API usage.\n") +
+                            tr("• Your API keys are stored locally on your device using AES-256 encryption and are never transmitted to OpenDroid servers.")
                 )
             }
 
             item {
                 PolicySection(
-                    title = "4. ACCESSIBILITY SERVICE",
+                    title = tr("4. ACCESSIBILITY SERVICE"),
                     content = "OpenDroid uses Android's Accessibility Service to perform on-screen automations on your behalf. " +
-                            "By enabling this service, you acknowledge that:\n\n" +
-                            "• The service can interact with other apps on your device\n" +
-                            "• It only acts when you explicitly give a command\n" +
-                            "• You can disable it at any time from Android Settings\n" +
-                            "• OpenDroid does not use this service to collect or transmit data"
+                            tr("By enabling this service, you acknowledge that:\n\n") +
+                            tr("• The service can interact with other apps on your device\n") +
+                            tr("• It only acts when you explicitly give a command\n") +
+                            tr("• You can disable it at any time from Android Settings\n") +
+                            tr("• OpenDroid does not use this service to collect or transmit data")
                 )
             }
 
             item {
                 PolicySection(
-                    title = "5. DISCLAIMER OF WARRANTIES",
+                    title = tr("5. DISCLAIMER OF WARRANTIES"),
                     content = "OpenDroid is provided \"AS IS\" without warranties of any kind, either express or implied.\n\n" +
-                            "• We do not guarantee uninterrupted or error-free operation.\n" +
-                            "• AI-generated responses may be inaccurate or incomplete.\n" +
-                            "• Automated actions may not execute as intended in all scenarios.\n" +
-                            "• You assume all risks associated with using the App."
+                            tr("• We do not guarantee uninterrupted or error-free operation.\n") +
+                            tr("• AI-generated responses may be inaccurate or incomplete.\n") +
+                            tr("• Automated actions may not execute as intended in all scenarios.\n") +
+                            tr("• You assume all risks associated with using the App.")
                 )
             }
 
             item {
                 PolicySection(
-                    title = "6. LIMITATION OF LIABILITY",
+                    title = tr("6. LIMITATION OF LIABILITY"),
                     content = "To the maximum extent permitted by law, the OpenDroid developers shall not be liable for any " +
-                            "direct, indirect, incidental, special, or consequential damages arising from:\n\n" +
-                            "• Use or inability to use the App\n" +
-                            "• Unauthorized access to your data\n" +
-                            "• Actions performed by the AI assistant\n" +
-                            "• Third-party service failures or charges"
+                            tr("direct, indirect, incidental, special, or consequential damages arising from:\n\n") +
+                            tr("• Use or inability to use the App\n") +
+                            tr("• Unauthorized access to your data\n") +
+                            tr("• Actions performed by the AI assistant\n") +
+                            tr("• Third-party service failures or charges")
                 )
             }
 
             item {
                 PolicySection(
-                    title = "7. OPEN SOURCE",
+                    title = tr("7. OPEN SOURCE"),
                     content = "OpenDroid is open-source software. You are free to view, modify, and distribute the source code " +
-                            "in accordance with the project's license terms. Contributions to the project are welcome and governed by the project's contribution guidelines."
+                            tr("in accordance with the project's license terms. Contributions to the project are welcome and governed by the project's contribution guidelines.")
                 )
             }
 
             item {
                 PolicySection(
-                    title = "8. CHANGES TO TERMS",
+                    title = tr("8. CHANGES TO TERMS"),
                     content = "We may update these terms from time to time. Changes will be reflected in the App with an updated effective date. " +
-                            "Continued use of OpenDroid after changes constitutes acceptance of the updated terms."
+                            tr("Continued use of OpenDroid after changes constitutes acceptance of the updated terms.")
                 )
             }
 
             item {
                 PolicySection(
-                    title = "9. CONTACT",
+                    title = tr("9. CONTACT"),
                     content = "For questions about these Terms of Use, please open an issue on our GitHub repository (yashab-cyber/opendroid) or contact the development team.\n\n" +
-                            "• Email: opendroid.ai@gmail.com\n" +
-                            "• Email: yashabalam707@gmail.com"
+                            tr("• Email: opendroid.ai@gmail.com\n") +
+                            tr("• Email: yashabalam707@gmail.com")
                 )
             }
         }

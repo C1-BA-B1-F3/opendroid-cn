@@ -1,4 +1,11 @@
+// Modified by opendroid-cn (Chinese localization fork): UI strings routed through i18n.tr(). See NOTICE.
 package com.opendroid.ai.ui.screens
+
+
+
+import com.opendroid.ai.i18n.tr
+
+import com.opendroid.ai.i18n.AppText
 
 import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
@@ -46,8 +53,8 @@ fun RoutinesScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(
-                        text = "HABITS & ROUTINES",
+                    AppText(
+                        text = tr("HABITS & ROUTINES"),
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
                         color = AppTheme.colors.textPrimary,
@@ -59,7 +66,7 @@ fun RoutinesScreen(
                     IconButton(onClick = onBack) {
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
-                            contentDescription = "Back",
+                            contentDescription = tr("Back"),
                             tint = AppTheme.colors.textPrimary
                         )
                     }
@@ -67,11 +74,11 @@ fun RoutinesScreen(
                 actions = {
                     IconButton(onClick = {
                         viewModel.triggerDetection()
-                        Toast.makeText(context, "Scanning habit patterns...", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, tr("Scanning habit patterns..."), Toast.LENGTH_SHORT).show()
                     }) {
                         Icon(
                             imageVector = Icons.Default.Refresh,
-                            contentDescription = "Scan Habits",
+                            contentDescription = tr("Scan Habits"),
                             tint = AppTheme.colors.textPrimary
                         )
                     }
@@ -93,8 +100,8 @@ fun RoutinesScreen(
             // ── 1. SUGGESTED ROUTINES SECTION (AI DISCOVERED) ──────────
             if (suggestedRoutines.isNotEmpty()) {
                 item {
-                    Text(
-                        text = "DISCOVERED HABITS & SUGGESTIONS",
+                    AppText(
+                        text = tr("DISCOVERED HABITS & SUGGESTIONS"),
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
                         color = AppTheme.colors.accentCyan,
@@ -109,11 +116,11 @@ fun RoutinesScreen(
                         routine = routine,
                         onApprove = {
                             viewModel.approveRoutine(routine.id)
-                            Toast.makeText(context, "Routine '${routine.name}' automated!", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "例程“${routine.name}”已自动化！", Toast.LENGTH_SHORT).show()
                         },
                         onDismiss = {
                             viewModel.dismissRoutine(routine.id)
-                            Toast.makeText(context, "Suggestion dismissed", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, tr("Suggestion dismissed"), Toast.LENGTH_SHORT).show()
                         }
                     )
                 }
@@ -121,8 +128,8 @@ fun RoutinesScreen(
 
             // ── 2. AUTOMATED ACTIVE ROUTINES ───────────────────────────
             item {
-                Text(
-                    text = "AUTOMATED ROUTINES (${activeRoutines.size})",
+                AppText(
+                    text = "已自动化例程（${activeRoutines.size}）",
                     fontFamily = FontFamily.Monospace,
                     fontWeight = FontWeight.Bold,
                     color = AppTheme.colors.accentCyan,
@@ -151,15 +158,15 @@ fun RoutinesScreen(
                                 modifier = Modifier.size(36.dp)
                             )
                             Spacer(modifier = Modifier.height(8.dp))
-                            Text(
-                                text = "No Active Routines Yet",
+                            AppText(
+                                text = tr("No Active Routines Yet"),
                                 color = AppTheme.colors.textPrimary,
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 15.sp
                             )
                             Spacer(modifier = Modifier.height(4.dp))
-                            Text(
-                                text = "As you use apps like Gmail, Calendar, and Slack, OpenDroid detects repeated patterns and suggests automations here.",
+                            AppText(
+                                text = tr("As you use apps like Gmail, Calendar, and Slack, OpenDroid detects repeated patterns and suggests automations here."),
                                 color = AppTheme.colors.textSecondary,
                                 fontSize = 12.sp,
                                 lineHeight = 18.sp
@@ -181,7 +188,7 @@ fun RoutinesScreen(
                                 isExecuting = null
                                 Toast.makeText(
                                     context,
-                                    if (success) "Routine completed: $msg" else "Execution failed: $msg",
+                                    if (success) "例程已完成：$msg" else "执行失败：$msg",
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
@@ -195,8 +202,8 @@ fun RoutinesScreen(
 
             // ── 3. PRE-BUILT TEMPLATES ──────────────────────────────────
             item {
-                Text(
-                    text = "SAMPLE ROUTINE TEMPLATES",
+                AppText(
+                    text = tr("SAMPLE ROUTINE TEMPLATES"),
                     fontFamily = FontFamily.Monospace,
                     fontWeight = FontWeight.Bold,
                     color = AppTheme.colors.textSecondary,
@@ -208,36 +215,36 @@ fun RoutinesScreen(
 
             item {
                 RoutineTemplateCard(
-                    title = "🌅 Morning Routine",
-                    description = "Read calendar → Summarize today's meetings → Check notifications → Task list → Morning briefing",
+                    title = tr("🌅 Morning Routine"),
+                    description = tr("Read calendar → Summarize today's meetings → Check notifications → Task list → Morning briefing"),
                     trigger = "Every weekday at 9:00 AM",
                     onActivate = {
                         viewModel.triggerDetection()
-                        Toast.makeText(context, "Morning Routine template activated!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, tr("Morning Routine template activated!"), Toast.LENGTH_SHORT).show()
                     }
                 )
             }
 
             item {
                 RoutineTemplateCard(
-                    title = "💼 Work Focus Routine",
-                    description = "Open Slack → Check Calendar → Read important notifications",
+                    title = tr("💼 Work Focus Routine"),
+                    description = tr("Open Slack → Check Calendar → Read important notifications"),
                     trigger = "Every weekday at 9:30 AM",
                     onActivate = {
                         viewModel.triggerDetection()
-                        Toast.makeText(context, "Work Focus template activated!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, tr("Work Focus template activated!"), Toast.LENGTH_SHORT).show()
                     }
                 )
             }
 
             item {
                 RoutineTemplateCard(
-                    title = "🌙 Evening Wrap-up",
-                    description = "Check tomorrow's calendar → Check unread notifications → Daily summary",
+                    title = tr("🌙 Evening Wrap-up"),
+                    description = tr("Check tomorrow's calendar → Check unread notifications → Daily summary"),
                     trigger = "Daily at 9:00 PM",
                     onActivate = {
                         viewModel.triggerDetection()
-                        Toast.makeText(context, "Evening Wrap-up template activated!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, tr("Evening Wrap-up template activated!"), Toast.LENGTH_SHORT).show()
                     }
                 )
             }
@@ -259,8 +266,8 @@ fun RoutinesScreen(
                                 modifier = Modifier.size(20.dp)
                             )
                             Spacer(modifier = Modifier.width(8.dp))
-                            Text(
-                                text = "HABIT LEARNING ENGINE",
+                            AppText(
+                                text = tr("HABIT LEARNING ENGINE"),
                                 fontFamily = FontFamily.Monospace,
                                 fontWeight = FontWeight.Bold,
                                 color = AppTheme.colors.textPrimary,
@@ -268,8 +275,8 @@ fun RoutinesScreen(
                             )
                         }
                         Spacer(modifier = Modifier.height(8.dp))
-                        Text(
-                            text = "Tracked Events: ${recentEvents.size} recent activities logged.\nOpenDroid securely analyzes on-device app switches to learn your daily routines without cloud data transfer.",
+                        AppText(
+                            text = "已记录事件：记录了 ${recentEvents.size} 条近期活动。\nOpenDroid 会在本机安全分析应用切换情况以学习你的日常例程，不会将数据传输到云端。",
                             color = AppTheme.colors.textSecondary,
                             fontSize = 12.sp,
                             lineHeight = 18.sp
@@ -304,8 +311,8 @@ fun SuggestedRoutineCard(
                     color = AppTheme.colors.accentCyan.copy(alpha = 0.15f),
                     shape = RoundedCornerShape(6.dp)
                 ) {
-                    Text(
-                        text = "💡 ROUTINE DETECTED",
+                    AppText(
+                        text = tr("💡 ROUTINE DETECTED"),
                         color = AppTheme.colors.accentCyan,
                         fontSize = 11.sp,
                         fontWeight = FontWeight.Bold,
@@ -318,8 +325,8 @@ fun SuggestedRoutineCard(
                     color = AppTheme.colors.surface,
                     shape = RoundedCornerShape(6.dp)
                 ) {
-                    Text(
-                        text = "${(routine.confidence * 100).toInt()}% match",
+                    AppText(
+                        text = "匹配度 ${(routine.confidence * 100).toInt()}%",
                         color = AppTheme.colors.textSecondary,
                         fontSize = 11.sp,
                         fontFamily = FontFamily.Monospace,
@@ -330,7 +337,7 @@ fun SuggestedRoutineCard(
 
             Spacer(modifier = Modifier.height(10.dp))
 
-            Text(
+            AppText(
                 text = routine.suggestionMessage.ifBlank { "I noticed you usually do these tasks. Would you like me to automate them?" },
                 color = AppTheme.colors.textPrimary,
                 fontWeight = FontWeight.Bold,
@@ -340,7 +347,7 @@ fun SuggestedRoutineCard(
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            Text(
+            AppText(
                 text = "⚡ ${routine.triggerLabel}",
                 color = AppTheme.colors.accentCyan,
                 fontSize = 12.sp,
@@ -360,7 +367,7 @@ fun SuggestedRoutineCard(
                             shape = RoundedCornerShape(4.dp),
                             border = androidx.compose.foundation.BorderStroke(1.dp, AppTheme.colors.borderColor)
                         ) {
-                            Text(
+                            AppText(
                                 text = action,
                                 color = AppTheme.colors.textSecondary,
                                 fontSize = 11.sp,
@@ -380,8 +387,8 @@ fun SuggestedRoutineCard(
                     .clickable { expanded = !expanded }
                     .padding(vertical = 4.dp)
             ) {
-                Text(
-                    text = "Proposed Automation (${routine.suggestedSteps.size} steps)",
+                AppText(
+                    text = "建议的自动化（${routine.suggestedSteps.size} 个步骤）",
                     color = AppTheme.colors.accentPurple,
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Bold
@@ -402,7 +409,7 @@ fun SuggestedRoutineCard(
                 ) {
                     routine.suggestedSteps.forEachIndexed { idx, step ->
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            Text(
+                            AppText(
                                 text = "${idx + 1}.",
                                 color = AppTheme.colors.accentCyan,
                                 fontSize = 12.sp,
@@ -410,7 +417,7 @@ fun SuggestedRoutineCard(
                                 fontWeight = FontWeight.Bold,
                                 modifier = Modifier.width(20.dp)
                             )
-                            Text(
+                            AppText(
                                 text = step.description,
                                 color = AppTheme.colors.textPrimary,
                                 fontSize = 13.sp
@@ -443,8 +450,8 @@ fun SuggestedRoutineCard(
                         modifier = Modifier.size(16.dp)
                     )
                     Spacer(modifier = Modifier.width(6.dp))
-                    Text(
-                        text = "Approve & Automate",
+                    AppText(
+                        text = tr("Approve & Automate"),
                         color = AppTheme.colors.background,
                         fontWeight = FontWeight.Bold,
                         fontSize = 13.sp
@@ -456,8 +463,8 @@ fun SuggestedRoutineCard(
                     shape = RoundedCornerShape(8.dp),
                     border = androidx.compose.foundation.BorderStroke(1.dp, AppTheme.colors.borderColor)
                 ) {
-                    Text(
-                        text = "Dismiss",
+                    AppText(
+                        text = tr("Dismiss"),
                         color = AppTheme.colors.textSecondary,
                         fontSize = 13.sp
                     )
@@ -489,14 +496,14 @@ fun ActiveRoutineCard(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Column(modifier = Modifier.weight(1f)) {
-                    Text(
+                    AppText(
                         text = routine.name,
                         color = AppTheme.colors.textPrimary,
                         fontWeight = FontWeight.Bold,
                         fontSize = 16.sp
                     )
                     Spacer(modifier = Modifier.height(2.dp))
-                    Text(
+                    AppText(
                         text = "⚡ ${routine.triggerLabel}",
                         color = AppTheme.colors.accentCyan,
                         fontSize = 12.sp,
@@ -518,7 +525,7 @@ fun ActiveRoutineCard(
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            Text(
+            AppText(
                 text = routine.description,
                 color = AppTheme.colors.textSecondary,
                 fontSize = 12.sp
@@ -546,7 +553,7 @@ fun ActiveRoutineCard(
                             strokeWidth = 2.dp
                         )
                         Spacer(modifier = Modifier.width(6.dp))
-                        Text("Running...", color = AppTheme.colors.accentCyan, fontSize = 12.sp)
+                        AppText(tr("Running..."), color = AppTheme.colors.accentCyan, fontSize = 12.sp)
                     } else {
                         Icon(
                             imageVector = Icons.Default.PlayArrow,
@@ -555,8 +562,8 @@ fun ActiveRoutineCard(
                             modifier = Modifier.size(16.dp)
                         )
                         Spacer(modifier = Modifier.width(4.dp))
-                        Text(
-                            text = "Run Routine Now",
+                        AppText(
+                            text = tr("Run Routine Now"),
                             color = AppTheme.colors.accentCyan,
                             fontWeight = FontWeight.Bold,
                             fontSize = 12.sp
@@ -567,7 +574,7 @@ fun ActiveRoutineCard(
                 IconButton(onClick = onDelete) {
                     Icon(
                         imageVector = Icons.Default.Delete,
-                        contentDescription = "Delete",
+                        contentDescription = tr("Delete"),
                         tint = AppTheme.colors.accentRed
                     )
                 }
@@ -594,21 +601,21 @@ fun RoutineTemplateCard(
             modifier = Modifier.padding(14.dp)
         ) {
             Column(modifier = Modifier.weight(1f)) {
-                Text(
+                AppText(
                     text = title,
                     color = AppTheme.colors.textPrimary,
                     fontWeight = FontWeight.Bold,
                     fontSize = 14.sp
                 )
                 Spacer(modifier = Modifier.height(2.dp))
-                Text(
+                AppText(
                     text = description,
                     color = AppTheme.colors.textSecondary,
                     fontSize = 11.sp,
                     lineHeight = 16.sp
                 )
                 Spacer(modifier = Modifier.height(4.dp))
-                Text(
+                AppText(
                     text = "⏰ $trigger",
                     color = AppTheme.colors.accentCyan,
                     fontSize = 11.sp,
@@ -621,7 +628,7 @@ fun RoutineTemplateCard(
             IconButton(onClick = onActivate) {
                 Icon(
                     imageVector = Icons.Default.AddCircleOutline,
-                    contentDescription = "Activate",
+                    contentDescription = tr("Activate"),
                     tint = AppTheme.colors.accentCyan
                 )
             }

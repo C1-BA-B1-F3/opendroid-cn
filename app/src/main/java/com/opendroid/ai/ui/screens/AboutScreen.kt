@@ -1,4 +1,11 @@
+// Modified by opendroid-cn (Chinese localization fork): UI strings routed through i18n.tr(). See NOTICE.
 package com.opendroid.ai.ui.screens
+
+
+
+import com.opendroid.ai.i18n.tr
+
+import com.opendroid.ai.i18n.AppText
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -35,8 +42,8 @@ fun AboutScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(
-                        text = "ABOUT",
+                    AppText(
+                        text = tr("ABOUT"),
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
                         color = TextPrimary,
@@ -48,7 +55,7 @@ fun AboutScreen(
                     IconButton(onClick = onNavigateBack) {
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
-                            contentDescription = "Back",
+                            contentDescription = tr("Back"),
                             tint = TextPrimary
                         )
                     }
@@ -104,15 +111,15 @@ fun AboutScreen(
                             // transparent padding overflows into the Box's circle clip.
                             Image(
                                 painter = painterResource(id = R.drawable.bot),
-                                contentDescription = "OpenDroid app icon",
+                                contentDescription = tr("OpenDroid app icon"),
                                 modifier = Modifier.requiredSize(150.dp)
                             )
                         }
 
                         Spacer(modifier = Modifier.height(16.dp))
 
-                        Text(
-                            text = "OpenDroid",
+                        AppText(
+                            text = tr("OpenDroid"),
                             fontSize = 28.sp,
                             fontWeight = FontWeight.ExtraBold,
                             color = TextPrimary,
@@ -121,8 +128,8 @@ fun AboutScreen(
 
                         Spacer(modifier = Modifier.height(4.dp))
 
-                        Text(
-                            text = "Autonomous AI Agent for Android",
+                        AppText(
+                            text = tr("Autonomous AI Agent for Android"),
                             fontSize = 14.sp,
                             color = AccentCyan,
                             fontWeight = FontWeight.Medium
@@ -130,8 +137,8 @@ fun AboutScreen(
 
                         Spacer(modifier = Modifier.height(8.dp))
 
-                        Text(
-                            text = "Version ${BuildConfig.VERSION_NAME}",
+                        AppText(
+                            text = "版本 ${BuildConfig.VERSION_NAME}",
                             fontSize = 12.sp,
                             color = TextSecondary,
                             fontFamily = FontFamily.Monospace
@@ -149,21 +156,21 @@ fun AboutScreen(
                     colors = CardDefaults.cardColors(containerColor = CardBackground)
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
-                        Text(
-                            text = "WHAT IS OPENDROID?",
+                        AppText(
+                            text = tr("WHAT IS OPENDROID?"),
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily.Monospace,
                             color = AccentCyan
                         )
                         Spacer(modifier = Modifier.height(10.dp))
-                        Text(
-                            text = "OpenDroid is an advanced autonomous AI assistant that runs directly on your Android device. " +
-                                    "It can understand natural language commands, create multi-step execution plans, and automate " +
-                                    "virtually any task on your phone — from sending messages and making calls to controlling " +
-                                    "system settings and managing files.\n\n" +
-                                    "Powered by your choice of LLM provider (Gemini, OpenAI, Claude, Groq, local Ollama, and more), " +
-                                    "OpenDroid combines intelligent planning with real device automation through Android's Accessibility framework.",
+                        AppText(
+                            text = tr("OpenDroid is an advanced autonomous AI assistant that runs directly on your Android device. ") +
+                                    tr("It can understand natural language commands, create multi-step execution plans, and automate ") +
+                                    tr("virtually any task on your phone — from sending messages and making calls to controlling ") +
+                                    tr("system settings and managing files.\n\n") +
+                                    tr("Powered by your choice of LLM provider (Gemini, OpenAI, Claude, Groq, local Ollama, and more), ") +
+                                    tr("OpenDroid combines intelligent planning with real device automation through Android's Accessibility framework."),
                             fontSize = 13.sp,
                             color = TextPrimary,
                             lineHeight = 20.sp
@@ -181,8 +188,8 @@ fun AboutScreen(
                     colors = CardDefaults.cardColors(containerColor = CardBackground)
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
-                        Text(
-                            text = "KEY CAPABILITIES",
+                        AppText(
+                            text = tr("KEY CAPABILITIES"),
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily.Monospace,
@@ -211,8 +218,8 @@ fun AboutScreen(
                     colors = CardDefaults.cardColors(containerColor = CardBackground)
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
-                        Text(
-                            text = "TECHNOLOGY STACK",
+                        AppText(
+                            text = tr("TECHNOLOGY STACK"),
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily.Monospace,
@@ -241,8 +248,8 @@ fun AboutScreen(
                     colors = CardDefaults.cardColors(containerColor = CardBackground)
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
-                        Text(
-                            text = "SUPPORTED LLM PROVIDERS",
+                        AppText(
+                            text = tr("SUPPORTED LLM PROVIDERS"),
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily.Monospace,
@@ -267,7 +274,7 @@ fun AboutScreen(
                                         .background(AccentCyan)
                                 )
                                 Spacer(modifier = Modifier.width(10.dp))
-                                Text(
+                                AppText(
                                     text = provider,
                                     fontSize = 13.sp,
                                     color = TextPrimary
@@ -292,24 +299,24 @@ fun AboutScreen(
                             .padding(16.dp),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        Text(
-                            text = "OPEN SOURCE",
+                        AppText(
+                            text = tr("OPEN SOURCE"),
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily.Monospace,
                             color = AccentPurple
                         )
                         Spacer(modifier = Modifier.height(10.dp))
-                        Text(
-                            text = "OpenDroid is open source software. Contributions, bug reports, and feature requests are welcome.",
+                        AppText(
+                            text = tr("OpenDroid is open source software. Contributions, bug reports, and feature requests are welcome."),
                             fontSize = 13.sp,
                             color = TextPrimary,
                             textAlign = TextAlign.Center,
                             lineHeight = 20.sp
                         )
                         Spacer(modifier = Modifier.height(8.dp))
-                        Text(
-                            text = "github.com/yashab-cyber/opendroid",
+                        AppText(
+                            text = tr("github.com/yashab-cyber/opendroid"),
                             fontSize = 13.sp,
                             fontFamily = FontFamily.Monospace,
                             fontWeight = FontWeight.SemiBold,
@@ -321,8 +328,8 @@ fun AboutScreen(
 
             // Footer
             item {
-                Text(
-                    text = "Made with ❤ for the Android community",
+                AppText(
+                    text = tr("Made with ❤ for the Android community"),
                     fontSize = 12.sp,
                     color = TextSecondary,
                     textAlign = TextAlign.Center,
@@ -351,13 +358,13 @@ private fun FeatureItem(icon: ImageVector, title: String, subtitle: String) {
         )
         Spacer(modifier = Modifier.width(12.dp))
         Column {
-            Text(
+            AppText(
                 text = title,
                 fontSize = 14.sp,
                 fontWeight = FontWeight.SemiBold,
                 color = TextPrimary
             )
-            Text(
+            AppText(
                 text = subtitle,
                 fontSize = 11.sp,
                 color = TextSecondary
@@ -374,12 +381,12 @@ private fun TechItem(label: String, value: String) {
             .padding(vertical = 4.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        Text(
+        AppText(
             text = label,
             fontSize = 13.sp,
             color = TextSecondary
         )
-        Text(
+        AppText(
             text = value,
             fontSize = 13.sp,
             fontWeight = FontWeight.SemiBold,

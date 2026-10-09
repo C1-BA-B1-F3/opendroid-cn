@@ -1,0 +1,53 @@
+OpenDroid 中文版 (opendroid-cn)
+================================
+
+Copyright 2026 opendroid-cn contributors
+
+This product is a modified derivative of OpenDroid
+(https://github.com/yashab-cyber/opendroid),
+Copyright (c) 2026 OpenDroid Contributors,
+licensed under the Apache License, Version 2.0.
+
+The full license text is retained in LICENSE and is not modified by this fork.
+
+
+Modifications made by this fork
+-------------------------------
+
+1. Added a runtime Chinese translation layer:
+     app/src/main/java/com/opendroid/ai/i18n/I18n.kt      (tr() + assets/i18n/zh.json)
+     app/src/main/java/com/opendroid/ai/i18n/AppText.kt  (render-time translation wrapper)
+
+2. Routed user-visible UI strings through that layer:
+     - literals wrapped in tr(...)                        (tools/apply_i18n.py)
+     - Compose Text(...) calls renamed to AppText(...)    (tools/apply_i18n.py)
+     - interpolated strings translated in place           (tools/apply_templates.py)
+     - Application startup wiring                         (tools/apply_bootstrap.py)
+
+3. Translated user-visible text into Simplified Chinese:
+     - UI labels, buttons, dialogs, errors, notifications, accessibility text
+     - long-form content (privacy policy, terms of use, help center)
+     - the app display name is now "OpenDroid 中文版"
+
+4. Added tooling for reproducible localization and upstream synchronization:
+     tools/localize.sh, tools/sync-upstream.sh, tools/build_worksheet.py,
+     tools/merge_translations.py
+
+Files modified by the localization pipeline carry a prominent notice:
+     // Modified by opendroid-cn (Chinese localization fork): ...
+
+
+Notices retained from the original work
+---------------------------------------
+
+Copyright (c) 2026 OpenDroid Contributors
+Last Updated: August 18, 2026
+Licensed under the Apache License, Version 2.0.
+
+
+Trademark
+---------
+
+This fork is unofficial and is not affiliated with, sponsored by, or endorsed
+by the OpenDroid project or its maintainers. The name "OpenDroid" is used only
+to describe the origin of this work, as permitted by Apache-2.0 section 6.

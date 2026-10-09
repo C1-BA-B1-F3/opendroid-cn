@@ -1,0 +1,492 @@
+{
+ "Connected to ${platform.displayName}!": [
+  "viewmodel/SocialViewModel.kt"
+ ],
+ "Failed: ${result.exceptionOrNull()?.message}": [
+  "viewmodel/SocialViewModel.kt",
+  "viewmodel/SocialViewModel.kt"
+ ],
+ "Disconnected from ${platform.displayName}": [
+  "viewmodel/SocialViewModel.kt"
+ ],
+ "Revoked access and deleted tokens for ${platform.displayName}": [
+  "viewmodel/SocialViewModel.kt"
+ ],
+ "Drafted post for ${platform.displayName}!": [
+  "viewmodel/SocialViewModel.kt"
+ ],
+ "Error generating post: ${e.message}": [
+  "viewmodel/SocialViewModel.kt"
+ ],
+ "Post scheduled for ${platform.displayName}!": [
+  "viewmodel/SocialViewModel.kt"
+ ],
+ "Draft saved for ${platform.displayName}!": [
+  "viewmodel/SocialViewModel.kt"
+ ],
+ "Scheduling failed: ${result.exceptionOrNull()?.message}": [
+  "viewmodel/SocialViewModel.kt"
+ ],
+ "Publication failed: ${result.exceptionOrNull()?.message}": [
+  "viewmodel/SocialViewModel.kt"
+ ],
+ "Reply failed: ${result.exceptionOrNull()?.message}": [
+  "viewmodel/SocialViewModel.kt"
+ ],
+ "Created campaign '${plan.campaign.name}' with ${plan.plannedPosts.size} posts!": [
+  "viewmodel/SocialViewModel.kt"
+ ],
+ "Campaign generation failed: ${e.message}": [
+  "viewmodel/SocialViewModel.kt"
+ ],
+ "Bearer $token": [
+  "viewmodel/SettingsViewModel.kt"
+ ],
+ "Failed to save model cache: ${e.message}": [
+  "viewmodel/SettingsViewModel.kt"
+ ],
+ "Failed to fetch models for $provider: ${outcome.message}": [
+  "viewmodel/SettingsViewModel.kt"
+ ],
+ "Failed to refresh models: ${e.message}": [
+  "viewmodel/SettingsViewModel.kt"
+ ],
+ "Failed to update active provider: ${e.message}": [
+  "viewmodel/SettingsViewModel.kt"
+ ],
+ "Failed to update active model: ${e.message}": [
+  "viewmodel/SettingsViewModel.kt"
+ ],
+ "Failed to update API Key: ${e.message}": [
+  "viewmodel/SettingsViewModel.kt"
+ ],
+ "Failed to update ElevenLabs API Key: ${e.message}": [
+  "viewmodel/SettingsViewModel.kt"
+ ],
+ "Failed to update ElevenLabs Voice ID: ${e.message}": [
+  "viewmodel/SettingsViewModel.kt"
+ ],
+ "Failed to update Ollama URL: ${e.message}": [
+  "viewmodel/SettingsViewModel.kt"
+ ],
+ "Failed to update Copilot URL: ${e.message}": [
+  "viewmodel/SettingsViewModel.kt"
+ ],
+ "Failed to update custom endpoint: ${e.message}": [
+  "viewmodel/SettingsViewModel.kt"
+ ],
+ "Which '$query' do you mean?": [
+  "components/ContactPickerCard.kt"
+ ],
+ "$number": [
+  "components/ContactPickerCard.kt"
+ ],
+ "$type • $phone": [
+  "components/ContactPickerCard.kt"
+ ],
+ "${step.order}": [
+  "components/PlanStepCard.kt"
+ ],
+ "Action Module: ${step.action}": [
+  "components/PlanStepCard.kt",
+  "components/PlanStepCard.kt"
+ ],
+ "- $key: $valStr": [
+  "components/PlanStepCard.kt"
+ ],
+ "Depends On Steps: ${step.dependsOn.joinToString()}": [
+  "components/PlanStepCard.kt"
+ ],
+ "${workingMemory.batteryLevel}%": [
+  "screens/MemoryScreen.kt"
+ ],
+ "${index + 1}. ${step.description}": [
+  "screens/MemoryScreen.kt"
+ ],
+ "Result: ${step.result}": [
+  "screens/MemoryScreen.kt"
+ ],
+ "Error: ${step.error}": [
+  "screens/MemoryScreen.kt"
+ ],
+ "Indexed: ${dateFormat.format(Date(memory.timestamp))}": [
+  "screens/MemoryScreen.kt"
+ ],
+ "Trigger: \\\"${macro.trigger}\\\"": [
+  "screens/MemoryScreen.kt",
+  "screens/MacrosScreen.kt"
+ ],
+ "All Levels (${allNodes.size})": [
+  "screens/MemoryScreen.kt"
+ ],
+ "$icon $label ($count)": [
+  "screens/MemoryScreen.kt"
+ ],
+ "$icon ${cat.name.replace('_', ' ')}": [
+  "screens/MemoryScreen.kt"
+ ],
+ "KNOWLEDGE ENTITIES (${filteredNodes.size})": [
+  "screens/MemoryScreen.kt"
+ ],
+ "$tierIcon ${node.tier.name}": [
+  "screens/MemoryScreen.kt"
+ ],
+ "${(node.confidence * 100).toInt()}% conf": [
+  "screens/MemoryScreen.kt"
+ ],
+ "$k: $v": [
+  "screens/MemoryScreen.kt"
+ ],
+ "Failed to save config: ${e.message}": [
+  "screens/AutoReplySettingsScreen.kt"
+ ],
+ "AI will auto-reply to messages after ${config.replyDelayMinutes} minutes": [
+  "screens/AutoReplySettingsScreen.kt"
+ ],
+ "${config.replyDelayMinutes} minutes": [
+  "screens/AutoReplySettingsScreen.kt"
+ ],
+ "${config.maxRepliesPerContactPerHour}": [
+  "screens/AutoReplySettingsScreen.kt"
+ ],
+ "Active: ${activeSpec?.displayName ?: config.activeModel}": [
+  "screens/SettingsScreen.kt"
+ ],
+ "Backend: ${if (activeSpec.backend == OnDeviceBackend.AI_CORE) ": [
+  "screens/SettingsScreen.kt"
+ ],
+ "Download failed: ${e.localizedMessage}": [
+  "screens/SettingsScreen.kt",
+  "screens/SettingsScreen.kt"
+ ],
+ "Status: $statusDisplay": [
+  "screens/SettingsScreen.kt"
+ ],
+ "Last Verified: $lastVerified": [
+  "screens/SettingsScreen.kt"
+ ],
+ "API ${spec.minSdk}+ Req": [
+  "screens/SettingsScreen.kt"
+ ],
+ "${progress}%": [
+  "screens/SettingsScreen.kt"
+ ],
+ "${formatBytes(downloadedSize)} / ${formatBytes(totalSize)}": [
+  "screens/SettingsScreen.kt"
+ ],
+ " @ $speed": [
+  "screens/SettingsScreen.kt"
+ ],
+ "ETA: $eta": [
+  "screens/SettingsScreen.kt"
+ ],
+ "Custom LiteRT · ${formatBytes(entity.size)} · no token": [
+  "screens/SettingsScreen.kt"
+ ],
+ "Used: ${formatBytes(totalSpace - freeSpace)} / ${formatBytes(totalSpace)}": [
+  "screens/SettingsScreen.kt"
+ ],
+ "${((totalSpace - freeSpace) * 100 / (totalSpace.coerceAtLeast(1L)))}% Used": [
+  "screens/SettingsScreen.kt"
+ ],
+ "OpenDroid models occupy ${formatBytes(usedByApp)} of on-device storage.": [
+  "screens/SettingsScreen.kt"
+ ],
+ "$providerName API Key": [
+  "screens/SettingsScreen.kt"
+ ],
+ "Sends one minimal request to $providerName; provider charges may apply.": [
+  "screens/SettingsScreen.kt"
+ ],
+ "ALLOWED ACTIONS (${grantedActions.size})": [
+  "screens/SettingsScreen.kt"
+ ],
+ "Granted ${dateFormat.format(java.util.Date(grantedAt))}": [
+  "screens/SettingsScreen.kt"
+ ],
+ "Connected with ${state.model} · ${state.latencyMs} ms": [
+  "screens/SettingsScreen.kt"
+ ],
+ "${connectedAccounts.size} active channels • ${automationLevel.displayName}": [
+  "screens/SocialScreen.kt"
+ ],
+ "• $group": [
+  "screens/PermissionsScreen.kt"
+ ],
+ "This will send $configuredCount sequential provider requests. ": [
+  "screens/BenchmarkScreen.kt"
+ ],
+ "Testing ${it.index} of ${it.total}: ${it.provider}": [
+  "screens/BenchmarkScreen.kt"
+ ],
+ "Connected · ${state.latencyMs} ms · ${state.model}": [
+  "screens/BenchmarkScreen.kt"
+ ],
+ "Last latency $it ms": [
+  "screens/BenchmarkScreen.kt"
+ ],
+ "${log.description.take(40).ifBlank { ": [
+  "screens/LogsScreen.kt"
+ ],
+ "Unrecognized: ${error.attemptedAction}": [
+  "screens/LogsScreen.kt"
+ ],
+ "Goal: ${error.goal}": [
+  "screens/LogsScreen.kt"
+ ],
+ "Module: ${log.actionType}": [
+  "screens/LogsScreen.kt"
+ ],
+ "Macro Steps Sequence (${macroSteps.size})": [
+  "screens/MacrosScreen.kt"
+ ],
+ "Step ${idx + 1}: ${st.description} [${st.action}]": [
+  "screens/MacrosScreen.kt"
+ ],
+ " → fallback: ${st.fallback}": [
+  "screens/MacrosScreen.kt"
+ ],
+ "${macro.steps.size} scheduled steps in sequence": [
+  "screens/MacrosScreen.kt"
+ ],
+ "${step.description} [${step.action}]": [
+  "screens/MacrosScreen.kt"
+ ],
+ "📋 $totalCount": [
+  "screens/NotificationHistoryScreen.kt"
+ ],
+ "💬 $messageCount": [
+  "screens/NotificationHistoryScreen.kt"
+ ],
+ "🤖 $repliedCount": [
+  "screens/NotificationHistoryScreen.kt"
+ ],
+ "v${crash.device.appVersionName} · Android ${crash.device.androidRelease} · ": [
+  "screens/CrashLogScreen.kt"
+ ],
+ "${crash.device.deviceManufacturer} ${crash.device.deviceModel} · ${crash.threadName}": [
+  "screens/CrashLogScreen.kt"
+ ],
+ "chat-error-${error.requestId}-${error.runId}": [
+  "screens/ChatScreen.kt"
+ ],
+ "\\\"${session.title}\\\" and its messages will be permanently deleted.": [
+  "screens/ChatScreen.kt"
+ ],
+ "Executing: ${state.currentStepDesc}": [
+  "screens/ChatScreen.kt"
+ ],
+ "Speaking: ${state.text.take(30)}...": [
+  "screens/ChatScreen.kt"
+ ],
+ "Goal: \\\"$goal\\\"": [
+  "screens/ChatScreen.kt"
+ ],
+ "OpenDroid has formulated a sequence of $stepsCount steps to complete this goal. Review the steps in the PLAN tab or approve below to execute.": [
+  "screens/ChatScreen.kt"
+ ],
+ "Always allow $action": [
+  "screens/ChatScreen.kt"
+ ],
+ "• $action (always asks)": [
+  "screens/ChatScreen.kt"
+ ],
+ "Retry available in ${waitSecondsLeft}s": [
+  "screens/ChatScreen.kt"
+ ],
+ "Version ${BuildConfig.VERSION_NAME}": [
+  "screens/AboutScreen.kt"
+ ],
+ "Routine '${routine.name}' automated!": [
+  "screens/RoutinesScreen.kt"
+ ],
+ "AUTOMATED ROUTINES (${activeRoutines.size})": [
+  "screens/RoutinesScreen.kt"
+ ],
+ "Routine completed: $msg": [
+  "screens/RoutinesScreen.kt"
+ ],
+ "Execution failed: $msg": [
+  "screens/RoutinesScreen.kt"
+ ],
+ "Tracked Events: ${recentEvents.size} recent activities logged.\\nOpenDroid securely analyzes on-device app switches to learn your daily routines without cloud data transfer.": [
+  "screens/RoutinesScreen.kt"
+ ],
+ "${(routine.confidence * 100).toInt()}% match": [
+  "screens/RoutinesScreen.kt"
+ ],
+ "⚡ ${routine.triggerLabel}": [
+  "screens/RoutinesScreen.kt",
+  "screens/RoutinesScreen.kt"
+ ],
+ "Proposed Automation (${routine.suggestedSteps.size} steps)": [
+  "screens/RoutinesScreen.kt"
+ ],
+ "${idx + 1}.": [
+  "screens/RoutinesScreen.kt"
+ ],
+ "⏰ $trigger": [
+  "screens/RoutinesScreen.kt"
+ ],
+ "${plan.steps.size} scheduled": [
+  "screens/PlanScreen.kt"
+ ],
+ "${plan.steps.size} steps": [
+  "screens/PlanScreen.kt"
+ ],
+ "Revoke Access to ${account.platform.displayName}?": [
+  "screens/social/SocialAccountsTab.kt"
+ ],
+ "@${account.username}": [
+  "screens/social/SocialAccountsTab.kt",
+  "screens/social/SocialAnalyticsTab.kt"
+ ],
+ "Connect ${platform.displayName}": [
+  "screens/social/SocialAccountsTab.kt"
+ ],
+ "mock_${platform.id}_acc": [
+  "screens/social/SocialAccountsTab.kt"
+ ],
+ "mock_${platform.id}_token": [
+  "screens/social/SocialAccountsTab.kt"
+ ],
+ "acc_${platform.id}": [
+  "screens/social/SocialAccountsTab.kt"
+ ],
+ "${currentContent.length} / $maxLimit": [
+  "screens/social/SocialContentTab.kt"
+ ],
+ "All (${posts.size})": [
+  "screens/social/SocialContentTab.kt"
+ ],
+ "${status.name.lowercase().capitalize(Locale.ROOT)} ($count)": [
+  "screens/social/SocialContentTab.kt"
+ ],
+ "Error: ${post.errorMessage}": [
+  "screens/social/SocialContentTab.kt"
+ ],
+ "$startStr – $endStr": [
+  "screens/social/SocialCampaignsTab.kt"
+ ],
+ "${(progress * 100).toInt()}%": [
+  "screens/social/SocialCampaignsTab.kt"
+ ],
+ "Target Audience: ${campaign.targetAudience}": [
+  "screens/social/SocialCampaignsTab.kt"
+ ],
+ "Duration: $durationDays days": [
+  "screens/social/SocialCampaignsTab.kt"
+ ],
+ "$days Days": [
+  "screens/social/SocialCampaignsTab.kt"
+ ],
+ "Unanswered (${unansweredComments.size})": [
+  "screens/social/SocialCommentsTab.kt"
+ ],
+ "All Comments (${comments.size})": [
+  "screens/social/SocialCommentsTab.kt"
+ ],
+ "${platform.displayName} ($count)": [
+  "screens/social/SocialCommentsTab.kt"
+ ],
+ "${comment.platform.displayName} • $timeFormatted": [
+  "screens/social/SocialCommentsTab.kt"
+ ],
+ "$totalScheduled total queued": [
+  "screens/social/SocialCalendarTab.kt"
+ ],
+ "${selectedDay.dayOfWeek}, ${selectedDay.dayOfMonth}": [
+  "screens/social/SocialCalendarTab.kt"
+ ],
+ "${scheduledPosts.size} posts scheduled for this day": [
+  "screens/social/SocialCalendarTab.kt"
+ ],
+ "+$it": [
+  "screens/social/SocialOverviewTab.kt",
+  "screens/social/SocialOverviewTab.kt",
+  "screens/social/SocialAnalyticsTab.kt",
+  "screens/social/SocialAnalyticsTab.kt"
+ ],
+ "$it": [
+  "screens/social/SocialOverviewTab.kt",
+  "screens/social/SocialOverviewTab.kt",
+  "screens/social/SocialAnalyticsTab.kt",
+  "screens/social/SocialAnalyticsTab.kt"
+ ],
+ "${String.format(": [
+  "screens/social/SocialOverviewTab.kt",
+  "screens/social/SocialOverviewTab.kt",
+  "screens/social/SocialOverviewTab.kt",
+  "screens/social/SocialOverviewTab.kt",
+  "screens/social/SocialAnalyticsTab.kt"
+ ],
+ "💡 ${topInsight.calculatedInsight}": [
+  "screens/social/SocialOverviewTab.kt"
+ ],
+ "Observed: ${topInsight.observedData}": [
+  "screens/social/SocialOverviewTab.kt"
+ ],
+ "👉 Recommendation: ${topInsight.aiRecommendation}": [
+  "screens/social/SocialOverviewTab.kt"
+ ],
+ "${post.reach} reach": [
+  "screens/social/SocialOverviewTab.kt"
+ ],
+ "Trigger: ${rule.triggerType} • Action: ${rule.actionType}": [
+  "screens/social/SocialSettingsTab.kt"
+ ],
+ "Confidence Threshold: ${(rule.confidenceThreshold * 100).toInt()}%": [
+  "screens/social/SocialSettingsTab.kt"
+ ],
+ " • ${p.displayName}": [
+  "screens/social/SocialSettingsTab.kt"
+ ],
+ "Confidence Threshold: ${(confidence * 100).toInt()}%": [
+  "screens/social/SocialSettingsTab.kt"
+ ],
+ "All (${interactions.size})": [
+  "screens/social/SocialInboxTab.kt"
+ ],
+ "${cat.name.replace('_', ' ')} ($count)": [
+  "screens/social/SocialInboxTab.kt"
+ ],
+ "Reply on ${interaction.platform.displayName}": [
+  "screens/social/SocialInboxTab.kt"
+ ],
+ "${interaction.authorName}: \\\"${interaction.content}\\\"": [
+  "screens/social/SocialInboxTab.kt"
+ ],
+ "${interaction.category.name} • $timeFormatted": [
+  "screens/social/SocialInboxTab.kt"
+ ],
+ "Suggested: \\\"${interaction.suggestedAction}\\\"": [
+  "screens/social/SocialInboxTab.kt"
+ ],
+ "${accountPosts.size} posts": [
+  "screens/social/SocialAnalyticsTab.kt"
+ ],
+ "${timeFormat.format(Date(weeklyReport.startDate))} – ${timeFormat.format(Date(weeklyReport.endDate))}": [
+  "screens/social/SocialReportsTab.kt"
+ ],
+ "Period: $dateRange": [
+  "screens/social/SocialReportsTab.kt"
+ ],
+ "• Total Published Posts: ${r.totalPostsPublished}": [
+  "screens/social/SocialReportsTab.kt"
+ ],
+ "• Total Reach: ${r.totalReach}": [
+  "screens/social/SocialReportsTab.kt"
+ ],
+ "• Average Engagement: ${r.averageEngagementRate}%": [
+  "screens/social/SocialReportsTab.kt"
+ ],
+ "• Follower Growth: +${r.totalFollowersDelta}": [
+  "screens/social/SocialReportsTab.kt"
+ ],
+ "${i + 1}. $rec": [
+  "screens/social/SocialReportsTab.kt"
+ ],
+ "${index + 1}.": [
+  "screens/social/SocialReportsTab.kt"
+ ]
+}

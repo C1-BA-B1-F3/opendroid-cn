@@ -1,4 +1,11 @@
+// Modified by opendroid-cn (Chinese localization fork): UI strings routed through i18n.tr(). See NOTICE.
 package com.opendroid.ai.ui.screens
+
+
+
+import com.opendroid.ai.i18n.tr
+
+import com.opendroid.ai.i18n.AppText
 
 import android.content.ActivityNotFoundException
 import android.content.ComponentName
@@ -104,8 +111,8 @@ fun PermissionsScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(
-                        text = "PERMISSIONS",
+                    AppText(
+                        text = tr("PERMISSIONS"),
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
                         color = TextPrimary,
@@ -117,7 +124,7 @@ fun PermissionsScreen(
                     IconButton(onClick = onNavigateBack) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = "Back",
+                            contentDescription = tr("Back"),
                             tint = TextPrimary,
                         )
                     }
@@ -260,10 +267,10 @@ fun PermissionsPanel(
             .map { card -> cardTitle(card) }
         AlertDialog(
             onDismissRequest = { showGrantAllConfirm = false },
-            title = { Text("Grant all permissions?") },
+            title = { AppText(tr("Grant all permissions?")) },
             text = {
-                Text(
-                    "Android will ask for the remaining runtime permissions in one batch:\n\n" +
+                AppText(
+                    tr("Android will ask for the remaining runtime permissions in one batch:\n\n") +
                         pendingGroups.joinToString("\n") { group -> "• $group" },
                 )
             },
@@ -276,10 +283,10 @@ fun PermissionsPanel(
                             isGrantAll = true,
                         )
                     },
-                ) { Text("Continue") }
+                ) { AppText(tr("Continue")) }
             },
             dismissButton = {
-                TextButton(onClick = { showGrantAllConfirm = false }) { Text("Cancel") }
+                TextButton(onClick = { showGrantAllConfirm = false }) { AppText(tr("Cancel")) }
             },
         )
     }
@@ -329,15 +336,15 @@ private fun PermissionsPanelContent(
             .padding(padding)
             .padding(24.dp),
     ) {
-        Text(
-            text = "Required Permissions",
+        AppText(
+            text = tr("Required Permissions"),
             fontSize = 22.sp,
             fontWeight = FontWeight.Bold,
             color = TextPrimary,
         )
         Spacer(modifier = Modifier.height(8.dp))
-        Text(
-            text = "Configure permissions below to enable full autonomous features.",
+        AppText(
+            text = tr("Configure permissions below to enable full autonomous features."),
             fontSize = 13.sp,
             color = TextSecondary,
         )
@@ -357,14 +364,14 @@ private fun PermissionsPanelContent(
             ),
             shape = RoundedCornerShape(8.dp),
         ) {
-            Text(
+            AppText(
                 text = grantAll.label,
                 fontWeight = FontWeight.Bold,
                 fontSize = 15.sp,
             )
         }
         Spacer(modifier = Modifier.height(8.dp))
-        Text(
+        AppText(
             text = summaryLine(snapshot),
             fontSize = 12.sp,
             color = if (summaryHasBlocked(snapshot)) AccentRed else TextSecondary,
@@ -414,8 +421,8 @@ private fun PermissionsPanelContent(
         if (onFinished != null) {
             Spacer(modifier = Modifier.height(16.dp))
             if (!allRequirementsHeld) {
-                Text(
-                    text = "You can continue now and grant the rest later in Settings → Permissions.",
+                AppText(
+                    text = tr("You can continue now and grant the rest later in Settings → Permissions."),
                     fontSize = 12.sp,
                     color = TextSecondary,
                 )
@@ -433,8 +440,8 @@ private fun PermissionsPanelContent(
                 border = if (allRequirementsHeld) null else BorderStroke(1.dp, BorderColor),
                 shape = RoundedCornerShape(8.dp),
             ) {
-                Text(
-                    text = "Proceed to OpenDroid Agent",
+                AppText(
+                    text = tr("Proceed to OpenDroid Agent"),
                     fontWeight = FontWeight.Bold,
                     fontSize = 16.sp,
                 )
@@ -446,8 +453,8 @@ private fun PermissionsPanelContent(
 @Composable
 private fun ManualSettingsHeader() {
     Column(modifier = Modifier.fillMaxWidth()) {
-        Text(
-            text = "NEEDS A TRIP TO SETTINGS",
+        AppText(
+            text = tr("NEEDS A TRIP TO SETTINGS"),
             fontFamily = FontFamily.Monospace,
             fontWeight = FontWeight.Bold,
             fontSize = 12.sp,
@@ -455,9 +462,9 @@ private fun ManualSettingsHeader() {
             color = TextPrimary,
         )
         Spacer(modifier = Modifier.height(4.dp))
-        Text(
-            text = "Android does not allow these to be granted from inside an app. " +
-                "\"Grant all permissions\" cannot cover them → open each one yourself.",
+        AppText(
+            text = tr("Android does not allow these to be granted from inside an app. ") +
+                tr("\"Grant all permissions\" cannot cover them → open each one yourself."),
             fontSize = 12.sp,
             color = TextSecondary,
         )
@@ -493,21 +500,21 @@ private fun PermissionCard(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Column(modifier = Modifier.weight(1f)) {
-            Text(
+            AppText(
                 text = title,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold,
                 color = TextPrimary,
             )
             Spacer(modifier = Modifier.height(4.dp))
-            Text(
+            AppText(
                 text = description,
                 fontSize = 12.sp,
                 color = TextSecondary,
             )
             if (statusLine.isNotBlank()) {
                 Spacer(modifier = Modifier.height(6.dp))
-                Text(
+                AppText(
                     text = statusLine,
                     fontSize = 12.sp,
                     fontWeight = if (statusHasError) FontWeight.SemiBold else FontWeight.Normal,
@@ -527,7 +534,7 @@ private fun PermissionCard(
             ),
             shape = RoundedCornerShape(8.dp),
         ) {
-            Text(
+            AppText(
                 text = buttonLabel,
                 fontSize = 12.sp,
                 fontWeight = FontWeight.Bold,
@@ -744,17 +751,17 @@ private fun cardDescription(card: PermissionCardId): String = when (card) {
     PermissionCardId.LOCATION -> "Needed to fetch weather, directions, and maps."
     PermissionCardId.SMS_TELEPHONY -> "Needed to read and send messages, and place calls."
     PermissionCardId.CONTACTS_CALENDAR ->
-        "Needed to resolve recipient names and manage events."
+        tr("Needed to resolve recipient names and manage events.")
 
     PermissionCardId.CAMERA -> "Needed for image input and vision capabilities."
     PermissionCardId.NOTIFICATIONS ->
-        "Needed to post system notifications and service status."
+        tr("Needed to post system notifications and service status.")
 
     PermissionCardId.STORAGE ->
-        "App workspace storage is ready. You can also choose a custom folder (e.g. Documents) for agent files."
+        tr("App workspace storage is ready. You can also choose a custom folder (e.g. Documents) for agent files.")
     PermissionCardId.WRITE_SETTINGS ->
-        "Needed to adjust brightness, volume, and other system settings."
+        tr("Needed to adjust brightness, volume, and other system settings.")
 
     PermissionCardId.ACCESSIBILITY ->
-        "Enables full agent screen automation (clicks & inputs)."
+        tr("Enables full agent screen automation (clicks & inputs).")
 }

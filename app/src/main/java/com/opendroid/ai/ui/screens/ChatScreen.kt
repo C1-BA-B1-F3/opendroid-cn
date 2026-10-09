@@ -1,4 +1,11 @@
+// Modified by opendroid-cn (Chinese localization fork): UI strings routed through i18n.tr(). See NOTICE.
 package com.opendroid.ai.ui.screens
+
+
+
+import com.opendroid.ai.i18n.tr
+
+import com.opendroid.ai.i18n.AppText
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -197,8 +204,8 @@ fun ChatScreen(
             TopAppBar(
                 title = {
                     Column {
-                        Text(
-                            text = "OPENDROID",
+                        AppText(
+                            text = tr("OPENDROID"),
                             fontFamily = FontFamily.Monospace,
                             fontWeight = FontWeight.Bold,
                             color = TextPrimary,
@@ -222,7 +229,7 @@ fun ChatScreen(
                         contentPadding = PaddingValues(horizontal = 10.dp, vertical = 0.dp),
                         modifier = Modifier.height(28.dp)
                     ) {
-                        Text(
+                        AppText(
                             text = when (autoMode) {
                                 AutoMode.OFF -> "MANUAL"
                                 AutoMode.AUTO -> "AUTO"
@@ -236,7 +243,7 @@ fun ChatScreen(
                     IconButton(onClick = { viewModel.newChat() }) {
                         Icon(
                             imageVector = Icons.Default.Add,
-                            contentDescription = "New chat",
+                            contentDescription = tr("New chat"),
                             tint = TextSecondary
                         )
                     }
@@ -244,7 +251,7 @@ fun ChatScreen(
                         IconButton(onClick = { showChatMenu = true }) {
                             Icon(
                                 imageVector = Icons.Default.Forum,
-                                contentDescription = "Chats",
+                                contentDescription = tr("Chats"),
                                 tint = TextSecondary
                             )
                         }
@@ -255,7 +262,7 @@ fun ChatScreen(
                         ) {
                             if (sessions.isEmpty()) {
                                 DropdownMenuItem(
-                                    text = { Text("No chats yet", color = TextSecondary, fontSize = 13.sp) },
+                                    text = { AppText(tr("No chats yet"), color = TextSecondary, fontSize = 13.sp) },
                                     onClick = {},
                                     enabled = false
                                 )
@@ -264,7 +271,7 @@ fun ChatScreen(
                                 DropdownMenuItem(
                                     text = {
                                         Row(verticalAlignment = Alignment.CenterVertically) {
-                                            Text(
+                                            AppText(
                                                 text = session.title,
                                                 color = if (session.isCurrent) TextPrimary else TextSecondary,
                                                 fontWeight = if (session.isCurrent) FontWeight.Bold else FontWeight.Normal,
@@ -308,7 +315,7 @@ fun ChatScreen(
                                             ) {
                                                 Icon(
                                                     imageVector = Icons.Default.Edit,
-                                                    contentDescription = "Rename chat",
+                                                    contentDescription = tr("Rename chat"),
                                                     tint = TextSecondary,
                                                     modifier = Modifier.size(16.dp)
                                                 )
@@ -322,7 +329,7 @@ fun ChatScreen(
                                             ) {
                                                 Icon(
                                                     imageVector = Icons.Default.Delete,
-                                                    contentDescription = "Delete chat",
+                                                    contentDescription = tr("Delete chat"),
                                                     tint = AccentRed,
                                                     modifier = Modifier.size(16.dp)
                                                 )
@@ -338,7 +345,7 @@ fun ChatScreen(
                         }
                     }
                     TextButton(onClick = { viewModel.clearChat() }) {
-                        Text("Clear", color = TextSecondary, fontSize = 12.sp)
+                        AppText(tr("Clear"), color = TextSecondary, fontSize = 12.sp)
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = DarkBackground)
@@ -467,15 +474,15 @@ fun ChatScreen(
                                 modifier = Modifier.size(14.dp)
                             )
                             Spacer(modifier = Modifier.width(6.dp))
-                            Text(
-                                text = "Editing message",
+                            AppText(
+                                text = tr("Editing message"),
                                 fontSize = 11.sp,
                                 color = AccentCyan,
                                 modifier = Modifier.weight(1f)
                             )
                             Icon(
                                 imageVector = Icons.Default.Close,
-                                contentDescription = "Cancel edit",
+                                contentDescription = tr("Cancel edit"),
                                 tint = TextSecondary,
                                 modifier = Modifier
                                     .size(16.dp)
@@ -484,7 +491,7 @@ fun ChatScreen(
                         }
                     }
                     if (voiceError != null) {
-                        Text(
+                        AppText(
                             text = voiceError.orEmpty(),
                             fontSize = 11.sp,
                             color = AccentRed,
@@ -565,7 +572,7 @@ fun ChatScreen(
                                 TextField(
                                     value = inputQuery,
                                     onValueChange = { inputQuery = it; voiceError = null },
-                                    placeholder = { Text("Ask OpenDroid to run an autonomous task...", color = TextSecondary, fontSize = 14.sp) },
+                                    placeholder = { AppText(tr("Ask OpenDroid to run an autonomous task..."), color = TextSecondary, fontSize = 14.sp) },
                                     colors = TextFieldDefaults.colors(
                                         focusedContainerColor = Color.Transparent,
                                         unfocusedContainerColor = Color.Transparent,
@@ -599,7 +606,7 @@ fun ChatScreen(
                                 ) {
                                     Icon(
                                         imageVector = Icons.Default.Send,
-                                        contentDescription = "Send",
+                                        contentDescription = tr("Send"),
                                         tint = DarkBackground
                                     )
                                 }
@@ -615,10 +622,10 @@ fun ChatScreen(
         AlertDialog(
             onDismissRequest = { sessionPendingDelete = null },
             containerColor = DarkSurface,
-            title = { Text("Delete chat?", color = TextPrimary) },
+            title = { AppText(tr("Delete chat?"), color = TextPrimary) },
             text = {
-                Text(
-                    "\"${session.title}\" and its messages will be permanently deleted.",
+                AppText(
+                    "\"${session.title}\"及其消息将被永久删除。",
                     color = TextSecondary
                 )
             },
@@ -627,12 +634,12 @@ fun ChatScreen(
                     viewModel.deleteChat(session.id)
                     sessionPendingDelete = null
                 }) {
-                    Text("Delete", color = AccentRed, fontWeight = FontWeight.Bold)
+                    AppText(tr("Delete"), color = AccentRed, fontWeight = FontWeight.Bold)
                 }
             },
             dismissButton = {
                 TextButton(onClick = { sessionPendingDelete = null }) {
-                    Text("Cancel", color = TextSecondary)
+                    AppText(tr("Cancel"), color = TextSecondary)
                 }
             }
         )
@@ -642,7 +649,7 @@ fun ChatScreen(
         AlertDialog(
             onDismissRequest = { sessionPendingRename = null },
             containerColor = DarkSurface,
-            title = { Text("Rename chat", color = TextPrimary) },
+            title = { AppText(tr("Rename chat"), color = TextPrimary) },
             text = {
                 TextField(
                     value = renameText,
@@ -664,12 +671,12 @@ fun ChatScreen(
                     viewModel.renameSession(session.id, renameText)
                     sessionPendingRename = null
                 }) {
-                    Text("Save", color = TextPrimary, fontWeight = FontWeight.Bold)
+                    AppText(tr("Save"), color = TextPrimary, fontWeight = FontWeight.Bold)
                 }
             },
             dismissButton = {
                 TextButton(onClick = { sessionPendingRename = null }) {
-                    Text("Cancel", color = TextSecondary)
+                    AppText(tr("Cancel"), color = TextSecondary)
                 }
             }
         )
@@ -683,15 +690,15 @@ fun AgentStatusSubtitle(state: AgentState, runningElsewhere: Boolean = false) {
     // so explicitly instead of showing a plain "Online & Ready" that would hide the
     // fact that a task is still going in the background.
     val text = if (runningElsewhere) {
-        "Online & Ready · Task running in another chat"
+        tr("Online & Ready · Task running in another chat")
     } else {
         when (state) {
             is AgentState.Idle -> "Online & Ready"
             is AgentState.Listening -> "Listening to voice input..."
             is AgentState.Thinking -> "Analyzing intent & planning..."
             is AgentState.PlanProposed -> "Requires Plan Approval"
-            is AgentState.ExecutingPlan -> "Executing: ${state.currentStepDesc}"
-            is AgentState.Speaking -> "Speaking: ${state.text.take(30)}..."
+            is AgentState.ExecutingPlan -> "正在执行：${state.currentStepDesc}"
+            is AgentState.Speaking -> "正在朗读：${state.text.take(30)}..."
             is AgentState.Error -> "Execution Error"
         }
     }
@@ -710,7 +717,7 @@ fun AgentStatusSubtitle(state: AgentState, runningElsewhere: Boolean = false) {
         }
     }
 
-    Text(
+    AppText(
         text = text,
         fontSize = 11.sp,
         color = color,
@@ -806,7 +813,7 @@ fun ChatBubble(
                         "LiteRT-LM (On-device)" -> "ON-DEVICE (LITERT)"
                         else -> message.modelBadge.uppercase(Locale.getDefault())
                     }
-                    Text(
+                    AppText(
                         text = displayName,
                         fontSize = 9.sp,
                         fontWeight = FontWeight.Bold,
@@ -816,7 +823,7 @@ fun ChatBubble(
                     )
                 }
 
-                Text(
+                AppText(
                     text = message.text,
                     fontSize = 14.sp,
                     color = textColor,
@@ -836,14 +843,14 @@ fun ChatBubble(
                     if (!isAgent && onEditRequested != null) {
                         Icon(
                             imageVector = Icons.Default.Edit,
-                            contentDescription = "Edit message",
+                            contentDescription = tr("Edit message"),
                             tint = TextSecondary,
                             modifier = Modifier
                                 .size(13.dp)
                                 .clickable { onEditRequested(message) }
                         )
                     }
-                    Text(
+                    AppText(
                         text = timeFormat.format(Date(message.timestamp)),
                         fontSize = 9.sp,
                         color = TextSecondary
@@ -925,13 +932,13 @@ fun ProposedPlanPrompt(
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(
                     imageVector = Icons.Default.Warning,
-                    contentDescription = "Plan Proposed",
+                    contentDescription = tr("Plan Proposed"),
                     tint = AccentCyan,
                     modifier = Modifier.size(24.dp)
                 )
                 Spacer(modifier = Modifier.width(8.dp))
-                Text(
-                    text = "AUTONOMOUS PLAN PROPOSED",
+                AppText(
+                    text = tr("AUTONOMOUS PLAN PROPOSED"),
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
                     fontFamily = FontFamily.Monospace,
@@ -939,22 +946,22 @@ fun ProposedPlanPrompt(
                 )
             }
             Spacer(modifier = Modifier.height(12.dp))
-            Text(
-                text = "Goal: \"$goal\"",
+            AppText(
+                text = "目标：\"$goal\"",
                 fontSize = 14.sp,
                 fontWeight = FontWeight.SemiBold,
                 color = TextPrimary
             )
             Spacer(modifier = Modifier.height(6.dp))
-            Text(
-                text = "OpenDroid has formulated a sequence of $stepsCount steps to complete this goal. Review the steps in the PLAN tab or approve below to execute.",
+            AppText(
+                text = "OpenDroid 已制定包含 $stepsCount 个步骤的执行序列来完成该目标。你可以在“计划”标签页查看步骤，或在下方批准执行。",
                 fontSize = 12.sp,
                 color = TextSecondary
             )
             if (blockedActions.isNotEmpty()) {
                 Spacer(modifier = Modifier.height(12.dp))
-                Text(
-                    text = "BLOCKED AUTO-RUN — these steps aren't in your allowlist:",
+                AppText(
+                    text = tr("BLOCKED AUTO-RUN — these steps aren't in your allowlist:"),
                     fontSize = 11.sp,
                     fontFamily = FontFamily.Monospace,
                     color = AccentRed
@@ -970,15 +977,15 @@ fun ProposedPlanPrompt(
                                 },
                                 colors = CheckboxDefaults.colors(checkedColor = AccentCyan)
                             )
-                            Text(
-                                text = "Always allow $action",
+                            AppText(
+                                text = "始终允许 $action",
                                 fontSize = 13.sp,
                                 color = TextPrimary
                             )
                         }
                     } else {
-                        Text(
-                            text = "• $action (always asks)",
+                        AppText(
+                            text = "• $action（每次询问）",
                             fontSize = 13.sp,
                             color = TextSecondary,
                             modifier = Modifier.padding(start = 12.dp, top = 4.dp)
@@ -997,7 +1004,7 @@ fun ProposedPlanPrompt(
                     border = BorderStroke(1.dp, AccentRed.copy(alpha = 0.5f)),
                     shape = RoundedCornerShape(8.dp)
                 ) {
-                    Text("Reject", fontWeight = FontWeight.Bold)
+                    AppText(tr("Reject"), fontWeight = FontWeight.Bold)
                 }
                 Spacer(modifier = Modifier.width(12.dp))
                 Button(
@@ -1005,7 +1012,7 @@ fun ProposedPlanPrompt(
                     colors = ButtonDefaults.buttonColors(containerColor = TextPrimary, contentColor = DarkBackground),
                     shape = RoundedCornerShape(8.dp)
                 ) {
-                    Text("Approve & Run", fontWeight = FontWeight.Bold)
+                    AppText(tr("Approve & Run"), fontWeight = FontWeight.Bold)
                 }
             }
         }
@@ -1129,7 +1136,7 @@ fun VoiceWaveform(text: String, modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.width(8.dp))
         // No maxLines cap - long dictation wraps across multiple lines and the container
         // (see the input Box in ChatScreen) scrolls once it exceeds its bounded max height.
-        Text(
+        AppText(
             text = text,
             fontSize = 13.sp,
             color = TextPrimary,
@@ -1193,7 +1200,7 @@ private fun ChatErrorRecoveryCard(
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(Icons.Default.Warning, contentDescription = null, tint = AccentRed)
                 Spacer(modifier = Modifier.width(8.dp))
-                Text(
+                AppText(
                     text = error.title(),
                     color = TextPrimary,
                     fontWeight = FontWeight.Bold,
@@ -1201,17 +1208,17 @@ private fun ChatErrorRecoveryCard(
                 )
             }
             if (error.partialMessageId != null) {
-                Text(
-                    text = "Incomplete response",
+                AppText(
+                    text = tr("Incomplete response"),
                     color = AccentCyan,
                     fontSize = 11.sp,
                     fontFamily = FontFamily.Monospace
                 )
             }
-            Text(text = error.guidance(), color = TextSecondary, fontSize = 13.sp)
+            AppText(text = error.guidance(), color = TextSecondary, fontSize = 13.sp)
             if (phase is ChatErrorUiState.Phase.WaitingUntil && waitSecondsLeft > 0L) {
-                Text(
-                    text = "Retry available in ${waitSecondsLeft}s",
+                AppText(
+                    text = "${waitSecondsLeft} 秒后可重试",
                     color = TextSecondary,
                     fontSize = 11.sp,
                     fontFamily = FontFamily.Monospace
@@ -1228,13 +1235,13 @@ private fun ChatErrorRecoveryCard(
                         ),
                         modifier = Modifier.heightIn(min = 48.dp)
                     ) {
-                        Text(actionLabel)
+                        AppText(actionLabel)
                     }
                 }
                 TextButton(onClick = { detailsExpanded = !detailsExpanded }) {
-                    Text(if (detailsExpanded) "Hide details" else "Technical details")
+                    AppText(if (detailsExpanded) "Hide details" else "Technical details")
                 }
-                TextButton(onClick = onDismiss) { Text("Dismiss") }
+                TextButton(onClick = onDismiss) { AppText(tr("Dismiss")) }
             }
             if (detailsExpanded) {
                 val detail = buildString {
@@ -1248,7 +1255,7 @@ private fun ChatErrorRecoveryCard(
                         append(it)
                     }
                 }
-                Text(
+                AppText(
                     text = detail,
                     color = TextSecondary,
                     fontSize = 11.sp,

@@ -1,4 +1,11 @@
+// Modified by opendroid-cn (Chinese localization fork): UI strings routed through i18n.tr(). See NOTICE.
 package com.opendroid.ai.ui.screens
+
+
+
+import com.opendroid.ai.i18n.tr
+
+import com.opendroid.ai.i18n.AppText
 
 import android.content.Context
 import android.content.Intent
@@ -77,7 +84,7 @@ fun AutoReplySettingsScreen(
             try {
                 settingsRepository.updateAutoReplyConfig(newConfig)
             } catch (e: Exception) {
-                android.util.Log.e("AutoReplySettings", "Failed to save config: ${e.message}", e)
+                android.util.Log.e("AutoReplySettings", "保存配置失败：${e.message}", e)
             }
         }
     }
@@ -87,10 +94,10 @@ fun AutoReplySettingsScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Auto-Reply Settings", fontWeight = FontWeight.Bold) },
+                title = { AppText(tr("Auto-Reply Settings"), fontWeight = FontWeight.Bold) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                        Icon(Icons.Default.ArrowBack, contentDescription = tr("Back"))
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -126,16 +133,16 @@ fun AutoReplySettingsScreen(
                         colors = CardDefaults.cardColors(containerColor = themeColors.accentRed.copy(alpha = 0.08f))
                     ) {
                         Column(modifier = Modifier.padding(16.dp)) {
-                            Text(
-                                text = "SYSTEM PERMISSIONS REQUIRED",
+                            AppText(
+                                text = tr("SYSTEM PERMISSIONS REQUIRED"),
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 color = themeColors.accentRed,
                                 fontFamily = androidx.compose.ui.text.font.FontFamily.Monospace
                             )
                             Spacer(modifier = Modifier.height(6.dp))
-                            Text(
-                                text = "Auto-Reply needs notification access to monitor incoming messages and accessibility access to automate typing & sending replies.",
+                            AppText(
+                                text = tr("Auto-Reply needs notification access to monitor incoming messages and accessibility access to automate typing & sending replies."),
                                 fontSize = 13.sp,
                                 color = themeColors.textPrimary
                             )
@@ -157,7 +164,7 @@ fun AutoReplySettingsScreen(
                                         colors = ButtonDefaults.buttonColors(containerColor = themeColors.accentRed),
                                         modifier = Modifier.weight(1f)
                                     ) {
-                                        Text("Grant Notification Access", fontSize = 10.sp, color = Color.White)
+                                        AppText(tr("Grant Notification Access"), fontSize = 10.sp, color = Color.White)
                                     }
                                 }
                                 if (!isAccessibilityPermissionGranted) {
@@ -172,7 +179,7 @@ fun AutoReplySettingsScreen(
                                         colors = ButtonDefaults.buttonColors(containerColor = themeColors.accentPurple),
                                         modifier = Modifier.weight(1f)
                                     ) {
-                                        Text("Grant Accessibility Access", fontSize = 10.sp, color = Color.White)
+                                        AppText(tr("Grant Accessibility Access"), fontSize = 10.sp, color = Color.White)
                                     }
                                 }
                             }
@@ -202,15 +209,15 @@ fun AutoReplySettingsScreen(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Column(modifier = Modifier.weight(1f)) {
-                            Text(
-                                "Auto-Reply",
+                            AppText(
+                                tr("Auto-Reply"),
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold,
                                 color = themeColors.textPrimary
                             )
                             Spacer(modifier = Modifier.height(4.dp))
-                            Text(
-                                if (config.globalEnabled) "AI will auto-reply to messages after ${config.replyDelayMinutes} minutes"
+                            AppText(
+                                if (config.globalEnabled) "AI 将在 ${config.replyDelayMinutes} 分钟后自动回复消息"
                                 else "Auto-reply is disabled",
                                 fontSize = 13.sp,
                                 color = themeColors.textSecondary
@@ -229,8 +236,8 @@ fun AutoReplySettingsScreen(
 
                 if (config.globalEnabled) {
                     // Per-App Toggles
-                    Text(
-                        "Enabled Apps",
+                    AppText(
+                        tr("Enabled Apps"),
                         fontSize = 15.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = themeColors.textPrimary
@@ -259,8 +266,8 @@ fun AutoReplySettingsScreen(
                     }
 
                     // Reply Delay Slider
-                    Text(
-                        "Reply Delay",
+                    AppText(
+                        tr("Reply Delay"),
                         fontSize = 15.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = themeColors.textPrimary
@@ -278,13 +285,13 @@ fun AutoReplySettingsScreen(
                                 modifier = Modifier.fillMaxWidth(),
                                 horizontalArrangement = Arrangement.SpaceBetween
                             ) {
-                                Text(
-                                    "Wait before replying",
+                                AppText(
+                                    tr("Wait before replying"),
                                     fontSize = 14.sp,
                                     color = themeColors.textSecondary
                                 )
-                                Text(
-                                    "${config.replyDelayMinutes} minutes",
+                                AppText(
+                                    "${config.replyDelayMinutes} 分钟",
                                     fontSize = 14.sp,
                                     fontWeight = FontWeight.Bold,
                                     color = themeColors.accentPurple
@@ -307,15 +314,15 @@ fun AutoReplySettingsScreen(
                                 modifier = Modifier.fillMaxWidth(),
                                 horizontalArrangement = Arrangement.SpaceBetween
                             ) {
-                                Text("1 min", fontSize = 12.sp, color = themeColors.textSecondary.copy(alpha = 0.6f))
-                                Text("60 min", fontSize = 12.sp, color = themeColors.textSecondary.copy(alpha = 0.6f))
+                                AppText(tr("1 min"), fontSize = 12.sp, color = themeColors.textSecondary.copy(alpha = 0.6f))
+                                AppText(tr("60 min"), fontSize = 12.sp, color = themeColors.textSecondary.copy(alpha = 0.6f))
                             }
                         }
                     }
 
                     // Rate Limit
-                    Text(
-                        "Rate Limit",
+                    AppText(
+                        tr("Rate Limit"),
                         fontSize = 15.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = themeColors.textPrimary
@@ -333,12 +340,12 @@ fun AutoReplySettingsScreen(
                                 modifier = Modifier.fillMaxWidth(),
                                 horizontalArrangement = Arrangement.SpaceBetween
                             ) {
-                                Text(
-                                    "Max replies per contact/hour",
+                                AppText(
+                                    tr("Max replies per contact/hour"),
                                     fontSize = 14.sp,
                                     color = themeColors.textSecondary
                                 )
-                                Text(
+                                AppText(
                                     "${config.maxRepliesPerContactPerHour}",
                                     fontSize = 14.sp,
                                     fontWeight = FontWeight.Bold,
@@ -362,8 +369,8 @@ fun AutoReplySettingsScreen(
                     }
 
                     // Custom Prompt
-                    Text(
-                        "Reply Tone",
+                    AppText(
+                        tr("Reply Tone"),
                         fontSize = 15.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = themeColors.textPrimary
@@ -377,8 +384,8 @@ fun AutoReplySettingsScreen(
                         colors = CardDefaults.cardColors(containerColor = themeColors.cardBackground)
                     ) {
                         Column(modifier = Modifier.padding(20.dp)) {
-                            Text(
-                                "Custom reply style (optional)",
+                            AppText(
+                                tr("Custom reply style (optional)"),
                                 fontSize = 14.sp,
                                 color = themeColors.textSecondary
                             )
@@ -390,8 +397,8 @@ fun AutoReplySettingsScreen(
                                 },
                                 modifier = Modifier.fillMaxWidth(),
                                 placeholder = {
-                                    Text(
-                                        "e.g., casual and friendly, use emojis",
+                                    AppText(
+                                        tr("e.g., casual and friendly, use emojis"),
                                         color = themeColors.textSecondary.copy(alpha = 0.5f)
                                     )
                                 },
@@ -431,9 +438,9 @@ private fun AppToggleRow(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(emoji, fontSize = 22.sp)
+            AppText(emoji, fontSize = 22.sp)
             Spacer(modifier = Modifier.width(12.dp))
-            Text(appName, fontSize = 15.sp, color = themeColors.textPrimary)
+            AppText(appName, fontSize = 15.sp, color = themeColors.textPrimary)
         }
         Switch(
             checked = isEnabled,

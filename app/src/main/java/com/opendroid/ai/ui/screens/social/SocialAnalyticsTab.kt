@@ -1,4 +1,11 @@
+// Modified by opendroid-cn (Chinese localization fork): UI strings routed through i18n.tr(). See NOTICE.
 package com.opendroid.ai.ui.screens.social
+
+
+
+import com.opendroid.ai.i18n.tr
+
+import com.opendroid.ai.i18n.AppText
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -49,14 +56,14 @@ fun SocialAnalyticsTab(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text("Performance Analytics", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                AppText(tr("Performance Analytics"), color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
 
                 Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                     listOf(7 to "7D", 30 to "30D", 90 to "90D").forEach { (days, label) ->
                         FilterChip(
                             selected = selectedRangeDays == days,
                             onClick = { selectedRangeDays = days },
-                            label = { Text(label, fontSize = 11.sp) },
+                            label = { AppText(label, fontSize = 11.sp) },
                             colors = FilterChipDefaults.filterChipColors(
                                 selectedContainerColor = theme.accentCyan.copy(alpha = 0.2f),
                                 selectedLabelColor = theme.accentCyan
@@ -74,13 +81,13 @@ fun SocialAnalyticsTab(
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 AnalyticsMetricBox(
-                    title = "Followers",
+                    title = tr("Followers"),
                     value = summary?.totalFollowers?.toString() ?: "0",
                     delta = summary?.followersGrowthDelta?.let { if (it >= 0) "+$it" else "$it" } ?: "+0",
                     modifier = Modifier.weight(1f)
                 )
                 AnalyticsMetricBox(
-                    title = "Total Reach",
+                    title = tr("Total Reach"),
                     value = summary?.totalReach?.let { formatCount(it.toLong()) } ?: "0",
                     delta = summary?.reachGrowthDelta?.let { if (it >= 0) "+$it" else "$it" } ?: "+0",
                     modifier = Modifier.weight(1f)
@@ -94,13 +101,13 @@ fun SocialAnalyticsTab(
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 AnalyticsMetricBox(
-                    title = "Engagement",
+                    title = tr("Engagement"),
                     value = summary?.averageEngagementRate?.let { "${String.format("%.1f", it)}%" } ?: "0.0%",
                     delta = "Active",
                     modifier = Modifier.weight(1f)
                 )
                 AnalyticsMetricBox(
-                    title = "Total Posts",
+                    title = tr("Total Posts"),
                     value = summary?.totalPosts?.toString() ?: "0",
                     delta = "Published",
                     modifier = Modifier.weight(1f)
@@ -117,9 +124,9 @@ fun SocialAnalyticsTab(
                 colors = CardDefaults.cardColors(containerColor = theme.cardBackground)
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
-                    Text("Audience Growth Trend", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                    AppText(tr("Audience Growth Trend"), color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)
                     Spacer(modifier = Modifier.height(4.dp))
-                    Text("Daily follower trajectory over the period", color = theme.textSecondary, fontSize = 11.sp)
+                    AppText(tr("Daily follower trajectory over the period"), color = theme.textSecondary, fontSize = 11.sp)
                     Spacer(modifier = Modifier.height(16.dp))
 
                     val trendPoints = listOf(120f, 135f, 150f, 175f, 210f, 240f, 290f)
@@ -144,9 +151,9 @@ fun SocialAnalyticsTab(
                 colors = CardDefaults.cardColors(containerColor = theme.cardBackground)
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
-                    Text("Daily Impressions & Reach", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                    AppText(tr("Daily Impressions & Reach"), color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)
                     Spacer(modifier = Modifier.height(4.dp))
-                    Text("Organic post visibility across all channels", color = theme.textSecondary, fontSize = 11.sp)
+                    AppText(tr("Organic post visibility across all channels"), color = theme.textSecondary, fontSize = 11.sp)
                     Spacer(modifier = Modifier.height(16.dp))
 
                     val barValues = listOf(450f, 620f, 890f, 1200f, 950f, 1400f, 1800f)
@@ -171,7 +178,7 @@ fun SocialAnalyticsTab(
                 colors = CardDefaults.cardColors(containerColor = theme.cardBackground)
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
-                    Text("Audience Share by Platform", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                    AppText(tr("Audience Share by Platform"), color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)
                     Spacer(modifier = Modifier.height(14.dp))
 
                     Row(
@@ -205,12 +212,12 @@ fun SocialAnalyticsTab(
 
         // ── 6. PLATFORM BREAKDOWN CARDS ──────────────────────────────
         item {
-            Text("Channel Breakdown", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 15.sp)
+            AppText(tr("Channel Breakdown"), color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 15.sp)
         }
 
         if (accounts.isEmpty()) {
             item {
-                Text("No accounts connected yet.", color = theme.textSecondary, fontSize = 12.sp)
+                AppText(tr("No accounts connected yet."), color = theme.textSecondary, fontSize = 12.sp)
             }
         } else {
             items(accounts) { account ->
@@ -230,14 +237,14 @@ fun SocialAnalyticsTab(
                                 .border(0.5.dp, theme.borderColor, CircleShape),
                             contentAlignment = Alignment.Center
                         ) {
-                            Text(account.platform.displayName.take(1), color = theme.accentCyan, fontWeight = FontWeight.Bold)
+                            AppText(account.platform.displayName.take(1), color = theme.accentCyan, fontWeight = FontWeight.Bold)
                         }
 
                         Spacer(modifier = Modifier.width(12.dp))
 
                         Column(modifier = Modifier.weight(1f)) {
-                            Text(account.platform.displayName, color = theme.textPrimary, fontWeight = FontWeight.SemiBold, fontSize = 13.sp)
-                            Text(
+                            AppText(account.platform.displayName, color = theme.textPrimary, fontWeight = FontWeight.SemiBold, fontSize = 13.sp)
+                            AppText(
                                 if (account.username.isNotBlank()) "@${account.username}" else account.displayName,
                                 color = theme.textSecondary,
                                 fontSize = 11.sp
@@ -245,8 +252,8 @@ fun SocialAnalyticsTab(
                         }
 
                         Column(horizontalAlignment = Alignment.End) {
-                            Text("${accountPosts.size} posts", color = theme.textPrimary, fontWeight = FontWeight.SemiBold, fontSize = 12.sp)
-                            Text("Active sync", color = theme.accentCyan, fontSize = 10.sp)
+                            AppText("${accountPosts.size} 篇帖子", color = theme.textPrimary, fontWeight = FontWeight.SemiBold, fontSize = 12.sp)
+                            AppText(tr("Active sync"), color = theme.accentCyan, fontSize = 10.sp)
                         }
                     }
                 }
@@ -269,11 +276,11 @@ private fun AnalyticsMetricBox(
         colors = CardDefaults.cardColors(containerColor = theme.cardBackground)
     ) {
         Column(modifier = Modifier.padding(12.dp)) {
-            Text(title, color = theme.textSecondary, fontSize = 11.sp)
+            AppText(title, color = theme.textSecondary, fontSize = 11.sp)
             Spacer(modifier = Modifier.height(4.dp))
-            Text(value, color = theme.textPrimary, fontSize = 18.sp, fontWeight = FontWeight.Bold)
+            AppText(value, color = theme.textPrimary, fontSize = 18.sp, fontWeight = FontWeight.Bold)
             Spacer(modifier = Modifier.height(4.dp))
-            Text(delta, color = theme.accentCyan, fontSize = 10.sp, fontWeight = FontWeight.SemiBold)
+            AppText(delta, color = theme.accentCyan, fontSize = 10.sp, fontWeight = FontWeight.SemiBold)
         }
     }
 }
@@ -284,9 +291,9 @@ private fun LegendItem(label: String, percent: String, color: Color) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         Box(modifier = Modifier.size(8.dp).clip(CircleShape).background(color))
         Spacer(modifier = Modifier.width(8.dp))
-        Text(label, color = theme.textPrimary, fontSize = 11.sp)
+        AppText(label, color = theme.textPrimary, fontSize = 11.sp)
         Spacer(modifier = Modifier.width(6.dp))
-        Text(percent, color = theme.textSecondary, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+        AppText(percent, color = theme.textSecondary, fontSize = 11.sp, fontWeight = FontWeight.Bold)
     }
 }
 

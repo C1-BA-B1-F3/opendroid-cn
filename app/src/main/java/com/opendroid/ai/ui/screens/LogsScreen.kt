@@ -1,4 +1,11 @@
+// Modified by opendroid-cn (Chinese localization fork): UI strings routed through i18n.tr(). See NOTICE.
 package com.opendroid.ai.ui.screens
+
+
+
+import com.opendroid.ai.i18n.tr
+
+import com.opendroid.ai.i18n.AppText
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
@@ -59,8 +66,8 @@ fun LogsScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(
-                        text = "SYSTEM LOGS",
+                    AppText(
+                        text = tr("SYSTEM LOGS"),
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
                         color = TextPrimary,
@@ -82,7 +89,7 @@ fun LogsScreen(
                         ) {
                             Icon(
                                 imageVector = Icons.Default.Delete,
-                                contentDescription = "Clear logs",
+                                contentDescription = tr("Clear logs"),
                                 tint = AccentRed
                             )
                         }
@@ -118,7 +125,7 @@ fun LogsScreen(
                         selected = selectedTab == index,
                         onClick = { selectedTab = index },
                         text = {
-                            Text(
+                            AppText(
                                 text = title,
                                 fontSize = 13.sp,
                                 fontWeight = if (selectedTab == index) FontWeight.Bold else FontWeight.Normal,
@@ -159,8 +166,8 @@ fun LogsScreen(
                         }
                     } else {
                         EmptyStateView(
-                            title = "No executions recorded yet",
-                            subtitle = "Every step OpenDroid executes is archived here.",
+                            title = tr("No executions recorded yet"),
+                            subtitle = tr("Every step OpenDroid executes is archived here."),
                             icon = Icons.Default.Info
                         )
                     }
@@ -177,8 +184,8 @@ fun LogsScreen(
                         }
                     } else {
                         EmptyStateView(
-                            title = "All systems fully aligned",
-                            subtitle = "OpenDroid's Repair Engine has not encountered any unrecognized commands.",
+                            title = tr("All systems fully aligned"),
+                            subtitle = tr("OpenDroid's Repair Engine has not encountered any unrecognized commands."),
                             icon = Icons.Default.CheckCircle,
                             iconColor = AccentCyan
                         )
@@ -194,11 +201,11 @@ fun LogsScreen(
                 selectedPlanForMacro = null
                 macroSaveError = null
             },
-            title = { Text("Save completed task as macro") },
+            title = { AppText(tr("Save completed task as macro")) },
             text = {
                 Column {
-                    Text(
-                        "Only successful steps will be recorded. Credential, API-key, and token values are removed.",
+                    AppText(
+                        tr("Only successful steps will be recorded. Credential, API-key, and token values are removed."),
                         fontSize = 12.sp,
                         color = TextSecondary
                     )
@@ -206,13 +213,13 @@ fun LogsScreen(
                     OutlinedTextField(
                         value = macroName,
                         onValueChange = { macroName = it },
-                        label = { Text("Macro name") },
+                        label = { AppText(tr("Macro name")) },
                         singleLine = true,
                         modifier = Modifier.fillMaxWidth()
                     )
                     macroSaveError?.let { error ->
                         Spacer(modifier = Modifier.height(8.dp))
-                        Text(error, color = AccentRed, fontSize = 12.sp)
+                        AppText(error, color = AccentRed, fontSize = 12.sp)
                     }
                 }
             },
@@ -233,12 +240,12 @@ fun LogsScreen(
                     },
                     enabled = macroName.isNotBlank()
                 ) {
-                    Text("Save macro")
+                    AppText(tr("Save macro"))
                 }
             },
             dismissButton = {
                 TextButton(onClick = { selectedPlanForMacro = null }) {
-                    Text("Cancel")
+                    AppText(tr("Cancel"))
                 }
             }
         )
@@ -264,14 +271,14 @@ fun EmptyStateView(
                 modifier = Modifier.size(48.dp)
             )
             Spacer(modifier = Modifier.height(16.dp))
-            Text(
+            AppText(
                 text = title,
                 color = TextPrimary,
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Bold
             )
             Spacer(modifier = Modifier.height(6.dp))
-            Text(
+            AppText(
                 text = subtitle,
                 color = TextSecondary,
                 fontSize = 12.sp,
@@ -336,7 +343,7 @@ fun UnknownActionCard(error: UnknownActionEntity) {
                         .background(statusColor.copy(alpha = 0.15f))
                         .padding(horizontal = 6.dp, vertical = 2.dp)
                 ) {
-                    Text(
+                    AppText(
                         text = statusText,
                         fontSize = 9.sp,
                         fontWeight = FontWeight.Bold,
@@ -345,7 +352,7 @@ fun UnknownActionCard(error: UnknownActionEntity) {
                     )
                 }
 
-                Text(
+                AppText(
                     text = dateFormat.format(Date(error.timestamp)),
                     fontSize = 10.sp,
                     color = TextSecondary,
@@ -355,8 +362,8 @@ fun UnknownActionCard(error: UnknownActionEntity) {
 
             Spacer(modifier = Modifier.height(8.dp))
             
-            Text(
-                text = "Unrecognized: ${error.attemptedAction}",
+            AppText(
+                text = "无法识别：${error.attemptedAction}",
                 fontFamily = FontFamily.Monospace,
                 fontSize = 13.sp,
                 fontWeight = FontWeight.Bold,
@@ -365,8 +372,8 @@ fun UnknownActionCard(error: UnknownActionEntity) {
             
             Spacer(modifier = Modifier.height(6.dp))
             
-            Text(
-                text = "Goal: ${error.goal}",
+            AppText(
+                text = "目标：${error.goal}",
                 fontSize = 13.sp,
                 fontWeight = FontWeight.Medium,
                 color = TextPrimary
@@ -376,13 +383,13 @@ fun UnknownActionCard(error: UnknownActionEntity) {
                 Column(modifier = Modifier.padding(top = 12.dp)) {
                     Divider(color = BorderColor, modifier = Modifier.padding(vertical = 4.dp))
                     
-                    Text(
-                        text = "System Status Details:",
+                    AppText(
+                        text = tr("System Status Details:"),
                         fontSize = 11.sp,
                         color = TextSecondary
                     )
                     Spacer(modifier = Modifier.height(4.dp))
-                    Text(
+                    AppText(
                         text = explanation,
                         fontSize = 12.sp,
                         color = statusColor,
@@ -403,7 +410,7 @@ fun UnknownActionCard(error: UnknownActionEntity) {
             ) {
                 Icon(
                     imageVector = if (expanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
-                    contentDescription = "Expand info",
+                    contentDescription = tr("Expand info"),
                     tint = TextSecondary,
                     modifier = Modifier.size(16.dp)
                 )
@@ -447,7 +454,7 @@ fun HistoryLogCard(
                         .background(if (log.success) AccentCyan.copy(alpha = 0.15f) else AccentRed.copy(alpha = 0.15f))
                         .padding(horizontal = 6.dp, vertical = 2.dp)
                 ) {
-                    Text(
+                    AppText(
                         text = if (log.success) "SUCCESS" else "FAILED",
                         fontSize = 9.sp,
                         fontWeight = FontWeight.Bold,
@@ -456,7 +463,7 @@ fun HistoryLogCard(
                     )
                 }
 
-                Text(
+                AppText(
                     text = dateFormat.format(Date(log.timestamp)),
                     fontSize = 10.sp,
                     color = TextSecondary,
@@ -466,7 +473,7 @@ fun HistoryLogCard(
 
             Spacer(modifier = Modifier.height(8.dp))
             
-            Text(
+            AppText(
                 text = log.description,
                 fontSize = 14.sp,
                 fontWeight = FontWeight.SemiBold,
@@ -475,8 +482,8 @@ fun HistoryLogCard(
             
             Spacer(modifier = Modifier.height(4.dp))
             
-            Text(
-                text = "Module: ${log.actionType}",
+            AppText(
+                text = "模块：${log.actionType}",
                 fontSize = 11.sp,
                 color = AccentPurple,
                 fontFamily = FontFamily.Monospace
@@ -489,7 +496,7 @@ fun HistoryLogCard(
                     colors = ButtonDefaults.buttonColors(containerColor = AccentPurple),
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    Text("Save completed task as macro", fontSize = 11.sp)
+                    AppText(tr("Save completed task as macro"), fontSize = 11.sp)
                 }
             }
 
@@ -498,8 +505,8 @@ fun HistoryLogCard(
                     Divider(color = BorderColor, modifier = Modifier.padding(vertical = 4.dp))
                     
                     if (log.paramsJson.isNotBlank() && log.paramsJson != "{}") {
-                        Text("Parameters:", fontSize = 11.sp, color = TextSecondary)
-                        Text(
+                        AppText(tr("Parameters:"), fontSize = 11.sp, color = TextSecondary)
+                        AppText(
                             text = log.paramsJson,
                             fontSize = 11.sp,
                             color = TextPrimary,
@@ -514,8 +521,8 @@ fun HistoryLogCard(
                     }
 
                     if (log.resultData != null) {
-                        Text("Execution Result Data:", fontSize = 11.sp, color = TextSecondary)
-                        Text(
+                        AppText(tr("Execution Result Data:"), fontSize = 11.sp, color = TextSecondary)
+                        AppText(
                             text = log.resultData,
                             fontSize = 11.sp,
                             color = AccentCyan,
@@ -529,8 +536,8 @@ fun HistoryLogCard(
                     }
 
                     if (log.errorMessage != null) {
-                        Text("Diagnostic Error Log:", fontSize = 11.sp, color = TextSecondary)
-                        Text(
+                        AppText(tr("Diagnostic Error Log:"), fontSize = 11.sp, color = TextSecondary)
+                        AppText(
                             text = log.errorMessage,
                             fontSize = 11.sp,
                             color = AccentRed,
@@ -553,7 +560,7 @@ fun HistoryLogCard(
             ) {
                 Icon(
                     imageVector = if (expanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
-                    contentDescription = "Expand info",
+                    contentDescription = tr("Expand info"),
                     tint = TextSecondary,
                     modifier = Modifier.size(16.dp)
                 )

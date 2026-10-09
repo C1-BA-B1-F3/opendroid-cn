@@ -1,4 +1,11 @@
+// Modified by opendroid-cn (Chinese localization fork): UI strings routed through i18n.tr(). See NOTICE.
 package com.opendroid.ai.ui.screens
+
+
+
+import com.opendroid.ai.i18n.tr
+
+import com.opendroid.ai.i18n.AppText
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -61,7 +68,7 @@ fun OnboardingScreen(
                         OnboardingStage.PERMISSION_PROMPT -> "Permissions"
                         OnboardingStage.PERMISSIONS -> "Grant Permissions"
                     }
-                    Text(titleText, color = TextPrimary, fontWeight = FontWeight.Bold)
+                    AppText(titleText, color = TextPrimary, fontWeight = FontWeight.Bold)
                 },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = DarkBackground)
             )
@@ -137,15 +144,15 @@ private fun IntroductionPanel(
         ) {
             Image(
                 painter = painterResource(id = com.opendroid.ai.R.drawable.bot),
-                contentDescription = "OpenDroid Bot Avatar",
+                contentDescription = tr("OpenDroid Bot Avatar"),
                 modifier = Modifier.size(120.dp)
             )
         }
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        Text(
-            text = "Hello! I am OpenDroid",
+        AppText(
+            text = tr("Hello! I am OpenDroid"),
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             color = TextPrimary
@@ -153,8 +160,8 @@ private fun IntroductionPanel(
 
         Spacer(modifier = Modifier.height(12.dp))
 
-        Text(
-            text = "Your open autonomous device assistant. Please introduce yourself so I can serve you personally.",
+        AppText(
+            text = tr("Your open autonomous device assistant. Please introduce yourself so I can serve you personally."),
             fontSize = 14.sp,
             color = TextSecondary,
             textAlign = androidx.compose.ui.text.style.TextAlign.Center
@@ -162,9 +169,9 @@ private fun IntroductionPanel(
 
         if (profileMustBeReentered) {
             Spacer(modifier = Modifier.height(16.dp))
-            Text(
-                text = "Your saved details could not be unlocked on this device, so they were " +
-                        "not kept. Nothing was stored unencrypted - please enter them again.",
+            AppText(
+                text = tr("Your saved details could not be unlocked on this device, so they were ") +
+                        tr("not kept. Nothing was stored unencrypted - please enter them again."),
                 color = AccentRed,
                 fontSize = 12.sp,
                 fontWeight = FontWeight.SemiBold,
@@ -177,8 +184,8 @@ private fun IntroductionPanel(
         OutlinedTextField(
             value = name,
             onValueChange = onNameChange,
-            label = { Text("What should I call you?", color = TextSecondary) },
-            placeholder = { Text("Enter your name", color = TextSecondary.copy(alpha = 0.6f)) },
+            label = { AppText(tr("What should I call you?"), color = TextSecondary) },
+            placeholder = { AppText(tr("Enter your name"), color = TextSecondary.copy(alpha = 0.6f)) },
             colors = OutlinedTextFieldDefaults.colors(
                 focusedBorderColor = AccentCyan,
                 unfocusedBorderColor = BorderColor,
@@ -200,13 +207,13 @@ private fun IntroductionPanel(
         OutlinedTextField(
             value = dob,
             onValueChange = onDobChange,
-            label = { Text("When is your birthday?", color = TextSecondary) },
-            placeholder = { Text("e.g. MM/DD/YYYY", color = TextSecondary.copy(alpha = 0.6f)) },
+            label = { AppText(tr("When is your birthday?"), color = TextSecondary) },
+            placeholder = { AppText(tr("e.g. MM/DD/YYYY"), color = TextSecondary.copy(alpha = 0.6f)) },
             trailingIcon = {
                 IconButton(onClick = { showDatePicker = true }) {
                     Icon(
                         imageVector = Icons.Default.DateRange,
-                        contentDescription = "Pick your birthday",
+                        contentDescription = tr("Pick your birthday"),
                         tint = TextPrimary
                     )
                 }
@@ -242,11 +249,11 @@ private fun IntroductionPanel(
                             showDatePicker = false
                         },
                         enabled = datePickerState.selectedDateMillis != null
-                    ) { Text("OK", color = TextPrimary, fontWeight = FontWeight.Bold) }
+                    ) { AppText(tr("OK"), color = TextPrimary, fontWeight = FontWeight.Bold) }
                 },
                 dismissButton = {
                     TextButton(onClick = { showDatePicker = false }) {
-                        Text("Cancel", color = TextSecondary)
+                        AppText(tr("Cancel"), color = TextSecondary)
                     }
                 }
             ) {
@@ -256,8 +263,8 @@ private fun IntroductionPanel(
 
         if (showError) {
             Spacer(modifier = Modifier.height(8.dp))
-            Text(
-                text = "Please enter both your name and birth date.",
+            AppText(
+                text = tr("Please enter both your name and birth date."),
                 color = AccentRed,
                 fontSize = 12.sp,
                 fontWeight = FontWeight.SemiBold
@@ -266,8 +273,8 @@ private fun IntroductionPanel(
 
         if (storageError) {
             Spacer(modifier = Modifier.height(8.dp))
-            Text(
-                text = "Your details could not be saved securely. Please try again.",
+            AppText(
+                text = tr("Your details could not be saved securely. Please try again."),
                 color = AccentRed,
                 fontSize = 12.sp,
                 fontWeight = FontWeight.SemiBold
@@ -282,7 +289,7 @@ private fun IntroductionPanel(
             colors = ButtonDefaults.buttonColors(containerColor = TextPrimary, contentColor = DarkBackground),
             shape = RoundedCornerShape(8.dp)
         ) {
-            Text("Let's Go", fontWeight = FontWeight.Bold, fontSize = 16.sp)
+            AppText(tr("Let's Go"), fontWeight = FontWeight.Bold, fontSize = 16.sp)
         }
     }
 }
@@ -327,15 +334,15 @@ fun PermissionPromptPanel(
         ) {
             Image(
                 painter = painterResource(id = com.opendroid.ai.R.drawable.bot),
-                contentDescription = "OpenDroid Bot Avatar",
+                contentDescription = tr("OpenDroid Bot Avatar"),
                 modifier = Modifier.size(120.dp)
             )
         }
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        Text(
-            text = "Permissions Setup",
+        AppText(
+            text = tr("Permissions Setup"),
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             color = TextPrimary
@@ -343,8 +350,8 @@ fun PermissionPromptPanel(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        Text(
-            text = "Let's give me permission so I can serve you well",
+        AppText(
+            text = tr("Let's give me permission so I can serve you well"),
             fontSize = 16.sp,
             fontWeight = FontWeight.SemiBold,
             color = AccentCyan,
@@ -353,8 +360,8 @@ fun PermissionPromptPanel(
 
         Spacer(modifier = Modifier.height(12.dp))
 
-        Text(
-            text = "To allow me to interact with your device, run commands, list files, and operate system features, some standard Android permissions are required.",
+        AppText(
+            text = tr("To allow me to interact with your device, run commands, list files, and operate system features, some standard Android permissions are required."),
             fontSize = 14.sp,
             color = TextSecondary,
             textAlign = androidx.compose.ui.text.style.TextAlign.Center
@@ -368,7 +375,7 @@ fun PermissionPromptPanel(
             colors = ButtonDefaults.buttonColors(containerColor = TextPrimary, contentColor = DarkBackground),
             shape = RoundedCornerShape(8.dp)
         ) {
-            Text("Grant Permissions", fontWeight = FontWeight.Bold, fontSize = 16.sp)
+            AppText(tr("Grant Permissions"), fontWeight = FontWeight.Bold, fontSize = 16.sp)
         }
     }
 }

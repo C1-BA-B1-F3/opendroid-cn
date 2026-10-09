@@ -1,4 +1,11 @@
+// Modified by opendroid-cn (Chinese localization fork): UI strings routed through i18n.tr(). See NOTICE.
 package com.opendroid.ai.ui.screens.social
+
+
+
+import com.opendroid.ai.i18n.tr
+
+import com.opendroid.ai.i18n.AppText
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -45,8 +52,8 @@ fun SocialSettingsTab(
         // ── 1. AUTOMATION LEVEL SELECTOR ─────────────────────────────
         item {
             Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                Text("Automation Guardrails", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
-                Text("Configure autonomy boundaries and approval workflows.", color = theme.textSecondary, fontSize = 11.sp)
+                AppText(tr("Automation Guardrails"), color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                AppText(tr("Configure autonomy boundaries and approval workflows."), color = theme.textSecondary, fontSize = 11.sp)
             }
         }
 
@@ -54,24 +61,24 @@ fun SocialSettingsTab(
             Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 AutomationLevelCard(
                     level = AutomationLevel.SAFE,
-                    title = "Safe Mode (Draft Only)",
-                    subtitle = "AI creates drafts only. Every post, schedule, and reply requires explicit user confirmation.",
+                    title = tr("Safe Mode (Draft Only)"),
+                    subtitle = tr("AI creates drafts only. Every post, schedule, and reply requires explicit user confirmation."),
                     isSelected = currentLevel == AutomationLevel.SAFE,
                     onSelect = { onSelectLevel(AutomationLevel.SAFE) }
                 )
 
                 AutomationLevelCard(
                     level = AutomationLevel.APPROVAL,
-                    title = "Approval Required (Balanced)",
-                    subtitle = "Low-risk comments and routine summaries run autonomously. All new posts and sensitive replies require your approval.",
+                    title = tr("Approval Required (Balanced)"),
+                    subtitle = tr("Low-risk comments and routine summaries run autonomously. All new posts and sensitive replies require your approval."),
                     isSelected = currentLevel == AutomationLevel.APPROVAL,
                     onSelect = { onSelectLevel(AutomationLevel.APPROVAL) }
                 )
 
                 AutomationLevelCard(
                     level = AutomationLevel.AUTONOMOUS,
-                    title = "Autonomous Mode (Full Agent)",
-                    subtitle = "Approved campaigns, scheduled queue, and high-confidence comment replies publish automatically based on rules.",
+                    title = tr("Autonomous Mode (Full Agent)"),
+                    subtitle = tr("Approved campaigns, scheduled queue, and high-confidence comment replies publish automatically based on rules."),
                     isSelected = currentLevel == AutomationLevel.AUTONOMOUS,
                     onSelect = { onSelectLevel(AutomationLevel.AUTONOMOUS) }
                 )
@@ -86,8 +93,8 @@ fun SocialSettingsTab(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Column {
-                    Text("Custom Automation Rules", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
-                    Text("Custom trigger criteria and confidence gates", color = theme.textSecondary, fontSize = 11.sp)
+                    AppText(tr("Custom Automation Rules"), color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                    AppText(tr("Custom trigger criteria and confidence gates"), color = theme.textSecondary, fontSize = 11.sp)
                 }
 
                 Button(
@@ -98,7 +105,7 @@ fun SocialSettingsTab(
                 ) {
                     Icon(Icons.Default.Add, contentDescription = null, tint = Color.Black, modifier = Modifier.size(16.dp))
                     Spacer(modifier = Modifier.width(4.dp))
-                    Text("Add Rule", color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                    AppText(tr("Add Rule"), color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)
                 }
             }
         }
@@ -112,7 +119,7 @@ fun SocialSettingsTab(
                     colors = CardDefaults.cardColors(containerColor = theme.cardBackground)
                 ) {
                     Box(modifier = Modifier.fillMaxWidth().padding(20.dp), contentAlignment = Alignment.Center) {
-                        Text("No custom rules defined yet. Default guardrails are active.", color = theme.textSecondary, fontSize = 12.sp)
+                        AppText(tr("No custom rules defined yet. Default guardrails are active."), color = theme.textSecondary, fontSize = 12.sp)
                     }
                 }
             }
@@ -129,8 +136,8 @@ fun SocialSettingsTab(
         // ── 3. KEYSTORE ENCRYPTION & AUDIT LOG ───────────────────────
         item {
             Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                Text("Security & Audit Trail", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
-                Text("Hardware-isolated cryptographic logs and agent activity", color = theme.textSecondary, fontSize = 11.sp)
+                AppText(tr("Security & Audit Trail"), color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                AppText(tr("Hardware-isolated cryptographic logs and agent activity"), color = theme.textSecondary, fontSize = 11.sp)
             }
         }
 
@@ -150,8 +157,8 @@ fun SocialSettingsTab(
                     }
                     Spacer(modifier = Modifier.width(12.dp))
                     Column {
-                        Text("Android KeyStore Protected", color = theme.textPrimary, fontWeight = FontWeight.SemiBold, fontSize = 13.sp)
-                        Text("AES-256-GCM AEAD encrypted. Strict zero-plaintext policy.", color = theme.textSecondary, fontSize = 11.sp)
+                        AppText(tr("Android KeyStore Protected"), color = theme.textPrimary, fontWeight = FontWeight.SemiBold, fontSize = 13.sp)
+                        AppText(tr("AES-256-GCM AEAD encrypted. Strict zero-plaintext policy."), color = theme.textSecondary, fontSize = 11.sp)
                     }
                 }
             }
@@ -159,7 +166,7 @@ fun SocialSettingsTab(
 
         if (auditLogs.isEmpty()) {
             item {
-                Text("No recent audit log entries.", color = theme.textSecondary, fontSize = 12.sp)
+                AppText(tr("No recent audit log entries."), color = theme.textSecondary, fontSize = 12.sp)
             }
         } else {
             items(auditLogs.take(10), key = { it.id }) { log ->
@@ -216,9 +223,9 @@ private fun AutomationLevelCard(
             Spacer(modifier = Modifier.width(12.dp))
 
             Column(modifier = Modifier.weight(1f)) {
-                Text(title, color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                AppText(title, color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)
                 Spacer(modifier = Modifier.height(3.dp))
-                Text(subtitle, color = theme.textSecondary, fontSize = 11.sp, lineHeight = 15.sp)
+                AppText(subtitle, color = theme.textSecondary, fontSize = 11.sp, lineHeight = 15.sp)
             }
         }
     }
@@ -244,7 +251,7 @@ private fun RuleCard(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(rule.name, color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 13.sp)
+                AppText(rule.name, color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 13.sp)
 
                 Switch(
                     checked = rule.isEnabled,
@@ -259,14 +266,14 @@ private fun RuleCard(
             }
 
             Spacer(modifier = Modifier.height(4.dp))
-            Text(
-                "Trigger: ${rule.triggerType} • Action: ${rule.actionType}",
+            AppText(
+                "触发：${rule.triggerType} • 操作：${rule.actionType}",
                 color = theme.textSecondary,
                 fontSize = 11.sp
             )
             Spacer(modifier = Modifier.height(4.dp))
-            Text(
-                "Confidence Threshold: ${(rule.confidenceThreshold * 100).toInt()}%",
+            AppText(
+                "置信度阈值：${(rule.confidenceThreshold * 100).toInt()}%",
                 color = theme.accentCyan,
                 fontSize = 10.sp,
                 fontWeight = FontWeight.SemiBold
@@ -274,8 +281,8 @@ private fun RuleCard(
 
             Spacer(modifier = Modifier.height(6.dp))
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                Text(
-                    "Delete Rule",
+                AppText(
+                    tr("Delete Rule"),
                     color = theme.accentRed,
                     fontSize = 11.sp,
                     modifier = Modifier.clickable { onDelete() }
@@ -309,15 +316,15 @@ private fun AuditLogItem(log: SocialAuditEntry) {
 
             Column(modifier = Modifier.weight(1f)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(log.action, color = theme.textPrimary, fontWeight = FontWeight.SemiBold, fontSize = 11.sp)
+                    AppText(log.action, color = theme.textPrimary, fontWeight = FontWeight.SemiBold, fontSize = 11.sp)
                     log.platform?.let { p ->
-                        Text(" • ${p.displayName}", color = theme.accentCyan, fontSize = 10.sp)
+                        AppText(" • ${p.displayName}", color = theme.accentCyan, fontSize = 10.sp)
                     }
                 }
-                Text(log.details, color = theme.textSecondary, fontSize = 10.sp, maxLines = 1)
+                AppText(log.details, color = theme.textSecondary, fontSize = 10.sp, maxLines = 1)
             }
 
-            Text(timeFormat.format(Date(log.timestamp)), color = theme.textSecondary, fontSize = 9.sp)
+            AppText(timeFormat.format(Date(log.timestamp)), color = theme.textSecondary, fontSize = 9.sp)
         }
     }
 }
@@ -336,14 +343,14 @@ private fun AddRuleDialog(
     AlertDialog(
         onDismissRequest = onDismiss,
         containerColor = theme.cardBackground,
-        title = { Text("Add Automation Rule", color = theme.textPrimary, fontWeight = FontWeight.Bold) },
+        title = { AppText(tr("Add Automation Rule"), color = theme.textPrimary, fontWeight = FontWeight.Bold) },
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 OutlinedTextField(
                     value = ruleName,
                     onValueChange = { ruleName = it },
-                    label = { Text("Rule Name", fontSize = 12.sp) },
-                    placeholder = { Text("e.g. Auto reply to positive comments", fontSize = 11.sp) },
+                    label = { AppText(tr("Rule Name"), fontSize = 12.sp) },
+                    placeholder = { AppText(tr("e.g. Auto reply to positive comments"), fontSize = 11.sp) },
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth(),
                     colors = OutlinedTextFieldDefaults.colors(
@@ -354,7 +361,7 @@ private fun AddRuleDialog(
                     )
                 )
 
-                Text("Confidence Threshold: ${(confidence * 100).toInt()}%", color = theme.textPrimary, fontSize = 12.sp)
+                AppText("置信度阈值：${(confidence * 100).toInt()}%", color = theme.textPrimary, fontSize = 12.sp)
                 Slider(
                     value = confidence,
                     onValueChange = { confidence = it },
@@ -389,12 +396,12 @@ private fun AddRuleDialog(
                 enabled = ruleName.isNotBlank(),
                 colors = ButtonDefaults.buttonColors(containerColor = theme.accentCyan)
             ) {
-                Text("Save Rule", color = Color.Black, fontWeight = FontWeight.Bold)
+                AppText(tr("Save Rule"), color = Color.Black, fontWeight = FontWeight.Bold)
             }
         },
         dismissButton = {
             TextButton(onClick = onDismiss) {
-                Text("Cancel", color = theme.textSecondary)
+                AppText(tr("Cancel"), color = theme.textSecondary)
             }
         }
     )

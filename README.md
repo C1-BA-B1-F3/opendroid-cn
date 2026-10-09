@@ -1,3 +1,8 @@
+> **这是 OpenDroid 的**非官方中文分支**（opendroid-cn）。**
+> 界面已汉化，仅以 GitHub 形式提供 APK，供个人使用与交流分享，**不作商用**。
+> 本项目与上游 OpenDroid 项目无隶属或背书关系；"OpenDroid" 仅用于说明来源（Apache-2.0 §6）。
+> 上游：https://github.com/yashab-cyber/opendroid · 中文说明见 [README-CN.md](README-CN.md)
+
 <p align="center">
   <img src="assets/backgroundremoved.png" alt="OpenDroid Logo" width="200px">
 </p>

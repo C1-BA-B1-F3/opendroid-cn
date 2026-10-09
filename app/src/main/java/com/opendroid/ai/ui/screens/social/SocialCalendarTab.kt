@@ -1,4 +1,11 @@
+// Modified by opendroid-cn (Chinese localization fork): UI strings routed through i18n.tr(). See NOTICE.
 package com.opendroid.ai.ui.screens.social
+
+
+
+import com.opendroid.ai.i18n.tr
+
+import com.opendroid.ai.i18n.AppText
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -98,9 +105,9 @@ fun SocialCalendarTab(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text("Schedule Horizon", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                        AppText(tr("Schedule Horizon"), color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)
                         val totalScheduled = posts.count { it.status == PostStatus.SCHEDULED }
-                        Text("$totalScheduled total queued", color = theme.accentCyan, fontSize = 11.sp, fontWeight = FontWeight.SemiBold)
+                        AppText("共 $totalScheduled 条排队", color = theme.accentCyan, fontSize = 11.sp, fontWeight = FontWeight.SemiBold)
                     }
 
                     Spacer(modifier = Modifier.height(12.dp))
@@ -137,14 +144,14 @@ fun SocialCalendarTab(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Column {
-                    Text(
+                    AppText(
                         if (selectedDay.isToday) "Today's Schedule" else "${selectedDay.dayOfWeek}, ${selectedDay.dayOfMonth}",
                         color = theme.textPrimary,
                         fontWeight = FontWeight.Bold,
                         fontSize = 16.sp
                     )
-                    Text(
-                        "${scheduledPosts.size} posts scheduled for this day",
+                    AppText(
+                        "当天已排期 ${scheduledPosts.size} 篇帖子",
                         color = theme.textSecondary,
                         fontSize = 11.sp
                     )
@@ -158,7 +165,7 @@ fun SocialCalendarTab(
                 ) {
                     Icon(Icons.Default.Add, contentDescription = null, tint = Color.Black, modifier = Modifier.size(16.dp))
                     Spacer(modifier = Modifier.width(4.dp))
-                    Text("Schedule Post", color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                    AppText(tr("Schedule Post"), color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)
                 }
             }
         }
@@ -178,15 +185,15 @@ fun SocialCalendarTab(
                             modifier = Modifier.size(52.dp)
                         )
                         Spacer(modifier = Modifier.height(10.dp))
-                        Text(
-                            "No Posts Scheduled",
+                        AppText(
+                            tr("No Posts Scheduled"),
                             color = theme.textPrimary,
                             fontWeight = FontWeight.Bold,
                             fontSize = 15.sp
                         )
                         Spacer(modifier = Modifier.height(4.dp))
-                        Text(
-                            "Tap 'Schedule Post' to queue content for this date.",
+                        AppText(
+                            tr("Tap 'Schedule Post' to queue content for this date."),
                             color = theme.textSecondary,
                             fontSize = 12.sp
                         )
@@ -252,14 +259,14 @@ private fun DayCard(
         contentAlignment = Alignment.Center
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(
+            AppText(
                 day.dayOfWeek,
                 color = if (isSelected) Color.Black else theme.textSecondary,
                 fontSize = 11.sp,
                 fontWeight = FontWeight.Medium
             )
             Spacer(modifier = Modifier.height(4.dp))
-            Text(
+            AppText(
                 day.dayOfMonth,
                 color = if (isSelected) Color.Black else theme.textPrimary,
                 fontSize = 15.sp,
@@ -314,7 +321,7 @@ private fun ScheduledPostCard(
                         .background(theme.accentCyan.copy(alpha = 0.15f))
                         .padding(horizontal = 8.dp, vertical = 4.dp)
                 ) {
-                    Text(
+                    AppText(
                         timeString,
                         color = theme.accentCyan,
                         fontSize = 12.sp,
@@ -324,7 +331,7 @@ private fun ScheduledPostCard(
 
                 Spacer(modifier = Modifier.width(10.dp))
 
-                Text(
+                AppText(
                     post.platform.displayName,
                     color = theme.textPrimary,
                     fontWeight = FontWeight.SemiBold,
@@ -340,7 +347,7 @@ private fun ScheduledPostCard(
                             .background(theme.accentOrange.copy(alpha = 0.15f))
                             .padding(horizontal = 6.dp, vertical = 2.dp)
                     ) {
-                        Text("APPROVAL NEEDED", color = theme.accentOrange, fontSize = 8.sp, fontWeight = FontWeight.Bold)
+                        AppText(tr("APPROVAL NEEDED"), color = theme.accentOrange, fontSize = 8.sp, fontWeight = FontWeight.Bold)
                     }
                 } else {
                     Box(
@@ -349,14 +356,14 @@ private fun ScheduledPostCard(
                             .background(theme.accentCyan.copy(alpha = 0.15f))
                             .padding(horizontal = 6.dp, vertical = 2.dp)
                     ) {
-                        Text("AUTO PUBLISH", color = theme.accentCyan, fontSize = 8.sp, fontWeight = FontWeight.Bold)
+                        AppText(tr("AUTO PUBLISH"), color = theme.accentCyan, fontSize = 8.sp, fontWeight = FontWeight.Bold)
                     }
                 }
             }
 
             Spacer(modifier = Modifier.height(10.dp))
 
-            Text(
+            AppText(
                 post.content,
                 color = theme.textPrimary,
                 fontSize = 12.sp,
@@ -375,7 +382,7 @@ private fun ScheduledPostCard(
                     onClick = onCancel,
                     contentPadding = PaddingValues(horizontal = 6.dp, vertical = 2.dp)
                 ) {
-                    Text("Cancel", color = theme.textSecondary, fontSize = 11.sp)
+                    AppText(tr("Cancel"), color = theme.textSecondary, fontSize = 11.sp)
                 }
 
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -385,7 +392,7 @@ private fun ScheduledPostCard(
                         contentPadding = PaddingValues(horizontal = 10.dp, vertical = 4.dp),
                         border = androidx.compose.foundation.BorderStroke(0.5.dp, theme.borderColor)
                     ) {
-                        Text("Reschedule", color = theme.textPrimary, fontSize = 11.sp)
+                        AppText(tr("Reschedule"), color = theme.textPrimary, fontSize = 11.sp)
                     }
 
                     Button(
@@ -394,7 +401,7 @@ private fun ScheduledPostCard(
                         colors = ButtonDefaults.buttonColors(containerColor = theme.accentCyan),
                         contentPadding = PaddingValues(horizontal = 12.dp, vertical = 4.dp)
                     ) {
-                        Text("Publish Now", color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                        AppText(tr("Publish Now"), color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)
                     }
                 }
             }

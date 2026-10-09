@@ -1,4 +1,11 @@
+// Modified by opendroid-cn (Chinese localization fork): UI strings routed through i18n.tr(). See NOTICE.
 package com.opendroid.ai.ui.screens
+
+
+
+import com.opendroid.ai.i18n.tr
+
+import com.opendroid.ai.i18n.AppText
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -27,8 +34,8 @@ fun PrivacyPolicyScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(
-                        text = "PRIVACY POLICY",
+                    AppText(
+                        text = tr("PRIVACY POLICY"),
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
                         color = TextPrimary,
@@ -40,7 +47,7 @@ fun PrivacyPolicyScreen(
                     IconButton(onClick = onNavigateBack) {
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
-                            contentDescription = "Back",
+                            contentDescription = tr("Back"),
                             tint = TextPrimary
                         )
                     }
@@ -74,20 +81,20 @@ fun PrivacyPolicyScreen(
                     ) {
                         Icon(
                             imageVector = Icons.Default.Lock,
-                            contentDescription = "Privacy",
+                            contentDescription = tr("Privacy"),
                             tint = AccentCyan,
                             modifier = Modifier.size(32.dp)
                         )
                         Spacer(modifier = Modifier.width(12.dp))
                         Column {
-                            Text(
-                                text = "Your Privacy Matters",
+                            AppText(
+                                text = tr("Your Privacy Matters"),
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold,
                                 color = TextPrimary
                             )
-                            Text(
-                                text = "Last updated: August 2026",
+                            AppText(
+                                text = tr("Last updated: August 2026"),
                                 fontSize = 12.sp,
                                 color = TextSecondary
                             )
@@ -99,141 +106,141 @@ fun PrivacyPolicyScreen(
             // Section: Overview
             item {
                 PolicySection(
-                    title = "1. OVERVIEW",
+                    title = tr("1. OVERVIEW"),
                     content = "OpenDroid is an autonomous AI assistant that runs entirely on your Android device. " +
-                            "We are committed to protecting your privacy and ensuring transparency about how your data is handled. " +
-                            "This policy explains what data OpenDroid collects, how it is used, and your rights regarding that data."
+                            tr("We are committed to protecting your privacy and ensuring transparency about how your data is handled. ") +
+                            tr("This policy explains what data OpenDroid collects, how it is used, and your rights regarding that data.")
                 )
             }
 
             // Section: Data Collection
             item {
                 PolicySection(
-                    title = "2. DATA COLLECTION",
+                    title = tr("2. DATA COLLECTION"),
                     content = "OpenDroid processes the following data locally on your device:\n\n" +
-                            "• Voice commands and text queries you provide\n" +
-                            "• Device state information (battery level, WiFi status, connectivity)\n" +
-                            "• Contact names for resolving communication actions\n" +
-                            "• Conversation history for context-aware responses\n" +
-                            "• User preferences and semantic memory facts you share\n\n" +
-                            "All data is stored in a local Room database on your device. No data is collected by the OpenDroid developers."
+                            tr("• Voice commands and text queries you provide\n") +
+                            tr("• Device state information (battery level, WiFi status, connectivity)\n") +
+                            tr("• Contact names for resolving communication actions\n") +
+                            tr("• Conversation history for context-aware responses\n") +
+                            tr("• User preferences and semantic memory facts you share\n\n") +
+                            tr("All data is stored in a local Room database on your device. No data is collected by the OpenDroid developers.")
                 )
             }
 
             // Section: LLM Providers
             item {
                 PolicySection(
-                    title = "3. THIRD-PARTY LLM PROVIDERS",
+                    title = tr("3. THIRD-PARTY LLM PROVIDERS"),
                     content = "OpenDroid sends your queries to the LLM provider you configure (e.g., Google Gemini, OpenAI, Anthropic, Groq, etc.) " +
-                            "to generate responses and action plans. Each provider has its own privacy policy governing how they handle your data.\n\n" +
-                            "• Your API keys are stored locally on your device and are never transmitted to OpenDroid servers.\n" +
-                            "• Query data sent to LLM providers is subject to their respective privacy policies.\n" +
-                            "• You can switch providers or use local models (Ollama) at any time to keep data fully on-device."
+                            tr("to generate responses and action plans. Each provider has its own privacy policy governing how they handle your data.\n\n") +
+                            tr("• Your API keys are stored locally on your device and are never transmitted to OpenDroid servers.\n") +
+                            tr("• Query data sent to LLM providers is subject to their respective privacy policies.\n") +
+                            tr("• You can switch providers or use local models (Ollama) at any time to keep data fully on-device.")
                 )
             }
 
             // Section: Permissions
             item {
                 PolicySection(
-                    title = "4. DEVICE PERMISSIONS",
+                    title = tr("4. DEVICE PERMISSIONS"),
                     content = "OpenDroid requests the following permissions to function:\n\n" +
-                            "• Microphone — For voice command input\n" +
-                            "• Accessibility Service — For automating app interactions (WhatsApp, etc.)\n" +
-                            "• Contacts — For resolving contact names to phone numbers\n" +
-                            "• Phone — For placing calls\n" +
-                            "• SMS — For sending text messages\n" +
-                            "• Camera — For taking photos/flashlight control\n" +
-                            "• Storage — For file management actions\n" +
-                            "• Location — For weather and directions features\n\n" +
-                            "All permissions are optional. Features requiring ungranted permissions will gracefully degrade or prompt you."
+                            tr("• Microphone — For voice command input\n") +
+                            tr("• Accessibility Service — For automating app interactions (WhatsApp, etc.)\n") +
+                            tr("• Contacts — For resolving contact names to phone numbers\n") +
+                            tr("• Phone — For placing calls\n") +
+                            tr("• SMS — For sending text messages\n") +
+                            tr("• Camera — For taking photos/flashlight control\n") +
+                            tr("• Storage — For file management actions\n") +
+                            tr("• Location — For weather and directions features\n\n") +
+                            tr("All permissions are optional. Features requiring ungranted permissions will gracefully degrade or prompt you.")
                 )
             }
 
             // Section: Accessibility Service Declaration
             item {
                 PolicySection(
-                    title = "4b. ACCESSIBILITY SERVICE",
+                    title = tr("4b. ACCESSIBILITY SERVICE"),
                     content = "OpenDroid uses Android Accessibility Service to automate app interactions " +
-                            "(such as sending WhatsApp messages) when you explicitly request it.\n\n" +
-                            "The Accessibility Service:\n\n" +
-                            "• Only activates when you enable it in Android Settings\n" +
-                            "• Only acts when you give OpenDroid a command\n" +
-                            "• Does NOT run in the background without your command\n" +
-                            "• Does NOT read passwords or banking information\n" +
-                            "• Does NOT record or log screen content passively\n" +
-                            "• Does NOT collect, store, or transmit any data observed through the Accessibility Service to external servers\n\n" +
-                            "The service is used solely to perform on-screen actions you request, such as tapping buttons or typing text in other apps. " +
-                            "You can revoke Accessibility Service access at any time from Android Settings > Accessibility > OpenDroid."
+                            tr("(such as sending WhatsApp messages) when you explicitly request it.\n\n") +
+                            tr("The Accessibility Service:\n\n") +
+                            tr("• Only activates when you enable it in Android Settings\n") +
+                            tr("• Only acts when you give OpenDroid a command\n") +
+                            tr("• Does NOT run in the background without your command\n") +
+                            tr("• Does NOT read passwords or banking information\n") +
+                            tr("• Does NOT record or log screen content passively\n") +
+                            tr("• Does NOT collect, store, or transmit any data observed through the Accessibility Service to external servers\n\n") +
+                            tr("The service is used solely to perform on-screen actions you request, such as tapping buttons or typing text in other apps. ") +
+                            tr("You can revoke Accessibility Service access at any time from Android Settings > Accessibility > OpenDroid.")
                 )
             }
 
             // Section: Data Storage
             item {
                 PolicySection(
-                    title = "5. DATA STORAGE & RETENTION",
+                    title = tr("5. DATA STORAGE & RETENTION"),
                     content = "• All conversation history, memory facts, and task logs are stored in a local SQLite database on your device.\n" +
-                            "• Memory entries support time-to-live (TTL) and are automatically cleaned on expiration.\n" +
-                            "• Execution history remains until you clear it from System Logs or uninstall the app.\n" +
-                            "• Saving a completed task as a macro is an explicit user action; API keys, tokens, passwords, and recognized credentials are replaced with [REDACTED] before recording.\n" +
-                            "• You can clear any memory type (Working, Episodic, Semantic, Procedural) from the Memory screen.\n" +
-                            "• Uninstalling the app removes all stored data permanently."
+                            tr("• Memory entries support time-to-live (TTL) and are automatically cleaned on expiration.\n") +
+                            tr("• Execution history remains until you clear it from System Logs or uninstall the app.\n") +
+                            tr("• Saving a completed task as a macro is an explicit user action; API keys, tokens, passwords, and recognized credentials are replaced with [REDACTED] before recording.\n") +
+                            tr("• You can clear any memory type (Working, Episodic, Semantic, Procedural) from the Memory screen.\n") +
+                            tr("• Uninstalling the app removes all stored data permanently.")
                 )
             }
 
             // Section: Data Sharing
             item {
                 PolicySection(
-                    title = "6. DATA SHARING",
+                    title = tr("6. DATA SHARING"),
                     content = "OpenDroid does NOT:\n\n" +
-                            "• Sell, rent, or share your personal data with third parties\n" +
-                            "• Collect analytics, telemetry, or usage statistics\n" +
-                            "• Transmit data to any server owned by the OpenDroid team\n" +
-                            "• Display advertisements or use ad-tracking technologies\n\n" +
-                            "The only external data transmission occurs when your queries are sent to the LLM provider you have configured."
+                            tr("• Sell, rent, or share your personal data with third parties\n") +
+                            tr("• Collect analytics, telemetry, or usage statistics\n") +
+                            tr("• Transmit data to any server owned by the OpenDroid team\n") +
+                            tr("• Display advertisements or use ad-tracking technologies\n\n") +
+                            tr("The only external data transmission occurs when your queries are sent to the LLM provider you have configured.")
                 )
             }
 
             // Section: Security
             item {
                 PolicySection(
-                    title = "7. SECURITY",
+                    title = tr("7. SECURITY"),
                     content = "• API keys are stored with Android Keystore AES-256-GCM encryption on your device.\n" +
-                            "• Your profile name and birth date are encrypted the same way, with a separate device key.\n" +
-                            "• Encryption keys never leave the device's hardware-backed keystore, so encrypted values cannot be read on another device or restored from a backup.\n" +
-                            "• If a key is invalidated, the affected values are not recoverable and are never rewritten unencrypted; the app asks you to enter them again.\n" +
-                            "• Ordinary non-personal settings, such as whether onboarding is complete, are stored unencrypted in app-private storage.\n" +
-                            "• All LLM API communication uses HTTPS encryption.\n" +
-                            "• The accessibility service only activates when explicitly enabled by you.\n" +
-                            "• Destructive actions (device restart, file deletion) require user confirmation."
+                            tr("• Your profile name and birth date are encrypted the same way, with a separate device key.\n") +
+                            tr("• Encryption keys never leave the device's hardware-backed keystore, so encrypted values cannot be read on another device or restored from a backup.\n") +
+                            tr("• If a key is invalidated, the affected values are not recoverable and are never rewritten unencrypted; the app asks you to enter them again.\n") +
+                            tr("• Ordinary non-personal settings, such as whether onboarding is complete, are stored unencrypted in app-private storage.\n") +
+                            tr("• All LLM API communication uses HTTPS encryption.\n") +
+                            tr("• The accessibility service only activates when explicitly enabled by you.\n") +
+                            tr("• Destructive actions (device restart, file deletion) require user confirmation.")
                 )
             }
 
             // Section: Children
             item {
                 PolicySection(
-                    title = "8. CHILDREN'S PRIVACY",
+                    title = tr("8. CHILDREN'S PRIVACY"),
                     content = "OpenDroid is not intended for use by children under 13 years of age. " +
-                            "We do not knowingly collect information from children."
+                            tr("We do not knowingly collect information from children.")
                 )
             }
 
             // Section: Changes
             item {
                 PolicySection(
-                    title = "9. CHANGES TO THIS POLICY",
+                    title = tr("9. CHANGES TO THIS POLICY"),
                     content = "We may update this privacy policy from time to time. Any changes will be reflected in the app with an updated \"Last updated\" date. " +
-                            "Continued use of OpenDroid after changes constitutes acceptance of the updated policy."
+                            tr("Continued use of OpenDroid after changes constitutes acceptance of the updated policy.")
                 )
             }
 
             // Section: Contact
             item {
                 PolicySection(
-                    title = "10. CONTACT",
+                    title = tr("10. CONTACT"),
                     content = "If you have questions about this privacy policy or OpenDroid's data practices, " +
-                            "please open an issue on our GitHub repository (yashab-cyber/opendroid) or contact the development team.\n\n" +
-                            "• Email: yashabalam707@gmail.com\n" +
-                            "• You can also contact us at: opendroid.ai@gmail.com"
+                            tr("please open an issue on our GitHub repository (yashab-cyber/opendroid) or contact the development team.\n\n") +
+                            tr("• Email: yashabalam707@gmail.com\n") +
+                            tr("• You can also contact us at: opendroid.ai@gmail.com")
                 )
             }
         }
@@ -252,7 +259,7 @@ internal fun PolicySection(
         colors = CardDefaults.cardColors(containerColor = CardBackground)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            Text(
+            AppText(
                 text = title,
                 fontSize = 11.sp,
                 fontWeight = FontWeight.Bold,
@@ -260,7 +267,7 @@ internal fun PolicySection(
                 color = AccentCyan
             )
             Spacer(modifier = Modifier.height(10.dp))
-            Text(
+            AppText(
                 text = content,
                 fontSize = 13.sp,
                 color = TextPrimary,

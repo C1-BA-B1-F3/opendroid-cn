@@ -1,4 +1,11 @@
+// Modified by opendroid-cn (Chinese localization fork): UI strings routed through i18n.tr(). See NOTICE.
 package com.opendroid.ai.ui.screens.social
+
+
+
+import com.opendroid.ai.i18n.tr
+
+import com.opendroid.ai.i18n.AppText
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -60,7 +67,7 @@ fun SocialInboxTab(
                     FilterChip(
                         selected = selectedCategory == null,
                         onClick = { selectedCategory = null },
-                        label = { Text("All (${interactions.size})", fontSize = 12.sp) },
+                        label = { AppText("全部（${interactions.size}）", fontSize = 12.sp) },
                         colors = FilterChipDefaults.filterChipColors(
                             selectedContainerColor = theme.accentCyan.copy(alpha = 0.2f),
                             selectedLabelColor = theme.accentCyan
@@ -74,7 +81,7 @@ fun SocialInboxTab(
                         FilterChip(
                             selected = selectedCategory == cat,
                             onClick = { selectedCategory = cat },
-                            label = { Text("${cat.name.replace('_', ' ')} ($count)", fontSize = 11.sp) },
+                            label = { AppText("${cat.name.replace('_', ' ')}（$count）", fontSize = 11.sp) },
                             colors = FilterChipDefaults.filterChipColors(
                                 selectedContainerColor = theme.accentCyan.copy(alpha = 0.2f),
                                 selectedLabelColor = theme.accentCyan
@@ -100,15 +107,15 @@ fun SocialInboxTab(
                             modifier = Modifier.size(56.dp)
                         )
                         Spacer(modifier = Modifier.height(12.dp))
-                        Text(
-                            "Inbox is Clean",
+                        AppText(
+                            tr("Inbox is Clean"),
                             color = theme.textPrimary,
                             fontWeight = FontWeight.Bold,
                             fontSize = 16.sp
                         )
                         Spacer(modifier = Modifier.height(4.dp))
-                        Text(
-                            "No pending notifications, mentions, or messages.",
+                        AppText(
+                            tr("No pending notifications, mentions, or messages."),
                             color = theme.textSecondary,
                             fontSize = 12.sp
                         )
@@ -135,8 +142,8 @@ fun SocialInboxTab(
             onDismissRequest = { replyingInteraction = null },
             containerColor = theme.cardBackground,
             title = {
-                Text(
-                    "Reply on ${interaction.platform.displayName}",
+                AppText(
+                    "在 ${interaction.platform.displayName} 上回复",
                     color = theme.textPrimary,
                     fontWeight = FontWeight.Bold
                 )
@@ -146,8 +153,8 @@ fun SocialInboxTab(
                     modifier = Modifier.fillMaxWidth(),
                     verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
-                    Text(
-                        "${interaction.authorName}: \"${interaction.content}\"",
+                    AppText(
+                        "${interaction.authorName}：\"${interaction.content}\"",
                         color = theme.textSecondary,
                         fontSize = 12.sp,
                         maxLines = 3
@@ -156,7 +163,7 @@ fun SocialInboxTab(
                     OutlinedTextField(
                         value = replyText,
                         onValueChange = { replyText = it },
-                        label = { Text("Your Reply", fontSize = 12.sp) },
+                        label = { AppText(tr("Your Reply"), fontSize = 12.sp) },
                         modifier = Modifier.fillMaxWidth().height(120.dp),
                         colors = OutlinedTextFieldDefaults.colors(
                             focusedTextColor = theme.textPrimary,
@@ -176,12 +183,12 @@ fun SocialInboxTab(
                     enabled = replyText.isNotBlank(),
                     colors = ButtonDefaults.buttonColors(containerColor = theme.accentCyan)
                 ) {
-                    Text("Send Reply", color = Color.Black, fontWeight = FontWeight.Bold)
+                    AppText(tr("Send Reply"), color = Color.Black, fontWeight = FontWeight.Bold)
                 }
             },
             dismissButton = {
                 TextButton(onClick = { replyingInteraction = null }) {
-                    Text("Cancel", color = theme.textSecondary)
+                    AppText(tr("Cancel"), color = theme.textSecondary)
                 }
             }
         )
@@ -215,7 +222,7 @@ private fun InteractionCard(
                         .border(0.5.dp, theme.borderColor, CircleShape),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text(
+                    AppText(
                         interaction.platform.displayName.take(1),
                         color = theme.accentCyan,
                         fontWeight = FontWeight.Bold,
@@ -227,7 +234,7 @@ private fun InteractionCard(
 
                 Column(modifier = Modifier.weight(1f)) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        Text(
+                        AppText(
                             interaction.authorName.ifBlank { "User" },
                             color = theme.textPrimary,
                             fontWeight = FontWeight.SemiBold,
@@ -236,7 +243,7 @@ private fun InteractionCard(
                         Spacer(modifier = Modifier.width(6.dp))
                         PriorityBadge(interaction.priority)
                     }
-                    Text(
+                    AppText(
                         "${interaction.category.name} • $timeFormatted",
                         color = theme.textSecondary,
                         fontSize = 10.sp
@@ -249,7 +256,7 @@ private fun InteractionCard(
             Spacer(modifier = Modifier.height(10.dp))
 
             // Body content
-            Text(
+            AppText(
                 interaction.content,
                 color = theme.textPrimary,
                 fontSize = 13.sp,
@@ -275,8 +282,8 @@ private fun InteractionCard(
                             modifier = Modifier.size(14.dp)
                         )
                         Spacer(modifier = Modifier.width(6.dp))
-                        Text(
-                            "Suggested: \"${interaction.suggestedAction}\"",
+                        AppText(
+                            "建议：\"${interaction.suggestedAction}\"",
                             color = theme.textSecondary,
                             fontSize = 11.sp,
                             maxLines = 2
@@ -297,7 +304,7 @@ private fun InteractionCard(
                     onClick = onDismissClick,
                     contentPadding = PaddingValues(horizontal = 8.dp, vertical = 2.dp)
                 ) {
-                    Text("Dismiss", color = theme.textSecondary, fontSize = 11.sp)
+                    AppText(tr("Dismiss"), color = theme.textSecondary, fontSize = 11.sp)
                 }
 
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -307,7 +314,7 @@ private fun InteractionCard(
                         contentPadding = PaddingValues(horizontal = 10.dp, vertical = 4.dp),
                         border = androidx.compose.foundation.BorderStroke(0.5.dp, theme.borderColor)
                     ) {
-                        Text("Resolve", color = theme.textPrimary, fontSize = 11.sp)
+                        AppText(tr("Resolve"), color = theme.textPrimary, fontSize = 11.sp)
                     }
 
                     Button(
@@ -316,7 +323,7 @@ private fun InteractionCard(
                         shape = RoundedCornerShape(14.dp),
                         contentPadding = PaddingValues(horizontal = 12.dp, vertical = 4.dp)
                     ) {
-                        Text("Reply", color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                        AppText(tr("Reply"), color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)
                     }
                 }
             }
@@ -340,7 +347,7 @@ private fun PriorityBadge(priority: InteractionPriority) {
             .background(color.copy(alpha = 0.15f))
             .padding(horizontal = 4.dp, vertical = 1.dp)
     ) {
-        Text(text, color = color, fontSize = 8.sp, fontWeight = FontWeight.Bold)
+        AppText(text, color = color, fontSize = 8.sp, fontWeight = FontWeight.Bold)
     }
 }
 
@@ -360,6 +367,6 @@ private fun InteractionStatusBadge(status: String) {
             .background(color.copy(alpha = 0.15f))
             .padding(horizontal = 6.dp, vertical = 3.dp)
     ) {
-        Text(text, color = color, fontSize = 9.sp, fontWeight = FontWeight.SemiBold)
+        AppText(text, color = color, fontSize = 9.sp, fontWeight = FontWeight.SemiBold)
     }
 }

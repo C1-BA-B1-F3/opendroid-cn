@@ -1,4 +1,11 @@
+// Modified by opendroid-cn (Chinese localization fork): UI strings routed through i18n.tr(). See NOTICE.
 package com.opendroid.ai.ui.screens.social
+
+
+
+import com.opendroid.ai.i18n.tr
+
+import com.opendroid.ai.i18n.AppText
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -91,7 +98,7 @@ fun SocialContentTab(
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Icon(Icons.Default.AutoAwesome, contentDescription = null, tint = theme.accentCyan, modifier = Modifier.size(18.dp))
                             Spacer(modifier = Modifier.width(8.dp))
-                            Text("AI Content Composer", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 15.sp)
+                            AppText(tr("AI Content Composer"), color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 15.sp)
                         }
 
                         if (isGenerating) {
@@ -102,7 +109,7 @@ fun SocialContentTab(
                     Spacer(modifier = Modifier.height(12.dp))
 
                     // Platform Selector
-                    Text("Target Platform", color = theme.textSecondary, fontSize = 11.sp, fontWeight = FontWeight.Medium)
+                    AppText(tr("Target Platform"), color = theme.textSecondary, fontSize = 11.sp, fontWeight = FontWeight.Medium)
                     Spacer(modifier = Modifier.height(6.dp))
                     LazyRow(
                         modifier = Modifier.fillMaxWidth(),
@@ -112,7 +119,7 @@ fun SocialContentTab(
                             FilterChip(
                                 selected = selectedPlatform == platform,
                                 onClick = { selectedPlatform = platform },
-                                label = { Text(platform.displayName, fontSize = 11.sp) },
+                                label = { AppText(platform.displayName, fontSize = 11.sp) },
                                 colors = FilterChipDefaults.filterChipColors(
                                     selectedContainerColor = theme.accentCyan.copy(alpha = 0.2f),
                                     selectedLabelColor = theme.accentCyan
@@ -127,8 +134,8 @@ fun SocialContentTab(
                     OutlinedTextField(
                         value = topicInput,
                         onValueChange = { topicInput = it },
-                        label = { Text("What would you like to post about?", fontSize = 12.sp) },
-                        placeholder = { Text("e.g. OpenDroid v2 release with local AI agent capabilities", fontSize = 12.sp) },
+                        label = { AppText(tr("What would you like to post about?"), fontSize = 12.sp) },
+                        placeholder = { AppText(tr("e.g. OpenDroid v2 release with local AI agent capabilities"), fontSize = 12.sp) },
                         modifier = Modifier.fillMaxWidth(),
                         maxLines = 3,
                         colors = OutlinedTextFieldDefaults.colors(
@@ -142,7 +149,7 @@ fun SocialContentTab(
                     Spacer(modifier = Modifier.height(10.dp))
 
                     // Tone Selector
-                    Text("Tone", color = theme.textSecondary, fontSize = 11.sp, fontWeight = FontWeight.Medium)
+                    AppText(tr("Tone"), color = theme.textSecondary, fontSize = 11.sp, fontWeight = FontWeight.Medium)
                     Spacer(modifier = Modifier.height(4.dp))
                     LazyRow(
                         modifier = Modifier.fillMaxWidth(),
@@ -152,7 +159,7 @@ fun SocialContentTab(
                             FilterChip(
                                 selected = selectedTone == tone,
                                 onClick = { selectedTone = tone },
-                                label = { Text(tone.name.lowercase().capitalize(Locale.ROOT), fontSize = 10.sp) },
+                                label = { AppText(tone.name.lowercase().capitalize(Locale.ROOT), fontSize = 10.sp) },
                                 colors = FilterChipDefaults.filterChipColors(
                                     selectedContainerColor = theme.surface,
                                     selectedLabelColor = theme.textPrimary
@@ -177,7 +184,7 @@ fun SocialContentTab(
                     ) {
                         Icon(Icons.Default.AutoAwesome, contentDescription = null, tint = Color.Black, modifier = Modifier.size(16.dp))
                         Spacer(modifier = Modifier.width(8.dp))
-                        Text("Generate Platform Post", color = Color.Black, fontWeight = FontWeight.Bold, fontSize = 13.sp)
+                        AppText(tr("Generate Platform Post"), color = Color.Black, fontWeight = FontWeight.Bold, fontSize = 13.sp)
                     }
 
                     Spacer(modifier = Modifier.height(14.dp))
@@ -190,9 +197,9 @@ fun SocialContentTab(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text("Draft Content", color = theme.textPrimary, fontWeight = FontWeight.SemiBold, fontSize = 13.sp)
+                        AppText(tr("Draft Content"), color = theme.textPrimary, fontWeight = FontWeight.SemiBold, fontSize = 13.sp)
                         val isOverLimit = currentContent.length > maxLimit
-                        Text(
+                        AppText(
                             "${currentContent.length} / $maxLimit",
                             color = if (isOverLimit) theme.accentRed else theme.textSecondary,
                             fontSize = 11.sp,
@@ -206,7 +213,7 @@ fun SocialContentTab(
                         value = currentContent,
                         onValueChange = { currentContent = it },
                         modifier = Modifier.fillMaxWidth().height(120.dp),
-                        placeholder = { Text("Generated or custom post text appears here...", fontSize = 12.sp) },
+                        placeholder = { AppText(tr("Generated or custom post text appears here..."), fontSize = 12.sp) },
                         colors = OutlinedTextFieldDefaults.colors(
                             focusedTextColor = theme.textPrimary,
                             unfocusedTextColor = theme.textPrimary,
@@ -218,7 +225,7 @@ fun SocialContentTab(
                     Spacer(modifier = Modifier.height(10.dp))
 
                     // Quick AI Modifiers Row
-                    Text("AI Modifiers", color = theme.textSecondary, fontSize = 11.sp, fontWeight = FontWeight.Medium)
+                    AppText(tr("AI Modifiers"), color = theme.textSecondary, fontSize = 11.sp, fontWeight = FontWeight.Medium)
                     Spacer(modifier = Modifier.height(4.dp))
                     LazyRow(
                         modifier = Modifier.fillMaxWidth(),
@@ -226,7 +233,7 @@ fun SocialContentTab(
                     ) {
                         item {
                             ModifierChip(
-                                title = "Shorten",
+                                title = tr("Shorten"),
                                 icon = Icons.Default.Compress,
                                 onClick = {
                                     if (currentContent.isNotBlank()) {
@@ -237,7 +244,7 @@ fun SocialContentTab(
                         }
                         item {
                             ModifierChip(
-                                title = "Expand",
+                                title = tr("Expand"),
                                 icon = Icons.Default.Expand,
                                 onClick = {
                                     if (currentContent.isNotBlank()) {
@@ -248,7 +255,7 @@ fun SocialContentTab(
                         }
                         item {
                             ModifierChip(
-                                title = "Add CTA",
+                                title = tr("Add CTA"),
                                 icon = Icons.Default.TouchApp,
                                 onClick = {
                                     if (currentContent.isNotBlank()) {
@@ -259,7 +266,7 @@ fun SocialContentTab(
                         }
                         item {
                             ModifierChip(
-                                title = "Clean Hashtags",
+                                title = tr("Clean Hashtags"),
                                 icon = Icons.Default.Tag,
                                 onClick = {
                                     if (currentContent.isNotBlank()) {
@@ -270,7 +277,7 @@ fun SocialContentTab(
                         }
                         item {
                             ModifierChip(
-                                title = "Make Excited",
+                                title = tr("Make Excited"),
                                 icon = Icons.Default.Celebration,
                                 onClick = {
                                     if (currentContent.isNotBlank()) {
@@ -301,7 +308,7 @@ fun SocialContentTab(
                             shape = RoundedCornerShape(12.dp),
                             border = androidx.compose.foundation.BorderStroke(1.dp, theme.borderColor)
                         ) {
-                            Text("Save Draft", color = theme.textPrimary, fontSize = 12.sp)
+                            AppText(tr("Save Draft"), color = theme.textPrimary, fontSize = 12.sp)
                         }
 
                         OutlinedButton(
@@ -311,7 +318,7 @@ fun SocialContentTab(
                             shape = RoundedCornerShape(12.dp),
                             border = androidx.compose.foundation.BorderStroke(1.dp, theme.borderColor)
                         ) {
-                            Text("Schedule", color = theme.textPrimary, fontSize = 12.sp)
+                            AppText(tr("Schedule"), color = theme.textPrimary, fontSize = 12.sp)
                         }
 
                         Button(
@@ -327,7 +334,7 @@ fun SocialContentTab(
                             shape = RoundedCornerShape(12.dp),
                             colors = ButtonDefaults.buttonColors(containerColor = theme.accentCyan)
                         ) {
-                            Text("Post Now", color = Color.Black, fontWeight = FontWeight.Bold, fontSize = 12.sp)
+                            AppText(tr("Post Now"), color = Color.Black, fontWeight = FontWeight.Bold, fontSize = 12.sp)
                         }
                     }
                 }
@@ -341,7 +348,7 @@ fun SocialContentTab(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text("Post History & Queue", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                AppText(tr("Post History & Queue"), color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
             }
         }
 
@@ -354,7 +361,7 @@ fun SocialContentTab(
                     FilterChip(
                         selected = activeFilter == null,
                         onClick = { activeFilter = null },
-                        label = { Text("All (${posts.size})", fontSize = 11.sp) },
+                        label = { AppText("全部（${posts.size}）", fontSize = 11.sp) },
                         colors = FilterChipDefaults.filterChipColors(
                             selectedContainerColor = theme.accentCyan.copy(alpha = 0.2f),
                             selectedLabelColor = theme.accentCyan
@@ -367,7 +374,7 @@ fun SocialContentTab(
                     FilterChip(
                         selected = activeFilter == status,
                         onClick = { activeFilter = status },
-                        label = { Text("${status.name.lowercase().capitalize(Locale.ROOT)} ($count)", fontSize = 11.sp) },
+                        label = { AppText("${status.name.lowercase().capitalize(Locale.ROOT)}（$count）", fontSize = 11.sp) },
                         colors = FilterChipDefaults.filterChipColors(
                             selectedContainerColor = theme.accentCyan.copy(alpha = 0.2f),
                             selectedLabelColor = theme.accentCyan
@@ -384,7 +391,7 @@ fun SocialContentTab(
                     modifier = Modifier.fillMaxWidth().padding(vertical = 40.dp),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text("No posts found in this filter", color = theme.textSecondary, fontSize = 13.sp)
+                    AppText(tr("No posts found in this filter"), color = theme.textSecondary, fontSize = 13.sp)
                 }
             }
         } else {
@@ -440,7 +447,7 @@ private fun ModifierChip(title: String, icon: androidx.compose.ui.graphics.vecto
         Row(verticalAlignment = Alignment.CenterVertically) {
             Icon(icon, contentDescription = null, tint = theme.accentCyan, modifier = Modifier.size(13.dp))
             Spacer(modifier = Modifier.width(4.dp))
-            Text(title, color = theme.textPrimary, fontSize = 10.sp, fontWeight = FontWeight.Medium)
+            AppText(title, color = theme.textPrimary, fontSize = 10.sp, fontWeight = FontWeight.Medium)
         }
     }
 }
@@ -479,7 +486,7 @@ private fun PostItemCard(
                         .border(0.5.dp, theme.borderColor, CircleShape),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text(
+                    AppText(
                         post.platform.displayName.take(1),
                         color = theme.accentCyan,
                         fontWeight = FontWeight.Bold,
@@ -490,8 +497,8 @@ private fun PostItemCard(
                 Spacer(modifier = Modifier.width(8.dp))
 
                 Column(modifier = Modifier.weight(1f)) {
-                    Text(post.platform.displayName, color = theme.textPrimary, fontWeight = FontWeight.SemiBold, fontSize = 13.sp)
-                    Text(dateString, color = theme.textSecondary, fontSize = 10.sp)
+                    AppText(post.platform.displayName, color = theme.textPrimary, fontWeight = FontWeight.SemiBold, fontSize = 13.sp)
+                    AppText(dateString, color = theme.textSecondary, fontSize = 10.sp)
                 }
 
                 PostStatusBadge(post.status)
@@ -500,11 +507,11 @@ private fun PostItemCard(
             Spacer(modifier = Modifier.height(10.dp))
 
             // Post content
-            Text(post.content, color = theme.textPrimary, fontSize = 12.sp, lineHeight = 17.sp)
+            AppText(post.content, color = theme.textPrimary, fontSize = 12.sp, lineHeight = 17.sp)
 
             if (!post.errorMessage.isNullOrBlank()) {
                 Spacer(modifier = Modifier.height(8.dp))
-                Text("Error: ${post.errorMessage}", color = theme.accentRed, fontSize = 11.sp)
+                AppText("错误：${post.errorMessage}", color = theme.accentRed, fontSize = 11.sp)
             }
 
             Spacer(modifier = Modifier.height(12.dp))
@@ -519,7 +526,7 @@ private fun PostItemCard(
                     onClick = onDelete,
                     contentPadding = PaddingValues(horizontal = 6.dp, vertical = 2.dp)
                 ) {
-                    Text("Delete", color = theme.accentRed, fontSize = 11.sp)
+                    AppText(tr("Delete"), color = theme.accentRed, fontSize = 11.sp)
                 }
 
                 Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
@@ -530,7 +537,7 @@ private fun PostItemCard(
                             contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp),
                             border = androidx.compose.foundation.BorderStroke(0.5.dp, theme.borderColor)
                         ) {
-                            Text("Schedule", color = theme.textPrimary, fontSize = 11.sp)
+                            AppText(tr("Schedule"), color = theme.textPrimary, fontSize = 11.sp)
                         }
 
                         Button(
@@ -539,7 +546,7 @@ private fun PostItemCard(
                             colors = ButtonDefaults.buttonColors(containerColor = theme.accentCyan),
                             contentPadding = PaddingValues(horizontal = 10.dp, vertical = 4.dp)
                         ) {
-                            Text("Publish Now", color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                            AppText(tr("Publish Now"), color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)
                         }
                     } else if (post.status == PostStatus.SCHEDULED) {
                         OutlinedButton(
@@ -548,7 +555,7 @@ private fun PostItemCard(
                             contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp),
                             border = androidx.compose.foundation.BorderStroke(0.5.dp, theme.borderColor)
                         ) {
-                            Text("Cancel", color = theme.textSecondary, fontSize = 11.sp)
+                            AppText(tr("Cancel"), color = theme.textSecondary, fontSize = 11.sp)
                         }
 
                         Button(
@@ -557,7 +564,7 @@ private fun PostItemCard(
                             colors = ButtonDefaults.buttonColors(containerColor = theme.accentCyan),
                             contentPadding = PaddingValues(horizontal = 10.dp, vertical = 4.dp)
                         ) {
-                            Text("Publish Now", color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                            AppText(tr("Publish Now"), color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)
                         }
                     } else if (post.status == PostStatus.FAILED) {
                         Button(
@@ -566,7 +573,7 @@ private fun PostItemCard(
                             colors = ButtonDefaults.buttonColors(containerColor = theme.accentCyan),
                             contentPadding = PaddingValues(horizontal = 10.dp, vertical = 4.dp)
                         ) {
-                            Text("Retry", color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                            AppText(tr("Retry"), color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)
                         }
                     }
                 }
@@ -592,7 +599,7 @@ private fun PostStatusBadge(status: PostStatus) {
             .background(color.copy(alpha = 0.15f))
             .padding(horizontal = 6.dp, vertical = 2.dp)
     ) {
-        Text(text, color = color, fontSize = 9.sp, fontWeight = FontWeight.Bold)
+        AppText(text, color = color, fontSize = 9.sp, fontWeight = FontWeight.Bold)
     }
 }
 
@@ -607,10 +614,10 @@ internal fun ScheduleTimeDialog(
     AlertDialog(
         onDismissRequest = onDismiss,
         containerColor = theme.cardBackground,
-        title = { Text("Schedule Post Time", color = theme.textPrimary, fontWeight = FontWeight.Bold) },
+        title = { AppText(tr("Schedule Post Time"), color = theme.textPrimary, fontWeight = FontWeight.Bold) },
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                Text("Select when this post should be automatically published:", color = theme.textSecondary, fontSize = 12.sp)
+                AppText(tr("Select when this post should be automatically published:"), color = theme.textSecondary, fontSize = 12.sp)
 
                 listOf(
                     1 to "In 1 hour",
@@ -630,7 +637,7 @@ internal fun ScheduleTimeDialog(
                             colors = RadioButtonDefaults.colors(selectedColor = theme.accentCyan)
                         )
                         Spacer(modifier = Modifier.width(8.dp))
-                        Text(label, color = theme.textPrimary, fontSize = 13.sp)
+                        AppText(label, color = theme.textPrimary, fontSize = 13.sp)
                     }
                 }
             }
@@ -643,12 +650,12 @@ internal fun ScheduleTimeDialog(
                 },
                 colors = ButtonDefaults.buttonColors(containerColor = theme.accentCyan)
             ) {
-                Text("Schedule", color = Color.Black, fontWeight = FontWeight.Bold)
+                AppText(tr("Schedule"), color = Color.Black, fontWeight = FontWeight.Bold)
             }
         },
         dismissButton = {
             TextButton(onClick = onDismiss) {
-                Text("Cancel", color = theme.textSecondary)
+                AppText(tr("Cancel"), color = theme.textSecondary)
             }
         }
     )

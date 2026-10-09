@@ -1,4 +1,11 @@
+// Modified by opendroid-cn (Chinese localization fork): UI strings routed through i18n.tr(). See NOTICE.
 package com.opendroid.ai.ui.screens
+
+
+
+import com.opendroid.ai.i18n.tr
+
+import com.opendroid.ai.i18n.AppText
 
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -66,25 +73,25 @@ fun CrashLogScreen(
         clipboard.setPrimaryClip(ClipData.newPlainText("OpenDroid crash report", text))
         // Android 13+ shows its own copy confirmation; a Toast there would double up.
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
-            Toast.makeText(context, "Crash report copied", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, tr("Crash report copied"), Toast.LENGTH_SHORT).show()
         }
     }
 
     if (showClearConfirmation) {
         AlertDialog(
             onDismissRequest = { showClearConfirmation = false },
-            title = { Text("Delete all crash reports?") },
-            text = { Text("This removes every stored crash report from this device. It cannot be undone.") },
+            title = { AppText(tr("Delete all crash reports?")) },
+            text = { AppText(tr("This removes every stored crash report from this device. It cannot be undone.")) },
             confirmButton = {
                 TextButton(onClick = {
                     viewModel.clearAll()
                     showClearConfirmation = false
                 }) {
-                    Text("Delete", color = themeColors.accentRed)
+                    AppText(tr("Delete"), color = themeColors.accentRed)
                 }
             },
             dismissButton = {
-                TextButton(onClick = { showClearConfirmation = false }) { Text("Cancel") }
+                TextButton(onClick = { showClearConfirmation = false }) { AppText(tr("Cancel")) }
             },
             containerColor = themeColors.surface,
             titleContentColor = themeColors.textPrimary,
@@ -95,10 +102,10 @@ fun CrashLogScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Crash Log", fontWeight = FontWeight.Bold) },
+                title = { AppText(tr("Crash Log"), fontWeight = FontWeight.Bold) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                        Icon(Icons.Default.ArrowBack, contentDescription = tr("Back"))
                     }
                 },
                 actions = {
@@ -108,7 +115,7 @@ fun CrashLogScreen(
                     ) {
                         Icon(
                             Icons.Default.Share,
-                            contentDescription = "Share all crash reports",
+                            contentDescription = tr("Share all crash reports"),
                             tint = if (crashes.isEmpty()) {
                                 themeColors.textSecondary.copy(alpha = 0.4f)
                             } else {
@@ -122,7 +129,7 @@ fun CrashLogScreen(
                     ) {
                         Icon(
                             Icons.Default.Delete,
-                            contentDescription = "Delete all crash reports",
+                            contentDescription = tr("Delete all crash reports"),
                             tint = if (crashes.isEmpty()) {
                                 themeColors.textSecondary.copy(alpha = 0.4f)
                             } else {
@@ -149,16 +156,16 @@ fun CrashLogScreen(
                 contentAlignment = Alignment.Center
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text("✅", fontSize = 48.sp)
+                    AppText(tr("✅"), fontSize = 48.sp)
                     Spacer(modifier = Modifier.height(12.dp))
-                    Text(
-                        "No crashes recorded",
+                    AppText(
+                        tr("No crashes recorded"),
                         fontSize = 16.sp,
                         color = themeColors.textSecondary
                     )
                     Spacer(modifier = Modifier.height(4.dp))
-                    Text(
-                        "Crashes are captured automatically and kept on this device.",
+                    AppText(
+                        tr("Crashes are captured automatically and kept on this device."),
                         fontSize = 13.sp,
                         color = themeColors.textSecondary.copy(alpha = 0.6f)
                     )
@@ -213,7 +220,7 @@ private fun CrashCard(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(
+                AppText(
                     text = crash.exceptionClass.substringAfterLast('.'),
                     fontSize = 14.sp,
                     fontWeight = FontWeight.SemiBold,
@@ -223,7 +230,7 @@ private fun CrashCard(
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
-                Text(
+                AppText(
                     text = timeText,
                     fontSize = 11.sp,
                     color = themeColors.textSecondary.copy(alpha = 0.7f)
@@ -232,7 +239,7 @@ private fun CrashCard(
 
             if (!crash.message.isNullOrBlank()) {
                 Spacer(modifier = Modifier.height(6.dp))
-                Text(
+                AppText(
                     text = crash.message,
                     fontSize = 13.sp,
                     color = themeColors.textPrimary,
@@ -242,7 +249,7 @@ private fun CrashCard(
             }
 
             Spacer(modifier = Modifier.height(6.dp))
-            Text(
+            AppText(
                 text = "v${crash.device.appVersionName} · Android ${crash.device.androidRelease} · " +
                     "${crash.device.deviceManufacturer} ${crash.device.deviceModel} · ${crash.threadName}",
                 fontSize = 11.sp,
@@ -262,7 +269,7 @@ private fun CrashCard(
                             .horizontalScroll(rememberScrollState())
                             .padding(10.dp)
                     ) {
-                        Text(
+                        AppText(
                             text = crash.stackTrace,
                             fontSize = 10.sp,
                             fontFamily = FontFamily.Monospace,
@@ -279,7 +286,7 @@ private fun CrashCard(
                                 tint = themeColors.accentCyan
                             )
                             Spacer(modifier = Modifier.width(6.dp))
-                            Text("Share", fontSize = 13.sp, color = themeColors.accentCyan)
+                            AppText(tr("Share"), fontSize = 13.sp, color = themeColors.accentCyan)
                         }
                         TextButton(onClick = onCopy) {
                             Icon(
@@ -289,7 +296,7 @@ private fun CrashCard(
                                 tint = themeColors.accentCyan
                             )
                             Spacer(modifier = Modifier.width(6.dp))
-                            Text("Copy", fontSize = 13.sp, color = themeColors.accentCyan)
+                            AppText(tr("Copy"), fontSize = 13.sp, color = themeColors.accentCyan)
                         }
                     }
                 }

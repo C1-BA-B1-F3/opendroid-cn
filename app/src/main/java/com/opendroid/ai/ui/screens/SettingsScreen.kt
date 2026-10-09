@@ -1,4 +1,11 @@
+// Modified by opendroid-cn (Chinese localization fork): UI strings routed through i18n.tr(). See NOTICE.
 package com.opendroid.ai.ui.screens
+
+
+
+import com.opendroid.ai.i18n.tr
+
+import com.opendroid.ai.i18n.AppText
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.BorderStroke
@@ -89,19 +96,19 @@ fun SettingsScreen(
     val providerCredentialPersistenceState by viewModel.providerCredentialPersistenceState.collectAsState()
 
     val providers = listOf(
-        "Google Gemini",
-        "OpenAI",
-        "Anthropic Claude",
-        "Groq",
-        "Mistral AI",
-        "OpenRouter",
-        "Together AI",
-        "Cohere",
-        "DeepSeek",
-        "Copilot API",
-        "Custom OpenAI Compatible",
-        "Ollama",
-        "On-Device AI"
+        tr("Google Gemini"),
+        tr("OpenAI"),
+        tr("Anthropic Claude"),
+        tr("Groq"),
+        tr("Mistral AI"),
+        tr("OpenRouter"),
+        tr("Together AI"),
+        tr("Cohere"),
+        tr("DeepSeek"),
+        tr("Copilot API"),
+        tr("Custom OpenAI Compatible"),
+        tr("Ollama"),
+        tr("On-Device AI")
     )
 
     var providerDropdownExpanded by remember { mutableStateOf(false) }
@@ -134,8 +141,8 @@ fun SettingsScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(
-                        text = "AGENT PREFERENCES",
+                    AppText(
+                        text = tr("AGENT PREFERENCES"),
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
                         color = TextPrimary,
@@ -168,17 +175,17 @@ fun SettingsScreen(
                         colors = CardDefaults.cardColors(containerColor = CardBackground)
                     ) {
                         Column(modifier = Modifier.padding(16.dp)) {
-                            Text(
-                                text = "CREDENTIALS MUST BE RE-ENTERED",
+                            AppText(
+                                text = tr("CREDENTIALS MUST BE RE-ENTERED"),
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
                                 color = Color(0xFFFF9800)
                             )
                             Spacer(modifier = Modifier.height(6.dp))
-                            Text(
-                                text = "Saved provider credentials cannot be read on this device. " +
-                                    "Clear unavailable records, then enter your API keys again.",
+                            AppText(
+                                text = tr("Saved provider credentials cannot be read on this device. ") +
+                                    tr("Clear unavailable records, then enter your API keys again."),
                                 fontSize = 12.sp,
                                 color = TextSecondary
                             )
@@ -187,7 +194,7 @@ fun SettingsScreen(
                                 onClick = viewModel::resetProviderCredentialsForReentry,
                                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF9800))
                             ) {
-                                Text("Clear unavailable credentials", color = DarkBackground)
+                                AppText(tr("Clear unavailable credentials"), color = DarkBackground)
                             }
                         }
                     }
@@ -205,17 +212,17 @@ fun SettingsScreen(
                         colors = CardDefaults.cardColors(containerColor = CardBackground)
                     ) {
                         Column(modifier = Modifier.padding(16.dp)) {
-                            Text(
-                                text = "CREDENTIALS WERE NOT SAVED",
+                            AppText(
+                                text = tr("CREDENTIALS WERE NOT SAVED"),
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
                                 color = Color(0xFFFF9800)
                             )
                             Spacer(modifier = Modifier.height(6.dp))
-                            Text(
-                                text = "Secure credential storage is unavailable. Existing settings " +
-                                    "were preserved; check device storage and try again.",
+                            AppText(
+                                text = tr("Secure credential storage is unavailable. Existing settings ") +
+                                    tr("were preserved; check device storage and try again."),
                                 fontSize = 12.sp,
                                 color = TextSecondary
                             )
@@ -233,8 +240,8 @@ fun SettingsScreen(
                     colors = CardDefaults.cardColors(containerColor = CardBackground)
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
-                        Text(
-                            text = "ACTIVE BRAIN PROVIDER",
+                        AppText(
+                            text = tr("ACTIVE BRAIN PROVIDER"),
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily.Monospace,
@@ -259,7 +266,7 @@ fun SettingsScreen(
                                 horizontalArrangement = Arrangement.SpaceBetween,
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
-                                Text(
+                                AppText(
                                     text = if (config.activeProvider == "On-Device AI" || config.activeProvider == "Gemma 4 (On-device)") "On-Device AI" else config.activeProvider,
                                     color = TextPrimary,
                                     fontSize = 15.sp,
@@ -267,7 +274,7 @@ fun SettingsScreen(
                                 )
                                 Icon(
                                     imageVector = Icons.Default.ArrowDropDown,
-                                    contentDescription = "Dropdown",
+                                    contentDescription = tr("Dropdown"),
                                     tint = TextPrimary
                                 )
                             }
@@ -282,8 +289,8 @@ fun SettingsScreen(
                             ) {
                                 DropdownMenuItem(
                                     text = { 
-                                        Text(
-                                            text = "OFFLINE AI", 
+                                        AppText(
+                                            text = tr("OFFLINE AI"), 
                                             color = AccentCyan, 
                                             fontWeight = FontWeight.Bold, 
                                             fontSize = 11.sp, 
@@ -294,7 +301,7 @@ fun SettingsScreen(
                                     onClick = {}
                                 )
                                 DropdownMenuItem(
-                                    text = { Text("On-Device AI", color = TextPrimary, modifier = Modifier.padding(start = 8.dp)) },
+                                    text = { AppText(tr("On-Device AI"), color = TextPrimary, modifier = Modifier.padding(start = 8.dp)) },
                                     onClick = {
                                         viewModel.updateActiveProvider("On-Device AI")
                                         providerDropdownExpanded = false
@@ -305,8 +312,8 @@ fun SettingsScreen(
 
                                 DropdownMenuItem(
                                     text = { 
-                                        Text(
-                                            text = "CLOUD AI", 
+                                        AppText(
+                                            text = tr("CLOUD AI"), 
                                             color = AccentCyan, 
                                             fontWeight = FontWeight.Bold, 
                                             fontSize = 11.sp, 
@@ -324,7 +331,7 @@ fun SettingsScreen(
                                         else -> name
                                     }
                                     DropdownMenuItem(
-                                        text = { Text(displayName, color = TextPrimary, modifier = Modifier.padding(start = 8.dp)) },
+                                        text = { AppText(displayName, color = TextPrimary, modifier = Modifier.padding(start = 8.dp)) },
                                         onClick = {
                                             viewModel.updateActiveProvider(name)
                                             providerDropdownExpanded = false
@@ -346,8 +353,8 @@ fun SettingsScreen(
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Text(
-                                text = "ACTIVE MODEL",
+                            AppText(
+                                text = tr("ACTIVE MODEL"),
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
@@ -366,7 +373,7 @@ fun SettingsScreen(
                                 ) {
                                     Icon(
                                         imageVector = Icons.Default.Refresh,
-                                        contentDescription = "Refresh models",
+                                        contentDescription = tr("Refresh models"),
                                         tint = TextSecondary,
                                         modifier = Modifier.size(16.dp)
                                     )
@@ -380,13 +387,13 @@ fun SettingsScreen(
                             OutlinedTextField(
                                 value = config.activeModel,
                                 onValueChange = { viewModel.updateActiveModel(it) },
-                                label = { Text("Active LLM Model", fontSize = 12.sp) },
+                                label = { AppText(tr("Active LLM Model"), fontSize = 12.sp) },
                                 singleLine = true,
                                 trailingIcon = {
                                     IconButton(onClick = { modelDropdownExpanded = !modelDropdownExpanded }) {
                                         Icon(
                                             imageVector = Icons.Default.ArrowDropDown,
-                                            contentDescription = "Show models dropdown",
+                                            contentDescription = tr("Show models dropdown"),
                                             tint = TextPrimary
                                         )
                                     }
@@ -417,7 +424,7 @@ fun SettingsScreen(
                                                     horizontalArrangement = Arrangement.SpaceBetween,
                                                     verticalAlignment = Alignment.CenterVertically
                                                 ) {
-                                                    Text(
+                                                    AppText(
                                                         text = model.displayName,
                                                         color = TextPrimary,
                                                         fontSize = 14.sp
@@ -435,8 +442,8 @@ fun SettingsScreen(
                                                                     )
                                                                     .padding(horizontal = 4.dp, vertical = 2.dp)
                                                             ) {
-                                                                Text(
-                                                                    text = "REC",
+                                                                AppText(
+                                                                    text = tr("REC"),
                                                                     color = AccentCyan,
                                                                     fontSize = 9.sp,
                                                                     fontWeight = FontWeight.Bold
@@ -452,8 +459,8 @@ fun SettingsScreen(
                                                                     )
                                                                     .padding(horizontal = 4.dp, vertical = 2.dp)
                                                             ) {
-                                                                Text(
-                                                                    text = "FREE",
+                                                                AppText(
+                                                                    text = tr("FREE"),
                                                                     color = AccentCyan,
                                                                     fontSize = 9.sp,
                                                                     fontWeight = FontWeight.Bold
@@ -469,8 +476,8 @@ fun SettingsScreen(
                                                                     )
                                                                     .padding(horizontal = 4.dp, vertical = 2.dp)
                                                             ) {
-                                                                Text(
-                                                                    text = "PRO",
+                                                                AppText(
+                                                                    text = tr("PRO"),
                                                                     color = Color(0xFFFFD700),
                                                                     fontSize = 9.sp,
                                                                     fontWeight = FontWeight.Bold
@@ -491,15 +498,15 @@ fun SettingsScreen(
                         }
 
                         Spacer(modifier = Modifier.height(12.dp))
-                        Text(
-                            text = "EXPLICIT PLANNING FALLBACKS",
+                        AppText(
+                            text = tr("EXPLICIT PLANNING FALLBACKS"),
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily.Monospace,
                             color = AccentCyan
                         )
-                        Text(
-                            text = "Only selected providers may receive a retry after an unusable low-impact local plan. High-impact plans never switch automatically.",
+                        AppText(
+                            text = tr("Only selected providers may receive a retry after an unusable low-impact local plan. High-impact plans never switch automatically."),
                             fontSize = 10.sp,
                             color = TextSecondary,
                             modifier = Modifier.padding(top = 4.dp, bottom = 4.dp)
@@ -522,7 +529,7 @@ fun SettingsScreen(
                                             checkmarkColor = DarkBackground
                                         )
                                     )
-                                    Text(
+                                    AppText(
                                         text = fallbackProvider,
                                         color = TextPrimary,
                                         fontSize = 12.sp
@@ -535,7 +542,7 @@ fun SettingsScreen(
                         // a list that quietly went out of date.
                         modelFetchNotice?.let { notice ->
                             Spacer(modifier = Modifier.height(6.dp))
-                            Text(
+                            AppText(
                                 text = notice,
                                 fontSize = 11.sp,
                                 color = AccentRed,
@@ -563,22 +570,22 @@ fun SettingsScreen(
                     ) {
                         Icon(
                             imageVector = Icons.Default.Info,
-                            contentDescription = "Benchmark",
+                            contentDescription = tr("Benchmark"),
                             tint = AccentCyan,
                             modifier = Modifier.size(24.dp)
                         )
                         Spacer(modifier = Modifier.width(12.dp))
                         Column(modifier = Modifier.weight(1f)) {
-                            Text(
-                                text = "LLM RESPONSIVENESS REPORT",
+                            AppText(
+                                text = tr("LLM RESPONSIVENESS REPORT"),
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
                                 color = AccentCyan
                             )
                             Spacer(modifier = Modifier.height(2.dp))
-                            Text(
-                                text = "View live charts comparing speeds & latency.",
+                            AppText(
+                                text = tr("View live charts comparing speeds & latency."),
                                 fontSize = 12.sp,
                                 color = TextSecondary
                             )
@@ -597,8 +604,8 @@ fun SettingsScreen(
                         colors = CardDefaults.cardColors(containerColor = CardBackground)
                     ) {
                         Column(modifier = Modifier.padding(16.dp)) {
-                            Text(
-                                text = "OLLAMA LOCAL ENDPOINT",
+                            AppText(
+                                text = tr("OLLAMA LOCAL ENDPOINT"),
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
@@ -608,7 +615,7 @@ fun SettingsScreen(
                             OutlinedTextField(
                                 value = config.ollamaUrl,
                                 onValueChange = { viewModel.updateOllamaUrl(it) },
-                                label = { Text("Ollama Server URL", fontSize = 12.sp) },
+                                label = { AppText(tr("Ollama Server URL"), fontSize = 12.sp) },
                                 singleLine = true,
                                 colors = OutlinedTextFieldDefaults.colors(
                                     focusedBorderColor = AccentCyan,
@@ -619,8 +626,8 @@ fun SettingsScreen(
                                 modifier = Modifier.fillMaxWidth()
                             )
                             Spacer(modifier = Modifier.height(6.dp))
-                            Text(
-                                text = "Use local LAN IP (e.g. http://192.168.1.50:11434) if testing from a physical Android device.",
+                            AppText(
+                                text = tr("Use local LAN IP (e.g. http://192.168.1.50:11434) if testing from a physical Android device."),
                                 fontSize = 10.sp,
                                 color = TextSecondary
                             )
@@ -639,8 +646,8 @@ fun SettingsScreen(
                         colors = CardDefaults.cardColors(containerColor = CardBackground)
                     ) {
                         Column(modifier = Modifier.padding(16.dp)) {
-                            Text(
-                                text = "ON-DEVICE AI STATUS",
+                            AppText(
+                                text = tr("ON-DEVICE AI STATUS"),
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
@@ -650,14 +657,14 @@ fun SettingsScreen(
                             
                             // Show which model is active
                             val activeSpec = OnDeviceModelRegistry.findById(config.activeModel)
-                            Text(
-                                text = "Active: ${activeSpec?.displayName ?: config.activeModel}",
+                            AppText(
+                                text = "当前：${activeSpec?.displayName ?: config.activeModel}",
                                 fontSize = 12.sp,
                                 color = AccentCyan,
                                 fontWeight = FontWeight.SemiBold
                             )
                             if (activeSpec != null) {
-                                Text(
+                                AppText(
                                     text = "Backend: ${if (activeSpec.backend == OnDeviceBackend.AI_CORE) "Android AI Core" else "LiteRT-LM"}",
                                     fontSize = 11.sp,
                                     color = TextSecondary
@@ -667,8 +674,8 @@ fun SettingsScreen(
                             Spacer(modifier = Modifier.height(16.dp))
                             
                             // ─── AI Core Backend Section ───
-                            Text(
-                                text = "ANDROID AI CORE",
+                            AppText(
+                                text = tr("ANDROID AI CORE"),
                                 fontSize = 10.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
@@ -690,7 +697,7 @@ fun SettingsScreen(
                                         FeatureStatus.AVAILABLE -> "Available and ready"
                                         FeatureStatus.DOWNLOADABLE -> {
                                             showGemma4Download = true
-                                            "Download needed"
+                                            tr("Download needed")
                                         }
                                         FeatureStatus.DOWNLOADING -> "Downloading..."
                                         FeatureStatus.UNAVAILABLE -> "Not supported on this device"
@@ -714,7 +721,7 @@ fun SettingsScreen(
                                         FeatureStatus.AVAILABLE -> "Available and ready"
                                         FeatureStatus.DOWNLOADABLE -> {
                                             showGemma3nDownload = true
-                                            "Download needed"
+                                            tr("Download needed")
                                         }
                                         FeatureStatus.DOWNLOADING -> "Downloading..."
                                         FeatureStatus.UNAVAILABLE -> "Not supported on this device"
@@ -731,8 +738,8 @@ fun SettingsScreen(
                                 horizontalArrangement = Arrangement.SpaceBetween,
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
-                                Text("Gemma 4", fontSize = 13.sp, color = TextPrimary, fontWeight = FontWeight.SemiBold)
-                                Text(
+                                AppText(tr("Gemma 4"), fontSize = 13.sp, color = TextPrimary, fontWeight = FontWeight.SemiBold)
+                                AppText(
                                     text = gemma4Status,
                                     fontSize = 11.sp,
                                     color = if (gemma4Status.contains("ready")) AccentCyan else TextSecondary
@@ -750,7 +757,7 @@ fun SettingsScreen(
                                                 client.download().collect { }
                                                 gemma4Status = "Download complete"
                                             } catch (e: Exception) {
-                                                gemma4Status = "Download failed: ${e.localizedMessage}"
+                                                gemma4Status = "下载失败：${e.localizedMessage}"
                                                 showGemma4Download = true
                                             }
                                         }
@@ -758,7 +765,7 @@ fun SettingsScreen(
                                     colors = ButtonDefaults.buttonColors(containerColor = TextPrimary),
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
-                                    Text("Download Gemma 4 (AI Core)", color = DarkBackground)
+                                    AppText(tr("Download Gemma 4 (AI Core)"), color = DarkBackground)
                                 }
                             }
                             
@@ -770,8 +777,8 @@ fun SettingsScreen(
                                 horizontalArrangement = Arrangement.SpaceBetween,
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
-                                Text("Gemma 3n Multimodal", fontSize = 13.sp, color = TextPrimary, fontWeight = FontWeight.SemiBold)
-                                Text(
+                                AppText(tr("Gemma 3n Multimodal"), fontSize = 13.sp, color = TextPrimary, fontWeight = FontWeight.SemiBold)
+                                AppText(
                                     text = gemma3nStatus,
                                     fontSize = 11.sp,
                                     color = if (gemma3nStatus.contains("ready")) AccentCyan else TextSecondary
@@ -795,7 +802,7 @@ fun SettingsScreen(
                                                 client3n.download().collect { }
                                                 gemma3nStatus = "Download complete"
                                             } catch (e: Exception) {
-                                                gemma3nStatus = "Download failed: ${e.localizedMessage}"
+                                                gemma3nStatus = "下载失败：${e.localizedMessage}"
                                                 showGemma3nDownload = true
                                             }
                                         }
@@ -803,7 +810,7 @@ fun SettingsScreen(
                                     colors = ButtonDefaults.buttonColors(containerColor = AccentCyan),
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
-                                    Text("Download Gemma 3n (AI Core)", color = DarkBackground)
+                                    AppText(tr("Download Gemma 3n (AI Core)"), color = DarkBackground)
                                 }
                             }
                             
@@ -812,16 +819,16 @@ fun SettingsScreen(
                             Spacer(modifier = Modifier.height(12.dp))
 
                             // ─── Hugging Face Section ───
-                            Text(
-                                text = "HUGGING FACE TOKEN (GATED MODELS ONLY)",
+                            AppText(
+                                text = tr("HUGGING FACE TOKEN (GATED MODELS ONLY)"),
                                 fontSize = 10.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
                                 color = Color(0xFFFF9800)
                             )
                             Spacer(modifier = Modifier.height(2.dp))
-                            Text(
-                                text = "Needed only for gated Hugging Face downloads (the Google-hosted Gemma 3n LiteRT builds). Public models such as Qwen 2.5 and the Gemma 4 community mirrors download without a token. Not used for cloud API providers.",
+                            AppText(
+                                text = tr("Needed only for gated Hugging Face downloads (the Google-hosted Gemma 3n LiteRT builds). Public models such as Qwen 2.5 and the Gemma 4 community mirrors download without a token. Not used for cloud API providers."),
                                 fontSize = 10.sp,
                                 color = TextSecondary
                             )
@@ -841,15 +848,15 @@ fun SettingsScreen(
                                     OutlinedTextField(
                                         value = hfToken,
                                         onValueChange = { viewModel.updateHuggingFaceToken(it) },
-                                        label = { Text("Hugging Face Access Token", fontSize = 12.sp) },
+                                        label = { AppText(tr("Hugging Face Access Token"), fontSize = 12.sp) },
                                         singleLine = true,
                                         visualTransformation = if (showToken) VisualTransformation.None else PasswordVisualTransformation(),
-                                        placeholder = { Text("hf_...", fontSize = 12.sp, color = TextSecondary) },
+                                        placeholder = { AppText(tr("hf_..."), fontSize = 12.sp, color = TextSecondary) },
                                         trailingIcon = {
                                             IconButton(onClick = { showToken = !showToken }) {
                                                 Icon(
                                                     imageVector = if (showToken) Icons.Default.Visibility else Icons.Default.VisibilityOff,
-                                                    contentDescription = "Toggle Token Visibility",
+                                                    contentDescription = tr("Toggle Token Visibility"),
                                                     tint = TextSecondary
                                                 )
                                             }
@@ -884,14 +891,14 @@ fun SettingsScreen(
                                                 },
                                                 contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp)
                                             ) {
-                                                Text("📋 Paste", fontSize = 11.sp, color = Color(0xFFFF9800))
+                                                AppText(tr("📋 Paste"), fontSize = 11.sp, color = Color(0xFFFF9800))
                                             }
 
                                             TextButton(
                                                 onClick = { viewModel.updateHuggingFaceToken("") },
                                                 contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp)
                                             ) {
-                                                Text("❌ Clear", fontSize = 11.sp, color = Color.Red)
+                                                AppText(tr("❌ Clear"), fontSize = 11.sp, color = Color.Red)
                                             }
                                         }
                                     }
@@ -921,9 +928,9 @@ fun SettingsScreen(
                                         verticalAlignment = Alignment.CenterVertically
                                     ) {
                                         Column {
-                                            Text("Status: $statusDisplay", fontSize = 11.sp, color = statusColor, fontWeight = FontWeight.Bold)
-                                            Text("Last Verified: $lastVerified", fontSize = 9.sp, color = TextSecondary)
-                                            Text("Storage: Encrypted", fontSize = 9.sp, color = TextSecondary)
+                                            AppText("状态：$statusDisplay", fontSize = 11.sp, color = statusColor, fontWeight = FontWeight.Bold)
+                                            AppText("上次验证：$lastVerified", fontSize = 9.sp, color = TextSecondary)
+                                            AppText(tr("Storage: Encrypted"), fontSize = 9.sp, color = TextSecondary)
                                         }
 
                                         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -933,7 +940,7 @@ fun SettingsScreen(
                                                 contentPadding = PaddingValues(horizontal = 10.dp, vertical = 4.dp),
                                                 modifier = Modifier.height(28.dp)
                                             ) {
-                                                Text("Validate Token", fontSize = 10.sp, color = DarkBackground, fontWeight = FontWeight.Bold)
+                                                AppText(tr("Validate Token"), fontSize = 10.sp, color = DarkBackground, fontWeight = FontWeight.Bold)
                                             }
 
                                             if (hfToken.isNotBlank()) {
@@ -943,7 +950,7 @@ fun SettingsScreen(
                                                     contentPadding = PaddingValues(horizontal = 10.dp, vertical = 4.dp),
                                                     modifier = Modifier.height(28.dp)
                                                 ) {
-                                                    Text("Remove Token", fontSize = 10.sp, color = Color.Red, fontWeight = FontWeight.Bold)
+                                                    AppText(tr("Remove Token"), fontSize = 10.sp, color = Color.Red, fontWeight = FontWeight.Bold)
                                                 }
                                             }
                                         }
@@ -956,16 +963,16 @@ fun SettingsScreen(
                             Spacer(modifier = Modifier.height(12.dp))
                             
                             // ─── LiteRT-LM Backend Section ───
-                            Text(
-                                text = "LITERT-LM (FALLBACK)",
+                            AppText(
+                                text = tr("LITERT-LM (FALLBACK)"),
                                 fontSize = 10.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
                                 color = Color(0xFFFF9800)
                             )
                             Spacer(modifier = Modifier.height(2.dp))
-                            Text(
-                                text = "Runs without Google AI Core. Models tagged PUBLIC (Qwen, the Gemma 4 community mirrors) need no HF token; models tagged GATED (the Google-hosted Gemma 3n builds) do. Or import your own .task / .litertlm file.",
+                            AppText(
+                                text = tr("Runs without Google AI Core. Models tagged PUBLIC (Qwen, the Gemma 4 community mirrors) need no HF token; models tagged GATED (the Google-hosted Gemma 3n builds) do. Or import your own .task / .litertlm file."),
                                 fontSize = 10.sp,
                                 color = TextSecondary
                             )
@@ -1008,7 +1015,7 @@ fun SettingsScreen(
                                         ) {
                                             Column(modifier = Modifier.weight(1f)) {
                                                 Row(verticalAlignment = Alignment.CenterVertically) {
-                                                    Text(
+                                                    AppText(
                                                         text = spec.displayName,
                                                         fontSize = 13.sp,
                                                         color = if (isApiCompatible) TextPrimary else TextSecondary,
@@ -1021,8 +1028,8 @@ fun SettingsScreen(
                                                                 .background(Color(0xFFFF9800).copy(alpha = 0.15f), RoundedCornerShape(4.dp))
                                                                 .padding(horizontal = 4.dp, vertical = 2.dp)
                                                         ) {
-                                                            Text(
-                                                                text = "REC",
+                                                            AppText(
+                                                                text = tr("REC"),
                                                                 color = Color(0xFFFF9800),
                                                                 fontSize = 8.sp,
                                                                 fontWeight = FontWeight.Bold
@@ -1039,7 +1046,7 @@ fun SettingsScreen(
                                                             )
                                                             .padding(horizontal = 4.dp, vertical = 2.dp)
                                                     ) {
-                                                        Text(
+                                                        AppText(
                                                             text = if (spec.authRequired) "GATED · HF TOKEN" else "PUBLIC · NO TOKEN",
                                                             color = if (spec.authRequired) Color(0xFFFF9800) else AccentCyan,
                                                             fontSize = 8.sp,
@@ -1047,15 +1054,15 @@ fun SettingsScreen(
                                                         )
                                                     }
                                                 }
-                                                Text(
+                                                AppText(
                                                     text = if (managedDownloadAvailable) {
                                                         if (spec.authRequired) {
-                                                            "Backend: LiteRT-LM · Gated Hugging Face download"
+                                                            tr("Backend: LiteRT-LM · Gated Hugging Face download")
                                                         } else {
-                                                            "Backend: LiteRT-LM · Public download (no token)"
+                                                            tr("Backend: LiteRT-LM · Public download (no token)")
                                                         }
                                                     } else {
-                                                        "Backend: LiteRT-LM · In-app download unavailable; local import only"
+                                                        tr("Backend: LiteRT-LM · In-app download unavailable; local import only")
                                                     },
                                                     fontSize = 10.sp,
                                                     color = TextSecondary
@@ -1072,7 +1079,7 @@ fun SettingsScreen(
                                             }
                                             
                                             val statusText = when {
-                                                !isApiCompatible -> "API ${spec.minSdk}+ Req"
+                                                !isApiCompatible -> "需 API ${spec.minSdk}+"
                                                 status == ModelStatus.READY -> "Downloaded"
                                                 !managedDownloadAvailable -> "In-app unavailable"
                                                 status == ModelStatus.DOWNLOADING -> "${progress}%"
@@ -1082,7 +1089,7 @@ fun SettingsScreen(
                                                 else -> "Not Downloaded"
                                             }
                                             
-                                            Text(
+                                            AppText(
                                                 text = statusText,
                                                 fontSize = 10.sp,
                                                 color = badgeColor,
@@ -1108,15 +1115,15 @@ fun SettingsScreen(
                                                 horizontalArrangement = Arrangement.SpaceBetween,
                                                 verticalAlignment = Alignment.CenterVertically
                                             ) {
-                                                Text(
+                                                AppText(
                                                     text = "${formatBytes(downloadedSize)} / ${formatBytes(totalSize)}" +
                                                            (if (status == ModelStatus.DOWNLOADING && speed.isNotEmpty()) " @ $speed" else ""),
                                                     fontSize = 9.sp,
                                                     color = TextSecondary
                                                 )
                                                 if (status == ModelStatus.DOWNLOADING && eta.isNotEmpty()) {
-                                                    Text(
-                                                        text = "ETA: $eta",
+                                                    AppText(
+                                                        text = "预计剩余：$eta",
                                                         fontSize = 9.sp,
                                                         color = TextSecondary
                                                     )
@@ -1135,9 +1142,9 @@ fun SettingsScreen(
                                                         modifier = Modifier.height(28.dp).padding(horizontal = 4.dp),
                                                         contentPadding = PaddingValues(horizontal = 8.dp, vertical = 2.dp)
                                                     ) {
-                                                        Icon(Icons.Default.Pause, contentDescription = "Pause", modifier = Modifier.size(12.dp), tint = TextPrimary)
+                                                        Icon(Icons.Default.Pause, contentDescription = tr("Pause"), modifier = Modifier.size(12.dp), tint = TextPrimary)
                                                         Spacer(modifier = Modifier.width(4.dp))
-                                                        Text("Pause", fontSize = 10.sp, color = TextPrimary)
+                                                        AppText(tr("Pause"), fontSize = 10.sp, color = TextPrimary)
                                                     }
                                                 } else if (status == ModelStatus.PAUSED) {
                                                     Button(
@@ -1152,9 +1159,9 @@ fun SettingsScreen(
                                                         modifier = Modifier.height(28.dp).padding(horizontal = 4.dp),
                                                         contentPadding = PaddingValues(horizontal = 8.dp, vertical = 2.dp)
                                                     ) {
-                                                        Icon(Icons.Default.PlayArrow, contentDescription = "Resume", modifier = Modifier.size(12.dp), tint = DarkBackground)
+                                                        Icon(Icons.Default.PlayArrow, contentDescription = tr("Resume"), modifier = Modifier.size(12.dp), tint = DarkBackground)
                                                         Spacer(modifier = Modifier.width(4.dp))
-                                                        Text("Resume", fontSize = 10.sp, color = DarkBackground)
+                                                        AppText(tr("Resume"), fontSize = 10.sp, color = DarkBackground)
                                                     }
                                                 }
                                                 Spacer(modifier = Modifier.width(6.dp))
@@ -1164,7 +1171,7 @@ fun SettingsScreen(
                                                     modifier = Modifier.height(28.dp).padding(horizontal = 4.dp),
                                                     contentPadding = PaddingValues(horizontal = 8.dp, vertical = 2.dp)
                                                 ) {
-                                                    Text("Cancel", fontSize = 10.sp, color = Color.White)
+                                                    AppText(tr("Cancel"), fontSize = 10.sp, color = Color.White)
                                                 }
                                             }
                                         }
@@ -1172,7 +1179,7 @@ fun SettingsScreen(
                                         if (isApiCompatible && status == ModelStatus.FAILED) {
                                             Spacer(modifier = Modifier.height(8.dp))
                                             val errorText = modelEntity?.etaString ?: "Download failed"
-                                            Text(
+                                            AppText(
                                                 text = errorText,
                                                 fontSize = 10.sp,
                                                 color = Color.Red,
@@ -1187,7 +1194,7 @@ fun SettingsScreen(
                                                     modifier = Modifier.fillMaxWidth().height(28.dp),
                                                     contentPadding = PaddingValues(vertical = 2.dp)
                                                 ) {
-                                                    Text("Open Model Page", color = Color(0xFFFF9800), fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                                                    AppText(tr("Open Model Page"), color = Color(0xFFFF9800), fontSize = 10.sp, fontWeight = FontWeight.Bold)
                                                 }
                                             }
                                         }
@@ -1220,7 +1227,7 @@ fun SettingsScreen(
                                                                 modifier = Modifier.weight(1f).height(32.dp),
                                                                 contentPadding = PaddingValues(horizontal = 4.dp)
                                                             ) {
-                                                                Text("Download", fontSize = 11.sp, color = DarkBackground)
+                                                                AppText(tr("Download"), fontSize = 11.sp, color = DarkBackground)
                                                             }
                                                         }
 
@@ -1234,7 +1241,7 @@ fun SettingsScreen(
                                                             modifier = Modifier.weight(1f).height(32.dp),
                                                             contentPadding = PaddingValues(horizontal = 4.dp)
                                                         ) {
-                                                            Text("Import", fontSize = 11.sp, color = TextPrimary)
+                                                            AppText(tr("Import"), fontSize = 11.sp, color = TextPrimary)
                                                         }
                                                     }
                                                     
@@ -1254,7 +1261,7 @@ fun SettingsScreen(
                                                                  tint = DarkBackground
                                                              )
                                                              Spacer(modifier = Modifier.width(4.dp))
-                                                             Text(if (config.activeModel == spec.id) "Active" else "Load Model", fontSize = 11.sp, color = DarkBackground)
+                                                             AppText(if (config.activeModel == spec.id) "Active" else "Load Model", fontSize = 11.sp, color = DarkBackground)
                                                          }
                                                          
                                                          Button(
@@ -1263,7 +1270,7 @@ fun SettingsScreen(
                                                              modifier = Modifier.height(32.dp),
                                                              contentPadding = PaddingValues(horizontal = 8.dp)
                                                          ) {
-                                                             Icon(Icons.Default.Delete, contentDescription = "Delete", modifier = Modifier.size(14.dp), tint = Color.Red)
+                                                             Icon(Icons.Default.Delete, contentDescription = tr("Delete"), modifier = Modifier.size(14.dp), tint = Color.Red)
                                                          }
                                                     }
                                                     
@@ -1275,7 +1282,7 @@ fun SettingsScreen(
                                                         modifier = Modifier.height(32.dp),
                                                         contentPadding = PaddingValues(horizontal = 8.dp)
                                                     ) {
-                                                        Icon(Icons.Default.Info, contentDescription = "Info", modifier = Modifier.size(14.dp), tint = TextSecondary)
+                                                        Icon(Icons.Default.Info, contentDescription = tr("Info"), modifier = Modifier.size(14.dp), tint = TextSecondary)
                                                     }
                                                 }
                                             }
@@ -1288,16 +1295,16 @@ fun SettingsScreen(
                             Spacer(modifier = Modifier.height(12.dp))
                             Divider(color = BorderColor, thickness = 1.dp)
                             Spacer(modifier = Modifier.height(12.dp))
-                            Text(
-                                text = "CUSTOM LITERT MODELS",
+                            AppText(
+                                text = tr("CUSTOM LITERT MODELS"),
                                 fontSize = 10.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
                                 color = Color(0xFFFF9800)
                             )
                             Spacer(modifier = Modifier.height(2.dp))
-                            Text(
-                                text = "Import any .task or .litertlm file as its own model (not tied to a catalog slot). GGUF is not supported yet.",
+                            AppText(
+                                text = tr("Import any .task or .litertlm file as its own model (not tied to a catalog slot). GGUF is not supported yet."),
                                 fontSize = 10.sp,
                                 color = TextSecondary
                             )
@@ -1311,7 +1318,7 @@ fun SettingsScreen(
                                 colors = ButtonDefaults.buttonColors(containerColor = AccentCyan),
                                 modifier = Modifier.fillMaxWidth().height(36.dp)
                             ) {
-                                Text("Import custom LiteRT model", fontSize = 12.sp, color = DarkBackground)
+                                AppText(tr("Import custom LiteRT model"), fontSize = 12.sp, color = DarkBackground)
                             }
 
                             val customModels = dbModels.filter {
@@ -1345,19 +1352,19 @@ fun SettingsScreen(
                                             verticalAlignment = Alignment.CenterVertically
                                         ) {
                                             Column(modifier = Modifier.weight(1f)) {
-                                                Text(
+                                                AppText(
                                                     text = entity.name,
                                                     fontSize = 13.sp,
                                                     color = TextPrimary,
                                                     fontWeight = FontWeight.SemiBold
                                                 )
-                                                Text(
-                                                    text = "Custom LiteRT · ${formatBytes(entity.size)} · no token",
+                                                AppText(
+                                                    text = "自定义 LiteRT · ${formatBytes(entity.size)} · 无需令牌",
                                                     fontSize = 10.sp,
                                                     color = TextSecondary
                                                 )
                                             }
-                                            Text(
+                                            AppText(
                                                 text = if (config.activeModel == entity.id) "Active" else "Ready",
                                                 fontSize = 10.sp,
                                                 color = AccentCyan,
@@ -1385,7 +1392,7 @@ fun SettingsScreen(
                                                         modifier = Modifier.weight(1f).height(32.dp),
                                                         contentPadding = PaddingValues(horizontal = 4.dp)
                                                     ) {
-                                                        Text(
+                                                        AppText(
                                                             if (config.activeModel == entity.id) "Active" else "Load Model",
                                                             fontSize = 11.sp,
                                                             color = DarkBackground
@@ -1401,7 +1408,7 @@ fun SettingsScreen(
                                                     ) {
                                                         Icon(
                                                             Icons.Default.Delete,
-                                                            contentDescription = "Delete",
+                                                            contentDescription = tr("Delete"),
                                                             modifier = Modifier.size(14.dp),
                                                             tint = Color.Red
                                                         )
@@ -1418,8 +1425,8 @@ fun SettingsScreen(
                             Spacer(modifier = Modifier.height(12.dp))
 
                             // ─── Storage Cleanup Section ───
-                            Text(
-                                text = "STORAGE CLEANUP",
+                            AppText(
+                                text = tr("STORAGE CLEANUP"),
                                 fontSize = 10.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
@@ -1436,13 +1443,13 @@ fun SettingsScreen(
                                 modifier = Modifier.fillMaxWidth(),
                                 horizontalArrangement = Arrangement.SpaceBetween
                             ) {
-                                Text(
-                                    text = "Used: ${formatBytes(totalSpace - freeSpace)} / ${formatBytes(totalSpace)}",
+                                AppText(
+                                    text = "已用：${formatBytes(totalSpace - freeSpace)} / ${formatBytes(totalSpace)}",
                                     fontSize = 11.sp,
                                     color = TextPrimary
                                 )
-                                Text(
-                                    text = "${((totalSpace - freeSpace) * 100 / (totalSpace.coerceAtLeast(1L)))}% Used",
+                                AppText(
+                                    text = "${((totalSpace - freeSpace) * 100 / (totalSpace.coerceAtLeast(1L)))}% 已用",
                                     fontSize = 11.sp,
                                     color = TextSecondary
                                 )
@@ -1458,8 +1465,8 @@ fun SettingsScreen(
                                  trackColor = BorderColor
                              )
                              Spacer(modifier = Modifier.height(6.dp))
-                             Text(
-                                 text = "OpenDroid models occupy ${formatBytes(usedByApp)} of on-device storage.",
+                             AppText(
+                                 text = "OpenDroid 模型占用了 ${formatBytes(usedByApp)} 的本机存储空间。",
                                  fontSize = 10.sp,
                                  color = TextSecondary
                              )
@@ -1470,7 +1477,7 @@ fun SettingsScreen(
                                  modifier = Modifier.fillMaxWidth(),
                                  shape = RoundedCornerShape(8.dp)
                              ) {
-                                 Text("Delete Unused Models", color = Color.White, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                                 AppText(tr("Delete Unused Models"), color = Color.White, fontSize = 11.sp, fontWeight = FontWeight.Bold)
                              }
                         }
                     }
@@ -1487,8 +1494,8 @@ fun SettingsScreen(
                         colors = CardDefaults.cardColors(containerColor = CardBackground)
                     ) {
                         Column(modifier = Modifier.padding(16.dp)) {
-                            Text(
-                                text = "COPILOT LOCAL ENDPOINT",
+                            AppText(
+                                text = tr("COPILOT LOCAL ENDPOINT"),
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
@@ -1498,7 +1505,7 @@ fun SettingsScreen(
                             OutlinedTextField(
                                 value = config.copilotUrl,
                                 onValueChange = { viewModel.updateCopilotUrl(it) },
-                                label = { Text("Copilot Server URL", fontSize = 12.sp) },
+                                label = { AppText(tr("Copilot Server URL"), fontSize = 12.sp) },
                                 singleLine = true,
                                 colors = OutlinedTextFieldDefaults.colors(
                                     focusedBorderColor = AccentCyan,
@@ -1509,8 +1516,8 @@ fun SettingsScreen(
                                 modifier = Modifier.fillMaxWidth()
                             )
                             Spacer(modifier = Modifier.height(6.dp))
-                            Text(
-                                text = "Use local LAN IP (e.g. http://192.168.1.50:4141) if testing from a physical Android device.",
+                            AppText(
+                                text = tr("Use local LAN IP (e.g. http://192.168.1.50:4141) if testing from a physical Android device."),
                                 fontSize = 10.sp,
                                 color = TextSecondary
                             )
@@ -1529,8 +1536,8 @@ fun SettingsScreen(
                         colors = CardDefaults.cardColors(containerColor = CardBackground)
                     ) {
                         Column(modifier = Modifier.padding(16.dp)) {
-                            Text(
-                                text = "CUSTOM OPENAI ENDPOINT",
+                            AppText(
+                                text = tr("CUSTOM OPENAI ENDPOINT"),
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
@@ -1540,7 +1547,7 @@ fun SettingsScreen(
                             OutlinedTextField(
                                 value = config.customEndpoints["Custom OpenAI Compatible"] ?: "",
                                 onValueChange = { viewModel.updateCustomEndpoint("Custom OpenAI Compatible", it) },
-                                label = { Text("Base URL (e.g. https://api.openai.com/v1)", fontSize = 12.sp) },
+                                label = { AppText(tr("Base URL (e.g. https://api.openai.com/v1)"), fontSize = 12.sp) },
                                 singleLine = true,
                                 colors = OutlinedTextFieldDefaults.colors(
                                     focusedBorderColor = AccentCyan,
@@ -1551,8 +1558,8 @@ fun SettingsScreen(
                                 modifier = Modifier.fillMaxWidth()
                             )
                             Spacer(modifier = Modifier.height(6.dp))
-                            Text(
-                                text = "Provide the custom OpenAI-compatible API base URL (e.g. from Pollination, Aqua Dev, Portkey, etc.)",
+                            AppText(
+                                text = tr("Provide the custom OpenAI-compatible API base URL (e.g. from Pollination, Aqua Dev, Portkey, etc.)"),
                                 fontSize = 10.sp,
                                 color = TextSecondary
                             )
@@ -1577,8 +1584,8 @@ fun SettingsScreen(
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Text(
-                                text = "PROVIDER API KEYS",
+                            AppText(
+                                text = tr("PROVIDER API KEYS"),
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
@@ -1586,7 +1593,7 @@ fun SettingsScreen(
                             )
                             Icon(
                                 imageVector = if (keysSectionExpanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
-                                contentDescription = "Toggle Keys Section",
+                                contentDescription = tr("Toggle Keys Section"),
                                 tint = AccentCyan
                             )
                         }
@@ -1603,14 +1610,14 @@ fun SettingsScreen(
                                     SecureApiKeyField(
                                         value = keyVal,
                                         onValueChange = { viewModel.updateApiKey(providerName, it) },
-                                        label = "$providerName API Key"
+                                        label = "$providerName API 密钥"
                                     )
                                     Row(
                                         modifier = Modifier.fillMaxWidth(),
                                         horizontalArrangement = Arrangement.SpaceBetween,
                                         verticalAlignment = Alignment.CenterVertically
                                     ) {
-                                        Text(
+                                        AppText(
                                             text = connectionStatusLabel(connectionState),
                                             fontSize = 10.sp,
                                             color = TextSecondary,
@@ -1620,11 +1627,11 @@ fun SettingsScreen(
                                         TextButton(
                                             onClick = { viewModel.testConnection(providerName) }
                                         ) {
-                                            Text("Test connection", fontSize = 11.sp)
+                                            AppText(tr("Test connection"), fontSize = 11.sp)
                                         }
                                     }
-                                    Text(
-                                        text = "Sends one minimal request to $providerName; provider charges may apply.",
+                                    AppText(
+                                        text = "向 $providerName 发送一次最小请求；可能产生服务商费用。",
                                         fontSize = 10.sp,
                                         color = TextSecondary
                                     )
@@ -1651,8 +1658,8 @@ fun SettingsScreen(
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Text(
-                                text = "ELEVENLABS VOICE SYNTHESIS",
+                            AppText(
+                                text = tr("ELEVENLABS VOICE SYNTHESIS"),
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
@@ -1660,7 +1667,7 @@ fun SettingsScreen(
                             )
                             Icon(
                                 imageVector = if (voiceSectionExpanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
-                                contentDescription = "Toggle Voice Section",
+                                contentDescription = tr("Toggle Voice Section"),
                                 tint = AccentCyan
                             )
                         }
@@ -1678,7 +1685,7 @@ fun SettingsScreen(
                                 OutlinedTextField(
                                     value = config.elevenLabsVoiceId,
                                     onValueChange = { viewModel.updateElevenLabsVoiceId(it) },
-                                    label = { Text("ElevenLabs Voice ID", fontSize = 12.sp) },
+                                    label = { AppText(tr("ElevenLabs Voice ID"), fontSize = 12.sp) },
                                     singleLine = true,
                                     colors = OutlinedTextFieldDefaults.colors(
                                         focusedBorderColor = AccentCyan,
@@ -1688,8 +1695,8 @@ fun SettingsScreen(
                                     ),
                                     modifier = Modifier.fillMaxWidth()
                                 )
-                                Text(
-                                    text = "If ElevenLabs key is not set, OpenDroid automatically falls back to native offline Android Text-to-Speech.",
+                                AppText(
+                                    text = tr("If ElevenLabs key is not set, OpenDroid automatically falls back to native offline Android Text-to-Speech."),
                                     fontSize = 10.sp,
                                     color = TextSecondary
                                 )
@@ -1715,8 +1722,8 @@ fun SettingsScreen(
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Text(
-                                text = "PLANNING & AUTOMATION",
+                            AppText(
+                                text = tr("PLANNING & AUTOMATION"),
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
@@ -1724,7 +1731,7 @@ fun SettingsScreen(
                             )
                             Icon(
                                 imageVector = if (planningSectionExpanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
-                                contentDescription = "Toggle Planning Section",
+                                contentDescription = tr("Toggle Planning Section"),
                                 tint = AccentCyan
                             )
                         }
@@ -1735,14 +1742,14 @@ fun SettingsScreen(
                         var showYoloWarning by remember { mutableStateOf(false) }
                         val autoMode = config.resolvedAutoMode()
 
-                        Text(
-                            text = "Auto Mode",
+                        AppText(
+                            text = tr("Auto Mode"),
                             fontSize = 15.sp,
                             fontWeight = FontWeight.SemiBold,
                             color = TextPrimary
                         )
-                        Text(
-                            text = "Auto runs plans whose every step you've allowed. YOLO runs everything without asking.",
+                        AppText(
+                            text = tr("Auto runs plans whose every step you've allowed. YOLO runs everything without asking."),
                             fontSize = 12.sp,
                             color = TextSecondary
                         )
@@ -1763,7 +1770,7 @@ fun SettingsScreen(
                                     shape = RoundedCornerShape(8.dp),
                                     modifier = Modifier.weight(1f)
                                 ) {
-                                    Text(
+                                    AppText(
                                         text = when (mode) {
                                             AutoMode.OFF -> "Off"
                                             AutoMode.AUTO -> "Auto"
@@ -1779,13 +1786,13 @@ fun SettingsScreen(
                             AlertDialog(
                                 onDismissRequest = { showYoloWarning = false },
                                 containerColor = DarkSurface,
-                                title = { Text("Enable YOLO mode?", color = AccentRed, fontWeight = FontWeight.Bold) },
+                                title = { AppText(tr("Enable YOLO mode?"), color = AccentRed, fontWeight = FontWeight.Bold) },
                                 text = {
-                                    Text(
-                                        "YOLO runs EVERY plan without asking — including actions that " +
-                                        "spend money (UPI payments, food and cab orders) and irreversible " +
-                                        "ones (installing apps, deleting files, restarting the device). " +
-                                        "No approval gate remains.",
+                                    AppText(
+                                        tr("YOLO runs EVERY plan without asking — including actions that ") +
+                                        tr("spend money (UPI payments, food and cab orders) and irreversible ") +
+                                        tr("ones (installing apps, deleting files, restarting the device). ") +
+                                        tr("No approval gate remains."),
                                         color = TextPrimary
                                     )
                                 },
@@ -1793,11 +1800,11 @@ fun SettingsScreen(
                                     TextButton(onClick = {
                                         showYoloWarning = false
                                         viewModel.setAutoMode(AutoMode.YOLO)
-                                    }) { Text("I understand, enable", color = AccentRed) }
+                                    }) { AppText(tr("I understand, enable"), color = AccentRed) }
                                 },
                                 dismissButton = {
                                     TextButton(onClick = { showYoloWarning = false }) {
-                                        Text("Cancel", color = TextSecondary)
+                                        AppText(tr("Cancel"), color = TextSecondary)
                                     }
                                 }
                             )
@@ -1805,8 +1812,8 @@ fun SettingsScreen(
 
                         Spacer(modifier = Modifier.height(16.dp))
                         val grantedActions = config.effectiveGrantedActions()
-                        Text(
-                            text = "ALLOWED ACTIONS (${grantedActions.size})",
+                        AppText(
+                            text = "已允许的操作（${grantedActions.size}）",
                             fontSize = 11.sp,
                             fontFamily = FontFamily.Monospace,
                             color = AccentCyan
@@ -1822,15 +1829,15 @@ fun SettingsScreen(
                                     verticalAlignment = Alignment.CenterVertically
                                 ) {
                                     Column(modifier = Modifier.weight(1f)) {
-                                        Text(text = action, fontSize = 13.sp, fontFamily = FontFamily.Monospace, color = TextPrimary)
-                                        Text(
-                                            text = if (grantedAt == 0L) "Default" else "Granted ${dateFormat.format(java.util.Date(grantedAt))}",
+                                        AppText(text = action, fontSize = 13.sp, fontFamily = FontFamily.Monospace, color = TextPrimary)
+                                        AppText(
+                                            text = if (grantedAt == 0L) "Default" else "授予于 ${dateFormat.format(java.util.Date(grantedAt))}",
                                             fontSize = 11.sp,
                                             color = TextSecondary
                                         )
                                     }
                                     TextButton(onClick = { viewModel.revokeGrant(action) }) {
-                                        Text("Revoke", color = AccentRed, fontSize = 12.sp)
+                                        AppText(tr("Revoke"), color = AccentRed, fontSize = 12.sp)
                                     }
                                 }
                             }
@@ -1850,14 +1857,14 @@ fun SettingsScreen(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Column(modifier = Modifier.weight(1f)) {
-                                Text(
-                                    text = "Multi-Agent Planning Mode",
+                                AppText(
+                                    text = tr("Multi-Agent Planning Mode"),
                                     fontSize = 15.sp,
                                     fontWeight = FontWeight.SemiBold,
                                     color = TextPrimary
                                 )
-                                Text(
-                                    text = "Use critic and plan merger agents for safer, more robust plan generation.",
+                                AppText(
+                                    text = tr("Use critic and plan merger agents for safer, more robust plan generation."),
                                     fontSize = 12.sp,
                                     color = TextSecondary
                                 )
@@ -1887,14 +1894,14 @@ fun SettingsScreen(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Column(modifier = Modifier.weight(1f)) {
-                                Text(
-                                    text = "Show Floating Button",
+                                AppText(
+                                    text = tr("Show Floating Button"),
                                     fontSize = 15.sp,
                                     fontWeight = FontWeight.SemiBold,
                                     color = TextPrimary
                                 )
-                                Text(
-                                    text = "Show a tiny floating bubble to launch the app or record commands directly.",
+                                AppText(
+                                    text = tr("Show a tiny floating bubble to launch the app or record commands directly."),
                                     fontSize = 12.sp,
                                     color = TextSecondary
                                 )
@@ -1924,14 +1931,14 @@ fun SettingsScreen(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Column(modifier = Modifier.weight(1f)) {
-                                Text(
+                                AppText(
                                     text = if (config.isDarkMode) "Dark Mode" else "Light Mode",
                                     fontSize = 15.sp,
                                     fontWeight = FontWeight.SemiBold,
                                     color = TextPrimary
                                 )
-                                Text(
-                                    text = "Switch between dark and light appearance.",
+                                AppText(
+                                    text = tr("Switch between dark and light appearance."),
                                     fontSize = 12.sp,
                                     color = TextSecondary
                                 )
@@ -1966,26 +1973,26 @@ fun SettingsScreen(
                             .padding(16.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text("🤖", fontSize = 22.sp)
+                        AppText(tr("🤖"), fontSize = 22.sp)
                         Spacer(modifier = Modifier.width(12.dp))
                         Column(modifier = Modifier.weight(1f)) {
-                            Text(
-                                text = "AUTO-REPLY SETTINGS",
+                            AppText(
+                                text = tr("AUTO-REPLY SETTINGS"),
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
                                 color = AccentPurple
                             )
                             Spacer(modifier = Modifier.height(2.dp))
-                            Text(
-                                text = "Configure AI auto-reply for WhatsApp, SMS & Email.",
+                            AppText(
+                                text = tr("Configure AI auto-reply for WhatsApp, SMS & Email."),
                                 fontSize = 12.sp,
                                 color = TextSecondary
                             )
                         }
                         Icon(
                             imageVector = Icons.Default.KeyboardArrowRight,
-                            contentDescription = "Go",
+                            contentDescription = tr("Go"),
                             tint = TextSecondary
                         )
                     }
@@ -2007,26 +2014,26 @@ fun SettingsScreen(
                             .padding(16.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text("🔔", fontSize = 22.sp)
+                        AppText(tr("🔔"), fontSize = 22.sp)
                         Spacer(modifier = Modifier.width(12.dp))
                         Column(modifier = Modifier.weight(1f)) {
-                            Text(
-                                text = "NOTIFICATION HISTORY",
+                            AppText(
+                                text = tr("NOTIFICATION HISTORY"),
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
                                 color = AccentCyan
                             )
                             Spacer(modifier = Modifier.height(2.dp))
-                            Text(
-                                text = "View captured notifications and auto-reply log.",
+                            AppText(
+                                text = tr("View captured notifications and auto-reply log."),
                                 fontSize = 12.sp,
                                 color = TextSecondary
                             )
                         }
                         Icon(
                             imageVector = Icons.Default.KeyboardArrowRight,
-                            contentDescription = "Go",
+                            contentDescription = tr("Go"),
                             tint = TextSecondary
                         )
                     }
@@ -2050,29 +2057,29 @@ fun SettingsScreen(
                     ) {
                         Icon(
                             imageVector = Icons.Default.Security,
-                            contentDescription = "Permissions",
+                            contentDescription = tr("Permissions"),
                             tint = AccentCyan,
                             modifier = Modifier.size(24.dp)
                         )
                         Spacer(modifier = Modifier.width(12.dp))
                         Column(modifier = Modifier.weight(1f)) {
-                            Text(
-                                text = "PERMISSIONS",
+                            AppText(
+                                text = tr("PERMISSIONS"),
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
                                 color = AccentCyan
                             )
                             Spacer(modifier = Modifier.height(2.dp))
-                            Text(
-                                text = "Review and grant microphone, storage, accessibility & other permissions.",
+                            AppText(
+                                text = tr("Review and grant microphone, storage, accessibility & other permissions."),
                                 fontSize = 12.sp,
                                 color = TextSecondary
                             )
                         }
                         Icon(
                             imageVector = Icons.Default.KeyboardArrowRight,
-                            contentDescription = "Go",
+                            contentDescription = tr("Go"),
                             tint = TextSecondary
                         )
                     }
@@ -2094,26 +2101,26 @@ fun SettingsScreen(
                             .padding(16.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text("⚡", fontSize = 22.sp)
+                        AppText(tr("⚡"), fontSize = 22.sp)
                         Spacer(modifier = Modifier.width(12.dp))
                         Column(modifier = Modifier.weight(1f)) {
-                            Text(
-                                text = "HABITS & ROUTINES",
+                            AppText(
+                                text = tr("HABITS & ROUTINES"),
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
                                 color = AccentCyan
                             )
                             Spacer(modifier = Modifier.height(2.dp))
-                            Text(
-                                text = "Detect repeated daily patterns & automate morning routines.",
+                            AppText(
+                                text = tr("Detect repeated daily patterns & automate morning routines."),
                                 fontSize = 12.sp,
                                 color = TextSecondary
                             )
                         }
                         Icon(
                             imageVector = Icons.Default.KeyboardArrowRight,
-                            contentDescription = "Go",
+                            contentDescription = tr("Go"),
                             tint = TextSecondary
                         )
                     }
@@ -2135,26 +2142,26 @@ fun SettingsScreen(
                             .padding(16.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text("💥", fontSize = 22.sp)
+                        AppText(tr("💥"), fontSize = 22.sp)
                         Spacer(modifier = Modifier.width(12.dp))
                         Column(modifier = Modifier.weight(1f)) {
-                            Text(
-                                text = "CRASH LOG",
+                            AppText(
+                                text = tr("CRASH LOG"),
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
                                 color = AccentRed
                             )
                             Spacer(modifier = Modifier.height(2.dp))
-                            Text(
-                                text = "View and share crashes recorded on this device.",
+                            AppText(
+                                text = tr("View and share crashes recorded on this device."),
                                 fontSize = 12.sp,
                                 color = TextSecondary
                             )
                         }
                         Icon(
                             imageVector = Icons.Default.KeyboardArrowRight,
-                            contentDescription = "Go",
+                            contentDescription = tr("Go"),
                             tint = TextSecondary
                         )
                     }
@@ -2178,29 +2185,29 @@ fun SettingsScreen(
                     ) {
                         Icon(
                             imageVector = Icons.Default.Lock,
-                            contentDescription = "Privacy Policy",
+                            contentDescription = tr("Privacy Policy"),
                             tint = AccentCyan,
                             modifier = Modifier.size(24.dp)
                         )
                         Spacer(modifier = Modifier.width(12.dp))
                         Column(modifier = Modifier.weight(1f)) {
-                            Text(
-                                text = "PRIVACY POLICY",
+                            AppText(
+                                text = tr("PRIVACY POLICY"),
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
                                 color = AccentCyan
                             )
                             Spacer(modifier = Modifier.height(2.dp))
-                            Text(
-                                text = "How OpenDroid handles your data and privacy.",
+                            AppText(
+                                text = tr("How OpenDroid handles your data and privacy."),
                                 fontSize = 12.sp,
                                 color = TextSecondary
                             )
                         }
                         Icon(
                             imageVector = Icons.Default.KeyboardArrowRight,
-                            contentDescription = "Go",
+                            contentDescription = tr("Go"),
                             tint = TextSecondary
                         )
                     }
@@ -2224,29 +2231,29 @@ fun SettingsScreen(
                     ) {
                         Icon(
                             imageVector = Icons.Default.Info,
-                            contentDescription = "Terms of Use",
+                            contentDescription = tr("Terms of Use"),
                             tint = AccentCyan,
                             modifier = Modifier.size(24.dp)
                         )
                         Spacer(modifier = Modifier.width(12.dp))
                         Column(modifier = Modifier.weight(1f)) {
-                            Text(
-                                text = "TERMS OF USE",
+                            AppText(
+                                text = tr("TERMS OF USE"),
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
                                 color = AccentCyan
                             )
                             Spacer(modifier = Modifier.height(2.dp))
-                            Text(
-                                text = "Usage terms and conditions for OpenDroid.",
+                            AppText(
+                                text = tr("Usage terms and conditions for OpenDroid."),
                                 fontSize = 12.sp,
                                 color = TextSecondary
                             )
                         }
                         Icon(
                             imageVector = Icons.Default.KeyboardArrowRight,
-                            contentDescription = "Go",
+                            contentDescription = tr("Go"),
                             tint = TextSecondary
                         )
                     }
@@ -2270,29 +2277,29 @@ fun SettingsScreen(
                     ) {
                         Icon(
                             imageVector = Icons.Default.Info,
-                            contentDescription = "Help Center",
+                            contentDescription = tr("Help Center"),
                             tint = AccentCyan,
                             modifier = Modifier.size(24.dp)
                         )
                         Spacer(modifier = Modifier.width(12.dp))
                         Column(modifier = Modifier.weight(1f)) {
-                            Text(
-                                text = "HELP CENTER",
+                            AppText(
+                                text = tr("HELP CENTER"),
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
                                 color = AccentCyan
                             )
                             Spacer(modifier = Modifier.height(2.dp))
-                            Text(
-                                text = "Guides, FAQs, and troubleshooting.",
+                            AppText(
+                                text = tr("Guides, FAQs, and troubleshooting."),
                                 fontSize = 12.sp,
                                 color = TextSecondary
                             )
                         }
                         Icon(
                             imageVector = Icons.Default.KeyboardArrowRight,
-                            contentDescription = "Go",
+                            contentDescription = tr("Go"),
                             tint = TextSecondary
                         )
                     }
@@ -2316,29 +2323,29 @@ fun SettingsScreen(
                     ) {
                         Icon(
                             imageVector = Icons.Default.Info,
-                            contentDescription = "License",
+                            contentDescription = tr("License"),
                             tint = AccentPurple,
                             modifier = Modifier.size(24.dp)
                         )
                         Spacer(modifier = Modifier.width(12.dp))
                         Column(modifier = Modifier.weight(1f)) {
-                            Text(
-                                text = "LICENSE",
+                            AppText(
+                                text = tr("LICENSE"),
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
                                 color = AccentPurple
                             )
                             Spacer(modifier = Modifier.height(2.dp))
-                            Text(
-                                text = "Open-source license and third-party credits.",
+                            AppText(
+                                text = tr("Open-source license and third-party credits."),
                                 fontSize = 12.sp,
                                 color = TextSecondary
                             )
                         }
                         Icon(
                             imageVector = Icons.Default.KeyboardArrowRight,
-                            contentDescription = "Go",
+                            contentDescription = tr("Go"),
                             tint = TextSecondary
                         )
                     }
@@ -2362,29 +2369,29 @@ fun SettingsScreen(
                     ) {
                         Icon(
                             imageVector = Icons.Default.Info,
-                            contentDescription = "About",
+                            contentDescription = tr("About"),
                             tint = AccentPurple,
                             modifier = Modifier.size(24.dp)
                         )
                         Spacer(modifier = Modifier.width(12.dp))
                         Column(modifier = Modifier.weight(1f)) {
-                            Text(
-                                text = "ABOUT OPENDROID",
+                            AppText(
+                                text = tr("ABOUT OPENDROID"),
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 fontFamily = FontFamily.Monospace,
                                 color = AccentPurple
                             )
                             Spacer(modifier = Modifier.height(2.dp))
-                            Text(
-                                text = "Version info, features, and technology stack.",
+                            AppText(
+                                text = tr("Version info, features, and technology stack."),
                                 fontSize = 12.sp,
                                 color = TextSecondary
                             )
                         }
                         Icon(
                             imageVector = Icons.Default.KeyboardArrowRight,
-                            contentDescription = "Go",
+                            contentDescription = tr("Go"),
                             tint = TextSecondary
                         )
                     }
@@ -2400,16 +2407,16 @@ fun SettingsScreen(
                     colors = CardDefaults.cardColors(containerColor = CardBackground)
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
-                        Text(
-                            text = "SYSTEM INTEGRATION PERMISSIONS",
+                        AppText(
+                            text = tr("SYSTEM INTEGRATION PERMISSIONS"),
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily.Monospace,
                             color = TextSecondary
                         )
                         Spacer(modifier = Modifier.height(10.dp))
-                        Text(
-                            text = "To allow OpenDroid to operate other applications autonomously (e.g. WhatsApp, Calendar), verify that the accessibility service 'OpenDroid' is active in Settings -> Accessibility -> Installed Services.",
+                        AppText(
+                            text = tr("To allow OpenDroid to operate other applications autonomously (e.g. WhatsApp, Calendar), verify that the accessibility service 'OpenDroid' is active in Settings -> Accessibility -> Installed Services."),
                             fontSize = 12.sp,
                             color = TextSecondary
                         )
@@ -2424,12 +2431,12 @@ fun SettingsScreen(
     if (showAuthRequiredDialog != null) {
         AlertDialog(
             onDismissRequest = { showAuthRequiredDialog = null },
-            title = { Text("Authentication Required", color = TextPrimary) },
+            title = { AppText(tr("Authentication Required"), color = TextPrimary) },
             text = {
-                Text(
-                    text = "This model is gated on Hugging Face and needs an Access Token to download.\n\n" +
-                        "Models tagged PUBLIC (for example Qwen 2.5 and the Gemma 4 community mirrors) do not need a token — only the ones tagged GATED do. " +
-                        "Add a read-only token in the Hugging Face section above, or pick a PUBLIC model.",
+                AppText(
+                    text = tr("This model is gated on Hugging Face and needs an Access Token to download.\n\n") +
+                        tr("Models tagged PUBLIC (for example Qwen 2.5 and the Gemma 4 community mirrors) do not need a token — only the ones tagged GATED do. ") +
+                        tr("Add a read-only token in the Hugging Face section above, or pick a PUBLIC model."),
                     color = TextSecondary
                 )
             },
@@ -2438,12 +2445,12 @@ fun SettingsScreen(
                     onClick = { showAuthRequiredDialog = null },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF9800))
                 ) {
-                    Text("OK", color = DarkBackground)
+                    AppText(tr("OK"), color = DarkBackground)
                 }
             },
             dismissButton = {
                 TextButton(onClick = { showAuthRequiredDialog = null }) {
-                    Text("Cancel", color = TextSecondary)
+                    AppText(tr("Cancel"), color = TextSecondary)
                 }
             },
             containerColor = CardBackground,
@@ -2456,10 +2463,10 @@ fun SettingsScreen(
         val modelIdToDownload = showCellularWarningDialog!!
         AlertDialog(
             onDismissRequest = { showCellularWarningDialog = null },
-            title = { Text("Cellular Network Warning", color = TextPrimary) },
+            title = { AppText(tr("Cellular Network Warning"), color = TextPrimary) },
             text = {
-                Text(
-                    text = "You are downloading model on cellular network, data charges may apply.",
+                AppText(
+                    text = tr("You are downloading model on cellular network, data charges may apply."),
                     color = TextSecondary
                 )
             },
@@ -2471,12 +2478,12 @@ fun SettingsScreen(
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF9800))
                 ) {
-                    Text("Download", color = DarkBackground)
+                    AppText(tr("Download"), color = DarkBackground)
                 }
             },
             dismissButton = {
                 TextButton(onClick = { showCellularWarningDialog = null }) {
-                    Text("Cancel", color = TextSecondary)
+                    AppText(tr("Cancel"), color = TextSecondary)
                 }
             },
             containerColor = CardBackground,
@@ -2489,10 +2496,10 @@ fun SettingsScreen(
         val modelIdToResume = pendingCellularResumeModelId!!
         AlertDialog(
             onDismissRequest = { pendingCellularResumeModelId = null },
-            title = { Text("Cellular Network Warning", color = TextPrimary) },
+            title = { AppText(tr("Cellular Network Warning"), color = TextPrimary) },
             text = {
-                Text(
-                    text = "You are downloading model on cellular network, data charges may apply.",
+                AppText(
+                    text = tr("You are downloading model on cellular network, data charges may apply."),
                     color = TextSecondary
                 )
             },
@@ -2504,12 +2511,12 @@ fun SettingsScreen(
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF9800))
                 ) {
-                    Text("Resume", color = DarkBackground)
+                    AppText(tr("Resume"), color = DarkBackground)
                 }
             },
             dismissButton = {
                 TextButton(onClick = { pendingCellularResumeModelId = null }) {
-                    Text("Cancel", color = TextSecondary)
+                    AppText(tr("Cancel"), color = TextSecondary)
                 }
             },
             containerColor = CardBackground,
@@ -2528,7 +2535,7 @@ fun SettingsScreen(
                 }
             },
             title = {
-                Text(
+                AppText(
                     text = when {
                         isImporting -> "Importing Model"
                         isSuccess -> "Import Successful"
@@ -2543,13 +2550,13 @@ fun SettingsScreen(
                         isImporting -> {
                             CircularProgressIndicator(color = Color(0xFFFF9800))
                             Spacer(modifier = Modifier.height(12.dp))
-                            Text("Copying and verifying the model file. This may take a minute...", color = TextSecondary)
+                            AppText(tr("Copying and verifying the model file. This may take a minute..."), color = TextSecondary)
                         }
                         isSuccess -> {
-                            Text("The model was imported and verified successfully. You can now load it.", color = TextSecondary)
+                            AppText(tr("The model was imported and verified successfully. You can now load it."), color = TextSecondary)
                         }
                         else -> {
-                            Text(
+                            AppText(
                                 text = localImportStatus
                                     ?: "Failed to import model. Please make sure it is a valid LiteRT model file (.task or .litertlm) and is not corrupted.",
                                 color = Color.Red
@@ -2564,7 +2571,7 @@ fun SettingsScreen(
                         onClick = { viewModel.clearImportStatus() },
                         colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF9800))
                     ) {
-                        Text("OK", color = DarkBackground)
+                        AppText(tr("OK"), color = DarkBackground)
                     }
                 }
             },
@@ -2578,7 +2585,7 @@ fun SettingsScreen(
 private fun connectionStatusLabel(state: ConnectionTestState?): String = when (state) {
     is ConnectionTestState.Testing -> "Testing…"
     is ConnectionTestState.Connected ->
-        "Connected with ${state.model} · ${state.latencyMs} ms"
+        "已连接：${state.model} · ${state.latencyMs} ms"
     is ConnectionTestState.Failed -> when (state.error) {
         LLMError.AuthInvalid -> "Key rejected"
         LLMError.AuthMissing -> "Key required"
@@ -2600,7 +2607,7 @@ private fun formatBytes(bytes: Long): String {
     val digitGroups = (Math.log10(bytes.toDouble()) / Math.log10(1024.0)).toInt()
     return String.format(
         Locale.getDefault(),
-        "%.1f %s",
+        tr("%.1f %s"),
         bytes / Math.pow(1024.0, digitGroups.toDouble()),
         units[digitGroups]
     )
@@ -2617,7 +2624,7 @@ private fun SecureApiKeyField(
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
-        label = { Text(label, fontSize = 12.sp) },
+        label = { AppText(label, fontSize = 12.sp) },
         singleLine = true,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         visualTransformation = if (visible) VisualTransformation.None else PasswordVisualTransformation(),

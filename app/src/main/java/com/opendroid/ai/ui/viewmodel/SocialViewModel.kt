@@ -1,4 +1,8 @@
+// Modified by opendroid-cn (Chinese localization fork): UI strings routed through i18n.tr(). See NOTICE.
 package com.opendroid.ai.ui.viewmodel
+
+
+import com.opendroid.ai.i18n.tr
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -94,10 +98,10 @@ class SocialViewModel @Inject constructor(
             val result = socialManager.connectAccount(platform, credentials, permissions)
             _isGenerating.value = false
             if (result.isSuccess) {
-                _statusMessage.value = "Connected to ${platform.displayName}!"
+                _statusMessage.value = "已连接到 ${platform.displayName}！"
                 loadAnalyticsAndInsights()
             } else {
-                _statusMessage.value = "Failed: ${result.exceptionOrNull()?.message}"
+                _statusMessage.value = "失败：${result.exceptionOrNull()?.message}"
             }
         }
     }
@@ -105,14 +109,14 @@ class SocialViewModel @Inject constructor(
     fun disconnectAccount(accountId: String, platform: SocialPlatform) {
         viewModelScope.launch {
             socialManager.disconnectAccount(accountId, platform)
-            _statusMessage.value = "Disconnected from ${platform.displayName}"
+            _statusMessage.value = "已断开与 ${platform.displayName} 的连接"
         }
     }
 
     fun revokeAccount(accountId: String, platform: SocialPlatform) {
         viewModelScope.launch {
             socialManager.revokeAccess(accountId, platform)
-            _statusMessage.value = "Revoked access and deleted tokens for ${platform.displayName}"
+            _statusMessage.value = "已撤销 ${platform.displayName} 的授权并删除令牌"
         }
     }
 
@@ -133,9 +137,9 @@ class SocialViewModel @Inject constructor(
                     content = generated.content,
                     contentType = contentType
                 )
-                _statusMessage.value = "Drafted post for ${platform.displayName}!"
+                _statusMessage.value = "已为 ${platform.displayName} 生成帖子草稿！"
             } catch (e: Exception) {
-                _statusMessage.value = "Error generating post: ${e.message}"
+                _statusMessage.value = "生成帖子出错：${e.message}"
             } finally {
                 _isGenerating.value = false
             }
@@ -158,9 +162,9 @@ class SocialViewModel @Inject constructor(
             )
             if (scheduledTime != null) {
                 socialManager.schedulePost(draft.id, scheduledTime)
-                _statusMessage.value = "Post scheduled for ${platform.displayName}!"
+                _statusMessage.value = "帖子已排期发布到 ${platform.displayName}！"
             } else {
-                _statusMessage.value = "Draft saved for ${platform.displayName}!"
+                _statusMessage.value = "草稿已保存到 ${platform.displayName}！"
             }
         }
     }
@@ -218,7 +222,7 @@ class SocialViewModel @Inject constructor(
             if (result.isSuccess) {
                 _statusMessage.value = if (immediatePublish) "Post published successfully!" else "Post approved for scheduling."
             } else {
-                _statusMessage.value = "Failed: ${result.exceptionOrNull()?.message}"
+                _statusMessage.value = "失败：${result.exceptionOrNull()?.message}"
             }
         }
     }
@@ -227,9 +231,9 @@ class SocialViewModel @Inject constructor(
         viewModelScope.launch {
             val result = socialManager.schedulePost(postId, scheduledTime)
             if (result.isSuccess) {
-                _statusMessage.value = "Post scheduled successfully."
+                _statusMessage.value = tr("Post scheduled successfully.")
             } else {
-                _statusMessage.value = "Scheduling failed: ${result.exceptionOrNull()?.message}"
+                _statusMessage.value = "排期失败：${result.exceptionOrNull()?.message}"
             }
         }
     }
@@ -240,9 +244,9 @@ class SocialViewModel @Inject constructor(
             val result = socialManager.publishPost(postId)
             _isGenerating.value = false
             if (result.isSuccess) {
-                _statusMessage.value = "Published successfully!"
+                _statusMessage.value = tr("Published successfully!")
             } else {
-                _statusMessage.value = "Publication failed: ${result.exceptionOrNull()?.message}"
+                _statusMessage.value = "发布失败：${result.exceptionOrNull()?.message}"
             }
         }
     }
@@ -250,14 +254,14 @@ class SocialViewModel @Inject constructor(
     fun cancelPost(postId: String) {
         viewModelScope.launch {
             socialRepository.cancelPost(postId)
-            _statusMessage.value = "Post cancelled."
+            _statusMessage.value = tr("Post cancelled.")
         }
     }
 
     fun deletePost(postId: String) {
         viewModelScope.launch {
             socialRepository.deletePost(postId)
-            _statusMessage.value = "Post deleted."
+            _statusMessage.value = tr("Post deleted.")
         }
     }
 
@@ -265,9 +269,9 @@ class SocialViewModel @Inject constructor(
         viewModelScope.launch {
             val result = socialManager.replyToComment(commentId, text, actor = "USER")
             if (result.isSuccess) {
-                _statusMessage.value = "Reply sent!"
+                _statusMessage.value = tr("Reply sent!")
             } else {
-                _statusMessage.value = "Reply failed: ${result.exceptionOrNull()?.message}"
+                _statusMessage.value = "回复失败：${result.exceptionOrNull()?.message}"
             }
         }
     }
@@ -275,21 +279,21 @@ class SocialViewModel @Inject constructor(
     fun ignoreComment(commentId: String) {
         viewModelScope.launch {
             socialRepository.ignoreComment(commentId)
-            _statusMessage.value = "Comment dismissed."
+            _statusMessage.value = tr("Comment dismissed.")
         }
     }
 
     fun resolveInteraction(interactionId: String) {
         viewModelScope.launch {
             socialRepository.updateInteractionStatus(interactionId, "RESOLVED")
-            _statusMessage.value = "Interaction marked as resolved."
+            _statusMessage.value = tr("Interaction marked as resolved.")
         }
     }
 
     fun dismissInteraction(interactionId: String) {
         viewModelScope.launch {
             socialRepository.updateInteractionStatus(interactionId, "DISMISSED")
-            _statusMessage.value = "Interaction dismissed."
+            _statusMessage.value = tr("Interaction dismissed.")
         }
     }
 
@@ -300,9 +304,9 @@ class SocialViewModel @Inject constructor(
                 val plan = campaignGenerator.generateCampaignPlan(name, objective, durationDays, platforms)
                 socialRepository.saveCampaign(plan.campaign)
                 plan.plannedPosts.forEach { socialRepository.savePost(it) }
-                _statusMessage.value = "Created campaign '${plan.campaign.name}' with ${plan.plannedPosts.size} posts!"
+                _statusMessage.value = "已创建营销活动“${plan.campaign.name}”，共 ${plan.plannedPosts.size} 篇帖子！"
             } catch (e: Exception) {
-                _statusMessage.value = "Campaign generation failed: ${e.message}"
+                _statusMessage.value = "营销活动生成失败：${e.message}"
             } finally {
                 _isGenerating.value = false
             }
@@ -312,7 +316,7 @@ class SocialViewModel @Inject constructor(
     fun saveRule(rule: SocialAutomationRule) {
         viewModelScope.launch {
             socialRepository.saveRule(rule)
-            _statusMessage.value = "Automation rule saved."
+            _statusMessage.value = tr("Automation rule saved.")
         }
     }
 
@@ -325,7 +329,7 @@ class SocialViewModel @Inject constructor(
     fun deleteRule(ruleId: String) {
         viewModelScope.launch {
             socialRepository.deleteRule(ruleId)
-            _statusMessage.value = "Rule deleted."
+            _statusMessage.value = tr("Rule deleted.")
         }
     }
 
@@ -339,7 +343,7 @@ class SocialViewModel @Inject constructor(
             socialManager.syncAllAccounts()
             loadAnalyticsAndInsights()
             _isGenerating.value = false
-            _statusMessage.value = "Refreshed social data."
+            _statusMessage.value = tr("Refreshed social data.")
         }
     }
 }

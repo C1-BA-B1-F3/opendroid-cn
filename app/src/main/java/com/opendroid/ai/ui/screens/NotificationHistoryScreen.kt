@@ -1,4 +1,11 @@
+// Modified by opendroid-cn (Chinese localization fork): UI strings routed through i18n.tr(). See NOTICE.
 package com.opendroid.ai.ui.screens
+
+
+
+import com.opendroid.ai.i18n.tr
+
+import com.opendroid.ai.i18n.AppText
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -53,17 +60,17 @@ fun NotificationHistoryScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Notification History", fontWeight = FontWeight.Bold) },
+                title = { AppText(tr("Notification History"), fontWeight = FontWeight.Bold) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                        Icon(Icons.Default.ArrowBack, contentDescription = tr("Back"))
                     }
                 },
                 actions = {
                     IconButton(onClick = {
                         scope.launch { notificationDao.clearAll() }
                     }) {
-                        Icon(Icons.Default.Delete, contentDescription = "Clear All", tint = themeColors.textSecondary)
+                        Icon(Icons.Default.Delete, contentDescription = tr("Clear All"), tint = themeColors.textSecondary)
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -105,7 +112,7 @@ fun NotificationHistoryScreen(
                         selected = selectedFilter == filter,
                         onClick = { selectedFilter = filter },
                         label = {
-                            Text(
+                            AppText(
                                 filter.lowercase().replaceFirstChar { it.uppercase() },
                                 fontSize = 12.sp
                             )
@@ -137,16 +144,16 @@ fun NotificationHistoryScreen(
                     contentAlignment = Alignment.Center
                 ) {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text("🔔", fontSize = 48.sp)
+                        AppText(tr("🔔"), fontSize = 48.sp)
                         Spacer(modifier = Modifier.height(12.dp))
-                        Text(
-                            "No notifications captured yet",
+                        AppText(
+                            tr("No notifications captured yet"),
                             fontSize = 16.sp,
                             color = themeColors.textSecondary
                         )
                         Spacer(modifier = Modifier.height(4.dp))
-                        Text(
-                            "Grant notification access in Settings",
+                        AppText(
+                            tr("Grant notification access in Settings"),
                             fontSize = 13.sp,
                             color = themeColors.textSecondary.copy(alpha = 0.6f)
                         )
@@ -183,8 +190,8 @@ private fun StatChip(
             modifier = Modifier.padding(12.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(value, fontSize = 18.sp, fontWeight = FontWeight.Bold, color = themeColors.textPrimary)
-            Text(label, fontSize = 11.sp, color = themeColors.textSecondary)
+            AppText(value, fontSize = 18.sp, fontWeight = FontWeight.Bold, color = themeColors.textPrimary)
+            AppText(label, fontSize = 11.sp, color = themeColors.textSecondary)
         }
     }
 }
@@ -223,16 +230,16 @@ private fun NotificationCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(categoryEmoji, fontSize = 18.sp)
+                    AppText(categoryEmoji, fontSize = 18.sp)
                     Spacer(modifier = Modifier.width(8.dp))
-                    Text(
+                    AppText(
                         notification.appName,
                         fontSize = 14.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = themeColors.accentPurple
                     )
                 }
-                Text(
+                AppText(
                     timeText,
                     fontSize = 11.sp,
                     color = themeColors.textSecondary.copy(alpha = 0.7f)
@@ -241,14 +248,14 @@ private fun NotificationCard(
 
             Spacer(modifier = Modifier.height(6.dp))
 
-            Text(
+            AppText(
                 notification.contactName ?: notification.title,
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Medium,
                 color = themeColors.textPrimary
             )
 
-            Text(
+            AppText(
                 notification.text,
                 fontSize = 13.sp,
                 color = themeColors.textSecondary,
@@ -265,8 +272,8 @@ private fun NotificationCard(
                         .background(themeColors.accentPurple.copy(alpha = 0.15f))
                         .padding(8.dp)
                 ) {
-                    Text("🤖 ", fontSize = 13.sp)
-                    Text(
+                    AppText(tr("🤖 "), fontSize = 13.sp)
+                    AppText(
                         notification.autoReplyText,
                         fontSize = 13.sp,
                         color = themeColors.accentPurple,

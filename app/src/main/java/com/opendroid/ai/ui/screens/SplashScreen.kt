@@ -1,4 +1,11 @@
+// Modified by opendroid-cn (Chinese localization fork): UI strings routed through i18n.tr(). See NOTICE.
 package com.opendroid.ai.ui.screens
+
+
+
+import com.opendroid.ai.i18n.tr
+
+import com.opendroid.ai.i18n.AppText
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
@@ -108,15 +115,15 @@ fun SplashScreen(onNavigateNext: () -> Unit) {
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.bot),
-                    contentDescription = "OpenDroid Logo",
+                    contentDescription = tr("OpenDroid Logo"),
                     modifier = Modifier.size(128.dp)
                 )
             }
 
             Spacer(modifier = Modifier.height(28.dp))
 
-            Text(
-                text = "OPENDROID",
+            AppText(
+                text = tr("OPENDROID"),
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily.SansSerif,
@@ -126,8 +133,8 @@ fun SplashScreen(onNavigateNext: () -> Unit) {
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            Text(
-                text = "Autonomous On-Device Intelligence",
+            AppText(
+                text = tr("Autonomous On-Device Intelligence"),
                 fontSize = 13.sp,
                 fontWeight = FontWeight.Normal,
                 fontFamily = FontFamily.SansSerif,
@@ -153,8 +160,8 @@ fun SplashScreen(onNavigateNext: () -> Unit) {
                             .background(TextPrimary.copy(alpha = dotPulse.value))
                     )
                     Spacer(modifier = Modifier.width(8.dp))
-                    Text(
-                        text = "SYSTEM ONLINE",
+                    AppText(
+                        text = tr("SYSTEM ONLINE"),
                         fontSize = 11.sp,
                         fontWeight = FontWeight.SemiBold,
                         fontFamily = FontFamily.Monospace,

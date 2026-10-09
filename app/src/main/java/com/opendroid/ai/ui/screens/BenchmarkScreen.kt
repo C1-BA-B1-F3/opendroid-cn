@@ -1,4 +1,11 @@
+// Modified by opendroid-cn (Chinese localization fork): UI strings routed through i18n.tr(). See NOTICE.
 package com.opendroid.ai.ui.screens
+
+
+
+import com.opendroid.ai.i18n.tr
+
+import com.opendroid.ai.i18n.AppText
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -43,8 +50,8 @@ fun BenchmarkScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(
-                        text = "BRAIN BENCHMARK",
+                    AppText(
+                        text = tr("BRAIN BENCHMARK"),
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
                         color = TextPrimary,
@@ -54,13 +61,13 @@ fun BenchmarkScreen(
                 },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Back", tint = TextPrimary)
+                        Icon(Icons.Default.ArrowBack, contentDescription = tr("Back"), tint = TextPrimary)
                     }
                 },
                 actions = {
                     if (batchProgress != null) {
                         TextButton(onClick = { viewModel.cancelConnectionTests() }) {
-                            Text("Cancel", fontSize = 11.sp, color = AccentRed)
+                            AppText(tr("Cancel"), fontSize = 11.sp, color = AccentRed)
                         }
                     } else {
                         Button(
@@ -74,11 +81,11 @@ fun BenchmarkScreen(
                         ) {
                             Icon(
                                 Icons.Default.PlayArrow,
-                                contentDescription = "Run Test",
+                                contentDescription = tr("Run Test"),
                                 modifier = Modifier.size(16.dp)
                             )
                             Spacer(modifier = Modifier.width(4.dp))
-                            Text("Test all configured", fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                            AppText(tr("Test all configured"), fontSize = 11.sp, fontWeight = FontWeight.Bold)
                         }
                     }
                 },
@@ -92,11 +99,11 @@ fun BenchmarkScreen(
             val configuredCount = ConnectionTestPlanner.configuredProviders(config).size
             AlertDialog(
                 onDismissRequest = { showConfirm = false },
-                title = { Text("Test all configured?") },
+                title = { AppText(tr("Test all configured?")) },
                 text = {
-                    Text(
-                        "This will send $configuredCount sequential provider requests. " +
-                            "Provider charges may apply."
+                    AppText(
+                        "将依次发送 $configuredCount 个服务商请求。 " +
+                            tr("Provider charges may apply.")
                     )
                 },
                 confirmButton = {
@@ -105,10 +112,10 @@ fun BenchmarkScreen(
                             showConfirm = false
                             viewModel.testAllConfigured()
                         }
-                    ) { Text("Continue") }
+                    ) { AppText(tr("Continue")) }
                 },
                 dismissButton = {
-                    TextButton(onClick = { showConfirm = false }) { Text("Cancel") }
+                    TextButton(onClick = { showConfirm = false }) { AppText(tr("Cancel")) }
                 }
             )
         }
@@ -129,19 +136,19 @@ fun BenchmarkScreen(
                     colors = CardDefaults.cardColors(containerColor = CardBackground)
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
-                        Text(
-                            text = "DIAGNOSTIC REPORT SUMMARY",
+                        AppText(
+                            text = tr("DIAGNOSTIC REPORT SUMMARY"),
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily.Monospace,
                             color = AccentCyan
                         )
                         Spacer(modifier = Modifier.height(8.dp))
-                        Text(
+                        AppText(
                             text = batchProgress?.let {
-                                "Testing ${it.index} of ${it.total}: ${it.provider}"
+                                "正在测试第 ${it.index} / ${it.total} 项：${it.provider}"
                             } ?: "Explicit connection tests use each provider's own selected model. " +
-                                "Missing keys surface as configuration errors instead of silent skips.",
+                                tr("Missing keys surface as configuration errors instead of silent skips."),
                             fontSize = 12.sp,
                             color = TextSecondary
                         )
@@ -172,13 +179,13 @@ fun ProviderConnectionRow(
 ) {
     val statusText = when (state) {
         is ConnectionTestState.Testing -> "Testing…"
-        is ConnectionTestState.Connected -> "Connected · ${state.latencyMs} ms · ${state.model}"
+        is ConnectionTestState.Connected -> "已连接 · ${state.latencyMs} ms · ${state.model}"
         is ConnectionTestState.Failed -> connectionFailureLabel(state.error)
         is ConnectionTestState.ConfigMissing -> when (state.reason) {
             LLMError.AuthMissing -> "Key required"
             else -> "Configuration required"
         }
-        else -> legacyLatencyMs?.takeIf { it > 0 && it != 9999L }?.let { "Last latency $it ms" }
+        else -> legacyLatencyMs?.takeIf { it > 0 && it != 9999L }?.let { "上次延迟 $it ms" }
             ?: "Not tested"
     }
     val barColor = when (state) {
@@ -200,18 +207,18 @@ fun ProviderConnectionRow(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(
+                AppText(
                     text = providerName,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
                     color = TextPrimary
                 )
                 TextButton(onClick = onTest) {
-                    Text("Test", fontSize = 11.sp)
+                    AppText(tr("Test"), fontSize = 11.sp)
                 }
             }
             Spacer(modifier = Modifier.height(4.dp))
-            Text(
+            AppText(
                 text = statusText,
                 fontSize = 10.sp,
                 color = TextSecondary,

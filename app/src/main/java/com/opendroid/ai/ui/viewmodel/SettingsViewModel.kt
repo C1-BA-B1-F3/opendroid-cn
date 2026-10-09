@@ -1,4 +1,8 @@
+// Modified by opendroid-cn (Chinese localization fork): UI strings routed through i18n.tr(). See NOTICE.
 package com.opendroid.ai.ui.viewmodel
+
+
+import com.opendroid.ai.i18n.tr
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -132,7 +136,7 @@ class SettingsViewModel @Inject constructor(
                 _huggingFaceToken.value = token
                 _huggingFaceLastVerified.value = lastVerified
                 if (token.isNotBlank()) {
-                    _huggingFaceValidationStatus.value = "Token Required"
+                    _huggingFaceValidationStatus.value = tr("Token Required")
                 }
             }
         }
@@ -175,7 +179,7 @@ class SettingsViewModel @Inject constructor(
 
     fun updateHuggingFaceToken(token: String) {
         _huggingFaceToken.value = token
-        _huggingFaceValidationStatus.value = "Token Required"
+        _huggingFaceValidationStatus.value = tr("Token Required")
         viewModelScope.launch(Dispatchers.IO) {
             if (token.isBlank()) {
                 providerCredentialStore.remove(ProviderCredentialId.HuggingFaceToken)
@@ -187,8 +191,8 @@ class SettingsViewModel @Inject constructor(
 
     fun removeHuggingFaceToken() {
         _huggingFaceToken.value = ""
-        _huggingFaceValidationStatus.value = "Token Required"
-        _huggingFaceLastVerified.value = "Never"
+        _huggingFaceValidationStatus.value = tr("Token Required")
+        _huggingFaceLastVerified.value = tr("Never")
         viewModelScope.launch(Dispatchers.IO) {
             providerCredentialStore.remove(ProviderCredentialId.HuggingFaceToken)
             clearHuggingFaceVerificationMetadata()
@@ -201,7 +205,7 @@ class SettingsViewModel @Inject constructor(
             if (settingsRepository.resetProviderCredentialsForReentry() is CredentialStoreResult.Success) {
                 withContext(Dispatchers.Main.immediate) {
                     _huggingFaceToken.value = ""
-                    _huggingFaceValidationStatus.value = "Token Required"
+                    _huggingFaceValidationStatus.value = tr("Token Required")
                     _llmConfig.value = _llmConfig.value.copy(
                         apiKeys = emptyMap(),
                         elevenLabsApiKey = ""
@@ -214,11 +218,11 @@ class SettingsViewModel @Inject constructor(
     fun validateHuggingFaceToken() {
         val token = _huggingFaceToken.value
         if (token.isBlank()) {
-            _huggingFaceValidationStatus.value = "Token Required"
+            _huggingFaceValidationStatus.value = tr("Token Required")
             return
         }
 
-        _huggingFaceValidationStatus.value = "Verifying..."
+        _huggingFaceValidationStatus.value = tr("Verifying...")
         viewModelScope.launch(kotlinx.coroutines.Dispatchers.IO) {
             val request = Request.Builder()
                 .url("https://huggingface.co/api/whoami-v2")
@@ -228,7 +232,7 @@ class SettingsViewModel @Inject constructor(
             try {
                 okHttpClient.newCall(request).execute().use { response ->
                     if (response.code == 200) {
-                        _huggingFaceValidationStatus.value = "Valid"
+                        _huggingFaceValidationStatus.value = tr("Valid")
                         val sdf = java.text.SimpleDateFormat("h:mm a", java.util.Locale.getDefault())
                         val dateStr = "Today " + sdf.format(java.util.Date())
                         _huggingFaceLastVerified.value = dateStr
@@ -237,29 +241,29 @@ class SettingsViewModel @Inject constructor(
                             // persisted timestamp is stale, so surface it in the log rather than
                             // interrupting a successful token check.
                             android.util.Log.w(
-                                "SettingsViewModel",
-                                "Failed to persist Hugging Face verification timestamp"
+                                tr("SettingsViewModel"),
+                                tr("Failed to persist Hugging Face verification timestamp")
                             )
                         }
                     } else if (response.code == 401) {
-                        _huggingFaceValidationStatus.value = "Invalid"
+                        _huggingFaceValidationStatus.value = tr("Invalid")
                     } else {
-                        _huggingFaceValidationStatus.value = "Unable to verify"
+                        _huggingFaceValidationStatus.value = tr("Unable to verify")
                     }
                 }
             } catch (e: Exception) {
-                _huggingFaceValidationStatus.value = "Unable to verify"
+                _huggingFaceValidationStatus.value = tr("Unable to verify")
             }
         }
     }
 
     fun importLocalModel(modelId: String, uri: android.net.Uri) {
-        _localImportStatus.value = "Importing..."
+        _localImportStatus.value = tr("Importing...")
         viewModelScope.launch {
             // Repository already switches to Dispatchers.IO; yield so "Importing..." can paint first.
             when (val result = modelRepository.importLocalModel(modelId, uri)) {
                 is ImportLocalModelResult.Success ->
-                    _localImportStatus.value = "Success"
+                    _localImportStatus.value = tr("Success")
                 is ImportLocalModelResult.Failure ->
                     _localImportStatus.value = result.reason
             }
@@ -267,11 +271,11 @@ class SettingsViewModel @Inject constructor(
     }
 
     fun importCustomLocalModel(uri: android.net.Uri) {
-        _localImportStatus.value = "Importing..."
+        _localImportStatus.value = tr("Importing...")
         viewModelScope.launch {
             when (val result = modelRepository.importCustomLocalModel(uri)) {
                 is ImportLocalModelResult.Success ->
-                    _localImportStatus.value = "Success"
+                    _localImportStatus.value = tr("Success")
                 is ImportLocalModelResult.Failure ->
                     _localImportStatus.value = result.reason
             }
@@ -321,7 +325,7 @@ class SettingsViewModel @Inject constructor(
                             try {
                                 settingsRepository.saveModelCache(provider, models)
                             } catch (e: Exception) {
-                                android.util.Log.e("SettingsViewModel", "Failed to save model cache: ${e.message}", e)
+                                android.util.Log.e("SettingsViewModel", "保存模型缓存失败：${e.message}", e)
                             }
                             // Local state must include the fresh list before any
                             // withSelectedModel call: selection trusts modelCache,
@@ -358,14 +362,14 @@ class SettingsViewModel @Inject constructor(
                             _modelFetchNotice.value = outcome.message
                         }
                         is ModelFetchOutcome.Failed -> {
-                            android.util.Log.e("SettingsViewModel", "Failed to fetch models for $provider: ${outcome.message}")
+                            android.util.Log.e("SettingsViewModel", "获取 $provider 的模型列表失败：${outcome.message}")
                             _modelFetchNotice.value = outcome.message
                         }
                     }
                     _modelsLoading.value = false
                 }
             } catch (e: Exception) {
-                android.util.Log.e("SettingsViewModel", "Failed to refresh models: ${e.message}", e)
+                android.util.Log.e("SettingsViewModel", "刷新模型列表失败：${e.message}", e)
                 _modelsLoading.value = false
             }
         }
@@ -381,7 +385,7 @@ class SettingsViewModel @Inject constructor(
                 }
                 refreshModels(force = false)
             } catch (e: Exception) {
-                android.util.Log.e("SettingsViewModel", "Failed to update active provider: ${e.message}", e)
+                android.util.Log.e("SettingsViewModel", "更新当前服务商失败：${e.message}", e)
             }
         }
     }
@@ -407,7 +411,7 @@ class SettingsViewModel @Inject constructor(
                 }
             } catch (e: Exception) {
                 if (e !is kotlinx.coroutines.CancellationException) {
-                    android.util.Log.e("SettingsViewModel", "Failed to update active model: ${e.message}", e)
+                    android.util.Log.e("SettingsViewModel", "更新当前模型失败：${e.message}", e)
                 }
             }
         }
@@ -449,7 +453,7 @@ class SettingsViewModel @Inject constructor(
                 }
             } catch (e: Exception) {
                 if (e !is kotlinx.coroutines.CancellationException) {
-                    android.util.Log.e("SettingsViewModel", "Failed to update API Key: ${e.message}", e)
+                    android.util.Log.e("SettingsViewModel", "更新 API 密钥失败：${e.message}", e)
                 }
             }
         }
@@ -466,7 +470,7 @@ class SettingsViewModel @Inject constructor(
                 }
             } catch (e: Exception) {
                 if (e !is kotlinx.coroutines.CancellationException) {
-                    android.util.Log.e("SettingsViewModel", "Failed to update ElevenLabs API Key: ${e.message}", e)
+                    android.util.Log.e("SettingsViewModel", "更新 ElevenLabs API 密钥失败：${e.message}", e)
                 }
             }
         }
@@ -483,7 +487,7 @@ class SettingsViewModel @Inject constructor(
                 }
             } catch (e: Exception) {
                 if (e !is kotlinx.coroutines.CancellationException) {
-                    android.util.Log.e("SettingsViewModel", "Failed to update ElevenLabs Voice ID: ${e.message}", e)
+                    android.util.Log.e("SettingsViewModel", "更新 ElevenLabs 语音 ID 失败：${e.message}", e)
                 }
             }
         }
@@ -500,7 +504,7 @@ class SettingsViewModel @Inject constructor(
                 }
             } catch (e: Exception) {
                 if (e !is kotlinx.coroutines.CancellationException) {
-                    android.util.Log.e("SettingsViewModel", "Failed to update Ollama URL: ${e.message}", e)
+                    android.util.Log.e("SettingsViewModel", "更新 Ollama 地址失败：${e.message}", e)
                 }
             }
         }
@@ -517,7 +521,7 @@ class SettingsViewModel @Inject constructor(
                 }
             } catch (e: Exception) {
                 if (e !is kotlinx.coroutines.CancellationException) {
-                    android.util.Log.e("SettingsViewModel", "Failed to update Copilot URL: ${e.message}", e)
+                    android.util.Log.e("SettingsViewModel", "更新 Copilot 地址失败：${e.message}", e)
                 }
             }
         }
@@ -539,7 +543,7 @@ class SettingsViewModel @Inject constructor(
                 }
             } catch (e: Exception) {
                 if (e !is kotlinx.coroutines.CancellationException) {
-                    android.util.Log.e("SettingsViewModel", "Failed to update custom endpoint: ${e.message}", e)
+                    android.util.Log.e("SettingsViewModel", "更新自定义端点失败：${e.message}", e)
                 }
             }
         }
@@ -836,8 +840,8 @@ class SettingsViewModel @Inject constructor(
             // The in-memory value is already reset to "Never"; only the persisted timestamp
             // survives, so surface it in the log rather than failing the token removal.
             android.util.Log.w(
-                "SettingsViewModel",
-                "Failed to clear persisted Hugging Face verification timestamp"
+                tr("SettingsViewModel"),
+                tr("Failed to clear persisted Hugging Face verification timestamp")
             )
         }
     }
