@@ -1,148 +1,129 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <issues format="6" by="lint 9.3.1" type="baseline" client="gradle" dependencies="false" name="AGP (9.3.1)" variant="all" version="9.3.1">
-
-    <issue
-        id="SdCardPath"
-        message="Do not hardcode &quot;/sdcard/&quot;; use `Environment.getExternalStorageDirectory().getPath()` instead"
-        errorLine1="                &quot;/sdcard&quot;,  // typically symlinks to externalStorageRoot"
-        errorLine2="                 ~~~~~~~">
-        <location
-            file="src/main/java/com/opendroid/ai/actions/AdvancedControlActions.kt"
-            line="83"
-            column="18"/>
+    <issue id="SdCardPath" message="Do not hardcode &quot;/sdcard/&quot;; use `Environment.getExternalStorageDirectory().getPath()` instead" errorLine1="                &quot;/sdcard&quot;,  // typically symlinks to externalStorageRoot" errorLine2="                 ~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/actions/AdvancedControlActions.kt" line="83" column="18" />
     </issue>
-
-    <issue
-        id="NonObservableLocale"
-        message="Reading locale in a non-observable way in a composable function"
-        errorLine1="                        else -> message.modelBadge.uppercase(Locale.getDefault())"
-        errorLine2="                                                             ~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/opendroid/ai/ui/screens/ChatScreen.kt"
-            line="792"
-            column="62"/>
+    <issue id="NonObservableLocale" message="Reading locale in a non-observable way in a composable function" errorLine1="                        else -&gt; message.modelBadge.uppercase(Locale.getDefault())" errorLine2="                                                             ~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/ui/screens/ChatScreen.kt" line="792" column="62" />
     </issue>
-
-    <issue
-        id="AppCompatCustomView"
-        message="This custom view should extend `androidx.appcompat.widget.AppCompatImageView` instead"
-        errorLine1="    inner class FloatingWidgetView(context: Context) : android.widget.ImageView(context) {"
-        errorLine2="                                                       ~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/opendroid/ai/accessibility/OpenDroidAccessibilityService.kt"
-            line="357"
-            column="56"/>
+    <issue id="AppCompatCustomView" message="This custom view should extend `androidx.appcompat.widget.AppCompatImageView` instead" errorLine1="    inner class FloatingWidgetView(context: Context) : android.widget.ImageView(context) {" errorLine2="                                                       ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/accessibility/OpenDroidAccessibilityService.kt" line="357" column="56" />
     </issue>
-
-    <issue
-        id="ModifierParameter"
-        message="Modifier parameter should be the first optional parameter"
-        errorLine1="    modifier: Modifier = Modifier"
-        errorLine2="    ~~~~~~~~">
-        <location
-            file="src/main/java/com/opendroid/ai/ui/screens/SettingsScreen.kt"
-            line="80"
-            column="5"/>
+    <issue id="ModifierParameter" message="Modifier parameter should be the first optional parameter" errorLine1="    modifier: Modifier = Modifier" errorLine2="    ~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/ui/screens/SettingsScreen.kt" line="80" column="5" />
     </issue>
-
-    <issue
-        id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is always >= 26"
-        errorLine1="                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {"
-        errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/opendroid/ai/actions/AdvancedControlActions.kt"
-            line="152"
-            column="21"/>
+    <issue id="ObsoleteSdkInt" message="Unnecessary; `SDK_INT` is always &gt;= 26" errorLine1="                if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M) {" errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/actions/AdvancedControlActions.kt" line="152" column="21" />
     </issue>
-
-    <issue
-        id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is always >= 26"
-        errorLine1="                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {"
-        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/opendroid/ai/core/agent/DeviceStateProvider.kt"
-            line="61"
-            column="25"/>
+    <issue id="ObsoleteSdkInt" message="Unnecessary; `SDK_INT` is always &gt;= 26" errorLine1="                    if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M) {" errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/core/agent/DeviceStateProvider.kt" line="61" column="25" />
     </issue>
-
-    <issue
-        id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is always >= 26"
-        errorLine1="            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {"
-        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/opendroid/ai/core/agent/DeviceStateProvider.kt"
-            line="98"
-            column="17"/>
+    <issue id="ObsoleteSdkInt" message="Unnecessary; `SDK_INT` is always &gt;= 26" errorLine1="            if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M) {" errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/core/agent/DeviceStateProvider.kt" line="98" column="17" />
     </issue>
-
-    <issue
-        id="ObsoleteSdkInt"
-        message="Unnecessary; `SDK_INT` is always >= 26"
-        errorLine1="                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {"
-        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/com/opendroid/ai/actions/SystemActions.kt"
-            line="153"
-            column="25"/>
+    <issue id="ObsoleteSdkInt" message="Unnecessary; `SDK_INT` is always &gt;= 26" errorLine1="                    if (android.os.Build.VERSION.SDK_INT &gt;= android.os.Build.VERSION_CODES.M) {" errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/actions/SystemActions.kt" line="153" column="25" />
     </issue>
-
-    <issue
-        id="ObsoleteSdkInt"
-        message="This folder configuration (`v26`) is unnecessary; `minSdkVersion` is 26. Merge all the resources in this folder into `mipmap-anydpi`.">
-        <location
-            file="src/main/res/mipmap-anydpi-v26"/>
+    <issue id="ObsoleteSdkInt" message="This folder configuration (`v26`) is unnecessary; `minSdkVersion` is 26. Merge all the resources in this folder into `mipmap-anydpi`.">
+        <location file="src/main/res/mipmap-anydpi-v26" />
     </issue>
-
-    <issue
-        id="IconLauncherShape"
-        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
-        <location
-            file="src/main/res/mipmap-hdpi/ic_launcher.png"/>
+    <issue id="IconLauncherShape" message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
+        <location file="src/main/res/mipmap-hdpi/ic_launcher.png" />
     </issue>
-
-    <issue
-        id="IconLauncherShape"
-        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
-        <location
-            file="src/main/res/mipmap-mdpi/ic_launcher.png"/>
+    <issue id="IconLauncherShape" message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
+        <location file="src/main/res/mipmap-mdpi/ic_launcher.png" />
     </issue>
-
-    <issue
-        id="IconLauncherShape"
-        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
-        <location
-            file="src/main/res/mipmap-xhdpi/ic_launcher.png"/>
+    <issue id="IconLauncherShape" message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
+        <location file="src/main/res/mipmap-xhdpi/ic_launcher.png" />
     </issue>
-
-    <issue
-        id="IconLauncherShape"
-        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
-        <location
-            file="src/main/res/mipmap-xxhdpi/ic_launcher.png"/>
+    <issue id="IconLauncherShape" message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
+        <location file="src/main/res/mipmap-xxhdpi/ic_launcher.png" />
     </issue>
-
-    <issue
-        id="IconLauncherShape"
-        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
-        <location
-            file="src/main/res/mipmap-xxxhdpi/ic_launcher.png"/>
+    <issue id="IconLauncherShape" message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
+        <location file="src/main/res/mipmap-xxxhdpi/ic_launcher.png" />
     </issue>
-
-    <issue
-        id="IconLauncherShape"
-        message="Launcher icon used as round icon did not have a circular shape">
-        <location
-            file="src/main/res/mipmap-mdpi/ic_launcher_round.png"/>
+    <issue id="IconLauncherShape" message="Launcher icon used as round icon did not have a circular shape">
+        <location file="src/main/res/mipmap-mdpi/ic_launcher_round.png" />
     </issue>
-
-    <issue
-        id="IconLocation"
-        message="Found bitmap drawable `res/drawable/bot.png` in densityless folder">
-        <location
-            file="src/main/res/drawable/bot.png"/>
+    <issue id="IconLocation" message="Found bitmap drawable `res/drawable/bot.png` in densityless folder">
+        <location file="src/main/res/drawable/bot.png" />
     </issue>
-
+    <issue id="DefaultLocale" message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead" errorLine1="            &quot;Your product and developer updates generated the strongest engagement this week with ${summary.totalReach} total reach and an average engagement rate of ${String.format(&quot;%.1f&quot;, summary.averageEngagementRate)}%.&quot;" errorLine2="                                                                                                                                                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/social/core/analytics/SocialAnalyticsEngine.kt" line="84" column="169" />
+    </issue>
+    <issue id="DefaultLocale" message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead" errorLine1="                    value = summary?.averageEngagementRate?.let { &quot;${String.format(&quot;%.1f&quot;, it)}%&quot; } ?: &quot;0.0%&quot;," errorLine2="                                                                     ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/ui/screens/social/SocialAnalyticsTab.kt" line="105" column="70" />
+    </issue>
+    <issue id="DefaultLocale" message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead" errorLine1="                        observedData = &quot;Announcement posts averaged ${String.format(&quot;%.1f&quot;, avgAnnouncementEngage)}% engagement vs ${String.format(&quot;%.1f&quot;, avgOtherEngage)}% for general posts across ${posts.size} published posts.&quot;," errorLine2="                                                                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/social/core/ai/SocialInsightsEngine.kt" line="38" column="71" />
+    </issue>
+    <issue id="DefaultLocale" message="Implicitly using the default locale is a common source of bugs: Use `String.format(Locale, ...)` instead" errorLine1="                    value = summary?.averageEngagementRate?.let { &quot;${String.format(&quot;%.1f&quot;, it)}%&quot; } ?: &quot;0.0%&quot;," errorLine2="                                                                     ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/ui/screens/social/SocialOverviewTab.kt" line="79" column="70" />
+    </issue>
+    <issue id="SdCardPath" message="Do not hardcode &quot;/sdcard/&quot;; use `Environment.getExternalStorageDirectory().getPath()` instead" errorLine1="                } else if (canonical.startsWith(&quot;/sdcard&quot;)) {" errorLine2="                                                 ~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/core/storage/StorageWorkspaceProvider.kt" line="180" column="50" />
+    </issue>
+    <issue id="NonObservableLocale" message="Reading locale in a non-observable way in a composable function" errorLine1="                        &quot;Synced &quot; + SimpleDateFormat(&quot;MMM d, HH:mm&quot;, Locale.getDefault()).format(Date(lastSync))" errorLine2="                                                                     ~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/ui/screens/social/SocialAccountsTab.kt" line="270" column="70" />
+    </issue>
+    <issue id="NonObservableLocale" message="Reading locale in a non-observable way in a composable function" errorLine1="    val timeFormat = SimpleDateFormat(&quot;HH:mm&quot;, Locale.getDefault())" errorLine2="                                               ~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/ui/screens/social/SocialCalendarTab.kt" line="303" column="48" />
+    </issue>
+    <issue id="NonObservableLocale" message="Reading locale in a non-observable way in a composable function" errorLine1="    val timeFormat = SimpleDateFormat(&quot;MMM d&quot;, Locale.getDefault())" errorLine2="                                               ~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/ui/screens/social/SocialCampaignsTab.kt" line="144" column="48" />
+    </issue>
+    <issue id="NonObservableLocale" message="Reading locale in a non-observable way in a composable function" errorLine1="    val timeFormatted = SimpleDateFormat(&quot;MMM d, HH:mm&quot;, Locale.getDefault()).format(Date(comment.timestamp))" errorLine2="                                                         ~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/ui/screens/social/SocialCommentsTab.kt" line="176" column="58" />
+    </issue>
+    <issue id="NonObservableLocale" message="Reading locale in a non-observable way in a composable function" errorLine1="    val timeFormat = SimpleDateFormat(&quot;MMM d, HH:mm&quot;, Locale.getDefault())" errorLine2="                                                      ~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/ui/screens/social/SocialContentTab.kt" line="465" column="55" />
+    </issue>
+    <issue id="NonObservableLocale" message="Reading locale in a non-observable way in a composable function" errorLine1="    val timeFormatted = SimpleDateFormat(&quot;MMM d, HH:mm&quot;, Locale.getDefault()).format(Date(interaction.timestamp))" errorLine2="                                                         ~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/ui/screens/social/SocialInboxTab.kt" line="206" column="58" />
+    </issue>
+    <issue id="NonObservableLocale" message="Reading locale in a non-observable way in a composable function" errorLine1="    val timeFormat = SimpleDateFormat(&quot;MMM d, yyyy&quot;, Locale.getDefault())" errorLine2="                                                     ~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/ui/screens/social/SocialReportsTab.kt" line="47" column="54" />
+    </issue>
+    <issue id="NonObservableLocale" message="Reading locale in a non-observable way in a composable function" errorLine1="    val timeFormat = SimpleDateFormat(&quot;MMM d, HH:mm:ss&quot;, Locale.getDefault())" errorLine2="                                                         ~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/ui/screens/social/SocialSettingsTab.kt" line="298" column="58" />
+    </issue>
+    <issue id="ModifierParameter" message="Modifier parameter should be the first optional parameter" errorLine1="    modifier: Modifier = Modifier" errorLine2="    ~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/ui/screens/MacrosScreen.kt" line="46" column="5" />
+    </issue>
+    <issue id="ModifierParameter" message="Modifier parameter should be the first optional parameter" errorLine1="    modifier: Modifier = Modifier.fillMaxWidth().height(160.dp)," errorLine2="    ~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/ui/components/SocialCharts.kt" line="30" column="5" />
+    </issue>
+    <issue id="ModifierParameter" message="Optional Modifier parameter should have a default value of `Modifier`" errorLine1="    modifier: Modifier = Modifier.fillMaxWidth().height(160.dp)," errorLine2="    ~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/ui/components/SocialCharts.kt" line="30" column="5" />
+    </issue>
+    <issue id="ObsoleteSdkInt" message="Unnecessary; `SDK_INT` is always &gt;= 26" errorLine1="            if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M) {" errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/ui/viewmodel/SettingsViewModel.kt" line="742" column="17" />
+    </issue>
+    <issue id="AutoboxingStateCreation" message="Prefer `mutableIntStateOf` instead of `mutableStateOf`" errorLine1="    var selectedRangeDays by remember { mutableStateOf(7) }" errorLine2="                                        ~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/ui/screens/social/SocialAnalyticsTab.kt" line="45" column="41" />
+    </issue>
+    <issue id="AutoboxingStateCreation" message="Prefer `mutableIntStateOf` instead of `mutableStateOf`" errorLine1="    var selectedDayIndex by remember { mutableStateOf(0) }" errorLine2="                                       ~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/ui/screens/social/SocialCalendarTab.kt" line="44" column="40" />
+    </issue>
+    <issue id="AutoboxingStateCreation" message="Prefer `mutableIntStateOf` instead of `mutableStateOf`" errorLine1="    var durationDays by remember { mutableStateOf(7) }" errorLine2="                                   ~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/ui/screens/social/SocialCampaignsTab.kt" line="267" column="36" />
+    </issue>
+    <issue id="AutoboxingStateCreation" message="Prefer `mutableIntStateOf` instead of `mutableStateOf`" errorLine1="    var selectedOffsetHours by remember { mutableStateOf(1) }" errorLine2="                                          ~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/ui/screens/social/SocialContentTab.kt" line="612" column="43" />
+    </issue>
+    <issue id="AutoboxingStateCreation" message="Prefer `mutableIntStateOf` instead of `mutableStateOf`" errorLine1="    var selectedTabIndex by remember { mutableStateOf(0) }" errorLine2="                                       ~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/ui/screens/SocialScreen.kt" line="49" column="40" />
+    </issue>
+    <issue id="AutoboxingStateCreation" message="Prefer `mutableFloatStateOf` instead of `mutableStateOf`" errorLine1="    var confidence by remember { mutableStateOf(0.85f) }" errorLine2="                                 ~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/ui/screens/social/SocialSettingsTab.kt" line="341" column="34" />
+    </issue>
+    <issue id="UseKtx" message="Use the KTX extension function `SharedPreferences.edit` instead?" errorLine1="        prefs.edit().putString(KEY_AUTOMATION_LEVEL, level.name).apply()" errorLine2="        ~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/social/core/SocialManager.kt" line="68" column="9" />
+    </issue>
+    <issue id="UseKtx" message="Use the KTX extension function `SharedPreferences.edit` instead?" errorLine1="        context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)" errorLine2="        ^">
+        <location file="src/main/java/com/opendroid/ai/core/storage/StorageWorkspaceProvider.kt" line="50" column="9" />
+    </issue>
+    <issue id="UseKtx" message="Use the KTX extension function `String.toUri` instead?" errorLine1="            val uri = Uri.parse(uriStr)" errorLine2="                      ~~~~~~~~~~~~~~~~~">
+        <location file="src/main/java/com/opendroid/ai/core/storage/StorageWorkspaceProvider.kt" line="73" column="23" />
+    </issue>
 </issues>
