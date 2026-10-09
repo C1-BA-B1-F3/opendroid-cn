@@ -22,11 +22,18 @@ OpenDroid 是一款运行在 Android 手机上的**自主 AI 智能体**：它�
 
 ## 下载与安装
 
-- 从本仓库的 [Releases](../../releases) 页面下载最新的 `app-debug.apk`（或 CI 构建产物）。
+- 在 [Releases](../../releases) 页面下载最新的 `OpenDroid-CN-<版本>.apk`（**已签名的 release 构建**）。
+  同一 Release 附带 `SHA256SUMS.txt`，下载后可校验完整性。
 - 安装后按应用内引导授予权限：麦克风、通知使用权、**无障碍服务**、悬浮窗等。
 - 在「设置 → 服务商 API 密钥」中填入你自己的 LLM API 密钥（或使用本地 Ollama）。
 
-> 本分支未在应用商店上架；APK 由本仓库的 GitHub Actions 构建，见 `.github/workflows/android-ci.yml`。
+> **签名说明**：APK 由本分支自签证书签名（`CN=OpenDroid CN, OU=Community Fork, O=opendroid-cn`），
+> 与上游官方 APK **签名不同**，因此**无法覆盖安装上游版本**，需要先卸载上游版本。
+> 后续升级本分支版本时请保持同一签名（证书指纹见每次 Release 的构建日志）。
+
+> 本分支未在应用商店上架；APK 由本仓库的 GitHub Actions 构建：
+> `.github/workflows/android-ci.yml`（测试与构建）与
+> `.github/workflows/release-apk.yml`（推送 `v*` 标签时构建签名 APK 并发布 Release）。
 
 ---
 
@@ -60,9 +67,18 @@ tools/
   apply_i18n.py         字面量改写 / AppText 重命名
   apply_templates.py    插值文案原地翻译
   apply_bootstrap.py    启动接入、应用名、README 声明
+  apply_fork_fixes.py   分支配套修复（lint Locale.ROOT、单测断言适配）
   build_worksheet.py    生成翻译工作表
   merge_translations.py 合并译文并校验
+  update_lint_baseline.py  从 CI 的 lint 报告并入 baseline 条目
 ```
+
+### CI 与发布
+
+| 工作流 | 触发 | 作用 |
+|---|---|---|
+| `android-ci.yml` | push / PR | 单元测试、debug 构建、Android Lint、API 26/36 仪器测试、R8 release 编译检查 |
+| `release-apk.yml` | 推送 `v*` 标签 / 手动 | 用仓库 Secrets 中的密钥签名构建 release APK，校验签名后发布 GitHub Release |
 
 ---
 
