@@ -88,7 +88,7 @@ fun AppText(
     maxLines: Int = Int.MAX_VALUE,
     minLines: Int = 1,
     inlineContent: Map<String, InlineTextContent> = mapOf(),
-    onTextLayout: ((TextLayoutResult) -> Unit)? = null,
+    onTextLayout: (TextLayoutResult) -> Unit = {},
     style: TextStyle = LocalTextStyle.current,
 ) {
     Text(
