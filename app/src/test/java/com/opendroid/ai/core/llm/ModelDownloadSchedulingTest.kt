@@ -15,6 +15,7 @@ import androidx.work.NetworkType
 import androidx.work.WorkInfo
 import androidx.work.impl.foreground.SystemForegroundService
 import com.opendroid.ai.data.db.entities.ModelStatus
+import com.opendroid.ai.i18n.tr
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
@@ -98,7 +99,7 @@ class ModelDownloadSchedulingTest {
             foregroundInfo.notificationId
         )
         assertTrue(notification.flags and Notification.FLAG_ONGOING_EVENT != 0)
-        assertEquals("Model download in progress", notification.extras.getCharSequence(Notification.EXTRA_TITLE))
+        assertEquals(tr("Model download in progress"), notification.extras.getCharSequence(Notification.EXTRA_TITLE))
         assertNotNull(channel)
         assertEquals(NotificationManager.IMPORTANCE_LOW, channel!!.importance)
     }
