@@ -32,3 +32,5 @@ echo
 echo "完成。"
 
 # opendroid-cn localization pipeline
+
+# retry
